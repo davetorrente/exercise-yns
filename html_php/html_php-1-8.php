@@ -1,6 +1,7 @@
 <?php
 if(isset($_POST['userinfo'])) {
     $error = 0;
+    $csv = '';
     if(empty($_POST["username"])) {
         $usernameError = "Name is required";
         $error++;
@@ -46,6 +47,26 @@ if(isset($_POST['userinfo'])) {
         $countryError = "Country is required";
         $error++;
     }
+
+    if($error == 0)
+    {
+        $arrayInfo = array(
+            'username' => $_POST["username"],
+            'email' => $_POST["email"],
+            'description' => $_POST["description"],
+            'phone' => $_POST["phone"],
+
+            'gender' => $_POST["gender"],
+            'country' => $_POST["country"],
+        );
+
+        $path = $_SERVER['DOCUMENT_ROOT'] . '/html_php/test.csv';
+        $f = fopen($path, "a+");
+        fputcsv($f, $arrayInfo);
+        fclose($f);
+        chmod($path, 0777);
+        $csv = "csv file is written";
+    }
 }
 ?>
 
@@ -65,7 +86,8 @@ if(isset($_POST['userinfo'])) {
     <div class="row login form">
         <div class="col-md-4 col-md-offset-4">
             <legend>User Information</legend>
-            <form class="form-group" method="post" action="" novalidate>
+            <h4><?php echo isset($csv) ? $csv : ''; ?></h4>
+            <form class="form-group" method="post" action="" enctype='multipart/form-data' novalidate>
                 <div class="form-group">
                     <label for="username">Name:</label>
                     <input class="form-control" type="text" name="username" id="username" value="<?php echo isset($_POST["username"]) ? $_POST["username"] : ''; ?>">

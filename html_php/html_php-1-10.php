@@ -57,7 +57,7 @@ if(isset($_POST['userinfo'])) {
         $ext = substr(strtolower(strrchr($file['name'], '.')), 1);
         if(in_array($ext, $arr_ext))
         {
-            move_uploaded_file($file['tmp_name'], $_SERVER["DOCUMENT_ROOT"]. '/profile-img/' .$file['name']);
+            move_uploaded_file($file['tmp_name'], $_SERVER["DOCUMENT_ROOT"]. '/html_php/profile-img/' .$file['name']);
         }
         $arrayInfo = array(
             'username' => $_POST["username"],
@@ -69,13 +69,11 @@ if(isset($_POST['userinfo'])) {
             'country' => $_POST["country"],
             'upload' => $_FILES["upload"]["name"]);
         $msg = "I'm a line that is a message.\n";
-        $path = $_SERVER['DOCUMENT_ROOT'] . '/test.csv';
+        $path = $_SERVER['DOCUMENT_ROOT'] . '/html_php/test.csv';
         $f = fopen($path, "a+");
         fputcsv($f, $arrayInfo);
         fclose($f);
         chmod($path, 0777);
-        $arrayInfo = http_build_query($arrayInfo);
-        header("Location: html_php-1.9.php?$arrayInfo");
     }
 }
 ?>
