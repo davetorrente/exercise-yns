@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Javascript 2-10</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="jumbotron" align="center">
+        <div class="form-group">
+            <button  type="button" name="redbg" id="redbg">Change Background to Red</button>
+            <button  type="button" name="redtxt" id="redtxt">Change Text to Red</button>
+            <button  type="button" name="bluebg" id="bluebg">Change Background to Blue</button>
+            <button  type="button" name="bluetxt" id="bluetxt">Change Text to Blue</button>
+            <button  type="button" name="greenbg" id="greenbg">Change Background to Green</button>
+            <button  type="button" name="greentxt" id="greentxt">Change Text to Green</button>
+        </div>
+    </div>
+</div>
+
+
+<script src="http://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script>
+   $(document).ready(function(){
+       $('#redbg').on('click',function(event){
+           event.preventDefault();
+           $(this).css("background-color","red");
+       });
+       $('#redtxt').on('click',function(event){
+           event.preventDefault();
+           $(this).css("color","red");
+       });
+       $('#bluebg').on('click',function(event){
+           event.preventDefault();
+           $(this).css("background-color","blue");
+       });
+       $('#bluetxt').on('click',function(event){
+           event.preventDefault();
+           $(this).css("color","blue");
+       });
+       $('#greenbg').on('click',function(event){
+           event.preventDefault();
+           $(this).css("background-color","green");
+       });
+       $('#greentxt').on('click',function(event){
+           event.preventDefault();
+           $(this).css("color","green");
+       });
+   });
+</script>
+</body>
+</html>
