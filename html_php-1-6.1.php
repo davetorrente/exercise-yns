@@ -7,13 +7,12 @@ if(isset($_POST['userinfo']))
         'description' => $_POST["description"],
         'phone' => $_POST["phone"],
         'gender' => $_POST["gender"],
-        'country' => $_POST["country"],
-        'upload' => $_POST["upload"]);
+        'country' => $_POST["country"]
+    );
     $arrayInfo = http_build_query($arrayInfo);
     header("Location: html_php-1.6.2.php?$arrayInfo");
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -308,10 +307,6 @@ if(isset($_POST['userinfo']))
                         <option value="Zambia">Zambia</option>
                         <option value="Zimbabwe">Zimbabwe</option>
                     </select>
-                </div>
-                <div class="form-group">
-                    <label for="upload">Upload Image:</label>
-                    <input class="form-control" type="file" name="upload" id="upload">
                 </div>
                 <div class="form-group">
                     <button class="btn btn-info" name="userinfo" id="userinfo" type="submit">Submit</button>

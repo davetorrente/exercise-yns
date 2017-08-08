@@ -46,6 +46,37 @@ if(isset($_POST['userinfo'])) {
         $countryError = "Country is required";
         $error++;
     }
+    if (empty($_FILES["upload"])) {
+        $uploadError = "Image is required";
+        $error++;
+    }
+    if($error == 0)
+    {
+        $file = $_FILES['upload'];
+        $arr_ext = array('jpg', 'jpeg', 'gif', 'png');
+        $ext = substr(strtolower(strrchr($file['name'], '.')), 1);
+        if(in_array($ext, $arr_ext))
+        {
+            move_uploaded_file($file['tmp_name'], $_SERVER["DOCUMENT_ROOT"]. '/profile-img/' .$file['name']);
+        }
+        $arrayInfo = array(
+            'username' => $_POST["username"],
+            'email' => $_POST["email"],
+            'description' => $_POST["description"],
+            'phone' => $_POST["phone"],
+
+            'gender' => $_POST["gender"],
+            'country' => $_POST["country"],
+            'upload' => $_FILES["upload"]["name"]);
+        $msg = "I'm a line that is a message.\n";
+        $path = $_SERVER['DOCUMENT_ROOT'] . '/test.csv';
+        $f = fopen($path, "a+");
+        fputcsv($f, $arrayInfo);
+        fclose($f);
+        chmod($path, 0777);
+        $arrayInfo = http_build_query($arrayInfo);
+        header("Location: html_php-1.9.php?$arrayInfo");
+    }
 }
 ?>
 
@@ -65,7 +96,7 @@ if(isset($_POST['userinfo'])) {
     <div class="row login form">
         <div class="col-md-4 col-md-offset-4">
             <legend>User Information</legend>
-            <form class="form-group" method="post" action="" novalidate>
+            <form class="form-group" method="post" action="" enctype='multipart/form-data' novalidate>
                 <div class="form-group">
                     <label for="username">Name:</label>
                     <input class="form-control" type="text" name="username" id="username" value="<?php echo isset($_POST["username"]) ? $_POST["username"] : ''; ?>">
@@ -349,6 +380,11 @@ if(isset($_POST['userinfo'])) {
                         <option value="Zimbabwe">Zimbabwe</option>
                     </select>
                     <?php echo isset($countryError) ? $countryError : ''; ?>
+                </div>
+                <div class="form-group">
+                    <label for="upload">Upload Image:</label>
+                    <input class="form-control" type="file" name="upload" id="upload" value="<?php echo isset($_POST["upload"]) ? $_POST["upload"] : ''; ?>v">
+                    <?php echo isset($uploadError) ? $uploadError : ''; ?>
                 </div>
                 <div class="form-group">
                     <button class="btn btn-info" name="userinfo" id="userinfo" type="submit">Submit</button>

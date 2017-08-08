@@ -1,21 +1,9 @@
 <?php
-// For html_php-1.6.1
-//if(isset($_POST['userinfo']))
-//{
-//    $username = $_POST['username'];
-//    $email = $_POST['email'];
-//    $description = $_POST['description'];
-//    $country =  $_POST['country'];
-//    $image =  $_POST['upload'];
-//    $gender = $_POST['gender'];
-//    $phone = $_POST['phone'];
-//}
-// For html_php-1.7
+
 $username = $_GET['username'];
 $email = $_GET['email'];
 $description = $_GET['description'];
 $country =  $_GET['country'];
-$image =  $_GET['upload'];
 $gender = $_GET['gender'];
 $phone = $_GET['phone'];
 
@@ -44,11 +32,6 @@ $phone = $_GET['phone'];
                         <p><strong>Gender: </strong><?php echo isset($gender) ? $gender : ''; ?>
                         </p>
                         <p><strong>Country: </strong> <?php echo isset($country) ? $country : ''; ?></p>
-                    </div>
-                    <div class="col-xs-12 col-sm-4 text-center">
-                        <figure>
-                            <img src="img/<?php echo isset($image) ? $image : ''; ?>" class="img-circle img-responsive">
-                        </figure>
                     </div>
                 </div>
             </div>
