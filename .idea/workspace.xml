@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21fc073c-5523-4dae-b2fe-c45f5b229797" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html_php-1-6.1.php" afterPath="$PROJECT_DIR$/html_php-1-6.1.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html_php-1-7.php" afterPath="$PROJECT_DIR$/html_php-1-7.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html_php-1.6.2.php" afterPath="$PROJECT_DIR$/html_php-1.6.2.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -75,18 +72,18 @@
       <file leaf-file-name="html_php-1-7.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/html_php-1-7.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
-              <caret line="379" column="22" lean-forward="true" selection-start-line="379" selection-start-column="22" selection-end-line="379" selection-end-column="22" />
+            <state relative-caret-position="371">
+              <caret line="119" column="83" lean-forward="false" selection-start-line="119" selection-start-column="83" selection-end-line="120" selection-end-column="72" />
               <folding>
-                <element signature="e#5343#5348#0#HTML" expanded="true" />
-                <element signature="e#6618#6623#0#HTML" expanded="true" />
-                <element signature="e#17782#17787#0#HTML" expanded="true" />
-                <element signature="e#17885#17890#0#HTML" expanded="true" />
-                <element signature="e#18258#18263#0#HTML" expanded="true" />
-                <element signature="e#20166#20171#0#HTML" expanded="true" />
-                <element signature="e#20459#20464#0#HTML" expanded="true" />
-                <element signature="e#21693#21698#0#HTML" expanded="true" />
-                <marker date="1502170132253" expanded="true" signature="1957:1976" ph="..." />
+                <element signature="e#5568#5573#0#HTML" expanded="true" />
+                <element signature="e#6843#6848#0#HTML" expanded="true" />
+                <element signature="e#18007#18012#0#HTML" expanded="true" />
+                <element signature="e#18110#18115#0#HTML" expanded="true" />
+                <element signature="e#18483#18488#0#HTML" expanded="true" />
+                <element signature="e#20391#20396#0#HTML" expanded="true" />
+                <element signature="e#20684#20689#0#HTML" expanded="true" />
+                <element signature="e#21918#21923#0#HTML" expanded="true" />
+                <marker date="1502170598727" expanded="true" signature="2263:2282" ph="..." />
               </folding>
             </state>
           </provider>
@@ -288,16 +285,15 @@
       <updated>1502093107880</updated>
       <workItem from="1502093111009" duration="5145000" />
       <workItem from="1502098562357" duration="133000" />
-      <workItem from="1502154660541" duration="14931000" />
+      <workItem from="1502154660541" duration="15410000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20209000" />
+    <option name="totallyTimeSpent" value="20688000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="17" y="4" width="1370" height="735" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16946565" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -457,18 +453,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/html_php-1-7.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="379" column="22" lean-forward="true" selection-start-line="379" selection-start-column="22" selection-end-line="379" selection-end-column="22" />
+        <state relative-caret-position="371">
+          <caret line="119" column="83" lean-forward="false" selection-start-line="119" selection-start-column="83" selection-end-line="120" selection-end-column="72" />
           <folding>
-            <element signature="e#5343#5348#0#HTML" expanded="true" />
-            <element signature="e#6618#6623#0#HTML" expanded="true" />
-            <element signature="e#17782#17787#0#HTML" expanded="true" />
-            <element signature="e#17885#17890#0#HTML" expanded="true" />
-            <element signature="e#18258#18263#0#HTML" expanded="true" />
-            <element signature="e#20166#20171#0#HTML" expanded="true" />
-            <element signature="e#20459#20464#0#HTML" expanded="true" />
-            <element signature="e#21693#21698#0#HTML" expanded="true" />
-            <marker date="1502170132253" expanded="true" signature="1957:1976" ph="..." />
+            <element signature="e#5568#5573#0#HTML" expanded="true" />
+            <element signature="e#6843#6848#0#HTML" expanded="true" />
+            <element signature="e#18007#18012#0#HTML" expanded="true" />
+            <element signature="e#18110#18115#0#HTML" expanded="true" />
+            <element signature="e#18483#18488#0#HTML" expanded="true" />
+            <element signature="e#20391#20396#0#HTML" expanded="true" />
+            <element signature="e#20684#20689#0#HTML" expanded="true" />
+            <element signature="e#21918#21923#0#HTML" expanded="true" />
+            <marker date="1502170598727" expanded="true" signature="2263:2282" ph="..." />
           </folding>
         </state>
       </provider>

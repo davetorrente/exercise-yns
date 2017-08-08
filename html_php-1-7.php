@@ -60,9 +60,16 @@ if(isset($_POST['userinfo'])) {
              'email' => $_POST["email"],
              'description' => $_POST["description"],
              'phone' => $_POST["phone"],
+
              'gender' => $_POST["gender"],
              'country' => $_POST["country"],
              'upload' => $_POST["upload"]);
+        $msg = "I'm a line that is a message.\n";
+        $path = $_SERVER['DOCUMENT_ROOT'] . '/test.csv';
+        $f = fopen($path, "a+");
+        fputcsv($f, $arrayInfo);
+        fclose($f);
+        chmod($path, 0777);
          $arrayInfo = http_build_query($arrayInfo);
          header("Location: html_php-1.6.2.php?$arrayInfo");
      }
@@ -98,7 +105,7 @@ if(isset($_POST['userinfo'])) {
                 </div>
                 <div class="form-group">
                     <label for="description">Description:</label>
-                    <textarea class="form-control" rows="5" name="description" id="description" value="<?php echo isset($_POST["description"]) ? $_POST["description"] : ''; ?>"></textarea>
+                    <textarea class="form-control" rows="5" name="description" id="description"></textarea>
                     <?php echo isset($descriptionError) ? $descriptionError : ''; ?>
                 </div>
                 <div class="form-group">
