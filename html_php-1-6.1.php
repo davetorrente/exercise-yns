@@ -1,3 +1,19 @@
+<?php
+if(isset($_POST['userinfo']))
+{
+    $arrayInfo = array(
+        'username' => $_POST["username"],
+        'email' => $_POST["email"],
+        'description' => $_POST["description"],
+        'phone' => $_POST["phone"],
+        'gender' => $_POST["gender"],
+        'country' => $_POST["country"],
+        'upload' => $_POST["upload"]);
+    $arrayInfo = http_build_query($arrayInfo);
+    header("Location: html_php-1.6.2.php?$arrayInfo");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +30,7 @@
     <div class="row login form">
         <div class="col-md-4 col-md-offset-4">
             <legend>User Information</legend>
-            <form class="form-group" method="post" action="html_php-1.6.2.php">
+            <form class="form-group" method="post" action="">
                 <div class="form-group">
                     <label for="username">Name:</label>
                     <input class="form-control" type="text" name="username" id="username">

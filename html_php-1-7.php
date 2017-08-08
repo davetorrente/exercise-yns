@@ -1,47 +1,71 @@
 <?php
 if(isset($_POST['userinfo'])) {
+    $error = 0;
     if(empty($_POST["username"])) {
-        $username = "Name is required";
+        $usernameError = "Name is required";
+        $error++;
     }
     else {
         if(!ctype_alnum($_POST["username"]))
         {
-            $username = "Name must be alphanumeric characters";
+            $userError = "Name must be alphanumeric characters";
+            $error++;
         }
     }
     if (empty($_POST["email"])) {
-        $email = "Email is required";
+        $emailError = "Email is required";
+        $error++;
     }
     else {
         $regex = '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/';
         if (!preg_match($regex, $_POST["email"])) {
-            $email = "Email is invalid";
+            $emailError = "Email is invalid";
+            $error++;
         }
     }
     if (empty($_POST["description"])) {
-        $description = "Description is required";
+        $descriptionError = "Description is required";
+        $error++;
     }
     if (empty($_POST["phone"])) {
-        $phone = "Phone number is required";
+        $phoneError = "Phone number is required";
+        $error++;
     }
     else{
         if(!ctype_digit($_POST["phone"]))
         {
-            $phone = "Phone must be numeric";
+            $phoneError = "Phone must be numeric";
+            $error++;
         }
     }
     if (empty($_POST["gender"])) {
-        $gender = "Gender is required";
+        $genderError = "Gender is required";
+        $error++;
     }
     if (empty($_POST["country"])) {
-        $country = "Country is required";
+        $countryError = "Country is required";
+        $error++;
     }
     if (empty($_POST["upload"])) {
-        $upload = "Image is required";
+        $uploadError = "Image is required";
+        $error++;
     }
-    $arrayInfo = array($_POST["username"], $_POST["email"], $_POST["description"], $_POST["phone"], $_POST["gender"], $_POST["upload"]);
-    header("Location: html_php-1.6.2.php?arrayInfo=$arrayInfo");
-    exit();
+
+//    header("Location: html_php-1.6.2.php?");
+//    exit();s
+     if($error == 0)
+     {
+         $arrayInfo = array(
+             'username' => $_POST["username"],
+             'email' => $_POST["email"],
+             'description' => $_POST["description"],
+             'phone' => $_POST["phone"],
+             'gender' => $_POST["gender"],
+             'country' => $_POST["country"],
+             'upload' => $_POST["upload"]);
+         $arrayInfo = http_build_query($arrayInfo);
+         header("Location: html_php-1.6.2.php?$arrayInfo");
+     }
 }
 ?>
 
@@ -64,23 +88,23 @@ if(isset($_POST['userinfo'])) {
             <form class="form-group" method="post" action="" novalidate>
                 <div class="form-group">
                     <label for="username">Name:</label>
-                    <input class="form-control" type="text" name="username" id="username">
-                    <?php echo isset($username) ? $username : ''; ?>
+                    <input class="form-control" type="text" name="username" id="username" value="<?php echo isset($_POST["username"]) ? $_POST["username"] : ''; ?>">
+                    <?php echo isset($usernameError) ? $usernameError : ''; ?>
                 </div>
                 <div class="form-group">
                     <label for="username">Email:</label>
                     <input class="form-control" type="email" name="email" id="email" value="<?php echo isset($_POST["email"]) ? $_POST["email"] : ''; ?>">
-                    <?php echo isset($email) ? $email : ''; ?>
+                    <?php echo isset($emailError) ? $emailError : ''; ?>
                 </div>
                 <div class="form-group">
                     <label for="description">Description:</label>
-                    <textarea class="form-control" rows="5" name="description" id="description"></textarea>
-                    <?php echo isset($description) ? $description : ''; ?>
+                    <textarea class="form-control" rows="5" name="description" id="description" value="<?php echo isset($_POST["description"]) ? $_POST["description"] : ''; ?>"></textarea>
+                    <?php echo isset($descriptionError) ? $descriptionError : ''; ?>
                 </div>
                 <div class="form-group">
                     <label for="username">Phone:</label>
-                    <input class="form-control" type="text" name="phone" id="phone">
-                    <?php echo isset($phone) ? $phone : ''; ?>
+                    <input class="form-control" type="text" name="phone" id="phone" value="<?php echo isset($_POST["phone"]) ? $_POST["phone"] : ''; ?>">
+                    <?php echo isset($phoneError) ? $phoneError : ''; ?>
                 </div>
                 <div class="form-group">
                     <label for="gender" >Gender: </label>
@@ -90,11 +114,11 @@ if(isset($_POST['userinfo'])) {
                     </label>
                     <label class="radio-inline">
                         <input type="radio" name="gender" value="Female" id="gender" >Female</label>
-                    <?php echo isset($gender) ? $gender : ''; ?>
+                    <?php echo isset($genderError) ? $genderError : ''; ?>
                 </div>
                 <div class="form-group">
                     <label for="sel1">Select list:</label>
-                    <select class="form-control" name="country" id="country">
+                    <select class="form-control" name="country" id="country" >
                         <option value="">Country...</option>
                         <option value="Afganistan">Afghanistan</option>
                         <option value="Albania">Albania</option>
@@ -344,12 +368,12 @@ if(isset($_POST['userinfo'])) {
                         <option value="Zambia">Zambia</option>
                         <option value="Zimbabwe">Zimbabwe</option>
                     </select>
-                    <?php echo isset($country) ? $country : ''; ?>
+                    <?php echo isset($countryError) ? $countryError : ''; ?>
                 </div>
                 <div class="form-group">
                     <label for="upload">Upload Image:</label>
-                    <input class="form-control" type="file" name="upload" id="upload">
-                    <?php echo isset($upload) ? $upload : ''; ?>
+                    <input class="form-control" type="file" name="upload" id="upload" value="<?php echo isset($_POST["upload"]) ? $_POST["upload"] : ''; ?>v">
+                    <?php echo isset($uploadError) ? $uploadError : ''; ?>
                 </div>
                 <div class="form-group">
                     <button class="btn btn-info" name="userinfo" id="userinfo" type="submit">Submit</button>

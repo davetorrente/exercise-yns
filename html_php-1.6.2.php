@@ -10,8 +10,15 @@
 //    $gender = $_POST['gender'];
 //    $phone = $_POST['phone'];
 //}
-$arrayInfo = $_GET['arrayInfo'];
-print_r($arrayInfo);
+// For html_php-1.7
+$username = $_GET['username'];
+$email = $_GET['email'];
+$description = $_GET['description'];
+$country =  $_GET['country'];
+$image =  $_GET['upload'];
+$gender = $_GET['gender'];
+$phone = $_GET['phone'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
