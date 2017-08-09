@@ -32,9 +32,11 @@
                         </tr>
                         </thead>
                         <tbody>
-                                <?php $row = 1; ?>
+                               <?php $row = 1; ?>
+                               <?php $count = 0; ?>
                                <?php if (($handle = fopen("test.csv", "r")) !== FALSE): ?>
                                  <?php  while (($data = fgetcsv($handle, 1000, ",")) !== FALSE): ?>
+                                       <?php $count++; ?>
                                    <tr>
                                     <?php $num = count($data); ?>
                                     <?php $row++; ?>
@@ -45,6 +47,9 @@
                                 <?php endwhile ?>
                                 <?php fclose($handle); ?>
                                 <?php endif ?>
+                        <?php echo $count; ?>
+                        <?php echo $page = $count / 10; ?>
+
                         </tbody>
                     </table>
                 </div>
