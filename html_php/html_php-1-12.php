@@ -1,4 +1,12 @@
 <?php
+session_start();
+if (!isset($_SESSION['user']))
+    header("Location: html_php-1-13.php");
+if(isset($_GET['logout']) == 1){
+    session_destroy();
+    header("Location: html_php-1-13.php");
+}
+
 $count = 0;
 if (($handle = fopen("test.csv", "r")) !== FALSE):
     while (($data = fgetcsv($handle, 1000, ",")) !== FALSE):
@@ -35,9 +43,28 @@ $endpage   = $page+10-1;
     <link href="/css/custom.css" type="text/css" rel="stylesheet">
 </head>
 <body>
+<nav class="navbar navbar-default">
+    <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigatipon</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">List Page</a>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="?logout=1">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
+            <h1>Welcome <?php if (isset($_SESSION['user'])) {
+                echo $_SESSION['user'];
+                }?></h1>
             <div class="panel panel-default panel-table">
                 <div class="panel-heading">
                     <div class="row">

@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 if(isset($_POST['login'])) {
     $error = 0;
     if(empty($_POST["username"])) {
@@ -26,7 +26,11 @@ if(isset($_POST['login'])) {
             $error++;
         }
     }
-
+    if($error == 0)
+    {
+        $_SESSION['user'] = $_POST["username"];
+        header("Location: html_php-1-12.php");
+    }
 }
 ?>
 
@@ -53,7 +57,6 @@ if(isset($_POST['login'])) {
 <body>
 <div class="login">
     <h1>Login</h1>
-
     <form method="post">
         <input type="text" id="username" name="username" placeholder="Username"/>
         <span style="color:red"><?php echo isset($usernameError) ? $usernameError : ''; ?></span>

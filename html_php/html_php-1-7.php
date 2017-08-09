@@ -48,7 +48,6 @@ if(isset($_POST['userinfo'])) {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
