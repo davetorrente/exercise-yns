@@ -34,68 +34,30 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <?php $row = 1; ?>
-                        <?php $count = 0; ?>
-                        <?php if (($handle = fopen("test.csv", "r")) !== FALSE): ?>
-                            <?php  while (($data = fgetcsv($handle, 1000, ",")) !== FALSE): ?>
-                                <?php $count++; ?>
+                        <?php
+                        $count = 0;
+                        if (($handle = fopen("test.csv", "r")) !== FALSE):
+                            while (($data = fgetcsv($handle, 1000, ",")) !== FALSE):
+                                $count++; ?>
                                 <tr>
                                     <?php $num = count($data); ?>
-                                    <?php $row++; ?>
-                                    <?php
-                                    if(isset($_GET['page'])){
-                                        $page = $_GET['page'];
-                                        $startPage = ($page*10)-10+1;
-                                        $endPage = $page+10-1;
-                                        do{ ?>
-                                    <?php for ($c=0; $c < $num; $c++): ?>
-
-                                                <tr>
-                                                    <?php $num = count($data); ?>
-                                                    <?php $row++; ?>
-                                                    <?php for ($c=0; $c < $num; $c++): ?>
-                                                        <td><?php echo $data[$c]; ?></td>
-                                                    <?php endfor ?>
-                                                </tr>
-                                     <?php  }while($c);
-
-                                        }  ?>
-
-
-
+                                    <?php for ($c=0; $c < $num; $c++):
+                                        if($c == 6){?>
+                                            <td><img class="img-profile" src="profile-img/<?php echo $data[$c]; ?>"</td>
+                                        <?php }
+                                        else{ ?>
+                                        <td><?php echo $data[$c]; ?></td>
+                                       <?php } ?>
 
                                     <?php endfor ?>
                                 </tr>
                             <?php endwhile ?>
                             <?php fclose($handle); ?>
                         <?php endif ?>
-
                         </tbody>
                     </table>
-
-                </div>
-                <?php $page = $count / 10; ?>
-                <?php $b =  ceil($page); ?>
-                <div class="panel-footer">
-                    <div class="row">
-                        <div class="col col-xs-4">Page 1 of <?php echo $b; ?>
-                        </div>
-                        <div class="col col-xs-8">
-                            <ul class="pagination hidden-xs pull-right">
-                                <?php for($i=1; $i<=$b; $i++): ?>
-                                    <li><a href="html_php-1-11.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
-                                <?php endfor ?>
-
-                            </ul>
-                            <ul class="pagination visible-xs pull-right">
-                                <li><a href="#">«</a></li>
-                                <li><a href="#">»</a></li>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
