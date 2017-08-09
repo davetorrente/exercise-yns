@@ -32,24 +32,21 @@
                         </tr>
                         </thead>
                         <tbody>
-                               <?php $row = 1; ?>
-                               <?php $count = 0; ?>
-                               <?php if (($handle = fopen("test.csv", "r")) !== FALSE): ?>
-                                 <?php  while (($data = fgetcsv($handle, 1000, ",")) !== FALSE): ?>
-                                       <?php $count++; ?>
-                                   <tr>
+                        <?php $row = 1; ?>
+                        <?php $count = 0; ?>
+                        <?php if (($handle = fopen("test.csv", "r")) !== FALSE): ?>
+                            <?php  while (($data = fgetcsv($handle, 1000, ",")) !== FALSE): ?>
+                                <?php $count++; ?>
+                                <tr>
                                     <?php $num = count($data); ?>
                                     <?php $row++; ?>
                                     <?php for ($c=0; $c < $num; $c++): ?>
-                                            <td><?php echo $data[$c]; ?></td>
+                                        <td><?php echo $data[$c]; ?></td>
                                     <?php endfor ?>
-                                   </tr>
-                                <?php endwhile ?>
-                                <?php fclose($handle); ?>
-                                <?php endif ?>
-                        <?php echo $count; ?>
-                        <?php $page = $count / 10; ?>
-                        <?php echo ceil($page); ?>
+                                </tr>
+                            <?php endwhile ?>
+                            <?php fclose($handle); ?>
+                        <?php endif ?>
                         </tbody>
                     </table>
                 </div>

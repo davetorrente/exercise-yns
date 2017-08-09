@@ -35,18 +35,33 @@
                         </thead>
                         <tbody>
                         <?php $row = 1; ?>
+                        <?php $count = 0; ?>
                         <?php if (($handle = fopen("test.csv", "r")) !== FALSE): ?>
                             <?php  while (($data = fgetcsv($handle, 1000, ",")) !== FALSE): ?>
+                                <?php $count++; ?>
                                 <tr>
                                     <?php $num = count($data); ?>
                                     <?php $row++; ?>
+                                    <?php
+                                    if(isset($_GET['page'])){
+                                        $page = $_GET['page'];
+                                        $startPage = ($page*10)-10+1;
+                                        $endPage = $page+10-1;
+                                        do{ ?>
                                     <?php for ($c=0; $c < $num; $c++): ?>
-                                        <?php if($c==6): ?>
-                                            <td><img src="profile-img/<?php echo $data[$c]; ?>" class="img-responsive img-profile"></td>
-                                        <?php else: ?>
 
-                                            <td><?php echo $data[$c]; ?></td>
-                                        <?php endif ?>
+                                                <tr>
+                                                    <?php $num = count($data); ?>
+                                                    <?php $row++; ?>
+                                                    <?php for ($c=0; $c < $num; $c++): ?>
+                                                        <td><?php echo $data[$c]; ?></td>
+                                                    <?php endfor ?>
+                                                </tr>
+                                     <?php  }while($c);
+
+                                        }  ?>
+
+
 
 
                                     <?php endfor ?>
@@ -59,17 +74,18 @@
                     </table>
 
                 </div>
+                <?php $page = $count / 10; ?>
+                <?php $b =  ceil($page); ?>
                 <div class="panel-footer">
                     <div class="row">
-                        <div class="col col-xs-4">Page 1 of 5
+                        <div class="col col-xs-4">Page 1 of <?php echo $b; ?>
                         </div>
                         <div class="col col-xs-8">
                             <ul class="pagination hidden-xs pull-right">
-                                <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
+                                <?php for($i=1; $i<=$b; $i++): ?>
+                                    <li><a href="html_php-1-11.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+                                <?php endfor ?>
+
                             </ul>
                             <ul class="pagination visible-xs pull-right">
                                 <li><a href="#">«</a></li>
