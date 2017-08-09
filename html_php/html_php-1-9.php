@@ -48,8 +48,8 @@
                                 <?php fclose($handle); ?>
                                 <?php endif ?>
                         <?php echo $count; ?>
-                        <?php echo $page = $count / 10; ?>
-
+                        <?php $page = $count / 10; ?>
+                        <?php echo ceil($page); ?>
                         </tbody>
                     </table>
                 </div>

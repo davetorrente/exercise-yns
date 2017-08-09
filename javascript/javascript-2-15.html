@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Javascript 2-15</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="rows">
+        <div class="col-md-6 col-md-offset-3" align="center">
+               <img style="max-width:200px;" class="thumbnail changeImage" src="sample-images/luffy.jpg">
+                <br/>
+                <select class="form-control" name="pics" id="pics">
+                    <option value="luffy.jpg">Luffy</option>
+                    <option value="zoro.jpg">Zoro</option>
+                    <option value="chopper.jpg">Chopper</option>
+                    <option value="sanji.jpg">Sanji</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<script src="http://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function(){
+        var defaultImg = $('#pics :selected').val();
+        $("#pics").change(function () {
+            $('.changeImage').attr('src',function(i,e){
+                var temp = defaultImg;
+                defaultImg = $('#pics :selected').val();
+                return $(this).attr('src').replace(temp, $("#pics :selected").attr('value'));
+
+            });
+        });
+    });
+</script>
+</body>
+</html>
