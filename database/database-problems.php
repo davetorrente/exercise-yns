@@ -1,55 +1,26 @@
 <?php
 require "Database.php";
 $database = new Database();
-
+// problem# 1
 $database->query("SELECT * FROM employees WHERE last_name LIKE 'K%'");
 $employeesStartLastNames = $database->resultset();
-
+// problem# 2
 $database->query("SELECT * FROM employees WHERE last_name LIKE '%i'");
 $employeesEndLastNames = $database->resultset();
-
+// problem# 3
 $database->query("SELECT first_name, last_name, middle_name, hire_date FROM employees WHERE hire_date BETWEEN '2015/1/1' AND '2015/3/31' ORDER by hire_date ASC");
 $employeeshireDates = $database->resultset();
 
-$database->query('SELECT orders.id, customers.name FROM orders INNER JOIN customers ON orders.customer_id = customers.id');
-$innerjoinlastNames = $database->resultset();
-
+// problem# 4
 $database->query("SELECT last_name, boss_id FROM employees WHERE boss_id IS NOT NULL");
 $employeesWithBosses = $database->resultset();
-
-
-
-//for($i=0; $i<count($employeesWithBosses); $i++)
-//{
-//    $bossArray[$i] =
-//    print_r($employeesWithBosses[$i]['boss_id']);
-//}
-//foreach($employeesWithBosses as $employeesWithBoss)
-//{
-//    print_r($employeesWithBoss);
-//}
-//$object = new stdClass;
-//$object->sampleArray = [];
-//
-//
-//$object->name = ["1" => "dave", "2" => "Robert"];
-//foreach($object->name as $key => $value)
-//{
-//    if($object->name[$key] == "dave")
-//    {
-//        echo $key . "<br/>";
-//    }
-//}
-//$object->sampleArray['3'] = 'Dave';
-//print_r($object->sampleArray);
-//
-//$object->array2 = ["dave", "pogi", "torrente"];
-//
-//foreach($object->array2 as $item)
-//
-//{
-//    echo $item . "<br/>";
-//}
+// problem# 5
+$database->query('SELECT last_name FROM employees INNER JOIN departments ON employees.department_id = departments.id WHERE employees.department_id=3 ORDER by employees.last_name DESC');
+$employeesBelongToSalesdeps = $database->resultset();
+// problem# 6
+$database->query("SELECT * FROM employees WHERE middle_name IS NOT NULL");
+$employeesWithMiddleNames = $database->resultset();
+// problem# 7
 
 ?>
 <!DOCTYPE html>
@@ -78,7 +49,7 @@ $employeesWithBosses = $database->resultset();
                     <table class="table table-striped table-bordered table-list">
                         <thead>
                         <tr>
-                            <th class="hidden-xs">ID</th>
+                            <th>ID</th>
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>Middle Name</th>
@@ -122,7 +93,7 @@ $employeesWithBosses = $database->resultset();
                     <table class="table table-striped table-bordered table-list">
                         <thead>
                         <tr>
-                            <th class="hidden-xs">ID</th>
+                            <th>ID</th>
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>Middle Name</th>
@@ -165,7 +136,7 @@ $employeesWithBosses = $database->resultset();
                     <table class="table table-striped table-bordered table-list">
                         <thead>
                         <tr>
-                            <th class="hidden-xs">ID</th>
+                            <th>ID</th>
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>Hire Date</th>
@@ -203,7 +174,7 @@ $employeesWithBosses = $database->resultset();
                     <table class="table table-striped table-bordered table-list">
                         <thead>
                         <tr>
-                            <th class="hidden-xs">Last Name</th>
+                            <th>Last Name</th>
                             <th>Last Name of BOSS</th>
                         </tr>
                         </thead>
@@ -242,23 +213,13 @@ $employeesWithBosses = $database->resultset();
                     <table class="table table-striped table-bordered table-list">
                         <thead>
                         <tr>
-                            <th class="hidden-xs">Last Name</th>
-                            <th>Boss ID</th>
-                            <th>Last Name of BOSS</th>
+                            <th>Last Name</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <?php foreach($employeesWithBosses as $employeesWithBoss): ?>
+                        <?php foreach($employeesBelongToSalesdeps as $employeesBelongToSalesdep): ?>
                         <tr>
-                            <td><?php echo $employeesWithBoss['last_name']; ?></td>
-                            <td><?php echo $employeesWithBoss['boss_id']; ?></td>
-                            <?php $bossID = $employeesWithBoss['boss_id']; ?>
-                            <?php  $database->query("SELECT last_name FROM employees WHERE id = :id");
-                            $database->bind(':id', $bossID);
-                            $employeesbossLastNames = $database->resultset();
-                            foreach($employeesbossLastNames as $employeesbossLastName): ?>
-                                <td><?php echo $employeesbossLastName['last_name']; ?></td>
-                            <?php endforeach ?>
+                            <td><?php echo $employeesBelongToSalesdep['last_name']; ?></td>
                             <?php endforeach ?>
                         </tr>
                         </tbody>
@@ -268,7 +229,48 @@ $employeesWithBosses = $database->resultset();
         </div>
     </div>
 </div>
-
-
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-default panel-table">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col col-xs-6">
+                            <h3 class="panel-title">6.) Retrieve number of employee who has middle name.</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-striped table-bordered table-list">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Middle Name</th>
+                            <th>Department ID</th>
+                            <th>Hire Date</th>
+                            <th>Boss ID</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach($employeesWithMiddleNames as $employeesWithMiddleName): ?>
+                            <tr>
+                                <td><?php echo $employeesWithMiddleName['id']; ?></td>
+                                <td><?php echo $employeesWithMiddleName['first_name']; ?></td>
+                                <td><?php echo $employeesWithMiddleName['last_name']; ?></td>
+                                <td><?php echo $employeesWithMiddleName['middle_name']; ?></td>
+                                <td><?php echo $employeesWithMiddleName['department_id']; ?></td>
+                                <td><?php echo $employeesWithMiddleName['hire_date']; ?></td>
+                                <td><?php echo $employeesWithMiddleName['boss_id']; ?></td>
+                            </tr>
+                        <?php endforeach ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
