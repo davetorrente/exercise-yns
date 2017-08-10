@@ -43,11 +43,11 @@
                                     <?php $num = count($data); ?>
                                     <?php for ($c=0; $c < $num; $c++):
                                         if($c == 6){?>
-                                            <td><img class="img-profile" src="profile-img/<?php echo $data[$c]; ?>"</td>
+                                            <td><img class="img-profile" src="profile-img/<?php echo $data[$c]; ?>"></td>
                                         <?php }
                                         else{ ?>
-                                        <td><?php echo $data[$c]; ?></td>
-                                       <?php } ?>
+                                            <td><?php echo $data[$c]; ?></td>
+                                        <?php } ?>
 
                                     <?php endfor ?>
                                 </tr>
