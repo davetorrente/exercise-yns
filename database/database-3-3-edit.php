@@ -8,7 +8,6 @@ $mysql_date_now = date("Y-m-d H:i:s");
 
 $edit_id =  $_GET['id'];
 $post = '';
-$database->query('SELECT * FROM posts');
 $database->query('SELECT * FROM posts WHERE id = :id' );
 $database->bind(':id', $edit_id);
 $post = $database->resultset();
@@ -29,7 +28,6 @@ if(isset($postform['editsubmit']))
             $database->bind(':modified',$mysql_date_now);
             $database->bind(':id',$edit_id);
             $database->execute();
-            $database->query('SELECT * FROM posts');
             $database->query('SELECT * FROM posts WHERE id = :id' );
             $database->bind(':id', $edit_id);
             $post = $database->resultset();
@@ -43,7 +41,7 @@ if(isset($postform['editsubmit']))
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>html_php-1-1</title>
+    <title>Database 3-3-edit</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
