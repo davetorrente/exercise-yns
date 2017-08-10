@@ -76,4 +76,9 @@ class Database
         $this->execute();
         return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    public function resultArray()
+    {
+        $this->execute();
+        return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
