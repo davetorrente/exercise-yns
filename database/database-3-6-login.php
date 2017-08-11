@@ -57,13 +57,17 @@ if(isset($_POST['login'])) {
 <body>
 <div class="login">
     <h1>Login</h1>
-    <form method="post">
+
+    <form method="post" id="loginForm">
         <input type="text" id="username" name="username" placeholder="Username"/>
         <span style="color:red"><?php echo isset($usernameError) ? $usernameError : ''; ?></span>
         <input type="password" id="password" name="password" placeholder="Password"/>
         <span style="color:red"><?php echo isset($passwordError) ? $passwordError : ''; ?></span>
         <button class="btn btn-primary btn-block btn-large" id="login" name="login">Let me in.</button>
     </form>
+    <div class="form-group">
+        <a href="/database/database-3-6-register.php"><h4>Register?</h4></a>
+    </div>
 </div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -71,6 +75,6 @@ if(isset($_POST['login'])) {
 <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
+<script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>

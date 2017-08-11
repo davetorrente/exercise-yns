@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    var uniqueUser;
     $.validator.setDefaults({
         errorClass: 'help-block',
         highlight: function(element) {
@@ -58,11 +59,7 @@ $(document).ready(function() {
     });
     function submitForm()
     {
-        var data = $("#registerForm").serialize();
-        // console.log(new FormData($("#registerForm")[0]));
-
         $.ajax({
-
             type : 'POST',
             url  : 'register.php',
             data: new FormData($("#registerForm")[0]),
@@ -71,42 +68,34 @@ $(document).ready(function() {
             processData:false,
             success :  function(data)
             {
-                console.log(data);
-
-                // if(data==1){
-                //
-                //     $("#error").fadeIn(1000, function(){
-                //
-                //
-                //         $("#error").html('<div class="alert alert-danger"> <span class="glyphicon glyphicon-info-sign"></span> &nbsp; Sorry email already taken !</div>');
-                //
-                //         $("#btn-submit").html('<span class="glyphicon glyphicon-log-in"></span> &nbsp; Create Account');
-                //
-                //     });
-                //
-                // }
-                // else if(data==="registered")
-                // {
-                //
-                //     $("#btn-submit").html('Signing Up');
-                //     setTimeout('$(".form-signin").fadeOut(500, function(){ $(".signin-form").load("successreg.php"); }); ',5000);
-                //
-                // }
-                // else{
-                //
-                //     $("#error").fadeIn(1000, function(){
-                //
-                //         $("#error").html('<div class="alert alert-danger"><span class="glyphicon glyphicon-info-sign"></span> &nbsp; '+data+' !</div>');
-                //
-                //         $("#btn-submit").html('<span class="glyphicon glyphicon-log-in"></span> &nbsp; Create Account');
-                //
-                //     });
-                //
-                // }
+                var res = JSON.parse(data);
+                if(res.success)
+                {
+                    $('.alert-success').html('User successfully created. You can now login').fadeIn().delay(4000).fadeOut('slow');
+                }
             }
         });
         return false;
     }
+
+    $('#loginForm').submit(function(event){
+        event.preventDefault();
+        $.ajax({
+            url: 'login.php',
+            data: $(this).serialize(),
+            type: 'post',
+            dataType: 'json',
+            success: function(result){
+                // console.log(result.username);
+                // alert(result);
+                // if (result.success){
+                //     window.location = "logged.php";
+                //     return false;
+                // };
+            },
+            error: function(e){console.log("Could not retrieve login information")}
+        });
+    });
 
 });
 
