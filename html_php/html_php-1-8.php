@@ -59,7 +59,6 @@ if(isset($_POST['userinfo'])) {
             'gender' => $_POST["gender"],
             'country' => $_POST["country"],
         );
-
         $path = $_SERVER['DOCUMENT_ROOT'] . '/html_php/test.csv';
         $f = fopen($path, "a+");
         fputcsv($f, $arrayInfo);

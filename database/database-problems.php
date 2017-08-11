@@ -14,13 +14,26 @@ $employeeshireDates = $database->resultset();
 // problem# 4
 $database->query("SELECT last_name, boss_id FROM employees WHERE boss_id IS NOT NULL");
 $employeesWithBosses = $database->resultset();
+
 // problem# 5
 $database->query('SELECT last_name FROM employees INNER JOIN departments ON employees.department_id = departments.id WHERE employees.department_id=3 ORDER by employees.last_name DESC');
 $employeesBelongToSalesdeps = $database->resultset();
 // problem# 6
-$database->query("SELECT * FROM employees WHERE middle_name IS NOT NULL");
+$database->query("SELECT COUNT(1)FROM employees WHERE middle_name IS NOT NULL");
 $employeesWithMiddleNames = $database->resultset();
 // problem# 7
+$database->query("SELECT D.name, COUNT(D.name) FROM departments D INNER JOIN employees E ON E.department_id = D.id GROUP BY D.id");
+$employeesNumbersinDeps = $database->resultset();
+// problem# 8
+$database->query("SELECT first_name, last_name, middle_name, hire_date FROM employees ORDER BY hire_date DESC LIMIT 1;");
+$employeesNameAndHired = $database->resultset();
+//problem# 9
+$database->query('SELECT D.name FROM departments D LEFT JOIN employees E on D.id = E.department_id WHERE E.department_id IS NULL');
+$departmentNoEmployees = $database->resultset();
+
+//problem# 10
+$database->query("SELECT E.first_name, E.last_name, E.middle_name FROM employees E INNER JOIN employee_positions EP ON EP.employee_id = E.id GROUP BY E.first_name, E.last_name, E.middle_name HAVING COUNT(EP.id) >= 2;");
+$employeesNameMorePositions = $database->resultset();
 
 ?>
 <!DOCTYPE html>
@@ -189,8 +202,9 @@ $employeesWithMiddleNames = $database->resultset();
                                 foreach($employeesbossLastNames as $employeesbossLastName): ?>
                                     <td><?php echo $employeesbossLastName['last_name']; ?></td>
                                 <?php endforeach ?>
-                        <?php endforeach ?>
                             </tr>
+                        <?php endforeach ?>
+
                         </tbody>
                     </table>
                 </div>
@@ -244,25 +258,150 @@ $employeesWithMiddleNames = $database->resultset();
                     <table class="table table-striped table-bordered table-list">
                         <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Middle Name</th>
-                            <th>Department ID</th>
-                            <th>Hire Date</th>
-                            <th>Boss ID</th>
+                            <th>COUNT</th>
                         </tr>
                         </thead>
                         <tbody>
                         <?php foreach($employeesWithMiddleNames as $employeesWithMiddleName): ?>
                             <tr>
-                                <td><?php echo $employeesWithMiddleName['id']; ?></td>
-                                <td><?php echo $employeesWithMiddleName['first_name']; ?></td>
-                                <td><?php echo $employeesWithMiddleName['last_name']; ?></td>
-                                <td><?php echo $employeesWithMiddleName['middle_name']; ?></td>
-                                <td><?php echo $employeesWithMiddleName['department_id']; ?></td>
-                                <td><?php echo $employeesWithMiddleName['hire_date']; ?></td>
-                                <td><?php echo $employeesWithMiddleName['boss_id']; ?></td>
+                                <td><?php echo $employeesWithMiddleName['COUNT(1)']; ?></td>
+                            </tr>
+                        <?php endforeach ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-default panel-table">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col col-xs-6">
+                            <h3 class="panel-title">7.) Retrieve department name and number of employee in each department. You don't need to retrieve the department name which doesn't have employee.</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-striped table-bordered table-list">
+                        <thead>
+                        <tr>
+                            <th>Department Name</th>
+                            <th>Employee Count</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach($employeesNumbersinDeps as $employeesNumbersinDep): ?>
+                            <tr>
+                                <td><?php echo $employeesNumbersinDep['name']; ?></td>
+                                <td><?php echo $employeesNumbersinDep['COUNT(D.name)']; ?></td>
+                            </tr>
+                        <?php endforeach ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-default panel-table">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col col-xs-6">
+                            <h3 class="panel-title">8.) Retrieve employee's full name and hire date who was hired the most recently.</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-striped table-bordered table-list">
+                        <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Middle Name</th>
+                            <th>Hire Date</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach($employeesNameAndHired as $employeesNameAndHire): ?>
+                            <tr>
+                                <td><?php echo $employeesNameAndHire['first_name']; ?></td>
+                                <td><?php echo $employeesNameAndHire['last_name']; ?></td>
+                                <td><?php echo $employeesNameAndHire['middle_name']; ?></td>
+                                 <td><?php echo $employeesNameAndHire['hire_date']; ?></td>
+                            </tr>
+                        <?php endforeach ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-default panel-table">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col col-xs-6">
+                            <h3 class="panel-title">9.) Retrieve department name which has no employee..</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-striped table-bordered table-list">
+                        <thead>
+                        <tr>
+                            <th>Department Name</th>
+                            <th>ID</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach($departmentNoEmployees as $departmentNoEmployee): ?>
+                            <tr>
+                                <td><?php echo $departmentNoEmployee['name']; ?></td>
+                            </tr>
+                        <?php endforeach ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-default panel-table">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col col-xs-6">
+                            <h3 class="panel-title">10.) Retrieve employee's full name who has more than 2 positions.</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-striped table-bordered table-list">
+                        <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Middle Name</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach($employeesNameMorePositions as $employeesNameMorePosition): ?>
+                            <tr>
+                                <td><?php echo $employeesNameMorePosition['first_name']; ?></td>
+                                <td><?php echo $employeesNameMorePosition['last_name']; ?></td>
+                                <td><?php echo $employeesNameMorePosition['middle_name']; ?></td>
                             </tr>
                         <?php endforeach ?>
                         </tbody>

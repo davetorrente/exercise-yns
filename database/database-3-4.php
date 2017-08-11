@@ -17,8 +17,7 @@ $leftouterIDs = $database->resultset();
 
 $database->query('SELECT customers.name, orders.id FROM customers RIGHT JOIN orders ON customers.id = orders.customer_id ORDER by customers.name');
 $rightouterIDs = $database->resultset();
-//$database->query('SELECT orders.id, customers.name, customers.country FROM orders RIGHT JOIN customers ON orders.customer_id = customers.id ORDER by orders.id');
-//$rightouterIDs = $database->resultset();
+
 
 ?>
 <!DOCTYPE html>
@@ -214,6 +213,5 @@ $rightouterIDs = $database->resultset();
         </div
     </div>
 </div>
-
 </body>
 </html>
