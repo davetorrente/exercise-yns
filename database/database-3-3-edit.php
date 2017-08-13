@@ -4,7 +4,6 @@ require "Database.php";
 $database = new Database();
 
 $postform = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-$mysql_date_now = date("Y-m-d H:i:s");
 
 $edit_id =  $_GET['id'];
 $post = '';
@@ -23,9 +22,9 @@ if(isset($postform['editsubmit']))
         if(isset($_POST['editpost']))
         {
             $editpost = $_POST['editpost'];
-            $database->query('UPDATE posts SET post = :post, modified = :modified WHERE id = :id');
+            $database->query('UPDATE posts SET post = :post WHERE id = :id');
             $database->bind(':post',$editpost);
-            $database->bind(':modified',$mysql_date_now);
+            // $database->bind(':modified',$mysql_date_now);
             $database->bind(':id',$edit_id);
             $database->execute();
             $database->query('SELECT * FROM posts WHERE id = :id' );

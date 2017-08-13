@@ -4,7 +4,7 @@ require "Database.php";
 $database = new Database();
 
 $postform = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-$mysql_date_now = date("Y-m-d H:i:s");
+
 if(isset($_POST['delete']))
 {
     $delete_id = $_POST['delete_id'];
@@ -36,10 +36,9 @@ if(isset($postform['submit']))
     if($error==0)
     {
         $post = $postform['post'];
-        $database->query('INSERT INTO posts (post, created, modified) VALUES(:post, :created, :modified)');
+        $database->query('INSERT INTO posts (post) VALUES(:post)');
         $database->bind(':post',$post);
-        $database->bind(':created',$mysql_date_now);
-        $database->bind(':modified',$mysql_date_now);
+    
         $database->execute();
         if($database->lastInsertId())
         {
@@ -48,7 +47,7 @@ if(isset($postform['submit']))
     }
 }
 
-$database->query('SELECT * FROM posts ');
+$database->query('SELECT * FROM posts ORDER by modified DESC ');
 $rows = $database->resultset();
 
 ?>
