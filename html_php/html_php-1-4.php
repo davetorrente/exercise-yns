@@ -8,9 +8,10 @@
 
 </head>
 <body>
-<div class="container">
+<div class="container" style="top: 20%; position: absolute;">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
+            <h3>FizzBuzz</h3>
         <form class="form-group" method="post" action="<?php $_SERVER['PHP_SELF']; ?>">
             <div class="form-group">
                 <label for="input_num">Input a number:</label>
@@ -28,18 +29,18 @@
                 {
                     if($i % 15 == 0)
                     {
-                        echo "FizzBuzz" . "<br/>";
+                        echo "FizzBuzz" . " ";
                     }
                     else if($i % 3 == 0)
                     {
-                        echo "Fizz" . "<br/>";
+                        echo "Fizz" . " ";
                     }
                     else if($i % 5 == 0)
                     {
-                        echo"Buzz" . "<br/>";
+                        echo"Buzz" . " ";
                     }
                     else {
-                        echo $i . "<br/>";
+                        echo $i . " ";
                     }
                 }
             }

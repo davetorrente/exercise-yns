@@ -30,6 +30,7 @@ if(isset($_POST['answer']))
     <br/>
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
+             <h3>Find the GCD of two numbers</h3>
             <form class="form-group" method="post" action="<?php $_SERVER['PHP_SELF']; ?>">
                 <div class="form-group">
                     <label for="first_number">First Number:</label>

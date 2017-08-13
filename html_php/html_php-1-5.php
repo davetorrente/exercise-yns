@@ -25,7 +25,7 @@ if(isset($_POST['answer']))
             <form class="form-group" method="post" action="<?php $_SERVER['PHP_SELF']; ?>">
                 <div class="form-group">
                     <label for="Date">Input Date:</label>
-                    <input class="form-control" type="date"  name="event_startDate" id="event_startDate">
+                    <input class="form-control" type="date" name="event_startDate" id="event_startDate">
                 </div>
                 <div class="form-group">
                     <button class="btn btn-primary" type="submit" name="answer" id="answer">Calculate</button>

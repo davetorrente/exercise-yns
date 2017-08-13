@@ -68,32 +68,32 @@ if(isset($_POST['userinfo'])) {
                 <div class="form-group">
                     <label for="username">Name:</label>
                     <input class="form-control" type="text" name="username" id="username" value="<?php echo isset($_POST["username"]) ? $_POST["username"] : ''; ?>">
-                    <?php echo isset($usernameError) ? $usernameError : ''; ?>
+                  <span style="color:red"><?php echo isset($usernameError) ? $usernameError : ''; ?></span>
                 </div>
                 <div class="form-group">
                     <label for="username">Email:</label>
                     <input class="form-control" type="email" name="email" id="email" value="<?php echo isset($_POST["email"]) ? $_POST["email"] : ''; ?>">
-                    <?php echo isset($emailError) ? $emailError : ''; ?>
+                     <span style="color:red"><?php echo isset($emailError) ? $emailError : ''; ?></span>
                 </div>
                 <div class="form-group">
                     <label for="description">Description:</label>
                     <textarea class="form-control" rows="5" name="description" id="description"></textarea>
-                    <?php echo isset($descriptionError) ? $descriptionError : ''; ?>
+                   <span style="color:red"><?php echo isset($descriptionError) ? $descriptionError : ''; ?></span>
                 </div>
                 <div class="form-group">
                     <label for="username">Phone:</label>
                     <input class="form-control" type="text" name="phone" id="phone" value="<?php echo isset($_POST["phone"]) ? $_POST["phone"] : ''; ?>">
-                    <?php echo isset($phoneError) ? $phoneError : ''; ?>
+                     <span style="color:red"><?php echo isset($phoneError) ? $phoneError : ''; ?></span>
                 </div>
                 <div class="form-group">
                     <label for="gender" >Gender: </label>
                     <br>
                     <label class="radio-inline">
-                        <input type="radio" name="gender" value="Male" id="gender" checked="checked" >Male
+                        <input type="radio" name="gender" value="Male" id="gender">Male
                     </label>
                     <label class="radio-inline">
                         <input type="radio" name="gender" value="Female" id="gender" >Female</label>
-                    <?php echo isset($genderError) ? $genderError : ''; ?>
+                 <span style="color:red; display: block"><?php echo isset($genderError) ? $genderError : ''; ?></span>
                 </div>
                 <div class="form-group">
                     <label for="sel1">Select list:</label>
@@ -347,7 +347,7 @@ if(isset($_POST['userinfo'])) {
                         <option value="Zambia">Zambia</option>
                         <option value="Zimbabwe">Zimbabwe</option>
                     </select>
-                    <?php echo isset($countryError) ? $countryError : ''; ?>
+                    <span style="color:red"><?php echo isset($countryError) ? $countryError : ''; ?></span>
                 </div>
                 <div class="form-group">
                     <button class="btn btn-info" name="userinfo" id="userinfo" type="submit">Submit</button>
