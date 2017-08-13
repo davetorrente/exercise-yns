@@ -1,15 +1,24 @@
 <?php
 if(isset($_POST['userinfo'])) {
     $error = 0;
+    $username = $_POST["username"];
+    $email = $_POST["email"];
+    $description = $_POST["description"];
+    $phone = $_POST['phone'];
     if(empty($_POST["username"])) {
-        $usernameError = "Name is required";
+        $usernameError = "Username is required";
         $error++;
     }
     else {
         if(!ctype_alnum($_POST["username"]))
         {
-            $userError = "Name must be alphanumeric characters";
+            $usernameError = "Username must be alphanumeric characters";
             $error++;
+        }
+         else{
+            if (strlen($_POST["username"]) <= '8') {
+            $usernameError = "Your Username Must Contain At Least 8 Characters!";
+            }
         }
     }
     if (empty($_POST["email"])) {
@@ -46,7 +55,7 @@ if(isset($_POST['userinfo'])) {
         $countryError = "Country is required";
         $error++;
     }
-    if (empty($_FILES["upload"])) {
+    if (empty($_FILES["upload"]['name'])) {
         $uploadError = "Image is required";
         $error++;
     }
@@ -95,33 +104,34 @@ if(isset($_POST['userinfo'])) {
             <legend>User Information</legend>
             <form class="form-group" method="post" action="" enctype='multipart/form-data' novalidate>
                 <div class="form-group">
-                    <label for="username">Name:</label>
-                    <input class="form-control" type="text" name="username" id="username" value="<?php echo isset($_POST["username"]) ? $_POST["username"] : ''; ?>">
+                    <label for="username">Username:</label>
+                    <input class="form-control" type="text" name="username" id="username" value="<?php echo isset($username) ? $username : ''; ?>">
                  <span style="color:red"><?php echo isset($usernameError) ? $usernameError : ''; ?></span>
                 </div>
                 <div class="form-group">
                     <label for="username">Email:</label>
-                    <input class="form-control" type="email" name="email" id="email" value="<?php echo isset($_POST["email"]) ? $_POST["email"] : ''; ?>">
+                    <input class="form-control" type="email" name="email" id="email" value="<?php echo isset($email) ? $email : ''; ?>">
                   <span style="color:red"><?php echo isset($emailError) ? $emailError : ''; ?></span>
                 </div>
                 <div class="form-group">
                     <label for="description">Description:</label>
-                    <textarea class="form-control" rows="5" name="description" id="description"></textarea>
+                    <textarea class="form-control" rows="5" name="description" id="description"><?php echo isset($description) ? $description : ''; ?></textarea>
                  <span style="color:red"><?php echo isset($descriptionError) ? $descriptionError : ''; ?></span>
                 </div>
                 <div class="form-group">
-                    <label for="username">Phone:</label>
-                    <input class="form-control" type="text" name="phone" id="phone" value="<?php echo isset($_POST["phone"]) ? $_POST["phone"] : ''; ?>">
+                    <label for="phone">Phone:</label>
+                    <input class="form-control" type="text" name="phone" id="phone" value="<?php echo isset($phone) ? $phone : ''; ?>">
                  <span style="color:red"><?php echo isset($phoneError) ? $phoneError : ''; ?></span>
                 </div>
                 <div class="form-group">
                     <label for="gender" >Gender: </label>
                     <br>
                     <label class="radio-inline">
-                        <input type="radio" name="gender" value="Male" id="gender">Male
+                        <input type="radio" name="gender" value="Male" id="gender" <?php echo isset($male) ? 'checked' : '';?>>Male
                     </label>
                     <label class="radio-inline">
-                        <input type="radio" name="gender" value="Female" id="gender" >Female</label>
+                        <input type="radio" name="gender" value="Female" id="gender" <?php echo isset($female) ? 'checked' : '';?>>Female
+                    </label>
                  <span style="color:red; display: block;"><?php echo isset($genderError) ? $genderError : ''; ?></span>
                 </div>
                 <div class="form-group">
@@ -380,7 +390,7 @@ if(isset($_POST['userinfo'])) {
                 </div>
                 <div class="form-group">
                     <label for="upload">Upload Image:</label>
-                    <input class="form-control" type="file" name="upload" id="upload" value="<?php echo isset($_POST["upload"]) ? $_POST["upload"] : ''; ?>v">
+                    <input class="form-control" type="file" name="upload" id="upload">
                  <span style="color:red"><?php echo isset($uploadError) ? $uploadError : ''; ?></span>
                 </div>
                 <div class="form-group">
