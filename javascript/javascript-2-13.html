@@ -7,13 +7,14 @@
 </head>
 <body>
 <div class="container">
+    <h1 align="center">Mouse over on image to change</h1>
     <div class="jumbotron" align="center">
         <div class="form-group" id="divAppend">
             <a href="javascript:;" class="imageClick"><img style="max-height: 75px" class="swapImage" data-alt-src="sample-images/sample.jpg" src="sample-images/Luffy-One-Piece.png"/></a>
         </div>
     </div>
 </div>
-
+</body>
 <script src="http://code.jquery.com/jquery-3.2.1.min.js"
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
         crossorigin="anonymous"></script>
@@ -29,5 +30,4 @@
         $('img.swapImage').hover(sourceSwap, sourceSwap);
     });
 </script>
-</body>
 </html>

@@ -7,13 +7,14 @@
 </head>
 <body>
 <div class="container">
+    <h1 align="center">Click the image to know the url link</h1>
     <div class="jumbotron" align="center">
         <div class="form-group" id="divAppend">
-        <a href="javascript:;" class="imageClick"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcwKUtYfqU9HsHmg_LTVoO_PtVelUa-CicePTS0xk-W5xP_iG92g"/></a>
+          <img class="imageClick" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcwKUtYfqU9HsHmg_LTVoO_PtVelUa-CicePTS0xk-W5xP_iG92g"/>
         </div>
     </div>
 </div>
-
+</body>
 <script src="http://code.jquery.com/jquery-3.2.1.min.js"
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
         crossorigin="anonymous"></script>
@@ -22,9 +23,8 @@
     $(document).ready(function(){
        $('#divAppend').find('.imageClick').on('click',function(event){
            event.preventDefault();
-           alert($(this).find('img').attr("src"));
+           alert($(this).attr("src"));
        });
     });
 </script>
-</body>
 </html>

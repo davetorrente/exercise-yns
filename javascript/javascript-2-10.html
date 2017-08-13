@@ -7,8 +7,9 @@
 </head>
 <body>
 <div class="container">
-    <div class="jumbotron" align="center">
+    <div class="jumbotron" id="mainDiv" align="center">
         <div class="form-group">
+            <h1 id="headerColor">Text Color</h1>
             <button  type="button" name="redbg" id="redbg">Change Background to Red</button>
             <button  type="button" name="redtxt" id="redtxt">Change Text to Red</button>
             <button  type="button" name="bluebg" id="bluebg">Change Background to Blue</button>
@@ -18,7 +19,7 @@
         </div>
     </div>
 </div>
-
+</body>
 <script src="http://code.jquery.com/jquery-3.2.1.min.js"
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
         crossorigin="anonymous"></script>
@@ -28,28 +29,48 @@
        $('#redbg').on('click',function(event){
            event.preventDefault();
            $(this).css("background-color","red");
+           $('#mainDiv').css("background-color","red");
+           $('#bluebg').css("background-color","");
+           $('#greenbg').css("background-color","");
        });
        $('#redtxt').on('click',function(event){
            event.preventDefault();
-           $(this).css("color","red");
+            $(this).css("color","red");
+            $('#headerColor').css("color","red");
+            $('#bluetxt').css("color","");
+            $('#greentxt').css("color","");
+            
        });
        $('#bluebg').on('click',function(event){
            event.preventDefault();
            $(this).css("background-color","blue");
+            $('#mainDiv').css("background-color","blue");
+           $('#redbg').css("background-color","");
+           $('#greenbg').css("background-color","");
        });
        $('#bluetxt').on('click',function(event){
            event.preventDefault();
            $(this).css("color","blue");
+           $('#headerColor').css("color","blue");
+           $('#redtxt').css("color","");
+           $('#greentxt').css("color","");
+          
        });
        $('#greenbg').on('click',function(event){
            event.preventDefault();
            $(this).css("background-color","green");
+           $('#mainDiv').css("background-color","green");
+           $('#redbg').css("background-color","");
+           $('#bluebg').css("background-color","");
        });
        $('#greentxt').on('click',function(event){
            event.preventDefault();
            $(this).css("color","green");
+           $('#headerColor').css("color","green");
+           $('#redtxt').css("color","");
+           $('#bluetxt').css("color","");
+           $
        });
    });
 </script>
-</body>
 </html>
