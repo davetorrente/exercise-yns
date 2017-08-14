@@ -2,30 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21fc073c-5523-4dae-b2fe-c45f5b229797" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/database/profile-img/cake.icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/database/profile-img/sample.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html_php/profile-img/1x1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/database/css/dashboard.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/database/css/login.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/html_php/css/login.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/css/custom.css" afterPath="$PROJECT_DIR$/html_php/css/custom.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/css/style.css" afterPath="$PROJECT_DIR$/html_php/css/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/css/register.css" afterPath="$PROJECT_DIR$/database/css/register.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/database-3-2.php" afterPath="$PROJECT_DIR$/database/database-3-2.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/database-3-3.php" afterPath="$PROJECT_DIR$/database/database-3-3.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/database-3-6-login.php" afterPath="$PROJECT_DIR$/database/database-3-6-login.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/database-3-6-register.php" afterPath="$PROJECT_DIR$/database/database-3-6-register.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/database-3-6.php" afterPath="$PROJECT_DIR$/database/database-3-6.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/js/main.js" afterPath="$PROJECT_DIR$/database/js/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html_php/html_php-1-10.php" afterPath="$PROJECT_DIR$/html_php/html_php-1-10.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html_php/html_php-1-11.php" afterPath="$PROJECT_DIR$/html_php/html_php-1-11.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html_php/html_php-1-12.php" afterPath="$PROJECT_DIR$/html_php/html_php-1-12.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html_php/html_php-1-13.php" afterPath="$PROJECT_DIR$/html_php/html_php-1-13.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html_php/html_php-1-7.php" afterPath="$PROJECT_DIR$/html_php/html_php-1-7.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html_php/html_php-1-8.php" afterPath="$PROJECT_DIR$/html_php/html_php-1-8.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html_php/html_php-1.6.2.php" afterPath="$PROJECT_DIR$/html_php/html_php-1.6.2.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html_php/test.csv" afterPath="$PROJECT_DIR$/html_php/test.csv" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -466,12 +443,12 @@
       <workItem from="1502412846080" duration="16005000" />
       <workItem from="1502430014856" duration="14262000" />
       <workItem from="1502444331376" duration="51000" />
-      <workItem from="1502674585730" duration="12355000" />
+      <workItem from="1502674585730" duration="12767000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="143350000" />
+    <option name="totallyTimeSpent" value="143762000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
