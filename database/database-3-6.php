@@ -146,10 +146,10 @@ $rows = $database->resultset();
                             <tbody>
                               <?php foreach($rows as $row): ?>
                                   <tr>
-                                      <td><?php echo $row['id']; ?></td>
-                                      <td><?php echo $row['post']; ?></td>
-                                      <td><?php echo $row['created']; ?></td>
-                                      <td><?php echo $row['modified']; ?></td>
+                                      <td><?php echo h($row['id']); ?></td>
+                                      <td><?php echo h($row['post']); ?></td>
+                                      <td><?php echo h($row['created']); ?></td>
+                                      <td><?php echo h($row['modified']); ?></td>
                                   </tr>
 
                             <?php endforeach ?>

@@ -22,16 +22,9 @@ if(isset($_POST['edit']))
 if(isset($postform['submit']))
 {
     $error = 0;
-    if(empty($_POST["post"])) {
+    if(empty($postform["post"])) {
         $postError = "Post is required";
         $error++;
-    }
-    else {
-        if(!ctype_alnum($_POST["post"]))
-        {
-            $postError = "Name must be alphanumeric characters";
-            $error++;
-        }
     }
     if($error==0)
     {
@@ -79,10 +72,9 @@ $rows = $database->resultset();
             <h1>Posts</h1>
             <div>
                 <?php
-                $compname = "dave";
                 foreach($rows as $row) :
                     ?>
-                    <h3><a href="getphp.php?value_key=<?php echo $row['id']; ?>"><?php echo $row['post']; ?></a></h3>
+                    <h3><?php echo $row['post']; ?></h3>
                     <p>Posted on <?php echo $row['modified'] ?></p>
                     <div style="display:inline-block">
                         <form method="post" action="<?php $_SERVER['PHP_SELF']; ?>">

@@ -14,14 +14,14 @@ $post = $database->resultset();
 if(isset($postform['editsubmit']))
 {
     $error = 0;
-    if(empty($_POST["editpost"])) {
+    if(empty($postform["editpost"])) {
         $editError = "Edit your post";
         $error++;
     }
     if($error==0) {
-        if(isset($_POST['editpost']))
+        if(isset($postform['editpost']))
         {
-            $editpost = $_POST['editpost'];
+            $editpost = $postform['editpost'];
             $database->query('UPDATE posts SET post = :post WHERE id = :id');
             $database->bind(':post',$editpost);
             // $database->bind(':modified',$mysql_date_now);

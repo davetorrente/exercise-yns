@@ -4,10 +4,11 @@ $database = new Database();
 session_start();
 if (isset($_SESSION['authUser']))
     header("Location: database-3-6.php");
-if(isset($_POST['login'])) {
+$postform = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+if(isset($postform['login'])) {
     $error = 0;
-    $username = $_POST["username"];
-    $password = $_POST['password'];
+    $username = $postform["username"];
+    $password = $postform['password'];
     $usernameExist = '';
     $passwordExist = '';
     if(empty($_POST["username"])) {
@@ -44,8 +45,8 @@ if(isset($_POST['login'])) {
     }
     else {
         $password = $_POST["password"];
-        $passwordlength= strlen($password);
-        if($passwordlength= strlen($password) < 6)
+        $passwordlength = strlen($password);
+        if($passwordlength < 6)
         {
             $passwordError = "Password must be at least 6 characters";
             $error++;
