@@ -19,6 +19,7 @@ if(isset($postform['userinfo'])) {
         else{
             if (strlen($_POST["username"]) <= '8') {
             $usernameError = "Your Username Must Contain At Least 8 Characters!";
+            $error++;
             }
         }
     }
@@ -37,14 +38,13 @@ if(isset($postform['userinfo'])) {
         $descriptionError = "Description is required";
         $error++;
     }
-    if (empty($_POST["phone"])) {
+    if (empty($phone)) {
         $phoneError = "Phone number is required";
         $error++;
     }
     else{
-        if(!ctype_digit($_POST["phone"]))
-        {
-            $phoneError = "Phone must be numeric";
+        if(!preg_match("/^[0-9]{3}-[0-9]{4}-[0-9]{4}$/", $phone)) {
+            $phoneError = "Phone is invalid";
             $error++;
         }
     }
@@ -101,7 +101,7 @@ if(isset($postform['userinfo'])) {
                 </div>
                 <div class="form-group">
                     <label for="username">Phone:</label>
-                    <input class="form-control" type="text" name="phone" id="phone" value="<?php echo isset($phone) ? $phone : ''; ?>">
+                    <input class="form-control" type="text" name="phone" id="phone" value="<?php echo isset($phone) ? $phone : ''; ?>" placeholder="XXX-XXXX-XXXX">
                      <span style="color:red"><?php echo isset($phoneError) ? $phoneError : ''; ?></span>
                 </div>
                 <div class="form-group">

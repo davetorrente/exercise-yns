@@ -1,5 +1,7 @@
 <?php
 session_start();
+if (isset($_SESSION['user']))
+    header("Location: html_php-1-12.php");
 if(isset($_POST['login'])) {
     $error = 0;
     if(empty($_POST["username"])) {
@@ -42,10 +44,9 @@ if(isset($_POST['login'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Login Page</title>
-
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link href="../css/style.css" rel="stylesheet">
+    <link href="css/login.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>

@@ -1,30 +1,46 @@
 <?php
+require "Database.php";
+$database = new Database();
+session_start();
+if (isset($_SESSION['authUser']))
+    header("Location: database-3-6.php");
 $postform = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-if(isset($postform['userinfo'])) {
+if(isset($postform['register'])) {
     $error = 0;
     $username = $_POST["username"];
+    $password = $_POST["password"];
     $email = $_POST["email"];
     $description = $_POST["description"];
     $phone = $_POST['phone'];
+    $country = $_POST['country'];
 
-    if(empty($_POST["username"])) {
+    if(empty($username)) {
         $usernameError = "Username is required";
         $error++;
     }
     else {
-        if(!ctype_alnum($_POST["username"]))
+        if(!ctype_alnum($username))
         {
             $usernameError = "Username must be alphanumeric characters";
             $error++;
         }
         else{
-            if (strlen($_POST["username"]) <= '8') {
+            if (strlen($username) <= '8') {
             $usernameError = "Your Username Must Contain At Least 8 Characters!";
+            $error++;
+            }
+            else{
+                $database->query("SELECT username FROM users WHERE username = '$username'");
+                $usernameExist = $database->resultset();
+                if(!empty($usernameExist)){
+                    $usernameError = "Username already exist";
+                    $error++;
+                }
             }
         }
 
     }
-    if (empty($_POST["email"])) {
+    if (empty($email)) {
         $emailError = "Email is required";
         $error++;
     }
@@ -34,9 +50,16 @@ if(isset($postform['userinfo'])) {
             $emailError = "Email is invalid";
             $error++;
         }
+        else{
+            $database->query("SELECT email FROM users WHERE email = '$email'");
+            $emailExist = $database->resultset();
+            if(!empty($emailExist)){
+                $emailError = "Email already exist";
+                $error++;
+            }
+        }
     }
-    if(!empty($_POST["password"]) && ($_POST["password"] == $_POST["cpassword"])) {
-    $password = $_POST["password"];
+    if(!empty($password) && ($password == $_POST["cpassword"])) {
     $cpassword = $_POST["cpassword"];
         if (strlen($_POST["password"]) <= '8') {
             $passwordError = "Your Password Must Contain At Least 8 Characters!";
@@ -51,24 +74,23 @@ if(isset($postform['userinfo'])) {
             $passwordError = "Your Password Must Contain At Least 1 Lowercase Letter!";
         }
     }
-    elseif(!empty($_POST["password"])) {
+    elseif(!empty($password)) {
         $confirmError = "Please Check You've Entered Or Confirmed Your Password!";
     } else {
          $passwordError = "Password is required";
     }
 
-    if (empty($_POST["description"])) {
+    if (empty($description)) {
         $descriptionError = "Description is required";
         $error++;
     }
-    if (empty($_POST["phone"])) {
+    if (empty($phone)) {
         $phoneError = "Phone number is required";
         $error++;
     }
     else{
-        if(!ctype_digit($_POST["phone"]))
-        {
-            $phoneError = "Phone must be numeric";
+        if(!preg_match("/^[0-9]{3}-[0-9]{4}-[0-9]{4}$/", $phone)) {
+            $phoneError = "Phone is invalid";
             $error++;
         }
     }
@@ -85,7 +107,7 @@ if(isset($postform['userinfo'])) {
         $female = $_POST['gender'];
         }
     }
-    if (empty($_POST["country"])) {
+    if (empty($country)) {
         $countryError = "Country is required";
         $error++;
     }
@@ -96,26 +118,25 @@ if(isset($postform['userinfo'])) {
     if($error == 0)
     {
         $file = $_FILES['upload'];
+        $dbFile = 'profile-img/' .$file['name'];
         $arr_ext = array('jpg', 'jpeg', 'gif', 'png');
         $ext = substr(strtolower(strrchr($file['name'], '.')), 1);
         if(in_array($ext, $arr_ext))
         {
-            move_uploaded_file($file['tmp_name'], $_SERVER["DOCUMENT_ROOT"]. '/html_php/profile-img/' .$file['name']);
+            $newFile = '/database/profile-img/' .$file['name'];
+            move_uploaded_file($file['tmp_name'], $_SERVER["DOCUMENT_ROOT"]. $newFile);
         }
-        $arrayInfo = array(
-            'username' => $_POST["username"],
-            'email' => $_POST["email"],
-            'description' => $_POST["description"],
-            'phone' => $_POST["phone"],
-
-            'gender' => $_POST["gender"],
-            'country' => $_POST["country"],
-            'upload' => $_FILES["upload"]["name"]);
-        $path = $_SERVER['DOCUMENT_ROOT'] . '/html_php/test.csv';
-        $f = fopen($path, "a+");
-        fputcsv($f, $arrayInfo);
-        fclose($f);
-        chmod($path, 0777);
+        $hashpassword = md5($password);
+        $country = $_POST['country'];
+        $gender =  $_POST['gender'];
+        $database->query("INSERT INTO users (username, password, email, description , phone, country, gender, upload) VALUES('$username', '$hashpassword', '$email', '$description', '$phone', '$country', '$gender', '$dbFile')");
+        $database->execute();
+        $username = "";
+        $email = "";
+        $description = "";
+        $phone = "";
+        $gender = "";
+        $message = "<div id='hideMe' align='center' class='alert-success'>You may now login</div>";
     }
 }
 ?>
@@ -131,8 +152,27 @@ if(isset($postform['userinfo'])) {
 
 </head>
 <body>
+<nav class="navbar navbar-default">
+    <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigatipon</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="">Database Implementation</a>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="database-3-6.php">Home</a></li>
+                <li><a href="database-3-6-login.php">Login</a></li>
+                <li class="active"><a href="database-3-6-register.php">Register</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
 <div class="container">
-    <form method="post" class="form-horizontal" role="form" enctype='multipart/form-data' novalidate>
+    <form method="post" id="registerForm" class="form-horizontal" role="form" enctype='multipart/form-data' novalidate>
+        <?php echo isset($message) ? $message : ''; ?>
         <h2>Registration Form</h2>
         <div class="form-group">
             <label for="username" class="col-sm-3 control-label">User Name</label>
@@ -172,7 +212,7 @@ if(isset($postform['userinfo'])) {
         <div class="form-group">
             <label for="phone" class="col-sm-3 control-label">Phone</label>
             <div class="col-sm-9">
-                <input class="form-control" type="text" name="phone" id="phone" value="<?php echo isset($phone) ? $phone : ''; ?>">
+                <input class="form-control" type="text" name="phone" id="phone" value="<?php echo isset($phone) ? $phone : ''; ?>" placeholder="XXX-XXXX-XXXX">
                 <span style="color:red"><?php echo isset($phoneError) ? $phoneError : ''; ?></span>
             </div>      
         </div>
@@ -458,10 +498,9 @@ if(isset($postform['userinfo'])) {
                <span style="color:red"><?php echo isset($uploadError) ? $uploadError : ''; ?></span>
             </div> 
         </div>
-    
         <div class="form-group">
             <div class="col-sm-9 col-sm-offset-3">
-                <button type="submit" name="userinfo" class="btn btn-primary btn-block">Register</button>
+                <button type="submit" name="register" class="btn btn-primary btn-block">Register</button>
             </div>
         </div>
     </form> <!-- /form -->

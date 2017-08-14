@@ -41,9 +41,8 @@ if(isset($_POST['userinfo'])) {
         $error++;
     }
     else{
-        if(!ctype_digit($_POST["phone"]))
-        {
-            $phoneError = "Phone must be numeric";
+        if(!preg_match("/^[0-9]{3}-[0-9]{4}-[0-9]{4}$/", $phone)) {
+            $phoneError = "Phone is invalid";
             $error++;
         }
     }
@@ -120,7 +119,7 @@ if(isset($_POST['userinfo'])) {
                 </div>
                 <div class="form-group">
                     <label for="phone">Phone:</label>
-                    <input class="form-control" type="text" name="phone" id="phone" value="<?php echo isset($phone) ? $phone : ''; ?>">
+                    <input class="form-control" type="text" name="phone" id="phone" value="<?php echo isset($phone) ? $phone : ''; ?>" placeholder="XXX-XXXX-XXXX">
                  <span style="color:red"><?php echo isset($phoneError) ? $phoneError : ''; ?></span>
                 </div>
                 <div class="form-group">

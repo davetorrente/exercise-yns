@@ -1,16 +1,41 @@
 <?php
+require "Database.php";
+$database = new Database();
 session_start();
+if (isset($_SESSION['authUser']))
+    header("Location: database-3-6.php");
 if(isset($_POST['login'])) {
     $error = 0;
+    $username = $_POST["username"];
+    $password = $_POST['password'];
+    $usernameExist = '';
+    $passwordExist = '';
     if(empty($_POST["username"])) {
-        $usernameError = "Name is required";
+        $usernameError = "Username is required";
         $error++;
     }
     else {
-        if(!ctype_alnum($_POST["username"]))
+        if(!ctype_alnum($username))
         {
-            $userError = "Name must be alphanumeric characters";
+            $userError = "Username must be alphanumeric characters";
             $error++;
+        }
+        else{
+            $database->query("SELECT username FROM users WHERE username = '$username'");
+            $usernameExist = $database->resultset();
+            if(empty($usernameExist)){
+                $usernameError = "Username not exist";
+                $error++;
+            }
+            else{
+                $database->query("SELECT password FROM users WHERE username = '$username'");
+                $passwordExist = $database->resultset();
+                if($passwordExist[0]['password'] <> md5($password))
+                {
+                    $passwordError = "Password is incorrect";
+                    $error++;
+                }
+            }
         }
     }
     if(empty($_POST["password"])) {
@@ -28,53 +53,65 @@ if(isset($_POST['login'])) {
     }
     if($error == 0)
     {
-        $_SESSION['user'] = $_POST["username"];
-        header("Location: html_php-1-12.php");
+        $username = "";
+        $password = "";
+        $_SESSION['authUser'] = $_POST["username"];
+        header("Location: database-3-6.php");
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Login Page</title>
-
-    <!-- Bootstrap -->
+    <meta charset="UTF-8">
+    <title>database login</title>
+    <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link href="css/style.css" rel="stylesheet">
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <link href="css/register.css" rel="stylesheet">
+
 </head>
 <body>
-<body>
-<div class="login">
-    <h1>Login</h1>
-
-    <form method="post" id="loginForm">
-        <input type="text" id="username" name="username" placeholder="Username"/>
-        <span style="color:red"><?php echo isset($usernameError) ? $usernameError : ''; ?></span>
-        <input type="password" id="password" name="password" placeholder="Password"/>
-        <span style="color:red"><?php echo isset($passwordError) ? $passwordError : ''; ?></span>
-        <button class="btn btn-primary btn-block btn-large" id="login" name="login">Let me in.</button>
-    </form>
-    <div class="form-group">
-        <a href="/database/database-3-6-register.php"><h4>Register?</h4></a>
+<nav class="navbar navbar-default">
+    <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigatipon</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="">Database Implementation</a>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="database-3-6.php">Home</a></li>
+                <li class="active"><a href="database-3-6-login.php">Login</a></li>
+                <li><a href="database-3-6-register.php">Register</a></li>
+            </ul>
+        </div>
     </div>
-</div>
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.2.min.js"></script>
-<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script type="text/javascript" src="js/main.js"></script>
+</nav>
+<div class="container">
+    <form method="post" id="registerForm" class="form-horizontal" role="form" enctype='multipart/form-data' novalidate>
+        <h2>Login Form</h2>
+        <div class="form-group">
+            <label for="username" class="col-sm-3 control-label">User Name</label>
+            <div class="col-sm-9">
+                <input type="text" id="username" name="username" class="form-control"  value="<?php echo isset($username) ? $username : ''; ?>" autofocus>
+                <span style="color:red"><?php echo isset($usernameError) ? $usernameError : ''; ?></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="username" class="col-sm-3 control-label">Password</label>
+            <div class="col-sm-9">
+                <input type="password" id="password" name="password" class="form-control">
+                <span style="color:red"><?php echo isset($passwordError) ? $passwordError : ''; ?></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-9 col-sm-offset-3">
+                <button type="submit" name="login" class="btn btn-primary btn-block">Login</button>
+            </div>
+        </div>
+    </form> <!-- /form -->
+</div> <!-- ./container -->
 </body>
 </html>
