@@ -51,9 +51,27 @@ if(isset($postform['submit']))
         }
     }
 }
+$page = 0;
+if(isset($_GET['page']))
+{
+    $page = $_GET['page'];
+    if($page=='' || $page == 1)
+    {
+        $page1 = 0;
+    }
+    else{
+        $page1 = $page*10 -10;
+    }
+}
+else{
+    $page1 = 0;
+}
+$database->query("SELECT COUNT(*) as totalPost FROM posts ORDER by modified DESC");
+$countPosts = $database->resultset();
 
-$database->query('SELECT * FROM posts ORDER by modified DESC ');
+$database->query("SELECT * FROM posts ORDER by modified DESC LIMIT $page1, 10");
 $rows = $database->resultset();
+
 
 ?>
 <!DOCTYPE html>
@@ -126,32 +144,21 @@ $rows = $database->resultset();
                             </tr>
                             </thead>
                             <tbody>
-                            <?php
-                            $row = 1;
-                            if (($handle = fopen("test.csv", "r")) !== FALSE): ?>
-                                <?php  while (($data = fgetcsv($handle, 1000, ",")) !== FALSE): ?>
-                                    <?php $num = count($data); ?>
-                                    <tr>
-                                        <?php if($page == $row): ?>
-                                            <?php for ($c=0; $c < $num; $c++): ?>
-                                                <td><?php echo $data[$c]; ?></td>
-                                            <?php endfor ?>
-                                            <?php if($page == $endpage):
-                                                break;
-                                            endif ?>
-                                            <?php $page++ ?>
-                                        <?php endif ?>
-                                    </tr>
-                                    <?php $row++; ?>
-                                <?php endwhile ?>
-                                <?php fclose($handle); ?>
-                            <?php endif ?>
+                              <?php foreach($rows as $row): ?>
+                                  <tr>
+                                      <td><?php echo $row['id']; ?></td>
+                                      <td><?php echo $row['post']; ?></td>
+                                      <td><?php echo $row['created']; ?></td>
+                                      <td><?php echo $row['modified']; ?></td>
+                                  </tr>
+
+                            <?php endforeach ?>
                             </tbody>
                         </table>
 
                     </div>
-                    <?php $page = $count / 10; ?>
-                    <?php $b =  ceil($page); ?>
+                    <?php $pages = $countPosts[0]['totalPost'] / 10; ?>
+                    <?php $b =  ceil($pages); ?>
                     <div class="panel-footer">
                         <div class="row">
                             <div class="col col-xs-4">Page 1 of <?php echo $b; ?>
@@ -159,7 +166,7 @@ $rows = $database->resultset();
                             <div class="col col-xs-8">
                                 <ul class="pagination hidden-xs pull-right">
                                     <?php for($i=1; $i<=$b; $i++): ?>
-                                        <li><a href="html_php-1-12.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+                                        <li><a href="database-3-6.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
                                     <?php endfor ?>
                                 </ul>
                                 <ul class="pagination visible-xs pull-right">

@@ -34,20 +34,26 @@
         var output = '';
         $('#answer').on('click',function(){
             var inputNum = $('#input_number').val();
-            for(var i=2;i<=inputNum;i++){
-                var count=1;
-                for(var j=2;j<i;j++){
-                    if(i%j ===0){
-                        count=0;
-                        break;
+            if(inputNum === '')
+            {
+              alert("Please input a number");
+            }else{
+                for(var i=2;i<=inputNum;i++){
+                    var count=1;
+                    for(var j=2;j<i;j++){
+                        if(i%j ===0){
+                            count=0;
+                            break;
+                        }
+                    }if(count===1){
+                        output += i + " ";
+                        console.log(i);
                     }
-                }if(count===1){
-                    output += i + " ";
-                    console.log(i);
                 }
+                $('#showresult').html(output);
+                output = '';
             }
-            $('#showresult').html(output);
-            output = '';
+
         });
 
     });
