@@ -10,19 +10,6 @@ if(isset($_GET['logout']) == 1){
 }
 $postform = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-if(isset($_POST['delete']))
-{
-    $delete_id = $_POST['delete_id'];
-    $database->query('DELETE FROM posts WHERE id = :id');
-    $database->bind(':id',$delete_id);
-    $database->execute();
-}
-if(isset($_POST['edit']))
-{
-    $edit_id = $_POST['edit-id'];
-    header("Location: database-3-3-edit.php?id=$edit_id");
-}
-
 
 if(isset($postform['submit']))
 {
@@ -31,13 +18,7 @@ if(isset($postform['submit']))
         $postError = "Post is required";
         $error++;
     }
-    else {
-        if(!ctype_alnum($_POST["post"]))
-        {
-            $postError = "Name must be alphanumeric characters";
-            $error++;
-        }
-    }
+
     if($error==0)
     {
         $post = $postform['post'];
@@ -51,6 +32,20 @@ if(isset($postform['submit']))
         }
     }
 }
+if(isset($postform['delete']))
+{
+    $delete_id = $_POST['delete_id'];
+    $database->query('DELETE FROM posts WHERE id = :id');
+    $database->bind(':id',$delete_id);
+    $database->execute();
+}
+if(isset($postform['edit']))
+{
+    $edit_id = $_POST['edit-id'];
+    header("Location: database-3-6-edit.php?id=$edit_id");
+}
+
+
 $page = 0;
 if(isset($_GET['page']))
 {
@@ -141,15 +136,30 @@ $rows = $database->resultset();
                                 <th>Post</th>
                                 <th>Created</th>
                                 <th>Modified</th>
+                                <th>Actions</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody id ="output">
                               <?php foreach($rows as $row): ?>
                                   <tr>
-                                      <td><?php echo h($row['id']); ?></td>
-                                      <td><?php echo h($row['post']); ?></td>
-                                      <td><?php echo h($row['created']); ?></td>
-                                      <td><?php echo h($row['modified']); ?></td>
+                                      <td><?php echo htmlspecialchars($row['id']); ?></td>
+                                      <td><?php echo htmlspecialchars($row['post']); ?></td>
+                                      <td><?php echo htmlspecialchars($row['created']); ?></td>
+                                      <td><?php echo htmlspecialchars($row['modified']); ?></td>
+                                          <td><div style="display:inline-block">
+                                          <form method="post" action="<?php $_SERVER['PHP_SELF']; ?>">
+                                              <input type="hidden" name="delete_id" value="<?php echo $row['id']; ?>" />
+                                              <input type="submit" name="delete" value="Delete"/>
+                                          </form>
+                                      </div>
+
+                                      <div style="display:inline-block">
+                                          <form method="post" action="">
+                                              <input type="hidden" name="edit-id" value="<?php echo $row['id']; ?>" />
+                                              <input type="submit" name="edit" value="Edit"/>
+                                          </form>
+                                      </div>
+                                      </td>
                                   </tr>
 
                             <?php endforeach ?>
@@ -161,7 +171,7 @@ $rows = $database->resultset();
                     <?php $b =  ceil($pages); ?>
                     <div class="panel-footer">
                         <div class="row">
-                            <div class="col col-xs-4">Page 1 of <?php echo $b; ?>
+                            <div class="col col-xs-4">Page <?php echo $page==0 ? 1 : $page ; ?> of <?php echo $b; ?>
                             </div>
                             <div class="col col-xs-8">
                                 <ul class="pagination hidden-xs pull-right">
@@ -185,4 +195,5 @@ $rows = $database->resultset();
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
         crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="main.js" type="text/javascript"></script>
 </html>
