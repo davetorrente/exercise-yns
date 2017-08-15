@@ -8,9 +8,9 @@ if(isset($_GET['logout']) == 1){
     session_destroy();
     header("Location: database-3-6.php");
 }
-$postform = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-if(isset($postform['submit']))
+
+if(isset($_POST['submit']))
 {
     $error = 0;
     if(empty($_POST["post"])) {
@@ -20,7 +20,7 @@ if(isset($postform['submit']))
 
     if($error==0)
     {
-        $post = $postform['post'];
+        $post = htmlspecialchars($_POST['post']);
         $database->query('INSERT INTO posts (post) VALUES(:post)');
         $database->bind(':post',$post);
 
@@ -31,16 +31,16 @@ if(isset($postform['submit']))
         }
     }
 }
-if(isset($postform['delete']))
+if(isset($_POST['delete']))
 {
-    $delete_id = $_POST['delete_id'];
+    $delete_id = htmlspecialchars($_POST['delete_id']);
     $database->query('DELETE FROM posts WHERE id = :id');
     $database->bind(':id',$delete_id);
     $database->execute();
 }
-if(isset($postform['edit']))
+if(isset($_POST['edit']))
 {
-    $edit_id = $_POST['edit-id'];
+    $edit_id = htmlspecialchars($_POST['edit-id']);
     header("Location: database-3-6-edit.php?id=$edit_id");
 }
 

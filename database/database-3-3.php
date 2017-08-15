@@ -3,8 +3,6 @@ require "Database.php";
 
 $database = new Database();
 
-$postform = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
 if(isset($_POST['delete']))
 {
     $delete_id = $_POST['delete_id'];
@@ -14,21 +12,21 @@ if(isset($_POST['delete']))
 }
 if(isset($_POST['edit']))
 {
-      $edit_id = $_POST['edit-id'];
+      $edit_id = htmlspecialchars($_POST['edit-id']);
       header("Location: database-3-3-edit.php?id=$edit_id");
 }
 
 
-if(isset($postform['submit']))
+if(isset($_POST['submit']))
 {
     $error = 0;
-    if(empty($postform["post"])) {
+    if(empty($_POST["post"])) {
         $postError = "Post is required";
         $error++;
     }
     if($error==0)
     {
-        $post = $postform['post'];
+        $post = htmlspecialchars($_POST['post']);
         $database->query('INSERT INTO posts (post) VALUES(:post)');
         $database->bind(':post',$post);
     

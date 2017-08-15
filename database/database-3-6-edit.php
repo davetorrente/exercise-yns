@@ -3,7 +3,6 @@ require "Database.php";
 
 $database = new Database();
 
-$postform = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
 $edit_id =  $_GET['id'];
 $post = '';
@@ -11,17 +10,17 @@ $database->query('SELECT * FROM posts WHERE id = :id' );
 $database->bind(':id', $edit_id);
 $post = $database->resultset();
 
-if(isset($postform['editsubmit']))
+if(isset($_POST['editsubmit']))
 {
     $error = 0;
-    if(empty($postform["editpost"])) {
+    if(empty(htmlspecialchars($_POST["editpost"]))) {
         $editError = "Edit your post";
         $error++;
     }
     if($error==0) {
-        if(isset($postform['editpost']))
+        if(isset($_POST['editpost']))
         {
-            $editpost = $postform['editpost'];
+            $editpost = htmlspecialchars($_POST['editpost']);
             $database->query('UPDATE posts SET post = :post WHERE id = :id');
             $database->bind(':post',$editpost);
             // $database->bind(':modified',$mysql_date_now);

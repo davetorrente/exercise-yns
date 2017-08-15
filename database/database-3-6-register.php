@@ -5,14 +5,14 @@ session_start();
 if (isset($_SESSION['authUser']))
     header("Location: database-3-6.php");
 $postform = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-if(isset($postform['register'])) {
+if(isset($_POST['register'])) {
     $error = 0;
-    $username = $postform["username"];
-    $password = $postform["password"];
-    $email = $postform["email"];
-    $description = $postform["description"];
-    $phone = $postform['phone'];
-    $country = $postform['country'];
+    $username = htmlspecialchars($_POST["username"]);
+    $password = htmlspecialchars($_POST["password"]);
+    $email = htmlspecialchars($_POST["email"]);
+    $description = htmlspecialchars($_POST["description"]);
+    $phone = htmlspecialchars($_POST['phone']);
+    $country = htmlspecialchars($_POST['country']);
 
     if(empty($username)) {
         $usernameError = "Username is required";

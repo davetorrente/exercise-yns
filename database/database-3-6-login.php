@@ -5,10 +5,10 @@ session_start();
 if (isset($_SESSION['authUser']))
     header("Location: database-3-6.php");
 $postform = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-if(isset($postform['login'])) {
+if(isset($_POST['login'])) {
     $error = 0;
-    $username = $postform["username"];
-    $password = $postform['password'];
+    $username = htmlspecialchars($_POST["username"]);
+    $password = htmlspecialchars($_POST['password']) ;
     $usernameExist = '';
     $passwordExist = '';
     if(empty($_POST["username"])) {
