@@ -118,20 +118,20 @@ if(isset($postform['register'])) {
     if($error == 0)
     {
         $file = $_FILES['upload'];
-        print_r($file);
-        die();
-        $dbFile = 'profile-img/' .$file['name'];
+        $newFile = '';
         $arr_ext = array('jpg', 'jpeg', 'gif', 'png');
         $ext = substr(strtolower(strrchr($file['name'], '.')), 1);
         if(in_array($ext, $arr_ext))
         {
-            $newFile = '/database/profile-img/' .$file['name'];
+
+            $time = date("d-m-Y")."-".time() ;
+            $newFile = '/database/profile-img/' .$time."-".$file['name'];
             move_uploaded_file($file['tmp_name'], $_SERVER["DOCUMENT_ROOT"]. $newFile);
         }
         $hashpassword = md5($password);
         $country = $_POST['country'];
         $gender =  $_POST['gender'];
-        $database->query("INSERT INTO users (username, password, email, description , phone, country, gender, upload) VALUES('$username', '$hashpassword', '$email', '$description', '$phone', '$country', '$gender', '$dbFile')");
+        $database->query("INSERT INTO users (username, password, email, description , phone, country, gender, upload) VALUES('$username', '$hashpassword', '$email', '$description', '$phone', '$country', '$gender', '$newFile')");
         $database->execute();
         $username = "";
         $email = "";

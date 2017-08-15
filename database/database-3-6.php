@@ -10,7 +10,6 @@ if(isset($_GET['logout']) == 1){
 }
 $postform = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-
 if(isset($postform['submit']))
 {
     $error = 0;
@@ -67,6 +66,13 @@ $countPosts = $database->resultset();
 $database->query("SELECT * FROM posts ORDER by modified DESC LIMIT $page1, 10");
 $rows = $database->resultset();
 
+if (isset($_SESSION['authUser'])) {
+    $userAuth = $_SESSION['authUser'];
+    $database->query("SELECT * FROM users WHERE username = '$userAuth'");
+    $user = $database->resultset();
+//    print_r($user);
+//    die();
+}
 
 ?>
 <!DOCTYPE html>
@@ -92,7 +98,7 @@ $rows = $database->resultset();
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active"><a href="database-3-6.php">Home</a></li>
-                    <li><a href="?logout=1"> <img src="profile-img/sample.jpg" class="profile-image img-circle"> Logout</a></li>
+                    <li><a href="?logout=1"> <img src="<?php echo $user[0]['upload'];?>" class="profile-image img-circle"> Logout</a></li>
                 </ul>
             </div>
         </div>
