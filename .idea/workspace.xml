@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="21fc073c-5523-4dae-b2fe-c45f5b229797" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/database-3-2.php" afterPath="$PROJECT_DIR$/database/database-3-2.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quizzes/dummy questions" afterPath="$PROJECT_DIR$/quizzes/dummy questions" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quizzes/quiz-login.php" afterPath="$PROJECT_DIR$/quizzes/quiz-login.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quizzes/quiz.php" afterPath="$PROJECT_DIR$/quizzes/quiz.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -89,8 +85,8 @@
       <file leaf-file-name="quiz.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/quizzes/quiz.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="52" column="44" lean-forward="true" selection-start-line="52" selection-start-column="44" selection-end-line="52" selection-end-column="44" />
+            <state relative-caret-position="161">
+              <caret line="47" column="18" lean-forward="true" selection-start-line="47" selection-start-column="18" selection-end-line="47" selection-end-column="18" />
               <folding>
                 <marker date="1502875929060" expanded="true" signature="93:255" ph="SELECT quest... questions" />
               </folding>
@@ -416,15 +412,15 @@
       <workItem from="1502674585730" duration="28379000" />
       <workItem from="1502754361422" duration="8530000" />
       <workItem from="1502766934288" duration="21327000" />
-      <workItem from="1502841005298" duration="32553000" />
+      <workItem from="1502841005298" duration="32726000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="221784000" />
+    <option name="totallyTimeSpent" value="221957000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1378" height="744" extended-state="0" />
+    <frame x="-8" y="-8" width="1378" height="744" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19802731" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -942,8 +938,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/quizzes/quiz.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="52" column="44" lean-forward="true" selection-start-line="52" selection-start-column="44" selection-end-line="52" selection-end-column="44" />
+        <state relative-caret-position="161">
+          <caret line="47" column="18" lean-forward="true" selection-start-line="47" selection-start-column="18" selection-end-line="47" selection-end-column="18" />
           <folding>
             <marker date="1502875929060" expanded="true" signature="93:255" ph="SELECT quest... questions" />
           </folding>
