@@ -1,0 +1,42 @@
+PHP QUIZZES
+
+Which class name is generic empty reserved in PHP?
+	A. nameClass					C. newClass
+	B. stdClass
+      2. Which of the functions is used to sort an array in descending order?
+A. sort()					C. asort()
+B. rsort()
+//sort() function is used to sort in ascending order where as rsort() meaning reverse sort is used for sorting in descending order.
+      3. Which is invalid variable?
+	A. $1name					C. $_name
+	B. $Name
+//Variable name can’t start with a number.
+      4. Which is a global array in php
+	A. $_POST					C. $_REQUEST
+	B. $_GET
+      5.
+//php provide the above global array for handle the request.
+     6. Which one of the following statements is used to create a table?
+A. CREATE TABLE table_name (column_name column_type);
+B. CREATE table_name (column_name column_type);
+C. CREATE table_name (column_type column_name);
+// A . CREATE TABLE table_name (column_name column_type);
+     7 . Which of the following methods is used to execute the statement after the parameters have been bound?
+bind_param()
+bound_param()
+bind_result()
+	// Answer: A Once the statement has been prepared, it needs to be executed. Exactly when it’s executed depends upon whether you want to work with bound parameters or bound results. In the case of bound parameters, you’d execute the statement after the parameters have been bound with the bind_param() method.
+    8. Which one of the following keyword is used to inherit our subclass into a superclass?
+Extends
+Inherits
+implements
+// Answer A
+   9 . Which keyword is used to refer to properties or methods within the class itself?
+Private
+$this
+public
+10. Which one of the following can be used to instantiate an object in PHP assuming class name to be Foo?
+$obj = new $foo;
+$obj = new foo ();
+obj = new foo ();
+

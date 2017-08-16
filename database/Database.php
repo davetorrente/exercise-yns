@@ -5,6 +5,9 @@ class Database
     private $user = 'root';
     private $pass = '';
     private $db = 'exercise_db';
+//  connection for mysql workbench
+//  private $pass = 'password';
+//  private $db = 'exercise';
 
     private $dbh;
     private $error;
