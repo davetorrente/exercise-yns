@@ -91,7 +91,21 @@ $database->execute();
 
 echo "SUCCESS CREATING users, posts, customers, departments, employees, employee_positions, orders, positions, questions tables" . "<br/>";
 
-$sqlInsertCustomers = ("INSERT INTO `customers` (`id`, `name`, `country`) VALUES
+$sqlInsertPosts = ("INSERT IGNORE INTO `posts` (`id`, `post`) VALUES
+(1, 'dummmy1'),
+(2, 'dummmy2'),
+(3, 'dummmy3'),
+(4, 'dummmy4'),
+(5, 'dummmy5'),
+(6,  'dummmy6'),
+(7, 'dummmy7'),
+(8, 'dummmy8'),
+(9, 'dummmy9'),
+(10, 'dummmy10');");
+$database->query($sqlInsertPosts);
+$database->execute();
+
+$sqlInsertCustomers = ("INSERT IGNORE INTO `customers` (`id`, `name`, `country`) VALUES
 (1, 'Dave', 'Philippines'),
 (2, 'Robert', 'Brazil'),
 (3, 'joe', 'France'),
@@ -106,7 +120,7 @@ $sqlInsertCustomers = ("INSERT INTO `customers` (`id`, `name`, `country`) VALUES
 $database->query($sqlInsertCustomers);
 $database->execute();
 
-$sqlInsertDepartments = ("INSERT INTO `departments` (`id`, `name`) VALUES
+$sqlInsertDepartments = ("INSERT IGNORE INTO `departments` (`id`, `name`) VALUES
 (1, 'Exective'),
 (2, 'Admin'),
 (3, 'Sales'),
@@ -116,7 +130,7 @@ $sqlInsertDepartments = ("INSERT INTO `departments` (`id`, `name`) VALUES
 $database->query($sqlInsertDepartments);
 $database->execute();
 
-$sqlInsertEmployees = ("INSERT INTO `employees` (`id`, `first_name`, `last_name`, `middle_name`, `department_id`, `hire_date`, `boss_id`) VALUES
+$sqlInsertEmployees = ("INSERT IGNORE INTO `employees` (`id`, `first_name`, `last_name`, `middle_name`, `department_id`, `hire_date`, `boss_id`) VALUES
 (1, 'Manabu', 'Yamazak', NULL, 1, NULL, NULL),
 (2, 'Tomohiko', 'Takasago', NULL, 3, '2014-04-01', 1),
 (3, 'Yuta', 'Kawakami', NULL, 4, '2014-04-01', 1),
@@ -129,7 +143,7 @@ $sqlInsertEmployees = ("INSERT INTO `employees` (`id`, `first_name`, `last_name`
 (10, 'Kim', '', NULL, 5, '2015-08-06', 1);");
 $database->query($sqlInsertEmployees);
 $database->execute();
-$sqlInsertEmployeePositions = ("INSERT INTO `employee_positions` (`id`, `employee_id`, `position_id`) VALUES
+$sqlInsertEmployeePositions = ("INSERT IGNORE INTO `employee_positions` (`id`, `employee_id`, `position_id`) VALUES
 (1, 1, 1),
 (2, 1, 2),
 (3, 1, 3),
@@ -145,7 +159,7 @@ $sqlInsertEmployeePositions = ("INSERT INTO `employee_positions` (`id`, `employe
 $database->query($sqlInsertEmployeePositions);
 $database->execute();
 
-$sqlInsertOrders = "INSERT INTO `orders` (`id`, `customer_id`, `order_date`, `order_name`) VALUES
+$sqlInsertOrders = "INSERT IGNORE INTO `orders` (`id`, `customer_id`, `order_date`, `order_name`) VALUES
 (1, 1, '2017-08-10 03:02:58', 'Nike'),
 (2, 2, '2017-08-10 03:04:58', 'Adidas'),
 (3, 1, '2017-08-10 03:01:09', 'Nike'),
@@ -155,7 +169,7 @@ $sqlInsertOrders = "INSERT INTO `orders` (`id`, `customer_id`, `order_date`, `or
 $database->query($sqlInsertOrders);
 $database->execute();
 
-$sqlInsertPositions = "INSERT INTO `positions` (`id`, `name`) VALUES
+$sqlInsertPositions = "INSERT IGNORE INTO `positions` (`id`, `name`) VALUES
 (1, 'CEO'),
 (2, 'CTO'),
 (3, 'CFO'),
