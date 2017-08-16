@@ -14,13 +14,18 @@ B. rsort()
       4. Which is a global array in php
 	A. $_POST					C. $_REQUEST
 	B. $_GET
-      5.
+
 //php provide the above global array for handle the request.
-     6. Which one of the following statements is used to create a table?
+      5. Which one of the following statements is used to create a table?
 A. CREATE TABLE table_name (column_name column_type);
 B. CREATE table_name (column_name column_type);
 C. CREATE table_name (column_type column_name);
 // A . CREATE TABLE table_name (column_name column_type);
+6. Which one is correct syntax for Where clause in SQL server?
+a) SELECT WHERE Col1, Col2 FROM ;
+b) SELECT Col1, Col2 FROM WHERE;
+c) SELECT Col1 + Col2 FROM WHERE;
+d) None of the above
      7 . Which of the following methods is used to execute the statement after the parameters have been bound?
 bind_param()
 bound_param()

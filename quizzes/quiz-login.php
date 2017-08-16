@@ -4,6 +4,7 @@ $database = new Database();
 session_start();
 if (isset($_SESSION['quizUser']))
     header("Location: quiz.php");
+
 if(isset($_POST['login'])) {
     $error = 0;
     $username = htmlspecialchars($_POST["username"]);
@@ -55,7 +56,7 @@ if(isset($_POST['login'])) {
     {
         $username = "";
         $password = "";
-        $_SESSION['authUser'] = $_POST["username"];
+        $_SESSION['quizUser'] = $_POST["username"];
         header("Location: quiz.php");
     }
 }

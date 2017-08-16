@@ -62,12 +62,28 @@ name VARCHAR(255) NOT NULL
 $sqlQuestions = "CREATE TABLE IF NOT ExISTS questions (
 id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
 question TEXT NOT NULL,
-answer1 VARCHAR(255) NOT NULL,
+created DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+)";
+$sqlAnswers = "CREATE TABLE IF NOT ExISTS answers (
+id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+answer1 VARCHAR (255) NOT NULL,
 answer2 VARCHAR(255) NOT NULL,
 answer3 VARCHAR(255) NOT NULL,
 answer VARCHAR(255) NOT NULL,
+question_id INT(11) NOT NULL,
 created DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 )";
+
+$sqlGrades = "CREATE TABLE IF NOT ExISTS grades (
+id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+user_id INT(11) NOT NULL,
+quest INT(11) NOT NULL,
+answer3 VARCHAR(255) NOT NULL,
+answer VARCHAR(255) NOT NULL,
+question_id INT(11) NOT NULL,
+created DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+)";
+
 
 
 $database->query($sqlUsers);
@@ -88,8 +104,8 @@ $database->query($sqlPositions);
 $database->execute();
 $database->query($sqlQuestions);
 $database->execute();
-
-echo "SUCCESS CREATING users, posts, customers, departments, employees, employee_positions, orders, positions, questions tables" . "<br/>";
+$database->query($sqlAnswers);
+$database->execute();
 
 $sqlInsertPosts = ("INSERT IGNORE INTO `posts` (`id`, `post`) VALUES
 (1, 'dummy1'),
@@ -168,13 +184,42 @@ $sqlInsertOrders = "INSERT IGNORE INTO `orders` (`id`, `customer_id`, `order_dat
 
 $database->query($sqlInsertOrders);
 $database->execute();
+$nAme = '$nAme';
+$sqlInsertQuestions = "INSERT IGNORE INTO `questions` (`id`, `question`) VALUES
+(1, 'Which class name is generic empty reserved in PHP?'),
+(2, 'Which of the functions is used to sort an array in descending order?'),
+(3, 'Which is invalid variable?'),
+(4, 'Which is a global array in php'),
+(5, 'Which one of the following statements is used to create a table?'),
+(6, 'Which one is correct syntax for Where clause in SQL server?'),
+(7, 'Which of the following methods is used to execute the statement after the parameters have been bound?'),
+(8, 'Which one of the following keyword is used to inherit our subclass into a superclass?'),
+(9, 'If your object must inherit behavior from a number of sources you must use a/an'),
+(10, 'Which one of the following methods is responsible for sending the query to the database?');";
 
-$sqlInsertPositions = "INSERT IGNORE INTO `positions` (`id`, `name`) VALUES
-(1, 'CEO'),
-(2, 'CTO'),
-(3, 'CFO'),
-(4, 'Manager'),
-(5, 'Staff');
-";
-$database->query($sqlInsertPositions);
+$database->query($sqlInsertQuestions);
 $database->execute();
+$Name = '$'."Name";
+$_name = '$'."_name";
+$_REQUEST = '$'."_REQUEST";
+$POST = '$'."POST";
+$GET = '$'."GET";
+$obj = '$'."obj";
+$foo = '$'."foo";
+
+$sqlInsertAnswers = "INSERT IGNORE INTO `answers` (`id`, `answer1`, `answer2`, `answer3`, `answer`, `question_id`) VALUES
+(1, 'nameClass', 'stdClass', ' newClass', 'stdClass', 1),
+(2, 'sort()', 'rsort()', ' asort()', 'rsort()', 2),
+(3, '$2name', '$Name', '$_name', '$2name', 3),
+(4, '$POST', '$GET', '$_REQUEST', '$_REQUEST', 4),
+(5, 'CREATE TABLE table_name (column_name column_type);', 'CREATE table_name (column_name column_type);', 'CREATE table_name (column_type column_name);', 'CREATE TABLE table_name (column_name column_type);', 5),
+(6, 'SELECT WHERE Col1, Col2 FROM;	', 'SELECT Col1, Col2 FROM WHERE;', 'SELECT Col1 + Col2 FROM WHERE;', 'SELECT Col1, Col2 FROM WHERE;', 6),
+(7, 'bind_param()', 'bound_param()', 'bind_result()', 'bind_param()', 7),
+(8, 'Extends', 'Inherits', 'implements', 'Extends', 8),
+(9, 'static class', 'Interface', 'Object', 'Interface', 9),
+(10, 'query()', 'send_query()', 'query_send()', 'query()', 10);";
+$database->query($sqlInsertAnswers);
+$database->execute();
+
+
+echo "SUCCESS CREATING users, posts, customers, departments, employees, employee_positions, orders, positions, questions tables" . "<br/>";
