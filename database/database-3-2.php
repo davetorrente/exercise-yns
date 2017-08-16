@@ -92,16 +92,16 @@ $database->execute();
 echo "SUCCESS CREATING users, posts, customers, departments, employees, employee_positions, orders, positions, questions tables" . "<br/>";
 
 $sqlInsertPosts = ("INSERT IGNORE INTO `posts` (`id`, `post`) VALUES
-(1, 'dummmy1'),
-(2, 'dummmy2'),
-(3, 'dummmy3'),
-(4, 'dummmy4'),
-(5, 'dummmy5'),
-(6,  'dummmy6'),
-(7, 'dummmy7'),
-(8, 'dummmy8'),
-(9, 'dummmy9'),
-(10, 'dummmy10');");
+(1, 'dummy1'),
+(2, 'dummy2'),
+(3, 'dummy3'),
+(4, 'dummy4'),
+(5, 'dummy5'),
+(6,  'dummy6'),
+(7, 'dummy7'),
+(8, 'dummy8'),
+(9, 'dummy9'),
+(10, 'dummy10');");
 $database->query($sqlInsertPosts);
 $database->execute();
 

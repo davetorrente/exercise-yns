@@ -5,7 +5,6 @@ class Database
     private $user = 'root';
     private $pass = '';
     private $db = 'exercise_db';
-
     private $dbh;
     private $error;
     private $stmt;

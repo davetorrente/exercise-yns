@@ -3,7 +3,7 @@ require "Database.php";
 $database = new Database();
 
 $database->query('SELECT * FROM posts WHERE id = :id' );
-$database->bind(':id', 30);
+$database->bind(':id', 8);
 $posts = $database->resultset();
 
 $database->query('SELECT COUNT(id), country FROM customers GROUP BY country HAVING COUNT(id) > 1');
@@ -39,7 +39,7 @@ $rightouterIDs = $database->resultset();
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col col-xs-6">
-                            <h3 class="panel-title">Select * From posts WHERE id = 30</h3>
+                            <h3 class="panel-title">Select * From posts WHERE id = 8</h3>
                         </div>
                     </div>
                 </div>

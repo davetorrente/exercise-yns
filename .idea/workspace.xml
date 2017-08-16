@@ -4,6 +4,10 @@
     <list default="true" id="21fc073c-5523-4dae-b2fe-c45f5b229797" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/database-3-2.php" afterPath="$PROJECT_DIR$/database/database-3-2.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/database-3-4.php" afterPath="$PROJECT_DIR$/database/database-3-4.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quizzes/Database.php" afterPath="$PROJECT_DIR$/quizzes/Database.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quizzes/quiz-login.php" afterPath="$PROJECT_DIR$/quizzes/quiz-login.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quizzes/quiz-register.php" afterPath="$PROJECT_DIR$/quizzes/quiz-register.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,21 +19,6 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="database-3-6-register.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/database-3-6-register.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="16966">
-              <caret line="998" column="14" lean-forward="false" selection-start-line="998" selection-start-column="14" selection-end-line="998" selection-end-column="14" />
-              <folding>
-                <marker date="1502763804201" expanded="true" signature="1073:1128" ph="SELECT usern... users" />
-                <marker date="1502763804201" expanded="true" signature="1744:1790" ph="SELECT email... users" />
-                <marker date="1502763804201" expanded="true" signature="4338:4537" ph="INSERT INTO users... " />
-                <marker date="1502763804201" expanded="true" signature="4405:4537" ph="INSERT INTO users... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="dummy questions" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/quizzes/dummy questions">
           <provider selected="true" editor-type-id="text-editor">
@@ -70,58 +59,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="database-3-2.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/database/database-3-2.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1455">
-              <caret line="171" column="36" lean-forward="false" selection-start-line="171" selection-start-column="36" selection-end-line="171" selection-end-column="36" />
-              <folding>
-                <marker date="1502848229226" expanded="true" signature="142:428" ph="CREATE TABLE... users" />
-                <marker date="1502848229226" expanded="true" signature="142:521" ph="CREATE TABLE... IF" />
-                <marker date="1502848229226" expanded="true" signature="538:776" ph="CREATE TABLE... IF" />
-                <marker date="1502848229226" expanded="true" signature="774:776" ph="CREATE TABLE... posts" />
-                <marker date="1502848229226" expanded="true" signature="797:944" ph="CREATE TABLE... IF" />
-                <marker date="1502848229226" expanded="true" signature="966:1084" ph="CREATE TABLE... IF" />
-                <marker date="1502848229226" expanded="true" signature="1104:1192" ph="CREATE TABLE... IF" />
-                <marker date="1502848229226" expanded="true" signature="1104:1373" ph="CREATE TABLE... IF" />
-                <marker date="1502848229226" expanded="true" signature="1402:1559" ph="CREATE TABLE... IF" />
-                <marker date="1502848229226" expanded="true" signature="1577:1782" ph="CREATE TABLE... IF" />
-                <marker date="1502848229226" expanded="true" signature="1803:1919" ph="CREATE TABLE... IF" />
-                <marker date="1502848229226" expanded="true" signature="1940:2228" ph="CREATE TABLE... IF" />
-                <marker date="1502848229226" expanded="true" signature="2889:3099" ph="INSERT INTO `employee_positions`... " />
-                <marker date="1502848229226" expanded="true" signature="3186:3490" ph="INSERT INTO `customers`... " />
-                <marker date="1502848229226" expanded="true" signature="3584:3735" ph="INSERT INTO `departments`... " />
-                <marker date="1502848229226" expanded="true" signature="3828:4466" ph="INSERT INTO `employees`... " />
-                <marker date="1502848229226" expanded="true" signature="4564:4782" ph="INSERT INTO `employee_positions`... " />
-                <marker date="1502848229226" expanded="true" signature="4877:5160" ph="INSERT INTO `orders`... " />
-                <marker date="1502848229226" expanded="true" signature="5247:5364" ph="INSERT INTO `positions`... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="quiz-register.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/quizzes/quiz-register.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2737">
-              <caret line="161" column="18" lean-forward="false" selection-start-line="161" selection-start-column="18" selection-end-line="161" selection-end-column="18" />
+            <state relative-caret-position="187">
+              <caret line="164" column="100" lean-forward="false" selection-start-line="164" selection-start-column="100" selection-end-line="164" selection-end-column="100" />
               <folding>
-                <marker date="1502779760463" expanded="true" signature="920:975" ph="SELECT usern... users" />
-                <marker date="1502779760463" expanded="true" signature="1591:1637" ph="SELECT email... users" />
-                <marker date="1502779760463" expanded="true" signature="4190:4389" ph="INSERT INTO users... " />
+                <marker date="1502850245656" expanded="true" signature="920:975" ph="SELECT usern... users" />
+                <marker date="1502850245656" expanded="true" signature="1591:1637" ph="SELECT email... users" />
+                <marker date="1502850245656" expanded="true" signature="4189:4388" ph="INSERT INTO users... " />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="quiz-login.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="quiz-login.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/quizzes/quiz-login.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="867">
-              <caret line="51" column="9" lean-forward="false" selection-start-line="51" selection-start-column="9" selection-end-line="51" selection-end-column="9" />
+            <state relative-caret-position="316">
+              <caret line="63" column="16" lean-forward="true" selection-start-line="63" selection-start-column="16" selection-end-line="63" selection-end-column="16" />
               <folding>
-                <marker date="1502780743844" expanded="true" signature="658:713" ph="SELECT usern... users" />
-                <marker date="1502780743844" expanded="true" signature="956:1011" ph="SELECT passw... users" />
+                <marker date="1502850315938" expanded="true" signature="658:713" ph="SELECT usern... users" />
+                <marker date="1502850315938" expanded="true" signature="956:1011" ph="SELECT passw... users" />
               </folding>
             </state>
           </provider>
@@ -133,6 +92,65 @@
             <state relative-caret-position="85">
               <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="database-3-2.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/database/database-3-2.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="44">
+              <caret line="91" column="16" lean-forward="true" selection-start-line="91" selection-start-column="16" selection-end-line="91" selection-end-column="16" />
+              <folding>
+                <marker date="1502848339993" expanded="true" signature="142:428" ph="CREATE TABLE... users" />
+                <marker date="1502848339993" expanded="true" signature="142:521" ph="CREATE TABLE... IF" />
+                <marker date="1502848339993" expanded="true" signature="538:776" ph="CREATE TABLE... IF" />
+                <marker date="1502848339993" expanded="true" signature="774:776" ph="CREATE TABLE... posts" />
+                <marker date="1502848339993" expanded="true" signature="797:944" ph="CREATE TABLE... IF" />
+                <marker date="1502848339993" expanded="true" signature="966:1084" ph="CREATE TABLE... IF" />
+                <marker date="1502848339993" expanded="true" signature="1104:1192" ph="CREATE TABLE... IF" />
+                <marker date="1502848339993" expanded="true" signature="1104:1373" ph="CREATE TABLE... IF" />
+                <marker date="1502848339993" expanded="true" signature="1402:1559" ph="CREATE TABLE... IF" />
+                <marker date="1502848339993" expanded="true" signature="1577:1782" ph="CREATE TABLE... IF" />
+                <marker date="1502848339993" expanded="true" signature="1803:1919" ph="CREATE TABLE... IF" />
+                <marker date="1502848339993" expanded="true" signature="1940:2228" ph="CREATE TABLE... IF" />
+                <marker date="1502848339993" expanded="true" signature="2889:3089" ph="INSERT INTO `employee_positions`... " />
+                <marker date="1502848339993" expanded="true" signature="3176:3480" ph="INSERT INTO `customers`... " />
+                <marker date="1502848339993" expanded="true" signature="3574:3725" ph="INSERT INTO `departments`... " />
+                <marker date="1502848339993" expanded="true" signature="3818:4456" ph="INSERT INTO `employees`... " />
+                <marker date="1502848339993" expanded="true" signature="4554:4772" ph="INSERT INTO `employee_positions`... " />
+                <marker date="1502848339993" expanded="true" signature="4867:5150" ph="INSERT INTO `orders`... " />
+                <marker date="1502848339993" expanded="true" signature="5237:5354" ph="INSERT INTO `positions`... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Database.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/quizzes/Database.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="22" column="13" lean-forward="true" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="database-3-4.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/database/database-3-4.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="50" column="41" lean-forward="true" selection-start-line="50" selection-start-column="41" selection-end-line="50" selection-end-column="41" />
+              <folding>
+                <marker date="1502848301419" expanded="true" signature="77:111" ph="SELECT * FRO... posts" />
+                <marker date="1502848301419" expanded="true" signature="195:221" ph="SELECT * FRO... posts" />
+                <marker date="1502848301419" expanded="true" signature="195:272" ph="SELECT * FRO... posts" />
+                <marker date="1502848301419" expanded="true" signature="195:273" ph="SELECT COUNT... customers" />
+                <marker date="1502848301419" expanded="true" signature="195:275" ph="SELECT * FRO... posts" />
+                <marker date="1502848301419" expanded="true" signature="338:440" ph="SELECT order... orders" />
+                <marker date="1502848301419" expanded="true" signature="503:628" ph="SELECT custo... customers" />
+                <marker date="1502848301419" expanded="true" signature="691:817" ph="SELECT custo... customers" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -158,6 +176,7 @@
       <find>$postform</find>
       <find>headText</find>
       <find>config.vm.network</find>
+      <find>posis</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -166,7 +185,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/javascript/javascript-2-5.html" />
         <option value="$PROJECT_DIR$/javascript/javascript-2-7.html" />
         <option value="$PROJECT_DIR$/javascript/javascript-2-8.html" />
         <option value="$PROJECT_DIR$/javascript/javascript-2-9.html" />
@@ -176,7 +194,6 @@
         <option value="$PROJECT_DIR$/javascript/javascript-2-14.html" />
         <option value="$PROJECT_DIR$/javascript/javascript-2-15.html" />
         <option value="$PROJECT_DIR$/javascript/javascript-2-16.html" />
-        <option value="$PROJECT_DIR$/database/database-3-4.php" />
         <option value="$PROJECT_DIR$/database/database-problems.php" />
         <option value="$PROJECT_DIR$/css/style.css" />
         <option value="$PROJECT_DIR$/database/register.php" />
@@ -209,14 +226,16 @@
         <option value="$PROJECT_DIR$/quizzes/quiz1.php" />
         <option value="$PROJECT_DIR$/quizzes/css/style.css" />
         <option value="$PROJECT_DIR$/quizzes/css/login.css" />
-        <option value="$PROJECT_DIR$/quizzes/quiz-register.php" />
         <option value="$PROJECT_DIR$/quizzes/quiz.php" />
-        <option value="$PROJECT_DIR$/quizzes/quiz-login.php" />
         <option value="$PROJECT_DIR$/quizzes/dummy questions" />
         <option value="$PROJECT_DIR$/Vagrant/Vagrantfile" />
         <option value="$PROJECT_DIR$/vagrant/Vagrantfile" />
         <option value="$PROJECT_DIR$/database/Database.php" />
+        <option value="$PROJECT_DIR$/database/database-3-4.php" />
         <option value="$PROJECT_DIR$/database/database-3-2.php" />
+        <option value="$PROJECT_DIR$/quizzes/Database.php" />
+        <option value="$PROJECT_DIR$/quizzes/quiz-register.php" />
+        <option value="$PROJECT_DIR$/quizzes/quiz-login.php" />
       </list>
     </option>
   </component>
@@ -273,21 +292,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="vagrant" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="exercise" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="exercise" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="database" />
+              <option name="myItemId" value="quizzes" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -416,12 +421,12 @@
       <workItem from="1502674585730" duration="28379000" />
       <workItem from="1502754361422" duration="8530000" />
       <workItem from="1502766934288" duration="21327000" />
-      <workItem from="1502841005298" duration="6127000" />
+      <workItem from="1502841005298" duration="8231000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="195358000" />
+    <option name="totallyTimeSpent" value="197462000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1378" height="744" extended-state="0" />
@@ -646,23 +651,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/database-3-4.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="27" lean-forward="false" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
-          <folding>
-            <marker date="1502413718127" expanded="true" signature="77:111" ph="SELECT * FRO... posts" />
-            <marker date="1502413718127" expanded="true" signature="196:222" ph="SELECT * FRO... posts" />
-            <marker date="1502413718127" expanded="true" signature="196:273" ph="SELECT * FRO... posts" />
-            <marker date="1502413718127" expanded="true" signature="196:274" ph="SELECT COUNT... customers" />
-            <marker date="1502413718127" expanded="true" signature="196:276" ph="SELECT * FRO... posts" />
-            <marker date="1502413718127" expanded="true" signature="339:441" ph="SELECT order... orders" />
-            <marker date="1502413718127" expanded="true" signature="504:629" ph="SELECT custo... customers" />
-            <marker date="1502413718127" expanded="true" signature="692:818" ph="SELECT custo... customers" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/main.js" />
     <entry file="file://$PROJECT_DIR$/database/data.php" />
     <entry file="file://$PROJECT_DIR$/database/database-3-5.php">
@@ -761,14 +749,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/quizzes/Database.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="32" lean-forward="true" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/database-3-6-login.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -799,37 +779,6 @@
             <marker date="1502764130747" expanded="true" signature="1602:1639" ph="SELECT * FRO... users" />
             <marker date="1502764130747" expanded="true" signature="1602:1650" ph="SELECT * FRO... users" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/quizzes/quiz-register.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2737">
-          <caret line="161" column="18" lean-forward="false" selection-start-line="161" selection-start-column="18" selection-end-line="161" selection-end-column="18" />
-          <folding>
-            <marker date="1502779760463" expanded="true" signature="920:975" ph="SELECT usern... users" />
-            <marker date="1502779760463" expanded="true" signature="1591:1637" ph="SELECT email... users" />
-            <marker date="1502779760463" expanded="true" signature="4190:4389" ph="INSERT INTO users... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/quizzes/quiz-login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="867">
-          <caret line="51" column="9" lean-forward="false" selection-start-line="51" selection-start-column="9" selection-end-line="51" selection-end-column="9" />
-          <folding>
-            <marker date="1502780743844" expanded="true" signature="658:713" ph="SELECT usern... users" />
-            <marker date="1502780743844" expanded="true" signature="956:1011" ph="SELECT passw... users" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/quizzes/quiz.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -886,30 +835,86 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/database/database-3-4.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="50" column="41" lean-forward="true" selection-start-line="50" selection-start-column="41" selection-end-line="50" selection-end-column="41" />
+          <folding>
+            <marker date="1502848301419" expanded="true" signature="77:111" ph="SELECT * FRO... posts" />
+            <marker date="1502848301419" expanded="true" signature="195:221" ph="SELECT * FRO... posts" />
+            <marker date="1502848301419" expanded="true" signature="195:272" ph="SELECT * FRO... posts" />
+            <marker date="1502848301419" expanded="true" signature="195:273" ph="SELECT COUNT... customers" />
+            <marker date="1502848301419" expanded="true" signature="195:275" ph="SELECT * FRO... posts" />
+            <marker date="1502848301419" expanded="true" signature="338:440" ph="SELECT order... orders" />
+            <marker date="1502848301419" expanded="true" signature="503:628" ph="SELECT custo... customers" />
+            <marker date="1502848301419" expanded="true" signature="691:817" ph="SELECT custo... customers" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/database/database-3-2.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1455">
-          <caret line="171" column="36" lean-forward="false" selection-start-line="171" selection-start-column="36" selection-end-line="171" selection-end-column="36" />
+        <state relative-caret-position="44">
+          <caret line="91" column="16" lean-forward="true" selection-start-line="91" selection-start-column="16" selection-end-line="91" selection-end-column="16" />
           <folding>
-            <marker date="1502848229226" expanded="true" signature="142:428" ph="CREATE TABLE... users" />
-            <marker date="1502848229226" expanded="true" signature="142:521" ph="CREATE TABLE... IF" />
-            <marker date="1502848229226" expanded="true" signature="538:776" ph="CREATE TABLE... IF" />
-            <marker date="1502848229226" expanded="true" signature="774:776" ph="CREATE TABLE... posts" />
-            <marker date="1502848229226" expanded="true" signature="797:944" ph="CREATE TABLE... IF" />
-            <marker date="1502848229226" expanded="true" signature="966:1084" ph="CREATE TABLE... IF" />
-            <marker date="1502848229226" expanded="true" signature="1104:1192" ph="CREATE TABLE... IF" />
-            <marker date="1502848229226" expanded="true" signature="1104:1373" ph="CREATE TABLE... IF" />
-            <marker date="1502848229226" expanded="true" signature="1402:1559" ph="CREATE TABLE... IF" />
-            <marker date="1502848229226" expanded="true" signature="1577:1782" ph="CREATE TABLE... IF" />
-            <marker date="1502848229226" expanded="true" signature="1803:1919" ph="CREATE TABLE... IF" />
-            <marker date="1502848229226" expanded="true" signature="1940:2228" ph="CREATE TABLE... IF" />
-            <marker date="1502848229226" expanded="true" signature="2889:3099" ph="INSERT INTO `employee_positions`... " />
-            <marker date="1502848229226" expanded="true" signature="3186:3490" ph="INSERT INTO `customers`... " />
-            <marker date="1502848229226" expanded="true" signature="3584:3735" ph="INSERT INTO `departments`... " />
-            <marker date="1502848229226" expanded="true" signature="3828:4466" ph="INSERT INTO `employees`... " />
-            <marker date="1502848229226" expanded="true" signature="4564:4782" ph="INSERT INTO `employee_positions`... " />
-            <marker date="1502848229226" expanded="true" signature="4877:5160" ph="INSERT INTO `orders`... " />
-            <marker date="1502848229226" expanded="true" signature="5247:5364" ph="INSERT INTO `positions`... " />
+            <marker date="1502848339993" expanded="true" signature="142:428" ph="CREATE TABLE... users" />
+            <marker date="1502848339993" expanded="true" signature="142:521" ph="CREATE TABLE... IF" />
+            <marker date="1502848339993" expanded="true" signature="538:776" ph="CREATE TABLE... IF" />
+            <marker date="1502848339993" expanded="true" signature="774:776" ph="CREATE TABLE... posts" />
+            <marker date="1502848339993" expanded="true" signature="797:944" ph="CREATE TABLE... IF" />
+            <marker date="1502848339993" expanded="true" signature="966:1084" ph="CREATE TABLE... IF" />
+            <marker date="1502848339993" expanded="true" signature="1104:1192" ph="CREATE TABLE... IF" />
+            <marker date="1502848339993" expanded="true" signature="1104:1373" ph="CREATE TABLE... IF" />
+            <marker date="1502848339993" expanded="true" signature="1402:1559" ph="CREATE TABLE... IF" />
+            <marker date="1502848339993" expanded="true" signature="1577:1782" ph="CREATE TABLE... IF" />
+            <marker date="1502848339993" expanded="true" signature="1803:1919" ph="CREATE TABLE... IF" />
+            <marker date="1502848339993" expanded="true" signature="1940:2228" ph="CREATE TABLE... IF" />
+            <marker date="1502848339993" expanded="true" signature="2889:3089" ph="INSERT INTO `employee_positions`... " />
+            <marker date="1502848339993" expanded="true" signature="3176:3480" ph="INSERT INTO `customers`... " />
+            <marker date="1502848339993" expanded="true" signature="3574:3725" ph="INSERT INTO `departments`... " />
+            <marker date="1502848339993" expanded="true" signature="3818:4456" ph="INSERT INTO `employees`... " />
+            <marker date="1502848339993" expanded="true" signature="4554:4772" ph="INSERT INTO `employee_positions`... " />
+            <marker date="1502848339993" expanded="true" signature="4867:5150" ph="INSERT INTO `orders`... " />
+            <marker date="1502848339993" expanded="true" signature="5237:5354" ph="INSERT INTO `positions`... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quizzes/Database.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="22" column="13" lean-forward="true" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quizzes/quiz-register.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="164" column="100" lean-forward="false" selection-start-line="164" selection-start-column="100" selection-end-line="164" selection-end-column="100" />
+          <folding>
+            <marker date="1502850245656" expanded="true" signature="920:975" ph="SELECT usern... users" />
+            <marker date="1502850245656" expanded="true" signature="1591:1637" ph="SELECT email... users" />
+            <marker date="1502850245656" expanded="true" signature="4189:4388" ph="INSERT INTO users... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quizzes/quiz.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quizzes/quiz-login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="63" column="16" lean-forward="true" selection-start-line="63" selection-start-column="16" selection-end-line="63" selection-end-column="16" />
+          <folding>
+            <marker date="1502850315938" expanded="true" signature="658:713" ph="SELECT usern... users" />
+            <marker date="1502850315938" expanded="true" signature="956:1011" ph="SELECT passw... users" />
           </folding>
         </state>
       </provider>

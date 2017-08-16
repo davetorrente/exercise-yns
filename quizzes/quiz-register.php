@@ -121,7 +121,7 @@ if(isset($_POST['register'])) {
         {
 
             $time = date("d-m-Y")."-".time() ;
-            $newFile = '/database/profile-img/' .$time."-".$file['name'];
+            $newFile = '/quizzes/profile-img/' .$time."-".$file['name'];
             move_uploaded_file($file['tmp_name'], $_SERVER["DOCUMENT_ROOT"]. $newFile);
         }
         $hashpassword = md5($password);
@@ -143,7 +143,7 @@ if(isset($_POST['register'])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>html_php-1-1</title>
+    <title>Quiz Register</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href="css/style.css" type="text/css" rel="stylesheet">
@@ -162,7 +162,7 @@ if(isset($_POST['register'])) {
             </div>
             <div id="polina" class="col-sm-6">
                 <h4 class="text-center">Register as a New Quizzer</h4>
-                <form class="form-horizontal" method="post">
+                <form class="form-horizontal" method="post" enctype="multipart/form-data" novalidate>
                     <div class="form-group has-success has-feedback">
                         <div class="col-sm-12">
                             <input type="text" id="username" name="username" class="form-control"  value="<?php echo isset($username) ? $username : ''; ?>" autofocus>
