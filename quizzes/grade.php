@@ -2,31 +2,42 @@
 session_start();
 require "Database.php";
 $database = new Database();
-/**
- * Created by PhpStorm.
- * User: YNS
- * Date: 16/08/2017
- * Time: 1:30 PM
- */
-$answer = array();
 
-$database->query('SELECT answer FROM answers INNER JOIN questions ON answers.question_id = questions.id ' );
-$select = $database->resultset();
+$datetime = date('Y-m-d H:i:s');
+if(isset($_POST['submit-quiz'])) {
+    $totalCorrect = 0;
+    $totalCount = 10;
+    $database->query('SELECT answer FROM answers INNER JOIN questions ON answers.question_id = questions.id ' );
+    $select = $database->resultset();
 
-
-$totalCorrect = 0;
-$totalCount = 10;
-
-for($i=0; $i<count($_POST); $i++)
-{
-    if($_POST['question-'.($i+1).'-answers'] == $select[$i]['answer'])
+    for($i=0; $i<count($_POST)-1; $i++)
     {
-        $totalCorrect++;
+        if($_POST['question-'.($i+1).'-answers'] == $select[$i]['answer'])
+        {
+            $totalCorrect++;
+        }
+
     }
 
+    $user_id = $_SESSION["userID"];
+    $database->query("SELECT user_id FROM grades WHERE user_id = '$user_id'");
+    $userID = $database->resultset();
+    if(!empty($userID)){
+        $database->query('UPDATE grades SET score = :score WHERE user_id = :id');
+        $database->bind(':score',$totalCorrect);
+        $database->bind(':id',$user_id);
+        $database->execute();
+    }else{
+        $database->query("INSERT INTO grades (user_id, score, created) VALUES(:user_id, :score, :created)");
+        $database->bind(':user_id', $user_id);
+        $database->bind(':score',$totalCorrect);
+        $database->bind(':created',$datetime);
+        $database->execute();
+    }
 }
 
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,26 +46,31 @@ for($i=0; $i<count($_POST); $i++)
     <link rel="stylesheet" type="text/css" href="css/result.css" />
     <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
 </head>
-<body class="bg-for-submit-name">
+<body>
 
 <div class="container">
-    <div class="row">
-            <span class="image-position"><a href="https://www.facebook.com/meuix/?ref=settings" target="_blank">
-	           <img src="https://lh4.googleusercontent.com/fLEIj3iQb7O1FhjOpLFbJtHmsMlLGmLynSWUvAP70qF0HLEBty-FANvwweg7Sv2XqSpzOKNI=w1366-h638"></a>
-	        </span>
-    </div>
     <div class="row margin-top">
         <div class="col-md-12">
-            <div class="wrap">
+            <div>
                 <p class="form-title Arabella">
                    Your Score is <?php echo isset($totalCorrect) ? $totalCorrect . ' out of' . $totalCount : ''; ?>
+
                 </p>
+                <p class="form-title Arabella"><button type="submit" class="btn btn-success"  name="exit-button" id="exit-button" style="width:auto">EXIT</button></p>
             </div>
         </div>
     </div>
 </div>
 </body>
-
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
+<script>
+    $(document).ready(function(){
+       $("#exit-button").on('click',function(e){
+           e.preventDefault();
+           location.href = '/quizzes/quiz.php';
+       });
+    });
+</script>
 </html>
 
 

@@ -23,12 +23,7 @@ if(isset($_POST['submit']))
         $post = htmlspecialchars($_POST['post']);
         $database->query('INSERT INTO posts (post) VALUES(:post)');
         $database->bind(':post',$post);
-
         $database->execute();
-        if($database->lastInsertId())
-        {
-            echo 'SUCCESS!';
-        }
     }
 }
 if(isset($_POST['delete']))
@@ -87,7 +82,7 @@ if (isset($_SESSION['authUser'])) {
 </head>
 <body>
     <nav class="navbar navbar-default">
-        <div class="container">
+        <div class="container" id="navbar-quiz">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigatipon</span>
                 <span class="icon-bar"></span>

@@ -2,8 +2,10 @@
 require "Database.php";
 $database = new Database();
 session_start();
-if (isset($_SESSION['quizUser']))
+if (isset($_SESSION['quizUser'])){
     header("Location: quiz.php");
+}
+
 
 if(isset($_POST['login'])) {
     $error = 0;

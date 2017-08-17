@@ -1,10 +1,24 @@
 <?php
 session_start();
+
 require "Database.php";
 $database = new Database();
 $database->query('SELECT questions.id, question, answer1, answer2, answer3, answer FROM questions INNER JOIN answers ON questions.id = answers.question_id ORDER by questions.id ASC' );
 $questions = $database->resultset();
-$questionIDs = array();
+
+if (isset($_SESSION['quizUser'])) {
+    $username = $_SESSION["quizUser"];
+    $database->query("SELECT * FROM users WHERE username = '$username'");
+    $user = $database->resultset();
+    $userID = $user[0]['id'];
+    $_SESSION["userID"] = $userID;
+}else{
+    header("Location: quiz-login.php");
+}
+if(isset($_GET['logout']) == 1){
+    session_destroy();
+    header("Location: quiz-login.php");
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,10 +26,30 @@ $questionIDs = array();
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>PHP Quiz</title>
     <link rel="stylesheet" type="text/css" href="css/quiz.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+
 </head>
 <body>
-<div id="page-wrap">
+    <nav class="navbar navbar-default">
+        <div class="container" id="navbar-quiz">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigatipon</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="quiz.php">QUIZ PHP</a>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="quiz.php">Home</a></li>
+                    <li><a href="?logout=1"> <img src="<?php echo $user[0]['upload'];?>" class="profile-image img-circle"> Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<div class="container" id="page-wrap">
     <form action="grade.php" method="post" id="quiz" novalidate>
         <ul id="test-questions">
             <?php $totalquestions = count($questions);?>
@@ -39,7 +73,7 @@ $questionIDs = array();
         </li>
         <?php endfor ?>
         </ul>
-        <input type="submit" value="Submit Quiz" id="submit-quiz" />
+        <input type="submit" value="Submit Quiz" name="submit-quiz" id="submit-quiz" />
     </form>
     <div class="nomargin"></div>
 </div>

@@ -2,7 +2,7 @@
 require "Database.php";
 
 $database = new Database();
-
+$datetime = date('Y-m-d H:i:s');
 if(isset($_POST['delete']))
 {
     $delete_id = $_POST['delete_id'];
@@ -27,14 +27,10 @@ if(isset($_POST['submit']))
     if($error==0)
     {
         $post = htmlspecialchars($_POST['post']);
-        $database->query('INSERT INTO posts (post) VALUES(:post)');
+        $database->query('INSERT INTO posts (post, created) VALUES(:post, :created)');
         $database->bind(':post',$post);
-    
+        $database->bind(':created',$datetime);
         $database->execute();
-        if($database->lastInsertId())
-        {
-            echo 'SUCCESS!';
-        }
     }
 }
 

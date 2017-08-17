@@ -33,6 +33,10 @@ class Database
     {
         $this->stmt = $this->dbh->prepare($query);
     }
+    public function closeConnection()
+    {
+        return $this->dbh =null;
+    }
 
     public function bind($param, $value, $type=null)
     {

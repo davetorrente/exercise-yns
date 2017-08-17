@@ -1,7 +1,7 @@
 <?php
 require "Database.php";
 $database = new Database();
-//Only run once for inserting dummy datas because of corresponding ids
+$datetime = date('Y-m-d H:i:s');
 $sqlUsers = "CREATE TABLE IF NOT ExISTS users (
 id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
 username VARCHAR(30) NOT NULL,
@@ -18,7 +18,7 @@ upload TEXT NOT NULL
 $sqlPosts = "CREATE TABLE IF NOT ExISTS posts (
 id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
 post VARCHAR(255) NOT NULL,
-created DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+created DATETIME NULL,
 modified DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 )";
 
@@ -77,11 +77,9 @@ created DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 $sqlGrades = "CREATE TABLE IF NOT ExISTS grades (
 id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
 user_id INT(11) NOT NULL,
-quest INT(11) NOT NULL,
-answer3 VARCHAR(255) NOT NULL,
-answer VARCHAR(255) NOT NULL,
-question_id INT(11) NOT NULL,
-created DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+score INT(11) NULL,
+created DATETIME NULL,
+modified DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 )";
 
 
@@ -106,18 +104,20 @@ $database->query($sqlQuestions);
 $database->execute();
 $database->query($sqlAnswers);
 $database->execute();
+$database->query($sqlGrades);
+$database->execute();
 
-$sqlInsertPosts = ("INSERT IGNORE INTO `posts` (`id`, `post`) VALUES
-(1, 'dummy1'),
-(2, 'dummy2'),
-(3, 'dummy3'),
-(4, 'dummy4'),
-(5, 'dummy5'),
-(6,  'dummy6'),
-(7, 'dummy7'),
-(8, 'dummy8'),
-(9, 'dummy9'),
-(10, 'dummy10');");
+$sqlInsertPosts = ("INSERT IGNORE INTO `posts` (`id`, `post`, `created`) VALUES
+(1, 'dummy1', '$datetime'),
+(2, 'dummy2', '$datetime'),
+(3, 'dummy3', '$datetime'),
+(4, 'dummy4', '$datetime'),
+(5, 'dummy5', '$datetime'),
+(6,  'dummy6', '$datetime'),
+(7, 'dummy7', '$datetime'),
+(8, 'dummy8', '$datetime'),
+(9, 'dummy9', '$datetime'),
+(10, 'dummy10', '$datetime');");
 $database->query($sqlInsertPosts);
 $database->execute();
 

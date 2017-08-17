@@ -363,3 +363,9 @@ textarea.c-p {
 .result {
     height: 325px;
 }
+.profile-image{
+    max-height: 18px !important;
+}
+#navbar-quiz{
+    width:auto !important;
+}

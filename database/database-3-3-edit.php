@@ -24,7 +24,6 @@ if(isset($_POST['editsubmit']))
             $editpost = htmlspecialchars($_POST['editpost']);
             $database->query('UPDATE posts SET post = :post WHERE id = :id');
             $database->bind(':post',$editpost);
-            // $database->bind(':modified',$mysql_date_now);
             $database->bind(':id',$edit_id);
             $database->execute();
             $database->query('SELECT * FROM posts WHERE id = :id' );
