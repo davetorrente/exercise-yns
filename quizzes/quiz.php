@@ -19,6 +19,7 @@ if(isset($_GET['logout']) == 1){
     session_destroy();
     header("Location: quiz-login.php");
 }
+
 ?>
 <!DOCTYPE html>
 <html>

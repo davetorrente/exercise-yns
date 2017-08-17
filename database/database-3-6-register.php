@@ -76,8 +76,10 @@ if(isset($_POST['register'])) {
     }
     elseif(!empty($password)) {
         $confirmError = "Please Check You've Entered Or Confirmed Your Password!";
+        $error++;
     } else {
          $passwordError = "Password is required";
+        $error++;
     }
 
     if (empty($description)) {

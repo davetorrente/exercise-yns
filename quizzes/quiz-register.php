@@ -72,8 +72,10 @@ if(isset($_POST['register'])) {
     }
     elseif(!empty($password)) {
         $confirmError = "Please Check You've Entered Or Confirmed Your Password!";
+        $error++;
     } else {
         $passwordError = "Password is required";
+        $error++;
     }
 
     if (empty($description)) {
@@ -161,8 +163,10 @@ if(isset($_POST['register'])) {
                 <p>You need to login to take the exam</p>
             </div>
             <div id="polina" class="col-sm-6">
+                <?php echo isset($message) ? $message : ''; ?>
                 <h4 class="text-center">Register as a New Quizzer</h4>
                 <form class="form-horizontal" method="post" enctype="multipart/form-data" novalidate>
+
                     <div class="form-group has-success has-feedback">
                         <div class="col-sm-12">
                             <input type="text" id="username" name="username" class="form-control"  value="<?php echo isset($username) ? $username : ''; ?>" autofocus>
