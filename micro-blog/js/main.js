@@ -33,8 +33,6 @@ $(document).ready(function(){
     //     // }
     //
     // });
-
-
     $('#createTweet').on('click','#btnAdd',function(e){
         e.preventDefault();
         var addTweet = $('textarea[name=tweet]');
@@ -64,10 +62,11 @@ $(document).ready(function(){
                 dataType: 'json',
                 success: function(data){
                     addTweet.val('');
-                    console.log(data);
+                    $('#alertMessage').addClass('alert-success');
+                    $('#alertMessage').html('Tweet Successfully Added!').fadeIn().delay(2500).fadeOut('slow');
                 },
                 error: function(){
-                    alert('Could not add datas');
+                    alert('Could not add data');
                 }
             });
         }

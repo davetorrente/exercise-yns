@@ -60,7 +60,7 @@ $userPosts = $database->resultset();
     <div class="col-md-4 col-md-offset-4">
         <form id="createTweet" method="post">
             <div class="form-group">
-                <textarea class="form-control" name="tweet" id="tweet" rows="3" placeholder="Tweet status.. "></textarea>
+                <textarea class="form-control" name="tweet" id="tweet" rows="3" placeholder="Your Tweet.."></textarea>
 <!--                <p style="display: inline-block">Total number of characters: </p><span style="display: inline-block" id="tweetCount">140</span>-->
             </div>
             <div class="form-group">
