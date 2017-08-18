@@ -14,6 +14,10 @@ if (isset($_SESSION['microUser'])) {
     $database->query("SELECT * FROM users WHERE username = '$userAuth'");
     $user = $database->resultset();
 }
+$database->query("SELECT users.username, users.upload, tweets.id, tweets.tweet, tweets.created, tweets.modified FROM users INNER JOIN tweets ON users.id = tweets.user_id ORDER BY tweets.modified DESC");
+$userPosts = $database->resultset();
+
+
 
 ?>
 
@@ -40,7 +44,7 @@ if (isset($_SESSION['microUser'])) {
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li class="active"><a href="microblog.php">Home</a></li>
-                <li><a href="?logout=1"> <img src="<?php echo $user[0]['upload'];?>" class="profile-image img-circle"> Logout</a></li>
+                <li><a href="?logout=1"> <img src="<?php echo $user[0]['upload'];?>" class="nav-profile img-circle"> Logout</a></li>
             </ul>
         </div>
     </div>
@@ -57,7 +61,7 @@ if (isset($_SESSION['microUser'])) {
         <form id="createTweet" method="post">
             <div class="form-group">
                 <textarea class="form-control" name="tweet" id="tweet" rows="3" placeholder="Tweet status.. "></textarea>
-                <p style="display: inline-block">Total number of characters: </p><span style="display: inline-block" id="tweetCount">140</span>
+<!--                <p style="display: inline-block">Total number of characters: </p><span style="display: inline-block" id="tweetCount">140</span>-->
             </div>
             <div class="form-group">
                 <input class="form-control" type="hidden" name="hidden_id" value="<?php echo $user[0]['id'];?>">
@@ -69,21 +73,23 @@ if (isset($_SESSION['microUser'])) {
 
 <section class="row section2" >
     <div class="col-md-6 col-md-offset-3" id="showdata">
+            <?php foreach($userPosts as $userPost): ?>
             <article class="post">
                 <div class="info postByUser">
                     <div class="row">
                         <div class="col-md-2">
-<!--                            <a href="/profile/--><?php //echo h($post['User']['username']); ?><!--"><img src="--><?php //echo h($post['User']['upload']);?><!--" alt="sample profile pic" class="postImage"></a>-->
+                            <a href="/profile/<?php echo $userPost['username']; ?>"><img src="<?php echo $userPost['upload'];?>" alt="sample profile pic" class="postImage"></a>
                         </div>
                         <div class="col-md-6 userName">
-<!--                            <h4 >--><?php //echo __($post["User"]["username"]); ?><!--</h4>-->
-<!--                            <p>Posted on  --><?php //echo __($post['Post']['modified']); ?><!--</p>-->
+                            <h4 ><?php echo $userPost["username"]; ?></h4>
+                            <p>Posted on  <?php echo $userPost['modified']; ?></p>
                         </div>
                     </div>
                 </div>
-<!--                <p class="contentPost">--><?php //echo $post['Post']['status']; ?><!--</p>-->
+                <p class="contentPost"><?php echo $userPost['tweet']; ?></p>
                 <div class="clearfix"></div>
             </article>
+        <?php endforeach ?>
     </div>
 </section>
 

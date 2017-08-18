@@ -1,16 +1,38 @@
 $(document).ready(function(){
 
-    $('#tweet').on('keyup', function(e) {
-        var tweetCount = parseInt($('#tweetCount').html());
-
-        if($(e.keyCode === 8)){
-            $('#tweetCount').html(tweetCount+1);
-            return false;
-        }else{
-            $('#tweetCount').html(tweetCount-1);
+    $('#tweet').keyup(function () {
+        var maxLength = 140;
+        var text = $(this).val();
+        var textLength = text.length;
+        if (textLength > maxLength) {
+            $(this).val(text.substring(0, (maxLength)));
+            $('#alertMessage').addClass('alert-danger');
+            $('#alertMessage').html("Sorry, only " + maxLength + " characters are allowed").fadeIn().delay(2500).fadeOut('slow');
         }
 
     });
+    // $('#tweet').on('keyup', function(e) {
+    //     var tweetCount = parseInt($('#tweetCount').html());
+    //     // if($('#tweet').val() === '')
+    //     // {
+    //     //     if($(e.keyCode === 8)){
+    //     //        alert(1);
+    //     //     }
+    //     // }
+    //     $('#tweetCount').html(tweetCount-1);
+    //
+    //         // if(e.keyCode == 8) {
+    //         //     $('#tweetCount').html(tweetCount+1);
+    //         // }
+    //
+    //     // if($(e.keyCode === 8)){
+    //     //
+    //     //     return false;
+    //     // }else{
+    //     //
+    //     // }
+    //
+    // });
 
 
     $('#createTweet').on('click','#btnAdd',function(e){
@@ -33,7 +55,6 @@ $(document).ready(function(){
             $('#alertMessage').removeClass('alert-danger');
             result +='1';
         }
-
         if(result==='1'){
             $.ajax({
                 type: 'ajax',

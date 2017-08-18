@@ -15,5 +15,6 @@ $database->bind(':created',$datetime);
 $database->execute();
 if(!empty($database->lastInsertId())){
     $message['success'] = true;
+
 }
-echo json_encode($message);
+echo json_encode(array("message"=>$message));
