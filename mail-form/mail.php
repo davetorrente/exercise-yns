@@ -81,6 +81,10 @@ if(isset($_POST['contact-us']))
         $m->AddAddress('email.dummy009@gmail.com','Some one');
         if ($m->send()) {
             $thankMessage = "<p id='hideMe' class='alert-success text-center'>Thanks, we have your message and will reply soon.</p>";
+            $username = "";
+            $email= "";
+            $subject = "";
+            $message = "";
         }
     }
 }

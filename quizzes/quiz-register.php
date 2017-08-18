@@ -152,7 +152,7 @@ if(isset($_POST['register'])) {
     <title>Quiz Register</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link href="css/style.css" type="text/css" rel="stylesheet">
+    <link  rel="stylesheet" href="css/style.css"
 </head>
 <body>
 <div class="container-fluid">
