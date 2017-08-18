@@ -47,12 +47,10 @@ if(isset($_GET['page']))
     if($page=='' || $page == 1)
     {
         $page1 = 0;
-    }
-    else{
+    }else{
         $page1 = $page*10 -10;
     }
-}
-else{
+}else{
     $page1 = 0;
 }
 $database->query("SELECT COUNT(*) as totalPost FROM posts ORDER by modified DESC");

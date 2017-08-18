@@ -17,19 +17,16 @@ if(isset($_POST['register'])) {
     if(empty($username)) {
         $usernameError = "Username is required";
         $error++;
-    }
-    else {
+    }else {
         if(!ctype_alnum($username))
         {
             $usernameError = "Username must be alphanumeric characters";
             $error++;
-        }
-        else{
+        }else{
             if(strlen($username) <= '6') {
             $usernameError = "Your Username Must Contain At Least 6 Characters!";
             $error++;
-            }
-            else{
+            }else{
                 $database->query("SELECT username FROM users WHERE username = '$username'");
                 $usernameExist = $database->resultset();
                 if(!empty($usernameExist)){
@@ -43,14 +40,12 @@ if(isset($_POST['register'])) {
     if (empty($email)) {
         $emailError = "Email is required";
         $error++;
-    }
-    else {
+    }else {
         $regex = '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/';
         if (!preg_match($regex, $_POST["email"])) {
             $emailError = "Email is invalid";
             $error++;
-        }
-        else{
+        }else{
             $database->query("SELECT email FROM users WHERE email = '$email'");
             $emailExist = $database->resultset();
             if(!empty($emailExist)){
@@ -63,21 +58,25 @@ if(isset($_POST['register'])) {
     $cpassword = $_POST["cpassword"];
         if (strlen($_POST["password"]) <= '8') {
             $passwordError = "Your Password Must Contain At Least 8 Characters!";
+            $error++;
         }
         elseif(!preg_match("#[0-9]+#",$password)) {
             $passwordError = "Your Password Must Contain At Least 1 Number!";
+            $error++;
         }
         elseif(!preg_match("#[A-Z]+#",$password)) {
             $passwordError = "Your Password Must Contain At Least 1 Capital Letter!";
+            $error++;
         }
         elseif(!preg_match("#[a-z]+#",$password)) {
             $passwordError = "Your Password Must Contain At Least 1 Lowercase Letter!";
+            $error++;
         }
     }
     elseif(!empty($password)) {
         $confirmError = "Please Check You've Entered Or Confirmed Your Password!";
         $error++;
-    } else {
+    }else {
          $passwordError = "Password is required";
         $error++;
     }
@@ -89,8 +88,7 @@ if(isset($_POST['register'])) {
     if (empty($phone)) {
         $phoneError = "Phone number is required";
         $error++;
-    }
-    else{
+    }else{
         if(!preg_match("/^[0-9]{3}-[0-9]{4}-[0-9]{4}$/", $phone)) {
             $phoneError = "Phone is invalid";
             $error++;
@@ -99,8 +97,7 @@ if(isset($_POST['register'])) {
     if (empty($_POST["gender"])) {
         $genderError = "Gender is required";
         $error++;
-    }
-    else{
+    }else{
         if($_POST['gender'] == 'Male')
         {
              $male = $_POST['gender']; 

@@ -14,21 +14,18 @@ if(isset($_POST['login'])) {
     if(empty($_POST["username"])) {
         $usernameError = "Username is required";
         $error++;
-    }
-    else {
+    }else {
         if(!ctype_alnum($username))
         {
             $userError = "Username must be alphanumeric characters";
             $error++;
-        }
-        else{
+        }else{
             $database->query("SELECT username FROM users WHERE username = '$username'");
             $usernameExist = $database->resultset();
             if(empty($usernameExist)){
                 $usernameError = "Username not exist";
                 $error++;
-            }
-            else{
+            }else{
                 $database->query("SELECT password FROM users WHERE username = '$username'");
                 $passwordExist = $database->resultset();
                 if($passwordExist[0]['password'] <> md5($password))
@@ -42,8 +39,7 @@ if(isset($_POST['login'])) {
     if(empty($_POST["password"])) {
         $passwordError = "Password is required";
         $error++;
-    }
-    else {
+    }else {
         $password = $_POST["password"];
         $passwordlength = strlen($password);
         if($passwordlength < 6)

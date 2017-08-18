@@ -59,15 +59,19 @@ if(isset($_POST['register'])) {
         $cpassword = $_POST["cpassword"];
         if (strlen($_POST["password"]) <= '8') {
             $passwordError = "Your Password Must Contain At Least 8 Characters!";
+            $error++;
         }
         elseif(!preg_match("#[0-9]+#",$password)) {
             $passwordError = "Your Password Must Contain At Least 1 Number!";
+            $error++;
         }
         elseif(!preg_match("#[A-Z]+#",$password)) {
             $passwordError = "Your Password Must Contain At Least 1 Capital Letter!";
+            $error++;
         }
         elseif(!preg_match("#[a-z]+#",$password)) {
             $passwordError = "Your Password Must Contain At Least 1 Lowercase Letter!";
+            $error++;
         }
     }
     elseif(!empty($password)) {

@@ -1,4 +1,5 @@
 <?php
+require_once 'libs/phpmailer/PHPMailerAutoload.php';
 if(isset($_POST['contact-us']))
 {
     $error = 0;
@@ -6,23 +7,19 @@ if(isset($_POST['contact-us']))
     $email= htmlspecialchars($_POST["email"]);
     $subject = htmlspecialchars($_POST["subject"]);
     $message = htmlspecialchars($_POST['message']);
-    $email_to = "whaepekk@gmail.com";
-
     if(empty($username)) {
         $usernameError = ' <div class="alert alert-danger custom-alert" style="display:block">
                                        Username is required
                             </div>';
         $error++;
-    }
-    else {
+    }else {
         if(!ctype_alnum($username))
         {
             $usernameError = ' <div class="alert alert-danger custom-alert" style="display:block">
                                        Username must be alphanumeric characters
                                 </div>';
             $error++;
-        }
-        else{
+        }else{
             if(strlen($username) <= '6') {
                 $usernameError = '<div class="alert alert-danger custom-alert" style="display:block">
                                       Your Username Must Contain At Least 6 Characters!
@@ -36,8 +33,7 @@ if(isset($_POST['contact-us']))
                                        Email is required
                                 </div>';
         $error++;
-    }
-    else {
+    }else {
         $regex = '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/';
         if (!preg_match($regex, $email)) {
             $emailError = ' <div class="alert alert-danger custom-alert" style="display:block">
@@ -63,20 +59,33 @@ if(isset($_POST['contact-us']))
             $messageError = ' <div class="alert alert-danger custom-alert" style="display:block">
                                     "Your Message Must Contain At Least 10 Characters!
                                 </div>';
+            $error++;
         }
     }
-
     if($error == 0)
     {
-        $mailheader = "From: ".$_POST["email"]."\r\n";
-        mail("whaepekk@gmail.com", $subject, $message, $mailheader) or die ("Failure");
+        $m= new PHPMailer;
+        $m->isSMTP();
+        $m->SMTPAuth=true;
+        $m->Host='smtp.gmail.com';
+        $m->Username='email.dummy009@gmail.com';//replace with your email address
+        $m->Password='Davepogi0#';//replace with your password
+        $m->SMTPSecure='ssl';
+        $m->Port=465;
+
+        $m->isHTML();
+        $m->Subject = $subject;
+        $m->Body='From:'.$username.'('.$email.')<p>'.$message.'</p>';
+
+        $m->FromName='Contact';
+        $m->AddAddress('email.dummy009@gmail.com','Some one');
+        if ($m->send()) {
+            $thankMessage = "<p id='hideMe' class='alert-success text-center'>Thanks, we have your message and will reply soon.</p>";
+        }
     }
 }
 
-
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -88,10 +97,9 @@ if(isset($_POST['contact-us']))
 </head>
 <body>
 <div class="container">
-    <h2 class="text-center">Contact Us</h2>
-    <div class="errors">
-    </div>
+    <h4 class="text-center">Contact Us</h4>
     <form action="" class="contact-form" method="POST">
+        <?php echo isset($thankMessage) ? $thankMessage : ''; ?>
         <div class="form-group">
             <input type="text" name="username" id="username" class="username form-control" placeholder="Your Username"  value="<?php echo isset($username) ? $username : ''; ?>" autofocus>
             <i class="fa fa-user"></i>
@@ -129,7 +137,6 @@ if(isset($_POST['contact-us']))
             <span class="verify"><i class="fa fa-check" aria-hidden="true"></i></span>
             <?php echo isset($messageError) ? $messageError : ''; ?>
         </div>
-
         <div class="form-group">
             <input type="submit" name="contact-us" value="send" class="btn btn-success btn-block">
             <i class="fa fa-paper-plane send-icon"></i>
