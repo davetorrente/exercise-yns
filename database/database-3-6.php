@@ -2,11 +2,12 @@
 require "Database.php";
 $database = new Database();
 session_start();
+date_default_timezone_set("Asia/Manila");
 if (!isset($_SESSION['authUser']))
     header("Location: database-3-6-login.php");
 if(isset($_GET['logout']) == 1){
     session_destroy();
-    header("Location: database-3-6.php");
+    header("Location: database-3-6-login.php");
 }
 
 
@@ -21,8 +22,9 @@ if(isset($_POST['submit']))
     if($error==0)
     {
         $post = htmlspecialchars($_POST['post']);
-        $database->query('INSERT INTO posts (post) VALUES(:post)');
+        $database->query('INSERT INTO posts (post, created) VALUES(:post, :created)');
         $database->bind(':post',$post);
+        $database->bind(':created', date("Y-m-d H:i:s"));
         $database->execute();
     }
 }
@@ -72,7 +74,7 @@ if (isset($_SESSION['authUser'])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>database login</title>
+    <title>database dashboard</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href="css/dashboard.css" rel="stylesheet">

@@ -59,19 +59,15 @@ if(isset($_POST['register'])) {
         $cpassword = $_POST["cpassword"];
         if (strlen($_POST["password"]) <= '8') {
             $passwordError = "Your Password Must Contain At Least 8 Characters!";
-            $error++;
         }
         elseif(!preg_match("#[0-9]+#",$password)) {
             $passwordError = "Your Password Must Contain At Least 1 Number!";
-            $error++;
         }
         elseif(!preg_match("#[A-Z]+#",$password)) {
             $passwordError = "Your Password Must Contain At Least 1 Capital Letter!";
-            $error++;
         }
         elseif(!preg_match("#[a-z]+#",$password)) {
             $passwordError = "Your Password Must Contain At Least 1 Lowercase Letter!";
-            $error++;
         }
     }
     elseif(!empty($password)) {
@@ -79,6 +75,11 @@ if(isset($_POST['register'])) {
         $error++;
     } else {
         $passwordError = "Password is required";
+        $error++;
+    }
+    if(empty($_POST['cpassword']))
+    {
+        $confirmError = "Confirm Password is required";
         $error++;
     }
 
@@ -152,7 +153,7 @@ if(isset($_POST['register'])) {
     <title>Quiz Register</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link  rel="stylesheet" href="css/style.css"
+    <link href="css/style.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 <div class="container-fluid">

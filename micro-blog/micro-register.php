@@ -2,8 +2,8 @@
 require "Database.php";
 $database = new Database();
 session_start();
-if (isset($_SESSION['authUser']))
-    header("Location: database-3-6.php");
+if(isset($_SESSION['microUser']))
+    header("Location: microblog.php");
 $postform = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 if(isset($_POST['register'])) {
     $error = 0;
@@ -24,8 +24,8 @@ if(isset($_POST['register'])) {
             $error++;
         }else{
             if(strlen($username) <= '6') {
-            $usernameError = "Your Username Must Contain At Least 6 Characters!";
-            $error++;
+                $usernameError = "Your Username Must Contain At Least 6 Characters!";
+                $error++;
             }else{
                 $database->query("SELECT username FROM users WHERE username = '$username'");
                 $usernameExist = $database->resultset();
@@ -55,7 +55,7 @@ if(isset($_POST['register'])) {
         }
     }
     if(!empty($password) && ($password == $_POST["cpassword"])) {
-    $cpassword = $_POST["cpassword"];
+        $cpassword = $_POST["cpassword"];
         if (strlen($_POST["password"]) <= '8') {
             $passwordError = "Your Password Must Contain At Least 8 Characters!";
             $error++;
@@ -75,7 +75,7 @@ if(isset($_POST['register'])) {
         $confirmError = "Please Check You've Entered Or Confirmed Your Password!";
         $error++;
     }else {
-         $passwordError = "Password is required";
+        $passwordError = "Password is required";
         $error++;
     }
     if(empty($_POST['cpassword']))
@@ -103,10 +103,10 @@ if(isset($_POST['register'])) {
     }else{
         if($_POST['gender'] == 'Male')
         {
-             $male = $_POST['gender']; 
+            $male = $_POST['gender'];
         }
         else{
-        $female = $_POST['gender'];
+            $female = $_POST['gender'];
         }
     }
     if (empty($country)) {
@@ -149,10 +149,10 @@ if(isset($_POST['register'])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>database register</title>
+    <title>microblog register</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-     <link href="css/register.css" rel="stylesheet">
+    <link href="css/micro-register.css" rel="stylesheet" type="text/css">
 
 </head>
 <body>
@@ -164,12 +164,12 @@ if(isset($_POST['register'])) {
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="">Database Implementation</a>
+        <a class="navbar-brand" href="">MICRO BLOG</a>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="database-3-6.php">Home</a></li>
-                <li><a href="database-3-6-login.php">Login</a></li>
-                <li class="active"><a href="database-3-6-register.php">Register</a></li>
+                <li><a href="microblog.php">Home</a></li>
+                <li><a href="micro-login.php">Login</a></li>
+                <li class="active"><a href="micro-register.php">Register</a></li>
             </ul>
         </div>
     </div>
@@ -182,24 +182,24 @@ if(isset($_POST['register'])) {
             <label for="username" class="col-sm-3 control-label">User Name</label>
             <div class="col-sm-9">
                 <input type="text" id="username" name="username" class="form-control"  value="<?php echo isset($username) ? $username : ''; ?>" autofocus>
-                 <span style="color:red"><?php echo isset($usernameError) ? $usernameError : ''; ?></span>
-            </div>           
+                <span style="color:red"><?php echo isset($usernameError) ? $usernameError : ''; ?></span>
+            </div>
         </div>
         <div class="form-group">
             <label for="email" class="col-sm-3 control-label">Email</label>
             <div class="col-sm-9">
-                <input type="email" id="email" name="email" class="form-control" value="<?php echo isset($email) ? $email : ''; ?>"> 
-                 <span style="color:red"><?php echo isset($emailError) ? $emailError : ''; ?></span>
+                <input type="email" id="email" name="email" class="form-control" value="<?php echo isset($email) ? $email : ''; ?>">
+                <span style="color:red"><?php echo isset($emailError) ? $emailError : ''; ?></span>
             </div>
         </div>
         <div class="form-group">
             <label for="password" class="col-sm-3 control-label">Password</label>
             <div class="col-sm-9">
                 <input type="password" id="password" name="password" class="form-control">
-                 <span style="color:red"><?php echo isset($passwordError) ? $passwordError : ''; ?></span>
-            </div>      
+                <span style="color:red"><?php echo isset($passwordError) ? $passwordError : ''; ?></span>
+            </div>
         </div>
-         <div class="form-group">
+        <div class="form-group">
             <label for="password2" class="col-sm-3 control-label">Confirm Password</label>
             <div class="col-sm-9">
                 <input type="password" id="cpassword" name="cpassword"class="form-control">
@@ -210,7 +210,7 @@ if(isset($_POST['register'])) {
             <label for="description" class="col-sm-3 control-label">Description</label>
             <div class="col-sm-9">
                 <textarea class="form-control" rows="5" name="description" id="description"><?php echo isset($description) ? $description : ''; ?></textarea>
-                 <span style="color:red"><?php echo isset($descriptionError) ? $descriptionError : ''; ?></span>
+                <span style="color:red"><?php echo isset($descriptionError) ? $descriptionError : ''; ?></span>
             </div>
         </div>
         <div class="form-group">
@@ -218,7 +218,7 @@ if(isset($_POST['register'])) {
             <div class="col-sm-9">
                 <input class="form-control" type="text" name="phone" id="phone" value="<?php echo isset($phone) ? $phone : ''; ?>" placeholder="XXX-XXXX-XXXX">
                 <span style="color:red"><?php echo isset($phoneError) ? $phoneError : ''; ?></span>
-            </div>      
+            </div>
         </div>
         <div class="form-group">
             <label class="control-label col-sm-3">Gender</label>
@@ -226,7 +226,7 @@ if(isset($_POST['register'])) {
                 <div class="row">
                     <div class="col-sm-4">
                         <label class="radio-inline">
-                             <input type="radio" name="gender" value="Male" id="gender" <?php echo isset($male) ? 'checked' : '';?>>Male
+                            <input type="radio" name="gender" value="Male" id="gender" <?php echo isset($male) ? 'checked' : '';?>>Male
                         </label>
                     </div>
                     <div class="col-sm-4">
@@ -235,7 +235,7 @@ if(isset($_POST['register'])) {
                         </label>
                     </div>
                 </div>
-                 <span style="color:red; display: block;"><?php echo isset($genderError) ? $genderError : ''; ?></span>
+                <span style="color:red; display: block;"><?php echo isset($genderError) ? $genderError : ''; ?></span>
             </div>
         </div> <!-- /.form-group -->
         <div class="form-group">
@@ -987,17 +987,17 @@ if(isset($_POST['register'])) {
                     <option <?php if(isset($country)):
                         echo $country== 'Zimbabwe' ? "selected" : "";
                     endif; ?> value="Zimbabwe">Zimbabwe</option>
-                    </select>
-                     <span style="color:red"><?php echo isset($countryError) ? $countryError : ''; ?></span>
+                </select>
+                <span style="color:red"><?php echo isset($countryError) ? $countryError : ''; ?></span>
             </div>
-           
+
         </div> <!-- /.form-group -->
-         <div class="form-group">
+        <div class="form-group">
             <label for="upload" class="col-sm-3 control-label">Upload</label>
             <div class="col-sm-9">
-               <input class="form-control" type="file" name="upload" id="upload" value="<?php echo 1; ?>" >
-               <span style="color:red"><?php echo isset($uploadError) ? $uploadError : ''; ?></span>
-            </div> 
+                <input class="form-control" type="file" name="upload" id="upload" value="<?php echo 1; ?>" >
+                <span style="color:red"><?php echo isset($uploadError) ? $uploadError : ''; ?></span>
+            </div>
         </div>
         <div class="form-group">
             <div class="col-sm-9 col-sm-offset-3">

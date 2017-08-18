@@ -1,6 +1,7 @@
 <?php
 require "Database.php";
 $database = new Database();
+date_default_timezone_set("Asia/Manila");
 $datetime = date('Y-m-d H:i:s');
 $sqlUsers = "CREATE TABLE IF NOT ExISTS users (
 id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
@@ -82,6 +83,22 @@ created DATETIME NULL,
 modified DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 )";
 
+$sqlTweets = "CREATE TABLE IF NOT ExISTS tweets (
+id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+tweet TEXT NOT NULL,
+user_id INT(11) NOT NULL,
+created DATETIME NULL,
+modified DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)";
+
+$sqlFollows = "CREATE TABLE IF NOT ExISTS follows (
+id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+user_id INT(11) NOT NULL,
+follow_id INT(11) NOT NULL,
+isFollow BOOLEAN DEFAULT 0,
+created DATETIME NULL,
+modified DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+)";
 
 
 $database->query($sqlUsers);
@@ -105,6 +122,10 @@ $database->execute();
 $database->query($sqlAnswers);
 $database->execute();
 $database->query($sqlGrades);
+$database->execute();
+$database->query($sqlTweets);
+$database->execute();
+$database->query($sqlFollows);
 $database->execute();
 
 $sqlInsertPosts = ("INSERT IGNORE INTO `posts` (`id`, `post`, `created`) VALUES
