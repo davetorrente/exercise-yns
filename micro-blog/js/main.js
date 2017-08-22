@@ -62,8 +62,36 @@ $(document).ready(function(){
                 dataType: 'json',
                 success: function(data){
                     addTweet.val('');
-                    $('#alertMessage').addClass('alert-success');
-                    $('#alertMessage').html('Tweet Successfully Added!').fadeIn().delay(2500).fadeOut('slow');
+                    var html = '';
+                    if(data.message)
+                    {
+                        var query = data.query;
+                        console.log(query);
+                        $.each(query, function(index){
+                            html +=
+                                '<article class="post">'+
+                                    '<div class="info postByUser">'+
+                                        '<div class="row">'+
+                                            '<div class="col-md-2">'+
+                                                '<a href="/profile/'+query[index].username+'"><img class=" postImage" src="'+query[index].upload+'"></a>'+
+                                            '</div>'+
+                                            '<div class="col-md-6 userName">'+
+                                            '<h4>'+query[index].username+'</h4>'+
+                                            '<p>'+"Posted on "+query[index].created+'</p>'+
+                                            '</div>'+
+                                        '</div>'+
+                                    '</div>'+
+                                    '<p class="contentPost">'+query[index].tweet+'</p>'+
+                                    '<div class="clearfix"></div>'+
+                                '</article>';
+                            //
+                        });
+                        $('#alertMessage').addClass('alert-success');
+                        $('#alertMessage').html('Tweet Successfully Added!').fadeIn().delay(2500).fadeOut('slow');
+
+                        $('#showdata').prepend(html);
+
+                    }
                 },
                 error: function(){
                     alert('Could not add data');

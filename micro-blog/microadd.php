@@ -14,7 +14,10 @@ $database->bind(':user_id',$user_id);
 $database->bind(':created',$datetime);
 $database->execute();
 if(!empty($database->lastInsertId())){
+    $database->query('SELECT users.username, users.upload, tweets.id, tweets.tweet, tweets.created, tweets.modified FROM users INNER JOIN tweets ON users.id = tweets.user_id WHERE tweets.id = :id' );
+    $database->bind(':id', $database->lastInsertId());
+    $lastTweet = $database->resultset();
     $message['success'] = true;
-
+    echo json_encode(array("message"=>$message, "query"=> $lastTweet));
 }
-echo json_encode(array("message"=>$message));
+
