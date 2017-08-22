@@ -18,8 +18,8 @@ if (isset($_SESSION['microUser'])) {
 }
 $database->query("SELECT users.username, users.upload, tweets.id, tweets.user_id, tweets.tweet, tweets.created, tweets.modified FROM users INNER JOIN tweets ON users.id = tweets.user_id ORDER BY tweets.modified DESC");
 $userTweets = $database->resultset();
-?>
 
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,15 +39,17 @@ $userTweets = $database->resultset();
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="">Micro Blog</a>
+        <a class="navbar-brand" href="microblog.php">Micro Blog</a>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li class="active"><a href="microblog.php">Home</a></li>
-                <li><a href="?logout=1"> <img src="<?php echo $user[0]['upload'];?>" class="nav-profile img-circle"> Logout</a></li>
+                <li><a href="micro-profile.php?username=<?php echo $user[0]['username'];?>"><img src="<?php echo $user[0]['upload'];?>" class="nav-profile img-circle"> Profile</a></li>
+                <li><a href="?logout=1">Logout</a></li>
             </ul>
         </div>
     </div>
 </nav>
+<div class="container" id="mainDiv">
 <section class="row sectionUser">
     <div class="col-md-4 col-md-offset-4">
         <div class="alert" id="alertMessage" style="display: none;"></div>
@@ -71,11 +73,11 @@ $userTweets = $database->resultset();
     <div class="col-md-6 col-md-offset-3" id="showdata">
             <?php foreach($userTweets as $userTweet): ?>
             <article class="post">
-                <div class="alert" id="alertMessage" style="display: none;"></div>
+                <div class="alert alert-edit" id="alertMessage" style="display: none;"></div>
                 <div class="info postByUser">
                     <div class="row">
                         <div class="col-md-2">
-                            <a href="/profile/<?php echo $userTweet['username']; ?>"><img src="<?php echo $userTweet['upload'];?>" alt="sample profile pic" class="postImage"></a>
+                            <a href="micro-profile.php?username=<?php echo $userTweet['username']; ?>"><img src="<?php echo $userTweet['upload'];?>" alt="sample profile pic" class="postImage"></a>
                         </div>
                         <div class="col-md-6 userName">
                             <h4 ><?php echo $userTweet["username"]; ?></h4>
@@ -86,7 +88,7 @@ $userTweets = $database->resultset();
                 <p class="contentPost"><?php echo $userTweet['tweet']; ?></p>
                 <div class="clearfix"></div>
                 <div class="interaction tweet-interact">
-                    <a href="javascript:;" class="retweet">Retweet | </a>
+                    <a href="javascript:;" class="retweet"><i class="fa fa-retweet" id="iconRetweet" aria-hidden="true"></i> |</a>
                 <?php if($user[0]['id'] == $userTweet['user_id']): ?>
                     <a href="javascript:;"  class="tweet-edit" data="<?php echo $userTweet['id'];?>">Edit |</a>
                     <a href="javascript:;" class="tweet-delete" data="<?php echo $userTweet['id'];?>">Delete |</a>
@@ -96,7 +98,7 @@ $userTweets = $database->resultset();
         <?php endforeach ?>
     </div>
 </section>
-
+</div>
 
 </body>
 </html>

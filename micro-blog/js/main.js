@@ -74,10 +74,11 @@ $(document).ready(function(){
                         $.each(query, function(index){
                             html +=
                                 '<article class="post">'+
+                                    '<div class="alert alert-edit" id="alertMessage" style="display: none;"></div>'+
                                     '<div class="info postByUser">'+
                                         '<div class="row">'+
                                             '<div class="col-md-2">'+
-                                                '<a href="/profile/'+query[index].username+'"><img class=" postImage" src="'+query[index].upload+'"></a>'+
+                                                '<a href="micro-profile.php?username='+query[index].username+'"><img class=" postImage" src="'+query[index].upload+'"></a>'+
                                             '</div>'+
                                             '<div class="col-md-6 userName">'+
                                             '<h4>'+query[index].username+'</h4>'+
@@ -88,7 +89,7 @@ $(document).ready(function(){
                                     '<p class="contentPost">'+query[index].tweet+'</p>'+
                                     '<div class="clearfix"></div>'+
                                     ' <div class="interaction tweet-interact">'+
-                                        '<a href="javascript:;" class="retweet">Retweet | </a>'+
+                                        '<a href="javascript:;" class="retweet"><i class="fa fa-retweet" id="iconRetweet" aria-hidden="true"></i> |</a>'+
                                         ' <a href="javascript:;" class="tweet-edit" data="'+query[index].id+'">Edit | </a>'+
                                         '<a href="javascript:;" class="tweet-delete" data="'+query[index].id+'">Delete |</a>'+
                                     '</div>'+
@@ -118,12 +119,12 @@ $(document).ready(function(){
 
     $(document).on('click', '.tweet-delete', function(event){
         event.preventDefault();
-        $('#deleteModal').modal('show');
-        $('#deleteModal').find('.modal-body').text('Do you want to delete this Tweet?');
-        var id = $(this).attr('data');
         var $this = $(this);
         $('#deleteModal').modal('show');
-        $('#deleteModal').find('.modal-body').text('Are you sure you want to delete this comment?');
+        $('#deleteModal').find('.modal-body').text('Do you want to delete this Tweet?');
+        var id = $this.attr('data');
+        $('#deleteModal').modal('show');
+        $('#deleteModal').find('.modal-body').text('Are you sure you want to delete this tweet?');
         //prevent previous handler - unbind()
         $('#btnDelete').unbind().click(function(event){
             event.preventDefault();
@@ -135,7 +136,8 @@ $(document).ready(function(){
                 success: function(response){
                     if(response.success){
                         $('#deleteModal').modal('hide');
-                        sectionMessage.addClass('alert-success');
+                        sectionMessage.removeClass('alert-success');
+                        sectionMessage.addClass('alert-danger');
                         sectionMessage.html('Tweet Deleted successfully').fadeIn().delay(4000).fadeOut('slow');
                         $this.parent().parent().remove();
 
@@ -191,11 +193,12 @@ $(document).ready(function(){
                 {
                     if(response.message.success)
                     {
-                        $this.parent().parent().find('#alertMessage').addClass('alert-success');
-                        $this.parent().parent().find('#alertMessage').html('Tweet Successfully Edited!').fadeIn().delay(2500).fadeOut('slow')
-                        $this.parent().parent().find('#alertMessage').addClass('alert-success');
                         $('#editModal').modal('hide');
                         editTweet.val('');
+                        $this.parent().parent().find('#alertMessage').removeClass('alert-danger');
+                        $this.parent().parent().find('#alertMessage').addClass('alert-success');
+                        $this.parent().parent().find('#alertMessage').html('Tweet successfully Edited!').fadeIn().delay(2500).fadeOut('slow');
+
                         $(tweetElement).text(response.tweet);
                         $(modifiedDate).html("Posted on "+response.date);
                     }

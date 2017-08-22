@@ -39,8 +39,8 @@ article.post {
     padding: 30px;
     font-weight: bold;
     font-size: 25px;
-    width: auto;
-    overflow: hidden;
+    width: 100%;
+    word-break: break-all;
 }
 .postBadge {
     margin-left: 5px;
@@ -104,23 +104,4 @@ footer p {
 #commentArea p{
     font-size: 18px;
 
-}
-#eachImage
-{
-    display: inline-block;
-}
-#eachImage img
-{
-    max-width: 100px;
-    display: inline-block;
-    text-align: center;
-    max-height: 90px;
-    margin: 0 auto;
-    padding-bottom:8px;
-    border:1px solid #ccc;
-}
-#gallery {
-    clear: both;
-    content: '';
-    display: block;
 }
