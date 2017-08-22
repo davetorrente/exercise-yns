@@ -3,8 +3,6 @@ require "Database.php";
 
 $database = new Database();
 
-$postform = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
 $edit_id =  $_GET['id'];
 $post = '';
 $database->query('SELECT * FROM posts WHERE id = :id' );

@@ -1,13 +1,15 @@
 $(document).ready(function(){
 
+    var sectionMessage =  $('.sectionUser').find('#alertMessage');
+
     $('#tweet').keyup(function () {
         var maxLength = 140;
         var text = $(this).val();
         var textLength = text.length;
         if (textLength > maxLength) {
             $(this).val(text.substring(0, (maxLength)));
-            $('#alertMessage').addClass('alert-danger');
-            $('#alertMessage').html("Sorry, only " + maxLength + " characters are allowed").fadeIn().delay(2500).fadeOut('slow');
+            sectionMessage.addClass('alert-danger');
+            sectionMessage.html("Sorry, only " + maxLength + " characters are allowed").fadeIn().delay(2500).fadeOut('slow');
         }
 
     });
@@ -35,22 +37,26 @@ $(document).ready(function(){
     // });
     $('#createTweet').on('click','#btnAdd',function(e){
         e.preventDefault();
+        var $this = $(this);
         var addTweet = $('textarea[name=tweet]');
         var user_id = $('input[name=hidden_id]');
         var result = '';
         if(addTweet.val()===''){
             addTweet.parent().addClass('has-error');
-            $('#alertMessage').addClass('alert-danger');
-            $('#alertMessage').html('Tweet cannot be empty').fadeIn().delay(2500).fadeOut('slow');
+            sectionMessage.removeClass('alert-success');
+            sectionMessage.addClass('alert-danger');
+            sectionMessage.html('Tweet cannot be empty').fadeIn().delay(2500).fadeOut('slow');
         }
         else if(addTweet.val().length > 140){
             addTweet.parent().addClass('has-error');
-            $('#alertMessage').addClass('alert-danger');
-            $('#alertMessage').html('Tweet cannot be more than 140 characters').fadeIn().delay(2500).fadeOut('slow');
+            sectionMessage.removeClass('alert-success');
+            sectionMessage.addClass('alert-danger');
+            sectionMessage.html('Tweet cannot be more than 140 characters').fadeIn().delay(2500).fadeOut('slow');
         }
         else{
             addTweet.parent().removeClass('has-error');
-            $('#alertMessage').removeClass('alert-danger');
+            sectionMessage.removeClass('alert-success');
+            sectionMessage.removeClass('alert-danger');
             result +='1';
         }
         if(result==='1'){
@@ -75,7 +81,7 @@ $(document).ready(function(){
                                             '</div>'+
                                             '<div class="col-md-6 userName">'+
                                             '<h4>'+query[index].username+'</h4>'+
-                                            '<p>'+"Posted on "+query[index].created+'</p>'+
+                                            '<p>'+"Posted on "+query[index].modified+'</p>'+
                                             '</div>'+
                                         '</div>'+
                                     '</div>'+
@@ -83,24 +89,27 @@ $(document).ready(function(){
                                     '<div class="clearfix"></div>'+
                                     ' <div class="interaction tweet-interact">'+
                                         '<a href="javascript:;" class="retweet">Retweet | </a>'+
-                                        ' <a href="javascript:;" class="tweet-edit">Edit | </a>'+
+                                        ' <a href="javascript:;" class="tweet-edit" data="'+query[index].id+'">Edit | </a>'+
                                         '<a href="javascript:;" class="tweet-delete" data="'+query[index].id+'">Delete |</a>'+
                                     '</div>'+
                                 '</article>';
                         });
-                        $('#alertMessage').addClass('alert-success');
-                        $('#alertMessage').html('Tweet Successfully Added!').fadeIn().delay(2500).fadeOut('slow');
+                        sectionMessage.removeClass('alert-danger');
+                        sectionMessage.addClass('alert-success');
+                        sectionMessage.html('Tweet Successfully Added!').fadeIn().delay(2500).fadeOut('slow');
 
                         $('#showdata').prepend(html);
 
                     }else{
-                        $('#alertMessage').addClass('alert-danger');
-                        $('#alertMessage').html('Could not add data!').fadeIn().delay(2500).fadeOut('slow');
+                        sectionMessage.removeClass('alert-success');
+                        sectionMessage.addClass('alert-danger');
+                        sectionMessage.html('Could not add data!').fadeIn().delay(2500).fadeOut('slow');
                     }
                 },
                 error: function(){
-                    $('#alertMessage').addClass('alert-danger');
-                    $('#alertMessage').html('Could not add data!').fadeIn().delay(2500).fadeOut('slow');
+                    sectionMessage.removeClass('alert-success');
+                    sectionMessage.addClass('alert-danger');
+                    sectionMessage.html('Could not add data!').fadeIn().delay(2500).fadeOut('slow');
                 }
             });
         }
@@ -126,7 +135,8 @@ $(document).ready(function(){
                 success: function(response){
                     if(response.success){
                         $('#deleteModal').modal('hide');
-                        $('.alert-success').html('Tweet Deleted successfully').fadeIn().delay(2500).fadeOut('slow');
+                        sectionMessage.addClass('alert-success');
+                        sectionMessage.html('Tweet Deleted successfully').fadeIn().delay(4000).fadeOut('slow');
                         $this.parent().parent().remove();
 
                     }else{
@@ -139,6 +149,62 @@ $(document).ready(function(){
             });
         });
     });
+
+    $(document).on('click', '.tweet-edit', function(event){
+        event.preventDefault();
+       var sectionTweet =  $(this).parent().parent().find('#alertMessage');
+       var $this = $(this);
+        var id = $(this).attr('data');
+        var tweetElement = $(this).parent().parent().find('.contentPost');
+        var modifiedDate = $(this).parent().parent().find('.postByUser').children().find('.userName p');
+        var postBody = tweetElement.html();
+        var editTweet = $('#tweet-edit');
+        var result = '';
+        editTweet.val(postBody);
+        $('#editModal').modal('show');
+        $('#editModal').find('.modal-title').text('Edit Tweet');
+        $('#btnSave').unbind().click(function(){
+            if(editTweet.val()===''){
+                editTweet.parent().addClass('has-error');
+                $(this).parent().parent().find('#alertMessage').removeClass('alert-success');
+                $(this).parent().parent().find('#alertMessage').addClass('alert-danger');
+                $(this).parent().parent().find('#alertMessage').html('Tweet cannot be empty').fadeIn().delay(2500).fadeOut('slow');
+            }
+            else if(editTweet.val().length > 140){
+                editTweet.parent().addClass('has-error');
+                $(this).parent().parent().find('#alertMessage').removeClass('alert-success');
+                $(this).parent().parent().find('#alertMessage').addClass('alert-danger');
+                $(this).parent().parent().find('#alertMessage').html('Tweet cannot be more than 140 characters').fadeIn().delay(2500).fadeOut('slow');
+            }
+            else{
+                editTweet.parent().removeClass('has-error');
+                $(this).parent().parent().find('#alertMessage').removeClass('alert-danger');
+                result +='1';
+            }
+            if(result==='1') {
+                $.ajax({
+                    method: 'POST',
+                    url: 'micro-edit.php',
+                    data: {id: id, status: editTweet.val()},
+                    dataType: 'json'
+                }).done(function(response)
+                {
+                    if(response.message.success)
+                    {
+                        $this.parent().parent().find('#alertMessage').addClass('alert-success');
+                        $this.parent().parent().find('#alertMessage').html('Tweet Successfully Edited!').fadeIn().delay(2500).fadeOut('slow')
+                        $this.parent().parent().find('#alertMessage').addClass('alert-success');
+                        $('#editModal').modal('hide');
+                        editTweet.val('');
+                        $(tweetElement).text(response.tweet);
+                        $(modifiedDate).html("Posted on "+response.date);
+                    }
+                });
+            }
+        });
+    });
+
+
 
 
 

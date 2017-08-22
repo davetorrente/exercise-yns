@@ -1,6 +1,7 @@
 <?php
 require "Database.php";
 require "modals/delete-modal.php";
+require "modals/edit-modal.php";
 $database = new Database();
 session_start();
 if (!isset($_SESSION['microUser']))
@@ -15,7 +16,7 @@ if (isset($_SESSION['microUser'])) {
     $database->query("SELECT * FROM users WHERE username = '$userAuth'");
     $user = $database->resultset();
 }
-$database->query("SELECT users.username, users.upload, tweets.id, tweets.tweet, tweets.created, tweets.modified FROM users INNER JOIN tweets ON users.id = tweets.user_id ORDER BY tweets.modified DESC");
+$database->query("SELECT users.username, users.upload, tweets.id, tweets.user_id, tweets.tweet, tweets.created, tweets.modified FROM users INNER JOIN tweets ON users.id = tweets.user_id ORDER BY tweets.modified DESC");
 $userTweets = $database->resultset();
 ?>
 
@@ -47,15 +48,12 @@ $userTweets = $database->resultset();
         </div>
     </div>
 </nav>
-<section class="row posts">
+<section class="row sectionUser">
     <div class="col-md-4 col-md-offset-4">
-        <div class="alert" id="alertMessage" style="display: none;">
-        </div>
+        <div class="alert" id="alertMessage" style="display: none;"></div>
         <!-- Say Hi to the User by User Authentication -->
         <h3>Hi <?php echo $user[0]['username']; ?>.
         </h3>
-    </div>
-    <div class="col-md-4 col-md-offset-4">
         <form id="createTweet" method="post">
             <div class="form-group">
                 <textarea class="form-control" name="tweet" id="tweet" rows="3" placeholder="Your Tweet.."></textarea>
@@ -73,6 +71,7 @@ $userTweets = $database->resultset();
     <div class="col-md-6 col-md-offset-3" id="showdata">
             <?php foreach($userTweets as $userTweet): ?>
             <article class="post">
+                <div class="alert" id="alertMessage" style="display: none;"></div>
                 <div class="info postByUser">
                     <div class="row">
                         <div class="col-md-2">
@@ -88,8 +87,10 @@ $userTweets = $database->resultset();
                 <div class="clearfix"></div>
                 <div class="interaction tweet-interact">
                     <a href="javascript:;" class="retweet">Retweet | </a>
-                    <a href="javascript:;"  class="tweet-edit">Edit |</a>
+                <?php if($user[0]['id'] == $userTweet['user_id']): ?>
+                    <a href="javascript:;"  class="tweet-edit" data="<?php echo $userTweet['id'];?>">Edit |</a>
                     <a href="javascript:;" class="tweet-delete" data="<?php echo $userTweet['id'];?>">Delete |</a>
+                <?php endif; ?>
                 </div>
             </article>
         <?php endforeach ?>
