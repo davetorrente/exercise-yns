@@ -17,8 +17,9 @@ if (isset($_SESSION['microUser'])) {
     $database->query("SELECT * FROM users WHERE username = '$userAuth'");
     $user = $database->resultset();
 }
-$database->query("SELECT users.username, users.upload, tweets.id, tweets.user_id, tweets.tweet, tweets.created, tweets.modified FROM users INNER JOIN tweets ON users.id = tweets.user_id ORDER BY tweets.modified DESC");
+$database->query("SELECT users.username, users.upload, tweets.id, tweets.user_id, tweets.tweet, tweets.created, tweets.modified, tweets.isRetweet FROM users INNER JOIN tweets ON users.id = tweets.user_id ORDER BY tweets.modified DESC");
 $userTweets = $database->resultset();
+
 
 ?>
 <!DOCTYPE html>
@@ -52,7 +53,7 @@ $userTweets = $database->resultset();
 </nav>
 <div class="container" id="mainDiv">
 <section class="row sectionUser">
-    <div class="col-md-4 col-md-offset-4">
+    <div class="col-md-6 col-md-offset-3">
         <div class="alert" id="alertMessage" style="display: none;"></div>
         <!-- Say Hi to the User by User Authentication -->
         <h3>Hi <?php echo $user[0]['username']; ?>.
@@ -89,14 +90,16 @@ $userTweets = $database->resultset();
                 <p class="contentPost"><?php echo $userTweet['tweet']; ?></p>
                 <div class="clearfix"></div>
                 <div class="interaction tweet-interact" user_id="<?php echo $userTweet['user_id']; ?>" tweet_id="<?php echo $userTweet['id']; ?>">
-                    <a href="javascript:;" class="retweet"><i class="fa fa-retweet" id="iconRetweet" aria-hidden="true"></i> |</a>
-                <?php if($user[0]['id'] == $userTweet['user_id']): ?>
+
+                <?php if($user[0]['id'] != $userTweet['user_id']): ?>
+                    <a href="javascript:;" class="retweet"><i class="fa fa-retweet" id="iconRetweet" aria-hidden="true" <?php echo $userTweet['isRetweet'] ? "style=color:red;" : '';?> ></i> |</a>
+                <?php else: ?>
                     <a href="javascript:;"  class="tweet-edit">Edit |</a>
                     <a href="javascript:;" class="tweet-delete">Delete |</a>
                 <?php endif; ?>
                 </div>
             </article>
-        <?php endforeach ?>
+            <?php endforeach ?>
     </div>
 </section>
 </div>

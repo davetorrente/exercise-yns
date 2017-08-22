@@ -10,7 +10,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" id="btnReweet" class="btn btn-info">Retweet</button>
+                <button type="button" id="btnRetweet" class="btn btn-info">Retweet</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

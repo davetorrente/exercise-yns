@@ -71,7 +71,7 @@ if(isset($_GET['username'])){
             <?php endif; ?>
         </h1>
         <section class="row sectionUser">
-            <div class="col-md-4 col-md-offset-4">
+            <div class="col-md-6 col-md-offset-3">
                 <div class="alert" id="alertMessage" style="display: none;"></div>
                 <?php if($userInfos[0]['username'] == $_SESSION['microUser']): ?>
                     <form id="createTweet" method="post">
