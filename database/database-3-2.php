@@ -100,6 +100,15 @@ created DATETIME NULL,
 modified DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 )";
 
+$sqlRetweets = "CREATE TABLE IF NOT ExISTS retweets (
+id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+tweet_id INT(11) NOT NULL,
+user_id INT(11) NOT NULL,
+retweet TEXT NOT NULL,
+isRetweet BOOLEAN DEFAULT 0,
+created DATETIME NULL,
+modified DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+)";
 
 $database->query($sqlUsers);
 $database->execute();
@@ -126,6 +135,8 @@ $database->execute();
 $database->query($sqlTweets);
 $database->execute();
 $database->query($sqlFollows);
+$database->execute();
+$database->query($sqlRetweets);
 $database->execute();
 
 $sqlInsertPosts = ("INSERT IGNORE INTO `posts` (`id`, `post`, `created`) VALUES
@@ -243,4 +254,13 @@ $database->query($sqlInsertAnswers);
 $database->execute();
 
 
-echo "SUCCESS CREATING users, posts, customers, departments, employees, employee_positions, orders, positions, questions tables" . "<br/>";
+echo "SUCCESS CREATING users, posts, customers, departments, employees, employee_positions, orders, positions, questions, answers, grades, tweets, follows, retweets" . "<br/>";
+$database->query($sqlAnswers);
+$database->execute();
+$database->query($sqlGrades);
+$database->execute();
+$database->query($sqlTweets);
+$database->execute();
+$database->query($sqlFollows);
+$database->execute();
+$database->query($sqlRetweets);

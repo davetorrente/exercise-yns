@@ -88,10 +88,10 @@ $(document).ready(function(){
                                     '</div>'+
                                     '<p class="contentPost">'+query[index].tweet+'</p>'+
                                     '<div class="clearfix"></div>'+
-                                    ' <div class="interaction tweet-interact">'+
+                                    ' <div class="interaction tweet-interact" user_id="'+user_id.val()+'" tweet_id="'+query[index].id+'">'+
                                         '<a href="javascript:;" class="retweet"><i class="fa fa-retweet" id="iconRetweet" aria-hidden="true"></i> |</a>'+
-                                        ' <a href="javascript:;" class="tweet-edit" data="'+query[index].id+'">Edit | </a>'+
-                                        '<a href="javascript:;" class="tweet-delete" data="'+query[index].id+'">Delete |</a>'+
+                                        ' <a href="javascript:;" class="tweet-edit">Edit | </a>'+
+                                        '<a href="javascript:;" class="tweet-delete">Delete |</a>'+
                                     '</div>'+
                                 '</article>';
                         });
@@ -120,11 +120,8 @@ $(document).ready(function(){
     $(document).on('click', '.tweet-delete', function(event){
         event.preventDefault();
         var $this = $(this);
+        var id = $this.parent().attr('tweet_id');
         $('#deleteModal').modal('show');
-        $('#deleteModal').find('.modal-body').text('Do you want to delete this Tweet?');
-        var id = $this.attr('data');
-        $('#deleteModal').modal('show');
-        $('#deleteModal').find('.modal-body').text('Are you sure you want to delete this tweet?');
         //prevent previous handler - unbind()
         $('#btnDelete').unbind().click(function(event){
             event.preventDefault();
@@ -154,9 +151,9 @@ $(document).ready(function(){
 
     $(document).on('click', '.tweet-edit', function(event){
         event.preventDefault();
-       var sectionTweet =  $(this).parent().parent().find('#alertMessage');
-       var $this = $(this);
-        var id = $(this).attr('data');
+        var sectionTweet =  $(this).parent().parent().find('#alertMessage');
+        var $this = $(this);
+        var id = $this.parent().attr('tweet_id');
         var tweetElement = $(this).parent().parent().find('.contentPost');
         var modifiedDate = $(this).parent().parent().find('.postByUser').children().find('.userName p');
         var postBody = tweetElement.html();
@@ -206,6 +203,35 @@ $(document).ready(function(){
             }
         });
     });
+    $(document).on("click",".retweet",function(event){
+        event.preventDefault();
+        var $this = $(this);
+        var tweetElement = $(this).parent().parent().find('.contentPost').html();
+        $this.parent().find('.comment-interact');
+        var userId = $this.parent().attr("user_id");
+        var tweetId =  $this.parent().attr("tweet_id");
+        $('#retweetModal').modal('show');
+        $('#btnReweet').unbind().click(function() {
+            $.ajax({
+                method: 'POST',
+                url: 'micro-retweet.php',
+                data:{
+                    user_id: userId,
+                    tweet_id: tweetId,
+                    retweet: tweetElement
+                },
+                dataType: 'json'
+            }).done(function(response){
+                $('#retweetModal').modal('hide');
+                if(response.isRetweet)
+                {
+                    $this.children().css("color","red");
+                }
+            });
+        });
+
+    });
+
 
 
 

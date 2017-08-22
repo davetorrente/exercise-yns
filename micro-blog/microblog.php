@@ -2,6 +2,7 @@
 require "Database.php";
 require "modals/delete-modal.php";
 require "modals/edit-modal.php";
+require "modals/retweet-modal.php";
 $database = new Database();
 session_start();
 if (!isset($_SESSION['microUser']))
@@ -87,11 +88,11 @@ $userTweets = $database->resultset();
                 </div>
                 <p class="contentPost"><?php echo $userTweet['tweet']; ?></p>
                 <div class="clearfix"></div>
-                <div class="interaction tweet-interact">
+                <div class="interaction tweet-interact" user_id="<?php echo $userTweet['user_id']; ?>" tweet_id="<?php echo $userTweet['id']; ?>">
                     <a href="javascript:;" class="retweet"><i class="fa fa-retweet" id="iconRetweet" aria-hidden="true"></i> |</a>
                 <?php if($user[0]['id'] == $userTweet['user_id']): ?>
-                    <a href="javascript:;"  class="tweet-edit" data="<?php echo $userTweet['id'];?>">Edit |</a>
-                    <a href="javascript:;" class="tweet-delete" data="<?php echo $userTweet['id'];?>">Delete |</a>
+                    <a href="javascript:;"  class="tweet-edit">Edit |</a>
+                    <a href="javascript:;" class="tweet-delete">Delete |</a>
                 <?php endif; ?>
                 </div>
             </article>
