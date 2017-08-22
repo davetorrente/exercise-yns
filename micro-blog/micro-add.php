@@ -4,7 +4,6 @@ $database = new Database();
 date_default_timezone_set("Asia/Manila");
 $datetime = date('Y-m-d H:i:s');
 session_start();
-$error = '';
 $message['success'] = false;
 $user_id = htmlspecialchars($_POST['user_id']);
 $tweet  = htmlspecialchars($_POST['tweet']);

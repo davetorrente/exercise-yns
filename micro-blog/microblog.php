@@ -1,5 +1,6 @@
 <?php
 require "Database.php";
+require "modals/delete-modal.php";
 $database = new Database();
 session_start();
 if (!isset($_SESSION['microUser']))
@@ -15,10 +16,7 @@ if (isset($_SESSION['microUser'])) {
     $user = $database->resultset();
 }
 $database->query("SELECT users.username, users.upload, tweets.id, tweets.tweet, tweets.created, tweets.modified FROM users INNER JOIN tweets ON users.id = tweets.user_id ORDER BY tweets.modified DESC");
-$userPosts = $database->resultset();
-
-
-
+$userTweets = $database->resultset();
 ?>
 
 <!DOCTYPE html>
@@ -73,21 +71,26 @@ $userPosts = $database->resultset();
 
 <section class="row section2" >
     <div class="col-md-6 col-md-offset-3" id="showdata">
-            <?php foreach($userPosts as $userPost): ?>
+            <?php foreach($userTweets as $userTweet): ?>
             <article class="post">
                 <div class="info postByUser">
                     <div class="row">
                         <div class="col-md-2">
-                            <a href="/profile/<?php echo $userPost['username']; ?>"><img src="<?php echo $userPost['upload'];?>" alt="sample profile pic" class="postImage"></a>
+                            <a href="/profile/<?php echo $userTweet['username']; ?>"><img src="<?php echo $userTweet['upload'];?>" alt="sample profile pic" class="postImage"></a>
                         </div>
                         <div class="col-md-6 userName">
-                            <h4 ><?php echo $userPost["username"]; ?></h4>
-                            <p>Posted on  <?php echo $userPost['modified']; ?></p>
+                            <h4 ><?php echo $userTweet["username"]; ?></h4>
+                            <p>Posted on  <?php echo $userTweet['modified']; ?></p>
                         </div>
                     </div>
                 </div>
-                <p class="contentPost"><?php echo $userPost['tweet']; ?></p>
+                <p class="contentPost"><?php echo $userTweet['tweet']; ?></p>
                 <div class="clearfix"></div>
+                <div class="interaction tweet-interact">
+                    <a href="javascript:;" class="retweet">Retweet | </a>
+                    <a href="javascript:;"  class="tweet-edit">Edit |</a>
+                    <a href="javascript:;" class="tweet-delete" data="<?php echo $userTweet['id'];?>">Delete |</a>
+                </div>
             </article>
         <?php endforeach ?>
     </div>
@@ -99,4 +102,5 @@ $userPosts = $database->resultset();
 <script src="http://code.jquery.com/jquery-3.2.1.min.js"
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
         crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src="js/main.js"></script>

@@ -55,18 +55,16 @@ $(document).ready(function(){
         }
         if(result==='1'){
             $.ajax({
-                type: 'ajax',
                 method: 'post',
-                url: 'microadd.php',
+                url: 'micro-add.php',
                 data: {tweet: addTweet.val(), user_id: user_id.val()},
                 dataType: 'json',
-                success: function(data){
+                success: function(response){
                     addTweet.val('');
                     var html = '';
-                    if(data.message)
+                    if(response.message)
                     {
-                        var query = data.query;
-                        console.log(query);
+                        var query = response.query;
                         $.each(query, function(index){
                             html +=
                                 '<article class="post">'+
@@ -83,21 +81,65 @@ $(document).ready(function(){
                                     '</div>'+
                                     '<p class="contentPost">'+query[index].tweet+'</p>'+
                                     '<div class="clearfix"></div>'+
+                                    ' <div class="interaction tweet-interact">'+
+                                        '<a href="javascript:;" class="retweet">Retweet | </a>'+
+                                        ' <a href="javascript:;" class="tweet-edit">Edit | </a>'+
+                                        '<a href="javascript:;" class="tweet-delete" data="'+query[index].id+'">Delete |</a>'+
+                                    '</div>'+
                                 '</article>';
-                            //
                         });
                         $('#alertMessage').addClass('alert-success');
                         $('#alertMessage').html('Tweet Successfully Added!').fadeIn().delay(2500).fadeOut('slow');
 
                         $('#showdata').prepend(html);
 
+                    }else{
+                        $('#alertMessage').addClass('alert-danger');
+                        $('#alertMessage').html('Could not add data!').fadeIn().delay(2500).fadeOut('slow');
                     }
                 },
                 error: function(){
-                    alert('Could not add data');
+                    $('#alertMessage').addClass('alert-danger');
+                    $('#alertMessage').html('Could not add data!').fadeIn().delay(2500).fadeOut('slow');
                 }
             });
         }
 
     });
+
+    $(document).on('click', '.tweet-delete', function(event){
+        event.preventDefault();
+        $('#deleteModal').modal('show');
+        $('#deleteModal').find('.modal-body').text('Do you want to delete this Tweet?');
+        var id = $(this).attr('data');
+        var $this = $(this);
+        $('#deleteModal').modal('show');
+        $('#deleteModal').find('.modal-body').text('Are you sure you want to delete this comment?');
+        //prevent previous handler - unbind()
+        $('#btnDelete').unbind().click(function(event){
+            event.preventDefault();
+            $.ajax({
+                method: 'POST',
+                url: 'micro-delete.php',
+                data: {id: id},
+                dataType: 'json',
+                success: function(response){
+                    if(response.success){
+                        $('#deleteModal').modal('hide');
+                        $('.alert-success').html('Tweet Deleted successfully').fadeIn().delay(2500).fadeOut('slow');
+                        $this.parent().parent().remove();
+
+                    }else{
+                        alert('Error');
+                    }
+                },
+                error: function(){
+                    alert('Error deleting');
+                }
+            });
+        });
+    });
+
+
+
 });
