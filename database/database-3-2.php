@@ -100,15 +100,6 @@ created DATETIME NULL,
 modified DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 )";
 
-$sqlRetweets = "CREATE TABLE IF NOT ExISTS retweets (
-id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
-tweet_id INT(11) NOT NULL,
-user_id INT(11) NOT NULL,
-retweet TEXT NOT NULL,
-isRetweet BOOLEAN DEFAULT 0,
-created DATETIME NULL,
-modified DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
-)";
 
 $database->query($sqlUsers);
 $database->execute();
@@ -136,8 +127,7 @@ $database->query($sqlTweets);
 $database->execute();
 $database->query($sqlFollows);
 $database->execute();
-$database->query($sqlRetweets);
-$database->execute();
+
 
 $sqlInsertPosts = ("INSERT IGNORE INTO `posts` (`id`, `post`, `created`) VALUES
 (1, 'dummy1', '$datetime'),

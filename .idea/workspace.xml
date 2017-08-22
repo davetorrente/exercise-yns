@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="21fc073c-5523-4dae-b2fe-c45f5b229797" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/micro-blog/js/main.js" afterPath="$PROJECT_DIR$/micro-blog/js/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/micro-blog/micro-profile.php" afterPath="$PROJECT_DIR$/micro-blog/micro-profile.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/micro-blog/micro-retweet.php" afterPath="$PROJECT_DIR$/micro-blog/micro-retweet.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/micro-blog/microblog.php" afterPath="$PROJECT_DIR$/micro-blog/microblog.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/micro-blog/modals/retweet-modal.php" afterPath="$PROJECT_DIR$/micro-blog/modals/retweet-modal.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,8 +17,8 @@
       <file leaf-file-name="microblog.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/micro-blog/microblog.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="19" column="145" lean-forward="false" selection-start-line="19" selection-start-column="145" selection-end-line="19" selection-end-column="145" />
+            <state relative-caret-position="119">
+              <caret line="31" column="72" lean-forward="false" selection-start-line="31" selection-start-column="72" selection-end-line="31" selection-end-column="72" />
               <folding>
                 <marker date="1503400112188" expanded="true" signature="456:504" ph="SELECT * FRO... users" />
                 <marker date="1503400112188" expanded="true" signature="564:779" ph="SELECT users... users" />
@@ -425,16 +420,15 @@
       <workItem from="1503031369093" duration="8418000" />
       <workItem from="1503042444062" duration="11825000" />
       <workItem from="1503363052806" duration="32574000" />
-      <workItem from="1503397778258" duration="2324000" />
+      <workItem from="1503397778258" duration="2710000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="326258000" />
+    <option name="totallyTimeSpent" value="326644000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1378" height="744" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21623673" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -443,7 +437,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28150573" sideWeight="0.4969651" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28150573" sideWeight="0.4969651" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -898,8 +892,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/micro-blog/microblog.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="19" column="145" lean-forward="false" selection-start-line="19" selection-start-column="145" selection-end-line="19" selection-end-column="145" />
+        <state relative-caret-position="119">
+          <caret line="31" column="72" lean-forward="false" selection-start-line="31" selection-start-column="72" selection-end-line="31" selection-end-column="72" />
           <folding>
             <marker date="1503400112188" expanded="true" signature="456:504" ph="SELECT * FRO... users" />
             <marker date="1503400112188" expanded="true" signature="564:779" ph="SELECT users... users" />
