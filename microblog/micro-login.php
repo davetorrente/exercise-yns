@@ -3,7 +3,7 @@ require "Database.php";
 $database = new Database();
 session_start();
 if (isset($_SESSION['microUser'])){
-    header("Location: microblog.php");
+    header("Location: micro-blog.php");
 }
 $postform = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 if(isset($_POST['login'])) {
@@ -54,7 +54,7 @@ if(isset($_POST['login'])) {
         $username = "";
         $password = "";
         $_SESSION['microUser'] = $_POST["username"];
-        header("Location: microblog.php");
+        header("Location: micro-blog.php");
     }
 }
 ?>

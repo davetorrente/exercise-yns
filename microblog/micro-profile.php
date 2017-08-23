@@ -1,4 +1,5 @@
 <?php
+//a
 require "Database.php";
 require "modals/delete-modal.php";
 require "modals/edit-modal.php";
@@ -11,16 +12,16 @@ if(isset($_GET['logout']) == 1) {
     session_destroy();
     header("Location: micro-login.php");
 }
-//if (isset($_SESSION['microUser'])) {
-//    $userAuth = $_SESSION['microUser'];
-//    $database->query("SELECT * FROM users WHERE username = '$userAuth'");
-//    $user = $database->resultset();
-//}
+if (isset($_SESSION['microUser'])) {
+    $userAuth = $_SESSION['microUser'];
+    $database->query("SELECT * FROM users WHERE username = '$userAuth'");
+    $user = $database->resultset();
+}
 if(isset($_GET['username'])){
     $userProfile= $_GET['username'];
     $database->query("SELECT * FROM users where username='$userProfile'");
     $userInfos = $database->resultset();
-    $database->query("SELECT users.username, users.upload, tweets.id, tweets.user_id, tweets.tweet, tweets.created, tweets.modified FROM users INNER JOIN tweets ON users.id = tweets.user_id WHERE users.username='$userProfile' ORDER BY tweets.modified DESC ");
+    $database->query("SELECT users.username, users.upload, tweets.id, tweets.user_id, tweets.tweet, tweets.created, tweets.modified, tweets.isRetweet  FROM users INNER JOIN tweets ON users.id = tweets.user_id WHERE users.username='$userProfile' ORDER BY tweets.modified DESC ");
     $profileTweets = $database->resultset();
 }
 ?>
@@ -87,7 +88,6 @@ if(isset($_GET['username'])){
                 <?php endif; ?>
             </div>
         </section>
-
         <section class="row">
             <div class="col-md-6 col-md-offset-3" id="showdata">
                 <div class="alert" id="alertMessage" style="display: none;"></div>
@@ -107,8 +107,9 @@ if(isset($_GET['username'])){
                         <p class="contentPost"><?php echo $profileTweet['tweet']; ?></p>
 
                         <div class="interaction comment-interact">
-                            <a href="javascript:;" class="retweet"><i class="fa fa-retweet" id="iconRetweet" aria-hidden="true"></i> |</a>
-                            <?php if($userInfos[0]['username'] == $_SESSION['microUser']): ?>
+                            <?php if($user[0]['id'] != $profileTweet['user_id']): ?>
+                                <a href="javascript:;" class="retweet"><i class="fa fa-retweet" id="iconRetweet" aria-hidden="true" <?php echo $profileTweet['isRetweet'] ? "style=color:red;" : '';?> ></i> |</a>
+                            <?php else: ?>
                                 <a href="javascript:;"  class="tweet-edit">Edit |</a>
                                 <a href="javascript:;" class="tweet-delete">Delete |</a>
                             <?php endif; ?>
