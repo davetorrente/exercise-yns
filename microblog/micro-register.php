@@ -128,7 +128,6 @@ if(isset($_POST['register'])) {
         $ext = substr(strtolower(strrchr($file['name'], '.')), 1);
         if(in_array($ext, $arr_ext))
         {
-
             $time = date("d-m-Y")."-".time() ;
             $newFile = '/microblog/profile-img/' .$time."-".$file['name'];
             move_uploaded_file($file['tmp_name'], $_SERVER["DOCUMENT_ROOT"]. $newFile);
@@ -154,7 +153,6 @@ if(isset($_POST['register'])) {
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href="css/micro-register.css" rel="stylesheet" type="text/css">
-
 </head>
 <body>
 <nav class="navbar navbar-default">
