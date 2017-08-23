@@ -1,9 +1,6 @@
 <?php
 require "Database.php";
-
 $database = new Database();
-
-
 $edit_id =  $_GET['id'];
 $post = '';
 $database->query('SELECT * FROM posts WHERE id = :id' );
@@ -63,7 +60,6 @@ if(isset($_POST['editsubmit']))
         </div>
     </div>
 </div>
-
 <!--</div>-->
 </body>
 <script src="http://code.jquery.com/jquery-3.2.1.min.js"

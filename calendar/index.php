@@ -15,26 +15,13 @@
     </div>
 
 </div>
-
-
-    <?php
-    include 'MyCalendar.php';
-    $daysOfWeek = array("Mon","Tue","Wed","Thu","Fri","Sat","Sun");
-
-//    echo date('t',strtotime('2017-08-01'));
-//    $month = "08";
-//    $daysInMonths = '31';
-//    $monthEndingDay= date('N',strtotime('2017-08-31'));
-//    $monthStartDay= date('N',strtotime('2017-08-01'));
-//    echo $monthEndingDay;
-//    echo $monthStartDay;
-//    $daysOfWeek = array(
-    //"Sun","Mon","Tue","Wed","Thu","Fri","Sat");
-//    echo count($daysOfWeek);
-    $naviHref = htmlentities($_SERVER['PHP_SELF']);
-    $calendar = new MyCalendar($naviHref);
-    echo $calendar->show();
-    ?>
+<?php
+include 'MyCalendar.php';
+$daysOfWeek = array("Mon","Tue","Wed","Thu","Fri","Sat","Sun");
+$naviHref = htmlentities($_SERVER['PHP_SELF']);
+$calendar = new MyCalendar($naviHref);
+echo $calendar->show();
+?>
 </body>
 <script src="http://code.jquery.com/jquery-3.2.1.min.js"
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="

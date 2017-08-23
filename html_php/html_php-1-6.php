@@ -2,12 +2,12 @@
 if(isset($_POST['userinfo']))
 {
     $arrayInfo = array(
-        'username' => $_POST["username"],
-        'email' => $_POST["email"],
-        'description' => $_POST["description"],
-        'phone' => $_POST["phone"],
-        'gender' => $_POST["gender"],
-        'country' => $_POST["country"]
+        'username' => htmlspecialchars($_POST["username"]),
+        'email' => htmlspecialchars($_POST["email"]),
+        'description' => htmlspecialchars($_POST["description"]),
+        'phone' => htmlspecialchars($_POST["phone"]),
+        'gender' => htmlspecialchars($_POST["gender"]),
+        'country' => htmlspecialchars($_POST["country"])
     );
     $arrayInfo = http_build_query($arrayInfo);
     header("Location: html_php-1.6.2.php?$arrayInfo");

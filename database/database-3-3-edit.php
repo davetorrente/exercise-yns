@@ -1,8 +1,6 @@
 <?php
 require "Database.php";
-
 $database = new Database();
-
 $edit_id =  $_GET['id'];
 $post = '';
 $database->query('SELECT * FROM posts WHERE id = :id' );

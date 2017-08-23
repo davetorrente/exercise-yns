@@ -39,8 +39,6 @@ if(($_POST['type']=='forRetweet'))
 if(($_POST['type']=='forDelete'))
 {
     $sessionUserID = $user[0]['id'];
-//    $database->query("SELECT tweets.id FROM tweets WHERE user_id = '$sessionUserID' AND parent_tweet = '$tweetId'");
-//    $tweetDeleteID = $database->resultset();
     $database->query("SELECT isRetweet FROM tweets WHERE id='$tweetId' AND user_id='$userId'");
     $findTweet = $database->resultset();
     if($findTweet[0]['isRetweet'])

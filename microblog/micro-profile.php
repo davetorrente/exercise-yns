@@ -1,5 +1,4 @@
 <?php
-//a
 require "Database.php";
 require "modals/delete-modal.php";
 require "modals/edit-modal.php";
@@ -28,7 +27,6 @@ if(isset($_GET['username'])){
     $totalFollows = $database->resultset();
     $database->query("SELECT isFollow FROM follows WHERE user_id='$sessionUserID' AND follow_id='$userProfileID'");
     $followName = $database->resultset();
-
     $database->query("SELECT users.username, users.upload, tweets.id, tweets.user_id, tweets.tweet, tweets.created, tweets.modified, tweets.isRetweet  FROM users INNER JOIN tweets ON users.id = tweets.user_id WHERE users.username='$userProfile' ORDER BY tweets.modified DESC ");
     $profileTweets = $database->resultset();
 }
@@ -56,7 +54,7 @@ if(isset($_GET['username'])){
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="micro-blog.php">Home</a></li>
-                <li class="active"><a href="micro-profile.php?username=<?php echo $user[0]['username'];?>"><img src="<?php echo $user[0]['upload'];?>" class="nav-profile img-circle"> Profile</a></li>
+                <li class="active"><a href="micro-profile.php?username=<?php echo htmlspecialchars($user[0]['username']);?>"><img src="<?php echo htmlspecialchars($user[0]['upload']);?>" class="nav-profile img-circle"> Profile</a></li>
                 <li><a href="?logout=1">Logout</a></li>
             </ul>
         </div>
@@ -66,18 +64,18 @@ if(isset($_GET['username'])){
     <div class="row profile-div">
         <div class="col-md-3">
             <div class="profile-pic">
-                <img src="<?php echo $userInfos[0]['upload'];?>" alt="sample profile pic" class="img-thumbnail img-profile">
+                <img src="<?php echo htmlspecialchars($userInfos[0]['upload']);?>" alt="sample profile pic" class="img-thumbnail img-profile">
             </div>
-            <p>Lorem ipsum dolor sit amet, eos aeque eirmod tamquam eu, per vidisse ullamcorper ne, omnes eirmod reprimique sea ex. Usu cu consul tempor, vix ad simul dolores adipisci.</p>
+            <p><?php echo htmlspecialchars($userInfos[0]['description']);?></p>
             <div class="row">
                 <div class="col-md-8 col-md-offset-4">
-                    <b>Following</b><span class="badge following-class"><?php echo $totalFollows[0]['totalFollows']; ?></span>
+                    <b>Following</b><span class="badge following-class"><?php echo htmlspecialchars($totalFollows[0]['totalFollows']); ?></span>
                     <?php if($_SESSION['microUser'] !=  $userInfos[0]['username'] ): ?>
                     <!-- For other user profile not involved the authenticated user will have a Follow Button -->
                         <form action="" method="post" id="followForm">
-                            <input class="form-control hiddenFollow" type="hidden" name="hidden_id" value="<?php echo $userInfos[0]['id'];?>">
+                            <input class="form-control hiddenFollow" type="hidden" name="hidden_id" value="<?php echo htmlspecialchars($userInfos[0]['id']);?>">
                             <!--$followName variable to displayed wether a user is being followed or not-->
-                            <button type="submit" class="btn btn-info addFollow" id="addFollow"><?php echo $followName[0]['isFollow'] ? "Unfollow" : "Follow";?> </button>
+                            <button type="submit" class="btn btn-info addFollow" id="addFollow"><?php echo htmlspecialchars($followName[0]['isFollow'] )? "Unfollow" : "Follow";?> </button>
                         </form>
                     <?php endif; ?>
                 </div>
@@ -90,7 +88,7 @@ if(isset($_GET['username'])){
                     Your Profile
                     <!-- If it is not the logged in user, it will display username's Profile -->
                 <?php else: ?>
-                    <?php echo $userInfos['0']['username'] . "'s" . " Profile"; ?>
+                    <?php echo htmlspecialchars($userInfos['0']['username']). "'s" . " Profile"; ?>
                 <?php endif; ?>
             </h1>
             <section class="row sectionUser">
@@ -103,7 +101,7 @@ if(isset($_GET['username'])){
                                 <!--                <p style="display: inline-block">Total number of characters: </p><span style="display: inline-block" id="tweetCount">140</span>-->
                             </div>
                             <div class="form-group">
-                                <input class="form-control" type="hidden" name="hidden_id" value="<?php echo $userInfos[0]['id'] ;?>">
+                                <input class="form-control" type="hidden" name="hidden_id" value="<?php echo htmlspecialchars($userInfos[0]['id'] );?>">
                             </div>
                             <button type="button" class="btn btn-info" name="btnAdd" id="btnAdd">Create Tweet</button>
                         </form>
@@ -119,18 +117,18 @@ if(isset($_GET['username'])){
                             <div class="info postByUser">
                                 <div class="row">
                                     <div class="col-md-2">
-                                        <a href="micro-profile.php?username=<?php echo $profileTweet['username']; ?>"> <img src="<?php echo $profileTweet['upload'];?>" alt="sample profile pic" class="postImage"></a>
+                                        <a href="micro-profile.php?username=<?php echo htmlspecialchars($profileTweet['username']); ?>"> <img src="<?php echo htmlspecialchars($profileTweet['upload']);?>" alt="sample profile pic" class="postImage"></a>
                                     </div>
                                     <div class="col-md-6 userName">
-                                        <h4><?php echo $profileTweet["username"]?></h4>
+                                        <h4><?php echo htmlspecialchars($profileTweet["username"])?></h4>
                                         <p>Posted on  <?php echo $profileTweet['created']; ?></p>
                                     </div>
                                 </div>
                             </div>
                             <p class="contentPost"><?php echo $profileTweet['tweet']; ?></p>
-                            <div class="interaction comment-interact" user_id="<?php echo $profileTweet['user_id']; ?>" tweet_id="<?php echo $profileTweet['id']; ?>">
+                            <div class="interaction comment-interact" user_id="<?php echo htmlspecialchars($profileTweet['user_id']); ?>" tweet_id="<?php echo htmlspecialchars($profileTweet['id']); ?>">
                                 <?php if($user[0]['id'] != $profileTweet['user_id']): ?>
-                                    <a href="javascript:;" class="retweet"><i class="fa fa-retweet" id="iconRetweet" aria-hidden="true" <?php echo $profileTweet['isRetweet'] ? "style=color:green;" : '';?> ></i> |</a>
+                                    <a href="javascript:;" class="retweet"><i class="fa fa-retweet" id="iconRetweet" aria-hidden="true" <?php echo htmlspecialchars($profileTweet['isRetweet']) ? "style=color:green;" : '';?> ></i> |</a>
                                 <?php else: ?>
                                     <a href="javascript:;"  class="tweet-edit">Edit |</a>
                                     <a href="javascript:;" class="tweet-delete">Delete |</a>
@@ -138,9 +136,9 @@ if(isset($_GET['username'])){
                             </div>
                         </article>
                     <?php endforeach ?>
-                    </div>
                 </div>
             </section>
+        </div>
     </div>
 </div>
 </body>

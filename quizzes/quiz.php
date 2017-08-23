@@ -49,7 +49,6 @@ if(isset($_GET['logout']) == 1){
             </div>
         </div>
     </nav>
-
 <div class="container" id="page-wrap">
     <form action="grade.php" method="post" id="quiz" novalidate>
         <ul id="test-questions">

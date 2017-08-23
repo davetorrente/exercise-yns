@@ -95,7 +95,7 @@ $endpage   = $page+10-1;
                                 <tr>
                                     <?php if($page == $row): ?>
                                         <?php for ($c=0; $c < $num; $c++): ?>
-                                            <td><?php echo $data[$c]; ?></td>
+                                            <td><?php echo htmlspecialchars($data[$c]); ?></td>
                                         <?php endfor ?>
                                         <?php if($page == $endpage):
                                             break;

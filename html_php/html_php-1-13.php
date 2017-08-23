@@ -22,7 +22,7 @@ if(isset($_POST['login'])) {
     else {
         $password = $_POST["password"];
         $passwordlength= strlen($password);
-        if($passwordlength= strlen($password) < 6)
+        if($passwordlength < 6)
         {
             $passwordError = "Password must be at least 6 characters";
             $error++;

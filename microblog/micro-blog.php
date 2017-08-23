@@ -54,7 +54,7 @@ $userTweets = $database->resultset();
         <div class="col-md-6 col-md-offset-3">
             <div class="alert" id="alertMessage" style="display: none;"></div>
             <!-- Say Hi to the User by User Authentication -->
-            <h3>Hi <?php echo $user[0]['username']; ?>.
+            <h3>Hi <?php echo htmlspecialchars($user[0]['username']); ?>.
             </h3>
             <form id="createTweet" method="post">
                 <div class="form-group">
@@ -62,7 +62,7 @@ $userTweets = $database->resultset();
                     <!--                <p style="display: inline-block">Total number of characters: </p><span style="display: inline-block" id="tweetCount">140</span>-->
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="hidden" name="hidden_id" value="<?php echo $user[0]['id'];?>">
+                    <input class="form-control" type="hidden" name="hidden_id" value="<?php echo htmlspecialchars($user[0]['id']);?>">
                 </div>
                 <button type="button" class="btn btn-info" name="btnAdd" id="btnAdd">Create Tweet</button>
             </form>
@@ -77,17 +77,17 @@ $userTweets = $database->resultset();
                     <div class="info postByUser">
                         <div class="row">
                             <div class="col-md-2">
-                                <a href="micro-profile.php?username=<?php echo $userTweet['username']; ?>"><img src="<?php echo $userTweet['upload'];?>" alt="sample profile pic" class="postImage"></a>
+                                <a href="micro-profile.php?username=<?php echo htmlspecialchars($userTweet['username']); ?>"><img src="<?php echo htmlspecialchars($userTweet['upload']);?>" alt="sample profile pic" class="postImage"></a>
                             </div>
                             <div class="col-md-6 userName">
-                                <h4 ><?php echo $userTweet["username"]; ?></h4>
-                                <p>Posted on  <?php echo $userTweet['modified']; ?></p>
+                                <h4 ><?php echo htmlspecialchars($userTweet["username"]); ?></h4>
+                                <p>Posted on <?php echo htmlspecialchars($userTweet['modified']); ?></p>
                             </div>
                         </div>
                     </div>
                     <p class="contentPost"><?php echo $userTweet['tweet']; ?></p>
                     <div class="clearfix"></div>
-                    <div class="interaction tweet-interact" user_id="<?php echo $userTweet['user_id']; ?>" tweet_id="<?php echo $userTweet['id']; ?>">
+                    <div class="interaction tweet-interact" user_id="<?php echo htmlspecialchars($userTweet['user_id']); ?>" tweet_id="<?php echo htmlspecialchars($userTweet['id']); ?>">
                         <?php if($user[0]['id'] != $userTweet['user_id']): ?>
                             <?php
                             $tweetID = $userTweet['id'];

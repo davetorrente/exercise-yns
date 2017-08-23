@@ -3,8 +3,27 @@
   <component name="ChangeListManager">
     <list default="true" id="21fc073c-5523-4dae-b2fe-c45f5b229797" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/calendar/index.php" afterPath="$PROJECT_DIR$/calendar/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/database-3-3-edit.php" afterPath="$PROJECT_DIR$/database/database-3-3-edit.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/database-3-3.php" afterPath="$PROJECT_DIR$/database/database-3-3.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/database-3-6-edit.php" afterPath="$PROJECT_DIR$/database/database-3-6-edit.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html_php/html_php-1-10.php" afterPath="$PROJECT_DIR$/html_php/html_php-1-10.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html_php/html_php-1-11.php" afterPath="$PROJECT_DIR$/html_php/html_php-1-11.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html_php/html_php-1-12.php" afterPath="$PROJECT_DIR$/html_php/html_php-1-12.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html_php/html_php-1-13.php" afterPath="$PROJECT_DIR$/html_php/html_php-1-13.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html_php/html_php-1-2.php" afterPath="$PROJECT_DIR$/html_php/html_php-1-2.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html_php/html_php-1-3.php" afterPath="$PROJECT_DIR$/html_php/html_php-1-3.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html_php/html_php-1-6.php" afterPath="$PROJECT_DIR$/html_php/html_php-1-6.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html_php/html_php-1-7.php" afterPath="$PROJECT_DIR$/html_php/html_php-1-7.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html_php/html_php-1-8.php" afterPath="$PROJECT_DIR$/html_php/html_php-1-8.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html_php/html_php-1-9.php" afterPath="$PROJECT_DIR$/html_php/html_php-1-9.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html_php/test.csv" afterPath="$PROJECT_DIR$/html_php/test.csv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/microblog/js/main.js" afterPath="$PROJECT_DIR$/microblog/js/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/microblog/micro-delete.php" afterPath="$PROJECT_DIR$/microblog/micro-delete.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/microblog/micro-blog.php" afterPath="$PROJECT_DIR$/microblog/micro-blog.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/microblog/micro-profile.php" afterPath="$PROJECT_DIR$/microblog/micro-profile.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/microblog/micro-register.php" afterPath="$PROJECT_DIR$/microblog/micro-register.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/microblog/micro-retweet.php" afterPath="$PROJECT_DIR$/microblog/micro-retweet.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quizzes/quiz.php" afterPath="$PROJECT_DIR$/quizzes/quiz.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,41 +35,19 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="micro-profile.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="micro-profile.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/microblog/micro-profile.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1343">
-              <caret line="79" column="121" lean-forward="false" selection-start-line="79" selection-start-column="121" selection-end-line="79" selection-end-column="121" />
+            <state relative-caret-position="-87">
+              <caret line="130" column="192" lean-forward="false" selection-start-line="130" selection-start-column="192" selection-end-line="130" selection-end-column="192" />
               <folding>
-                <marker date="1503471834085" expanded="true" signature="459:507" ph="SELECT * FRO... users" />
-                <marker date="1503471834085" expanded="true" signature="675:724" ph="SELECT * FRO... users" />
-                <marker date="1503471834085" expanded="true" signature="871:960" ph="SELECT count... follows" />
-                <marker date="1503471834085" expanded="true" signature="1030:1104" ph="SELECT isFol... follows" />
-                <marker date="1503471834085" expanded="true" signature="1030:1120" ph="SELECT isFol... follows" />
-                <marker date="1503471834085" expanded="true" signature="1189:1441" ph="SELECT users... users" />
-                <marker date="1503471834085" expanded="true" signature="1189:1442" ph="SELECT users... users" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="database-3-5.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/database-3-5.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-              <folding>
-                <marker date="1502703844441" expanded="true" signature="90:139" ph="SELECT * FRO... employees" />
-                <marker date="1502703844441" expanded="true" signature="226:275" ph="SELECT * FRO... employees" />
-                <marker date="1502703844441" expanded="true" signature="360:501" ph="SELECT first... employees" />
-                <marker date="1502703844441" expanded="true" signature="584:650" ph="SELECT last_... employees" />
-                <marker date="1502703844441" expanded="true" signature="734:898" ph="SELECT last_... employees" />
-                <marker date="1502703844441" expanded="true" signature="988:1047" ph="SELECT COUNT... employees" />
-                <marker date="1502703844441" expanded="true" signature="1135:1245" ph="SELECT D.nam... departments" />
-                <marker date="1502703844441" expanded="true" signature="1331:1430" ph="SELECT first... employees" />
-                <marker date="1502703844441" expanded="true" signature="1515:1625" ph="SELECT D.nam... departments" />
-                <marker date="1502703844441" expanded="true" signature="1711:1908" ph="SELECT E.fir... employees" />
-                <marker date="1502703844441" expanded="true" signature="9530:9576" ph="SELECT last_... employees" />
+                <marker date="1503478284496" expanded="true" signature="455:503" ph="SELECT * FRO... users" />
+                <marker date="1503478284496" expanded="true" signature="671:720" ph="SELECT * FRO... users" />
+                <marker date="1503478284496" expanded="true" signature="867:956" ph="SELECT count... follows" />
+                <marker date="1503478284496" expanded="true" signature="1026:1100" ph="SELECT isFol... follows" />
+                <marker date="1503478284496" expanded="true" signature="1026:1116" ph="SELECT isFol... follows" />
+                <marker date="1503478284496" expanded="true" signature="1184:1436" ph="SELECT users... users" />
+                <marker date="1503478284496" expanded="true" signature="1184:1437" ph="SELECT users... users" />
               </folding>
             </state>
           </provider>
@@ -59,27 +56,41 @@
       <file leaf-file-name="micro-blog.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/microblog/micro-blog.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1615">
-              <caret line="95" column="66" lean-forward="false" selection-start-line="94" selection-start-column="27" selection-end-line="95" selection-end-column="66" />
+            <state relative-caret-position="1581">
+              <caret line="93" column="53" lean-forward="true" selection-start-line="93" selection-start-column="53" selection-end-line="93" selection-end-column="53" />
               <folding>
-                <marker date="1503460578090" expanded="true" signature="464:512" ph="SELECT * FRO... users" />
-                <marker date="1503460578090" expanded="true" signature="572:786" ph="SELECT users... users" />
-                <marker date="1503460578090" expanded="true" signature="4833:4890" ph="SELECT * FRO... tweets" />
-                <marker date="1503460578090" expanded="true" signature="4833:4909" ph="SELECT paren... tweets" />
-                <marker date="1503460578090" expanded="true" signature="4833:4918" ph="SELECT paren... tweets" />
+                <marker date="1503477944447" expanded="true" signature="464:512" ph="SELECT * FRO... users" />
+                <marker date="1503477944447" expanded="true" signature="572:786" ph="SELECT users... users" />
+                <marker date="1503477944447" expanded="true" signature="4976:5033" ph="SELECT * FRO... tweets" />
+                <marker date="1503477944447" expanded="true" signature="4976:5052" ph="SELECT paren... tweets" />
+                <marker date="1503477944447" expanded="true" signature="4976:5061" ph="SELECT paren... tweets" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/microblog/js/main.js">
+      <file leaf-file-name="micro-login.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/microblog/micro-login.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="121" column="25" lean-forward="true" selection-start-line="121" selection-start-column="25" selection-end-line="121" selection-end-column="25" />
+            <state relative-caret-position="323">
+              <caret line="54" column="23" lean-forward="true" selection-start-line="54" selection-start-column="23" selection-end-line="54" selection-end-column="23" />
               <folding>
-                <marker date="1503472421424" expanded="true" signature="2312:2326" ph="..." />
-                <marker date="1503472421424" expanded="true" signature="10731:10745" ph="..." />
+                <marker date="1503403449545" expanded="true" signature="722:777" ph="SELECT usern... users" />
+                <marker date="1503403449545" expanded="true" signature="1007:1062" ph="SELECT passw... users" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="micro-add.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/microblog/micro-add.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+              <folding>
+                <marker date="1503367262172" expanded="true" signature="290:342" ph="INSERT INTO tweets... " />
+                <marker date="1503367262172" expanded="true" signature="290:369" ph="INSERT INTO tweets... " />
+                <marker date="1503367262172" expanded="true" signature="567:740" ph="SELECT * FRO... posts" />
               </folding>
             </state>
           </provider>
@@ -88,8 +99,8 @@
       <file leaf-file-name="micro-follow.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/microblog/micro-follow.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+            <state relative-caret-position="238">
+              <caret line="14" column="12" lean-forward="false" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
               <folding>
                 <marker date="1503469371451" expanded="true" signature="249:298" ph="SELECT id FR... users" />
                 <marker date="1503469371451" expanded="true" signature="468:529" ph="SELECT id FR... follows" />
@@ -101,35 +112,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="micro-add.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/microblog/micro-add.php">
+      <file leaf-file-name="html_php-1-10.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/html_php/html_php-1-10.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="47" />
-              <folding>
-                <marker date="1503367262172" expanded="true" signature="290:342" ph="INSERT INTO tweets... " />
-                <marker date="1503367262172" expanded="true" signature="290:369" ph="INSERT INTO tweets... " />
-                <marker date="1503367262172" expanded="true" signature="567:740" ph="SELECT * FRO... posts" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="delete-modal.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/microblog/modals/delete-modal.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="55" lean-forward="true" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="55" />
+            <state relative-caret-position="-986">
+              <caret line="11" column="5" lean-forward="true" selection-start-line="8" selection-start-column="3" selection-end-line="11" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="micro-delete.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="micro-delete.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/microblog/micro-delete.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="23" column="1" lean-forward="true" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+            <state relative-caret-position="153">
+              <caret line="9" column="22" lean-forward="false" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
               <folding>
                 <marker date="1503472530817" expanded="true" signature="263:368" ph="SELECT paren... tweets" />
                 <marker date="1503472530817" expanded="true" signature="580:657" ph="UPDATE tweet... " />
@@ -139,26 +136,38 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="micro-retweet.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/microblog/micro-retweet.php">
+      <file leaf-file-name="micro-edit.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/microblog/micro-edit.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="29" lean-forward="true" selection-start-line="20" selection-start-column="6" selection-end-line="22" selection-end-column="29" />
+            <state relative-caret-position="289">
+              <caret line="17" column="92" lean-forward="false" selection-start-line="17" selection-start-column="88" selection-end-line="17" selection-end-column="92" />
               <folding>
-                <marker date="1503457528913" expanded="true" signature="249:297" ph="SELECT * FRO... users" />
-                <marker date="1503457528913" expanded="true" signature="606:688" ph="UPDATE tweet... " />
-                <marker date="1503457528913" expanded="true" signature="798:906" ph="INSERT INTO tweets... " />
-                <marker date="1503457528913" expanded="true" signature="1210:1383" ph="SELECT users... users" />
-                <marker date="1503457528913" expanded="true" signature="1733:1814" ph="SELECT tweet... tweets" />
-                <marker date="1503457528913" expanded="true" signature="1733:1824" ph="SELECT tweet... tweets" />
-                <marker date="1503457528913" expanded="true" signature="1749:1814" ph="DELETE FROM " />
-                <marker date="1503457528913" expanded="true" signature="1897:1967" ph="SELECT isRet... tweets" />
-                <marker date="1503457528913" expanded="true" signature="2107:2189" ph="UPDATE tweet... " />
-                <marker date="1503457528913" expanded="true" signature="2299:2372" ph="SELECT id FR... tweets" />
-                <marker date="1503457528913" expanded="true" signature="2299:2383" ph="SELECT id FR... tweets" />
-                <marker date="1503457528913" expanded="true" signature="2299:2631" ph="SELECT id FR... tweets" />
-                <marker date="1503457528913" expanded="true" signature="2305:2372" ph="DELETE FROM " />
-                <marker date="1503457528913" expanded="true" signature="2460:2531" ph="DELETE FROM " />
+                <marker date="1503372681991" expanded="true" signature="276:323" ph="UPDATE posts... " />
+                <marker date="1503372681991" expanded="true" signature="466:520" ph="SELECT * FRO... employees" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="html_php-1-13.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/html_php/html_php-1-13.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="32">
+              <caret line="24" column="31" lean-forward="true" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="micro-register.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/microblog/micro-register.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-984">
+              <caret line="238" column="107" lean-forward="false" selection-start-line="238" selection-start-column="107" selection-end-line="238" selection-end-column="107" />
+              <folding>
+                <marker date="1503477639847" expanded="true" signature="1205:1260" ph="SELECT usern... users" />
+                <marker date="1503477639847" expanded="true" signature="1853:1899" ph="SELECT email... users" />
+                <marker date="1503477639847" expanded="true" signature="4451:4650" ph="INSERT INTO users... " />
               </folding>
             </state>
           </provider>
@@ -177,9 +186,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>grade</find>
-      <find>test</find>
-      <find>page-</find>
       <find>quiz-overlay</find>
       <find>0</find>
       <find>question_id</find>
@@ -207,6 +213,9 @@
       <find>BOO</find>
       <find>retwe</find>
       <find>children</find>
+      <find>lorem</find>
+      <find>gender</find>
+      <find>echo</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -215,22 +224,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/mail-form/sample.php" />
-        <option value="$PROJECT_DIR$/mail-form/thanks.php" />
-        <option value="$PROJECT_DIR$/database/database-3-6-login.php" />
-        <option value="$PROJECT_DIR$/mail-form/style.css" />
-        <option value="$PROJECT_DIR$/mail-form/mail.php" />
-        <option value="$PROJECT_DIR$/quizzes/css/style.css" />
-        <option value="$PROJECT_DIR$/microblog/js/index.js" />
-        <option value="$PROJECT_DIR$/microblog/css/demo.css" />
-        <option value="$PROJECT_DIR$/microblog/css/animate-custom.css" />
-        <option value="$PROJECT_DIR$/microblog/login.php" />
-        <option value="$PROJECT_DIR$/microblog/css/style.css" />
-        <option value="$PROJECT_DIR$/database/css/register.css" />
-        <option value="$PROJECT_DIR$/microblog/register.css" />
-        <option value="$PROJECT_DIR$/microblog/register.php" />
         <option value="$PROJECT_DIR$/microblog/micro-login.php" />
-        <option value="$PROJECT_DIR$/microblog/micro-register.php" />
         <option value="$PROJECT_DIR$/microblog/css/register.css" />
         <option value="$PROJECT_DIR$/micro-blog/css/micro-register.css" />
         <option value="$PROJECT_DIR$/database/database-3-6-register.php" />
@@ -242,7 +236,6 @@
         <option value="$PROJECT_DIR$/micro-blog/Database.php" />
         <option value="$PROJECT_DIR$/micro-blog/microadd.php" />
         <option value="$PROJECT_DIR$/micro-blog/micro-add.php" />
-        <option value="$PROJECT_DIR$/database/database-3-3-edit.php" />
         <option value="$PROJECT_DIR$/micro-blog/micro-delete.php" />
         <option value="$PROJECT_DIR$/micro-blog/micro-edit.php" />
         <option value="$PROJECT_DIR$/micro-blog/modals/edit-modal.php" />
@@ -259,13 +252,29 @@
         <option value="$PROJECT_DIR$/vagrant/Vagrantfile" />
         <option value="$PROJECT_DIR$/micro-blog/micro-profile.php" />
         <option value="$PROJECT_DIR$/microblog/modals/retweet-modal.php" />
-        <option value="$PROJECT_DIR$/microblog/micro-retweet.php" />
-        <option value="$PROJECT_DIR$/microblog/micro-blog.php" />
         <option value="$PROJECT_DIR$/database/database-3-2.php" />
         <option value="$PROJECT_DIR$/microblog/micro-follow.php" />
-        <option value="$PROJECT_DIR$/microblog/micro-profile.php" />
-        <option value="$PROJECT_DIR$/microblog/js/main.js" />
         <option value="$PROJECT_DIR$/microblog/micro-delete.php" />
+        <option value="$PROJECT_DIR$/microblog/js/main.js" />
+        <option value="$PROJECT_DIR$/microblog/micro-retweet.php" />
+        <option value="$PROJECT_DIR$/database/database-3-3.php" />
+        <option value="$PROJECT_DIR$/database/database-3-3-edit.php" />
+        <option value="$PROJECT_DIR$/database/database-3-6-edit.php" />
+        <option value="$PROJECT_DIR$/quizzes/quiz.php" />
+        <option value="$PROJECT_DIR$/calendar/index.php" />
+        <option value="$PROJECT_DIR$/html_php/html_php-1-2.php" />
+        <option value="$PROJECT_DIR$/html_php/html_php-1-3.php" />
+        <option value="$PROJECT_DIR$/html_php/html_php-1-6.php" />
+        <option value="$PROJECT_DIR$/html_php/html_php-1-7.php" />
+        <option value="$PROJECT_DIR$/html_php/html_php-1-8.php" />
+        <option value="$PROJECT_DIR$/html_php/html_php-1-11.php" />
+        <option value="$PROJECT_DIR$/html_php/html_php-1-10.php" />
+        <option value="$PROJECT_DIR$/html_php/html_php-1-9.php" />
+        <option value="$PROJECT_DIR$/html_php/html_php-1-12.php" />
+        <option value="$PROJECT_DIR$/html_php/html_php-1-13.php" />
+        <option value="$PROJECT_DIR$/microblog/micro-register.php" />
+        <option value="$PROJECT_DIR$/microblog/micro-blog.php" />
+        <option value="$PROJECT_DIR$/microblog/micro-profile.php" />
       </list>
     </option>
   </component>
@@ -279,7 +288,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1378" />
+    <option name="width" value="1382" />
     <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -335,7 +344,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="microblog" />
+              <option name="myItemId" value="quizzes" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -352,8 +361,18 @@
               <option name="myItemId" value="microblog" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="modals" />
+              <option name="myItemId" value="exercise" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="exercise" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mail-form" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -367,11 +386,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="microblog" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
+              <option name="myItemId" value="html_php" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -386,6 +401,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="database" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="exercise" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="exercise" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="calendar" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -526,25 +555,25 @@
       <workItem from="1503397778258" duration="2776000" />
       <workItem from="1503400789953" duration="4492000" />
       <workItem from="1503447470881" duration="22703000" />
-      <workItem from="1503472042659" duration="486000" />
+      <workItem from="1503472042659" duration="6266000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="354391000" />
+    <option name="totallyTimeSpent" value="360171000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1378" height="744" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22534142" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2246596" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30605564" sideWeight="0.5030349" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29787233" sideWeight="0.4969651" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2569558" sideWeight="0.4969651" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -589,172 +618,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/database/Database.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1020">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/quizzes/quiz-register.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="79" column="3" lean-forward="false" selection-start-line="79" selection-start-column="3" selection-end-line="83" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/database-3-6-login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="24" lean-forward="true" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
-          <folding>
-            <marker date="1503018014376" expanded="true" signature="720:775" ph="SELECT usern... users" />
-            <marker date="1503018014376" expanded="true" signature="1005:1060" ph="SELECT passw... users" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/javascript/javascript-2-11.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-220">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/javascript/javascript-2-12.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-357">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/javascript/javascript-2-13.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-288">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/javascript/javascript-2-14.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-492">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/javascript/javascript-2-15.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-475">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/javascript/javascript-2-16.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-339">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/javascript/javascript-2-3.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-918">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/javascript/javascript-2-9.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-237">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mail-form/mail.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="90" column="0" lean-forward="true" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/microblog/Database.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="83">
-          <caret line="69" column="0" lean-forward="true" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Twit Plus.xml" />
-    <entry file="file://$PROJECT_DIR$/micro-blog/micro-layout.php" />
-    <entry file="file://$PROJECT_DIR$/microblog/micro-edit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="92" lean-forward="false" selection-start-line="17" selection-start-column="88" selection-end-line="17" selection-end-column="92" />
-          <folding>
-            <marker date="1503372681991" expanded="true" signature="276:323" ph="UPDATE posts... " />
-            <marker date="1503372681991" expanded="true" signature="466:520" ph="SELECT * FRO... employees" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/microblog/css/micro-register.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="40" column="1" lean-forward="false" selection-start-line="40" selection-start-column="1" selection-end-line="40" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/microblog/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="1" lean-forward="true" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/microblog/css/dashboard.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="141">
           <caret line="72" column="1" lean-forward="true" selection-start-line="72" selection-start-column="1" selection-end-line="72" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/database-3-4.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1513">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="6" selection-end-column="32" />
-          <folding>
-            <marker date="1502848301419" expanded="true" signature="77:111" ph="SELECT * FRO... posts" />
-            <marker date="1502848301419" expanded="true" signature="195:273" ph="SELECT COUNT... customers" />
-            <marker date="1502848301419" expanded="true" signature="338:440" ph="SELECT order... orders" />
-            <marker date="1502848301419" expanded="true" signature="503:628" ph="SELECT custo... customers" />
-            <marker date="1502848301419" expanded="true" signature="691:817" ph="SELECT custo... customers" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/database-3-3.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding>
-            <marker date="1502935445778" expanded="true" signature="182:214" ph="DELETE FROM " />
-            <marker date="1502935445778" expanded="true" signature="675:732" ph="INSERT INTO posts... " />
-            <marker date="1502935445778" expanded="true" signature="880:922" ph="SELECT * FRO... posts" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/database-3-3-edit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="28" column="43" lean-forward="true" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
-          <folding>
-            <marker date="1503370543017" expanded="true" signature="115:149" ph="SELECT * FRO... posts" />
-            <marker date="1503370543017" expanded="true" signature="530:574" ph="UPDATE posts... " />
-            <marker date="1503370543017" expanded="true" signature="735:769" ph="SELECT * FRO... posts" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -817,74 +684,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/micro-blog/microblog.php" />
     <entry file="file://$PROJECT_DIR$/micro-blog/dumm_file.php" />
-    <entry file="file://$PROJECT_DIR$/microblog/micro-login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="54" column="23" lean-forward="true" selection-start-line="54" selection-start-column="23" selection-end-line="54" selection-end-column="23" />
-          <folding>
-            <marker date="1503403449545" expanded="true" signature="722:777" ph="SELECT usern... users" />
-            <marker date="1503403449545" expanded="true" signature="1007:1062" ph="SELECT passw... users" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/microblog/modals/retweet-modal.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="77" lean-forward="false" selection-start-line="11" selection-start-column="77" selection-end-line="11" selection-end-column="77" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/database-3-6.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="45" column="24" lean-forward="true" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
-          <folding>
-            <marker date="1503034796985" expanded="true" signature="552:609" ph="INSERT INTO posts... " />
-            <marker date="1503034796985" expanded="true" signature="857:889" ph="DELETE FROM " />
-            <marker date="1503034796985" expanded="true" signature="1317:1379" ph="SELECT * FRO... posts" />
-            <marker date="1503034796985" expanded="true" signature="1440:1459" ph="SELECT * FRO... posts" />
-            <marker date="1503034796985" expanded="true" signature="1440:1488" ph="SELECT * FRO... posts" />
-            <marker date="1503034796985" expanded="true" signature="1440:1499" ph="SELECT * FRO... posts" />
-            <marker date="1503034796985" expanded="true" signature="1633:1653" ph="SELECT * FRO... users" />
-            <marker date="1503034796985" expanded="true" signature="1633:1669" ph="SELECT * FRO... users" />
-            <marker date="1503034796985" expanded="true" signature="1633:1670" ph="SELECT * FRO... users" />
-            <marker date="1503034796985" expanded="true" signature="1633:1681" ph="SELECT * FRO... users" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/microblog/micro-register.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="9" column="40" lean-forward="false" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
-          <folding>
-            <marker date="1503403644316" expanded="true" signature="1052:1107" ph="SELECT usern... users" />
-            <marker date="1503403644316" expanded="true" signature="1709:1755" ph="SELECT email... users" />
-            <marker date="1503403644316" expanded="true" signature="4477:4676" ph="INSERT INTO users... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html_php/html_php-1-4.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-447">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html_php/html_php-1-6.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5139">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html_php/html_php-1-8.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6516">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -907,18 +711,6 @@
         <state relative-caret-position="136">
           <caret line="8" column="55" lean-forward="true" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="55" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/microblog/micro-add.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="47" />
-          <folding>
-            <marker date="1503367262172" expanded="true" signature="290:342" ph="INSERT INTO tweets... " />
-            <marker date="1503367262172" expanded="true" signature="290:369" ph="INSERT INTO tweets... " />
-            <marker date="1503367262172" expanded="true" signature="567:740" ph="SELECT * FRO... posts" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -958,39 +750,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/microblog/micro-retweet.php">
+    <entry file="file://$PROJECT_DIR$/database/database-3-3.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="29" lean-forward="true" selection-start-line="20" selection-start-column="6" selection-end-line="22" selection-end-column="29" />
+        <state relative-caret-position="17">
+          <caret line="1" column="23" lean-forward="false" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
           <folding>
-            <marker date="1503457528913" expanded="true" signature="249:297" ph="SELECT * FRO... users" />
-            <marker date="1503457528913" expanded="true" signature="606:688" ph="UPDATE tweet... " />
-            <marker date="1503457528913" expanded="true" signature="798:906" ph="INSERT INTO tweets... " />
-            <marker date="1503457528913" expanded="true" signature="1210:1383" ph="SELECT users... users" />
-            <marker date="1503457528913" expanded="true" signature="1733:1814" ph="SELECT tweet... tweets" />
-            <marker date="1503457528913" expanded="true" signature="1733:1824" ph="SELECT tweet... tweets" />
-            <marker date="1503457528913" expanded="true" signature="1749:1814" ph="DELETE FROM " />
-            <marker date="1503457528913" expanded="true" signature="1897:1967" ph="SELECT isRet... tweets" />
-            <marker date="1503457528913" expanded="true" signature="2107:2189" ph="UPDATE tweet... " />
-            <marker date="1503457528913" expanded="true" signature="2299:2372" ph="SELECT id FR... tweets" />
-            <marker date="1503457528913" expanded="true" signature="2299:2383" ph="SELECT id FR... tweets" />
-            <marker date="1503457528913" expanded="true" signature="2299:2631" ph="SELECT id FR... tweets" />
-            <marker date="1503457528913" expanded="true" signature="2305:2372" ph="DELETE FROM " />
-            <marker date="1503457528913" expanded="true" signature="2460:2531" ph="DELETE FROM " />
+            <marker date="1503473517739" expanded="true" signature="181:213" ph="DELETE FROM " />
+            <marker date="1503473517739" expanded="true" signature="674:731" ph="INSERT INTO posts... " />
+            <marker date="1503473517739" expanded="true" signature="878:920" ph="SELECT * FRO... posts" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/microblog/micro-follow.php">
+    <entry file="file://$PROJECT_DIR$/database/database-3-3-edit.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+        <state relative-caret-position="17">
+          <caret line="1" column="23" lean-forward="false" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
           <folding>
-            <marker date="1503469371451" expanded="true" signature="249:298" ph="SELECT id FR... users" />
-            <marker date="1503469371451" expanded="true" signature="468:529" ph="SELECT id FR... follows" />
-            <marker date="1503469371451" expanded="true" signature="468:552" ph="SELECT id FR... follows" />
-            <marker date="1503469371451" expanded="true" signature="716:807" ph="UPDATE follo... " />
-            <marker date="1503469371451" expanded="true" signature="948:1057" ph="INSERT INTO follows... " />
+            <marker date="1503473517864" expanded="true" signature="113:147" ph="SELECT * FRO... posts" />
+            <marker date="1503473517864" expanded="true" signature="528:572" ph="UPDATE posts... " />
+            <marker date="1503473517864" expanded="true" signature="733:767" ph="SELECT * FRO... posts" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/database-3-4.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding>
+            <marker date="1502848301419" expanded="true" signature="77:111" ph="SELECT * FRO... posts" />
+            <marker date="1502848301419" expanded="true" signature="195:273" ph="SELECT COUNT... customers" />
+            <marker date="1502848301419" expanded="true" signature="338:440" ph="SELECT order... orders" />
+            <marker date="1502848301419" expanded="true" signature="503:628" ph="SELECT custo... customers" />
+            <marker date="1502848301419" expanded="true" signature="691:817" ph="SELECT custo... customers" />
           </folding>
         </state>
       </provider>
@@ -1015,55 +808,368 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/microblog/micro-blog.php">
+    <entry file="file://$PROJECT_DIR$/database/database-3-6.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1615">
-          <caret line="95" column="66" lean-forward="false" selection-start-line="94" selection-start-column="27" selection-end-line="95" selection-end-column="66" />
+        <state relative-caret-position="-2282">
+          <caret line="45" column="24" lean-forward="true" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
           <folding>
-            <marker date="1503460578090" expanded="true" signature="464:512" ph="SELECT * FRO... users" />
-            <marker date="1503460578090" expanded="true" signature="572:786" ph="SELECT users... users" />
-            <marker date="1503460578090" expanded="true" signature="4833:4890" ph="SELECT * FRO... tweets" />
-            <marker date="1503460578090" expanded="true" signature="4833:4909" ph="SELECT paren... tweets" />
-            <marker date="1503460578090" expanded="true" signature="4833:4918" ph="SELECT paren... tweets" />
+            <marker date="1503034796985" expanded="true" signature="552:609" ph="INSERT INTO posts... " />
+            <marker date="1503034796985" expanded="true" signature="857:889" ph="DELETE FROM " />
+            <marker date="1503034796985" expanded="true" signature="1317:1379" ph="SELECT * FRO... posts" />
+            <marker date="1503034796985" expanded="true" signature="1440:1459" ph="SELECT * FRO... posts" />
+            <marker date="1503034796985" expanded="true" signature="1440:1488" ph="SELECT * FRO... posts" />
+            <marker date="1503034796985" expanded="true" signature="1440:1499" ph="SELECT * FRO... posts" />
+            <marker date="1503034796985" expanded="true" signature="1633:1653" ph="SELECT * FRO... users" />
+            <marker date="1503034796985" expanded="true" signature="1633:1669" ph="SELECT * FRO... users" />
+            <marker date="1503034796985" expanded="true" signature="1633:1670" ph="SELECT * FRO... users" />
+            <marker date="1503034796985" expanded="true" signature="1633:1681" ph="SELECT * FRO... users" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/microblog/micro-profile.php">
+    <entry file="file://$PROJECT_DIR$/database/database-3-6-edit.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1343">
-          <caret line="79" column="121" lean-forward="false" selection-start-line="79" selection-start-column="121" selection-end-line="79" selection-end-column="121" />
+        <state relative-caret-position="92">
+          <caret line="61" column="6" lean-forward="false" selection-start-line="61" selection-start-column="6" selection-end-line="61" selection-end-column="6" />
           <folding>
-            <marker date="1503471834085" expanded="true" signature="459:507" ph="SELECT * FRO... users" />
-            <marker date="1503471834085" expanded="true" signature="675:724" ph="SELECT * FRO... users" />
-            <marker date="1503471834085" expanded="true" signature="871:960" ph="SELECT count... follows" />
-            <marker date="1503471834085" expanded="true" signature="1030:1104" ph="SELECT isFol... follows" />
-            <marker date="1503471834085" expanded="true" signature="1030:1120" ph="SELECT isFol... follows" />
-            <marker date="1503471834085" expanded="true" signature="1189:1441" ph="SELECT users... users" />
-            <marker date="1503471834085" expanded="true" signature="1189:1442" ph="SELECT users... users" />
+            <marker date="1503473517808" expanded="true" signature="113:147" ph="SELECT * FRO... posts" />
+            <marker date="1503473517808" expanded="true" signature="546:590" ph="UPDATE posts... " />
+            <marker date="1503473517808" expanded="true" signature="812:846" ph="SELECT * FRO... posts" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/database-3-6-login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1455">
+          <caret line="12" column="24" lean-forward="true" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
+          <folding>
+            <marker date="1503018014376" expanded="true" signature="720:775" ph="SELECT usern... users" />
+            <marker date="1503018014376" expanded="true" signature="1005:1060" ph="SELECT passw... users" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/database-3-6-register.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-16891">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1503033599826" expanded="true" signature="1046:1101" ph="SELECT usern... users" />
+            <marker date="1503033599826" expanded="true" signature="1703:1749" ph="SELECT email... users" />
+            <marker date="1503033599826" expanded="true" signature="4466:4665" ph="INSERT INTO users... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mail-form/mail.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1530">
+          <caret line="90" column="0" lean-forward="true" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+          <folding>
+            <marker date="1503019007947" expanded="false" signature="420:433" ph="..." />
+            <marker date="1503019007947" expanded="true" signature="434:529" ph="..." />
+            <marker date="1503019007947" expanded="false" signature="692:705" ph="..." />
+            <marker date="1503019007947" expanded="true" signature="706:825" ph="..." />
+            <marker date="1503019007947" expanded="false" signature="995:1008" ph="..." />
+            <marker date="1503019007947" expanded="true" signature="1009:1136" ph="..." />
+            <marker date="1503019007947" expanded="false" signature="1297:1310" ph="..." />
+            <marker date="1503019007947" expanded="true" signature="1311:1407" ph="..." />
+            <marker date="1503019007947" expanded="false" signature="1656:1669" ph="..." />
+            <marker date="1503019007947" expanded="true" signature="1670:1764" ph="..." />
+            <marker date="1503019007947" expanded="false" signature="1911:1924" ph="..." />
+            <marker date="1503019007947" expanded="true" signature="1925:2023" ph="..." />
+            <marker date="1503019007947" expanded="false" signature="2155:2168" ph="..." />
+            <marker date="1503019007947" expanded="true" signature="2169:2265" ph="..." />
+            <marker date="1503019007947" expanded="false" signature="2426:2439" ph="..." />
+            <marker date="1503019007947" expanded="true" signature="2440:2566" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quizzes/quiz-login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1502927013990" expanded="true" signature="663:718" ph="SELECT usern... users" />
+            <marker date="1502927013990" expanded="true" signature="961:1016" ph="SELECT passw... users" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quizzes/quiz.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="13" column="34" lean-forward="true" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
+          <folding>
+            <marker date="1503473554802" expanded="true" signature="94:256" ph="SELECT quest... questions" />
+            <marker date="1503473554802" expanded="true" signature="396:444" ph="SELECT * FRO... users" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/calendar/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="21" column="38" lean-forward="true" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html_php/html_php-1-2.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="89">
+          <caret line="73" column="151" lean-forward="false" selection-start-line="73" selection-start-column="101" selection-end-line="73" selection-end-column="151" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html_php/html_php-1-3.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="64" column="148" lean-forward="false" selection-start-line="64" selection-start-column="148" selection-end-line="64" selection-end-column="148" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microblog/micro-retweet.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-120">
+          <caret line="40" column="36" lean-forward="false" selection-start-line="40" selection-start-column="36" selection-end-line="40" selection-end-column="36" />
+          <folding>
+            <marker date="1503473091088" expanded="true" signature="249:297" ph="SELECT * FRO... users" />
+            <marker date="1503473091088" expanded="true" signature="606:688" ph="UPDATE tweet... " />
+            <marker date="1503473091088" expanded="true" signature="798:906" ph="INSERT INTO tweets... " />
+            <marker date="1503473091088" expanded="true" signature="1210:1383" ph="SELECT users... users" />
+            <marker date="1503473091088" expanded="true" signature="1731:1801" ph="SELECT isRet... tweets" />
+            <marker date="1503473091088" expanded="true" signature="1941:2023" ph="UPDATE tweet... " />
+            <marker date="1503473091088" expanded="true" signature="2133:2206" ph="SELECT id FR... tweets" />
+            <marker date="1503473091088" expanded="true" signature="2133:2217" ph="SELECT id FR... tweets" />
+            <marker date="1503473091088" expanded="true" signature="2133:2465" ph="SELECT id FR... tweets" />
+            <marker date="1503473091088" expanded="true" signature="2139:2206" ph="DELETE FROM " />
+            <marker date="1503473091088" expanded="true" signature="2294:2365" ph="DELETE FROM " />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/microblog/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="121" column="25" lean-forward="true" selection-start-line="121" selection-start-column="25" selection-end-line="121" selection-end-column="25" />
+        <state relative-caret-position="4266">
+          <caret line="274" column="3" lean-forward="true" selection-start-line="274" selection-start-column="3" selection-end-line="274" selection-end-column="3" />
           <folding>
-            <marker date="1503472421424" expanded="true" signature="2312:2326" ph="..." />
-            <marker date="1503472421424" expanded="true" signature="10731:10745" ph="..." />
+            <marker date="1503472971008" expanded="true" signature="2238:2252" ph="..." />
+            <marker date="1503472971008" expanded="true" signature="10059:10073" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html_php/html_php-1-4.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="21" lean-forward="true" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html_php/html_php-1-5.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-357">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html_php/html_php-1-6.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1224">
+          <caret line="9" column="56" lean-forward="false" selection-start-line="9" selection-start-column="56" selection-end-line="9" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html_php/html_php-1-7.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-884">
+          <caret line="11" column="5" lean-forward="true" selection-start-line="8" selection-start-column="3" selection-end-line="11" selection-end-column="5" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#div#5;n#form#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html_php/test.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="75" lean-forward="true" selection-start-line="20" selection-start-column="75" selection-end-line="20" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html_php/html_php-1-8.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="108" column="59" lean-forward="true" selection-start-line="108" selection-start-column="10" selection-end-line="108" selection-end-column="59" />
+          <folding>
+            <marker date="1503476904769" expanded="true" signature="2438:2996" ph="..." />
+            <marker date="1503476904769" expanded="true" signature="2445:2772" ph="..." />
+            <marker date="1503476904769" expanded="true" signature="2779:2996" ph="..." />
+            <marker date="1503476904769" expanded="true" signature="2803:2996" ph="..." />
+            <marker date="1503476904769" expanded="true" signature="2854:2996" ph="..." />
+            <marker date="1503476904769" expanded="true" signature="2901:2996" ph="..." />
+            <marker date="1503476904769" expanded="true" signature="3151:3351" ph="..." />
+            <marker date="1503476904769" expanded="true" signature="3531:3717" ph="..." />
+            <marker date="1503476904769" expanded="true" signature="3890:4101" ph="..." />
+            <marker date="1503476904769" expanded="true" signature="4295:4480" ph="..." />
+            <marker date="1503476904769" expanded="true" signature="4681:4923" ph="..." />
+            <marker date="1503476904769" expanded="true" signature="4813:4923" ph="..." />
+            <marker date="1503476904769" expanded="true" signature="5023:5137" ph="..." />
+            <marker date="1503476904769" expanded="true" signature="5373:5676" ph="..." />
+            <marker date="1503476904769" expanded="true" signature="5510:5676" ph="..." />
+            <marker date="1503476904769" expanded="false" signature="7270:7275" ph="&amp;" />
+            <marker date="1503476904769" expanded="false" signature="11121:11126" ph="&amp;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html_php/html_php-1-9.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="23" lean-forward="false" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html_php/html_php-1-11.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-595">
+          <caret line="4" column="32" lean-forward="true" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html_php/html_php-1-12.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1247">
+          <caret line="122" column="82" lean-forward="false" selection-start-line="122" selection-start-column="78" selection-end-line="122" selection-end-column="82" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html_php/html_php-1-13.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="24" column="31" lean-forward="true" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html_php/html_php-1-10.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-986">
+          <caret line="11" column="5" lean-forward="true" selection-start-line="8" selection-start-column="3" selection-end-line="11" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microblog/micro-register.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-984">
+          <caret line="238" column="107" lean-forward="false" selection-start-line="238" selection-start-column="107" selection-end-line="238" selection-end-column="107" />
+          <folding>
+            <marker date="1503477639847" expanded="true" signature="1205:1260" ph="SELECT usern... users" />
+            <marker date="1503477639847" expanded="true" signature="1853:1899" ph="SELECT email... users" />
+            <marker date="1503477639847" expanded="true" signature="4451:4650" ph="INSERT INTO users... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microblog/micro-add.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding>
+            <marker date="1503367262172" expanded="true" signature="290:342" ph="INSERT INTO tweets... " />
+            <marker date="1503367262172" expanded="true" signature="290:369" ph="INSERT INTO tweets... " />
+            <marker date="1503367262172" expanded="true" signature="567:740" ph="SELECT * FRO... posts" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microblog/micro-blog.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1581">
+          <caret line="93" column="53" lean-forward="true" selection-start-line="93" selection-start-column="53" selection-end-line="93" selection-end-column="53" />
+          <folding>
+            <marker date="1503477944447" expanded="true" signature="464:512" ph="SELECT * FRO... users" />
+            <marker date="1503477944447" expanded="true" signature="572:786" ph="SELECT users... users" />
+            <marker date="1503477944447" expanded="true" signature="4976:5033" ph="SELECT * FRO... tweets" />
+            <marker date="1503477944447" expanded="true" signature="4976:5052" ph="SELECT paren... tweets" />
+            <marker date="1503477944447" expanded="true" signature="4976:5061" ph="SELECT paren... tweets" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/microblog/micro-delete.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="23" column="1" lean-forward="true" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+        <state relative-caret-position="153">
+          <caret line="9" column="22" lean-forward="false" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
           <folding>
             <marker date="1503472530817" expanded="true" signature="263:368" ph="SELECT paren... tweets" />
             <marker date="1503472530817" expanded="true" signature="580:657" ph="UPDATE tweet... " />
             <marker date="1503472530817" expanded="true" signature="719:752" ph="DELETE FROM " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microblog/micro-edit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="92" lean-forward="false" selection-start-line="17" selection-start-column="88" selection-end-line="17" selection-end-column="92" />
+          <folding>
+            <marker date="1503372681991" expanded="true" signature="276:323" ph="UPDATE posts... " />
+            <marker date="1503372681991" expanded="true" signature="466:520" ph="SELECT * FRO... employees" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microblog/micro-follow.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="12" lean-forward="false" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+          <folding>
+            <marker date="1503469371451" expanded="true" signature="249:298" ph="SELECT id FR... users" />
+            <marker date="1503469371451" expanded="true" signature="468:529" ph="SELECT id FR... follows" />
+            <marker date="1503469371451" expanded="true" signature="468:552" ph="SELECT id FR... follows" />
+            <marker date="1503469371451" expanded="true" signature="716:807" ph="UPDATE follo... " />
+            <marker date="1503469371451" expanded="true" signature="948:1057" ph="INSERT INTO follows... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microblog/micro-login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="54" column="23" lean-forward="true" selection-start-line="54" selection-start-column="23" selection-end-line="54" selection-end-column="23" />
+          <folding>
+            <marker date="1503403449545" expanded="true" signature="722:777" ph="SELECT usern... users" />
+            <marker date="1503403449545" expanded="true" signature="1007:1062" ph="SELECT passw... users" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microblog/micro-profile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-87">
+          <caret line="130" column="192" lean-forward="false" selection-start-line="130" selection-start-column="192" selection-end-line="130" selection-end-column="192" />
+          <folding>
+            <marker date="1503478284496" expanded="true" signature="455:503" ph="SELECT * FRO... users" />
+            <marker date="1503478284496" expanded="true" signature="671:720" ph="SELECT * FRO... users" />
+            <marker date="1503478284496" expanded="true" signature="867:956" ph="SELECT count... follows" />
+            <marker date="1503478284496" expanded="true" signature="1026:1100" ph="SELECT isFol... follows" />
+            <marker date="1503478284496" expanded="true" signature="1026:1116" ph="SELECT isFol... follows" />
+            <marker date="1503478284496" expanded="true" signature="1184:1436" ph="SELECT users... users" />
+            <marker date="1503478284496" expanded="true" signature="1184:1437" ph="SELECT users... users" />
           </folding>
         </state>
       </provider>

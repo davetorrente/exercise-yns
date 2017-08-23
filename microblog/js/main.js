@@ -10,13 +10,10 @@ $(document).ready(function(){
             sectionMessage.addClass('alert-danger');
             sectionMessage.html("Sorry, only " + maxLength + " characters are allowed").fadeIn().delay(2500).fadeOut('slow');
         }
-
     });
     $('#createTweet').on('click','#btnAdd',function(e){
         e.preventDefault();
-        var $this = $(this);
         var addTweet = $('textarea[name=tweet]');
-
         var result = '';
         if(addTweet.val()===''){
             addTweet.parent().addClass('has-error');
@@ -41,50 +38,41 @@ $(document).ready(function(){
                 method: 'post',
                 url: 'micro-add.php',
                 data: {tweet: addTweet.val(), user_id: user_id.val()},
-                dataType: 'json',
-                success: function(response){
-                    addTweet.val('');
-                    var html = '';
-                    if(response.message)
-                    {
-                        var query = response.query;
-                        $.each(query, function(index){
-
-                            html +=
-                                '<article class="post">'+
-                                    '<div class="alert alert-edit" id="alertMessage" style="display: none;"></div>'+
+                dataType: 'json'
+            }).done(function(response){
+                addTweet.val('');
+                var html = '';
+                if(response.message)
+                {
+                    var query = response.query;
+                    $.each(query, function(index){
+                        html +=
+                            '<article class="post">'+
+                                '<div class="alert alert-edit" id="alertMessage" style="display: none;"></div>'+
                                     '<div class="info postByUser">'+
                                         '<div class="row">'+
                                             '<div class="col-md-2">'+
                                                 '<a href="micro-profile.php?username='+query[index].username+'"><img class=" postImage" src="'+query[index].upload+'"></a>'+
                                             '</div>'+
                                             '<div class="col-md-6 userName">'+
-                                            '<h4>'+query[index].username+'</h4>'+
-                                            '<p>'+"Posted on "+query[index].modified+'</p>'+
+                                                '<h4>'+query[index].username+'</h4>'+
+                                                '<p>'+"Posted on "+query[index].modified+'</p>'+
                                             '</div>'+
                                         '</div>'+
                                     '</div>'+
                                     '<p class="contentPost">'+query[index].tweet+'</p>'+
                                     '<div class="clearfix"></div>'+
-                                    ' <div class="interaction tweet-interact" user_id="'+user_id.val()+'" tweet_id="'+query[index].id+'">'+
-                                        ' <a href="javascript:;" class="tweet-edit">Edit | </a>'+
+                                    '<div class="interaction tweet-interact" user_id="'+user_id.val()+'" tweet_id="'+query[index].id+'">'+
+                                        '<a href="javascript:;" class="tweet-edit">Edit | </a>'+
                                         '<a href="javascript:;" class="tweet-delete">Delete |</a>'+
                                     '</div>'+
-                                '</article>';
-                        });
-                        sectionMessage.removeClass('alert-danger');
-                        sectionMessage.addClass('alert-success');
-                        sectionMessage.html('Tweet Successfully Added!').fadeIn().delay(1500).fadeOut('slow');
-
-                        $('#showdata').prepend(html);
-
-                    }else{
-                        sectionMessage.removeClass('alert-success');
-                        sectionMessage.addClass('alert-danger');
-                        sectionMessage.html('Could not add data!').fadeIn().delay(1500).fadeOut('slow');
-                    }
-                },
-                error: function(){
+                            '</article>';
+                    });
+                    sectionMessage.removeClass('alert-danger');
+                    sectionMessage.addClass('alert-success');
+                    sectionMessage.html('Tweet Successfully Added!').fadeIn().delay(1500).fadeOut('slow');
+                    $('#showdata').prepend(html);
+                }else{
                     sectionMessage.removeClass('alert-success');
                     sectionMessage.addClass('alert-danger');
                     sectionMessage.html('Could not add data!').fadeIn().delay(1500).fadeOut('slow');
@@ -97,7 +85,6 @@ $(document).ready(function(){
         event.preventDefault();
         var $this = $(this);
         var id = $this.parent().attr('tweet_id');
-
         $('#deleteModal').modal('show');
         //prevent previous handler - unbind()
         $('#btnDelete').unbind().click(function(event){
@@ -106,26 +93,20 @@ $(document).ready(function(){
                 method: 'POST',
                 url: 'micro-delete.php',
                 data: {id: id},
-                dataType: 'json',
-                success: function(response){
-                    if(response.message.success) {
-                        $('#deleteModal').modal('hide');
-                        sectionMessage.removeClass('alert-success');
-                        sectionMessage.addClass('alert-danger');
-                        sectionMessage.html('Tweet Deleted successfully').fadeIn().delay(1500).fadeOut('slow');
-                        $this.parent().parent().remove();
-                        if(Object.keys(response.parentTweet).length > 0){
-
-                            // console.log(response.parentTweet[0].parent_tweet);
-                            var parentDivRetweet = $('#showdata').find('article.post').find('.tweet-interact[user_id="' + response.parentTweet[0].user_id + '"][tweet_id="' + response.parentTweet[0].id + '"]');
-                            console.log(parentDivRetweet.children().children().css("color", ""));
-                        }
-                    }else{
-                        alert('Error');
+                dataType: 'json'
+            }).done(function(response){
+                if(response.message.success) {
+                    $('#deleteModal').modal('hide');
+                    sectionMessage.removeClass('alert-success');
+                    sectionMessage.addClass('alert-danger');
+                    sectionMessage.html('Tweet Deleted successfully').fadeIn().delay(1500).fadeOut('slow');
+                    $this.parent().parent().remove();
+                    if(Object.keys(response.parentTweet).length > 0){
+                        var parentDivRetweet = $('#showdata').find('article.post').find('.tweet-interact[user_id="' + response.parentTweet[0].user_id + '"][tweet_id="' + response.parentTweet[0].id + '"]');
+                        console.log(parentDivRetweet.children().children().css("color", ""));
                     }
-                },
-                error: function(){
-                    alert('Error deleting');
+                }else{
+                    alert('Error');
                 }
             });
         });

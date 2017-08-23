@@ -13,7 +13,11 @@ if(isset($_POST['register'])) {
     $description = htmlspecialchars($_POST["description"]);
     $phone = htmlspecialchars($_POST['phone']);
     $country = htmlspecialchars($_POST['country']);
-
+    $cpassword = htmlspecialchars($_POST["cpassword"]);
+    if(isset($_POST['gender']))
+    {
+        $gender = htmlspecialchars($_POST['gender']);
+    }
     if(empty($username)) {
         $usernameError = "Username is required";
         $error++;
@@ -42,7 +46,7 @@ if(isset($_POST['register'])) {
         $error++;
     }else {
         $regex = '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/';
-        if (!preg_match($regex, $_POST["email"])) {
+        if (!preg_match($regex, $email)) {
             $emailError = "Email is invalid";
             $error++;
         }else{
@@ -54,8 +58,7 @@ if(isset($_POST['register'])) {
             }
         }
     }
-    if(!empty($password) && ($password == $_POST["cpassword"])) {
-        $cpassword = $_POST["cpassword"];
+    if(!empty($password) && ($password == $cpassword)) {
         if (strlen($_POST["password"]) <= '8') {
             $passwordError = "Your Password Must Contain At Least 8 Characters!";
             $error++;
@@ -78,7 +81,7 @@ if(isset($_POST['register'])) {
         $passwordError = "Password is required";
         $error++;
     }
-    if(empty($_POST['cpassword']))
+    if(empty($cpassword))
     {
         $confirmError = "Confirm Password is required";
         $error++;
@@ -97,16 +100,16 @@ if(isset($_POST['register'])) {
             $error++;
         }
     }
-    if (empty($_POST["gender"])) {
+    if (empty($gender)) {
         $genderError = "Gender is required";
         $error++;
     }else{
-        if($_POST['gender'] == 'Male')
+        if($gender == 'Male')
         {
-            $male = $_POST['gender'];
+            $male = $gender;
         }
         else{
-            $female = $_POST['gender'];
+            $female = $gender;
         }
     }
     if (empty($country)) {
@@ -127,12 +130,10 @@ if(isset($_POST['register'])) {
         {
 
             $time = date("d-m-Y")."-".time() ;
-            $newFile = '/database/profile-img/' .$time."-".$file['name'];
+            $newFile = '/microblog/profile-img/' .$time."-".$file['name'];
             move_uploaded_file($file['tmp_name'], $_SERVER["DOCUMENT_ROOT"]. $newFile);
         }
         $hashpassword = md5($password);
-        $country = $_POST['country'];
-        $gender =  $_POST['gender'];
         $database->query("INSERT INTO users (username, password, email, description , phone, country, gender, upload) VALUES('$username', '$hashpassword', '$email', '$description', '$phone', '$country', '$gender', '$newFile')");
         $database->execute();
         $username = "";
@@ -237,7 +238,7 @@ if(isset($_POST['register'])) {
                 </div>
                 <span style="color:red; display: block;"><?php echo isset($genderError) ? $genderError : ''; ?></span>
             </div>
-        </div> <!-- /.form-group -->
+        </div>
         <div class="form-group">
             <label for="country" class="col-sm-3 control-label">Country</label>
             <div class="col-sm-9">

@@ -1,6 +1,5 @@
 <?php
 require "Database.php";
-
 $database = new Database();
 $datetime = date('Y-m-d H:i:s');
 if(isset($_POST['delete']))
@@ -33,7 +32,6 @@ if(isset($_POST['submit']))
         $database->execute();
     }
 }
-
 $database->query('SELECT * FROM posts ORDER by modified DESC ');
 $rows = $database->resultset();
 
