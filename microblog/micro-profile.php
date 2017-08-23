@@ -21,8 +21,13 @@ if(isset($_GET['username'])){
     $userProfile= $_GET['username'];
     $database->query("SELECT * FROM users where username='$userProfile'");
     $userInfos = $database->resultset();
+    $getUserID = $userInfos[0]['id'];
+    $database->query("SELECT count(*) FROM follows WHERE user_id='$getUserID'");
+    $totalFollows = $database->resultset();
+
     $database->query("SELECT users.username, users.upload, tweets.id, tweets.user_id, tweets.tweet, tweets.created, tweets.modified, tweets.isRetweet  FROM users INNER JOIN tweets ON users.id = tweets.user_id WHERE users.username='$userProfile' ORDER BY tweets.modified DESC ");
     $profileTweets = $database->resultset();
+    print_r($totalFollows);
 }
 ?>
 <!DOCTYPE html>
@@ -48,7 +53,7 @@ if(isset($_GET['username'])){
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="micro-blog.php">Home</a></li>
-                <li class="active"><a href="micro-profile.php?username=<?php echo $userInfos[0]['username'];?>"><img src="<?php echo $userInfos[0]['upload'];?>" class="nav-profile img-circle"> Profile</a></li>
+                <li class="active"><a href="micro-profile.php?username=<?php echo $user[0]['username'];?>"><img src="<?php echo $user[0]['upload'];?>" class="nav-profile img-circle"> Profile</a></li>
                 <li><a href="?logout=1">Logout</a></li>
             </ul>
         </div>
