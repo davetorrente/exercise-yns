@@ -314,7 +314,7 @@ $(document).ready(function(){
             console.log(res);
             if(res.isFollow)
             {
-                $('#addFollow').html("Followed");
+                $('#addFollow').html("Unfollow");
             }
             else{
                 $('#addFollow').html("Follow");

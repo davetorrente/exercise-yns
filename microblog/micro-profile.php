@@ -16,18 +16,21 @@ if (isset($_SESSION['microUser'])) {
     $userAuth = $_SESSION['microUser'];
     $database->query("SELECT * FROM users WHERE username = '$userAuth'");
     $user = $database->resultset();
+    $sessionUserID = $user[0]['id'];
 }
 if(isset($_GET['username'])){
     $userProfile= $_GET['username'];
     $database->query("SELECT * FROM users where username='$userProfile'");
     $userInfos = $database->resultset();
+    $userProfileID = $userInfos[0]['id'];
     $getUserID = $userInfos[0]['id'];
-    $database->query("SELECT count(*) FROM follows WHERE user_id='$getUserID'");
+    $database->query("SELECT count(*) as totalFollows FROM follows WHERE user_id='$getUserID' AND isFollow=true");
     $totalFollows = $database->resultset();
+    $database->query("SELECT isFollow FROM follows WHERE user_id='$sessionUserID' AND follow_id='$userProfileID'");
+    $followName = $database->resultset();
 
     $database->query("SELECT users.username, users.upload, tweets.id, tweets.user_id, tweets.tweet, tweets.created, tweets.modified, tweets.isRetweet  FROM users INNER JOIN tweets ON users.id = tweets.user_id WHERE users.username='$userProfile' ORDER BY tweets.modified DESC ");
     $profileTweets = $database->resultset();
-    print_r($totalFollows);
 }
 ?>
 <!DOCTYPE html>
@@ -67,17 +70,17 @@ if(isset($_GET['username'])){
             </div>
             <p>Lorem ipsum dolor sit amet, eos aeque eirmod tamquam eu, per vidisse ullamcorper ne, omnes eirmod reprimique sea ex. Usu cu consul tempor, vix ad simul dolores adipisci.</p>
             <div class="row">
-                <?php if($_SESSION['microUser'] !=  $userInfos[0]['username'] ): ?>
                 <div class="col-md-8 col-md-offset-4">
-                    <a href="#" class="FollowerBadge">Following<span class="badge following-class">0</span></a>
+                    <b>Following</b><span class="badge following-class"><?php echo $totalFollows[0]['totalFollows']; ?></span>
+                    <?php if($_SESSION['microUser'] !=  $userInfos[0]['username'] ): ?>
                     <!-- For other user profile not involved the authenticated user will have a Follow Button -->
                         <form action="" method="post" id="followForm">
                             <input class="form-control hiddenFollow" type="hidden" name="hidden_id" value="<?php echo $userInfos[0]['id'];?>">
                             <!--$followName variable to displayed wether a user is being followed or not-->
-                            <button type="submit" class="btn btn-info addFollow" id="addFollow">Follow</button>
+                            <button type="submit" class="btn btn-info addFollow" id="addFollow"><?php echo $followName[0]['isFollow'] ? "Unfollow" : "Follow";?> </button>
                         </form>
+                    <?php endif; ?>
                 </div>
-                <?php endif; ?>
             </div>
         </div>
         <div class="col-md-9">
