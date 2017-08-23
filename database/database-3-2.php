@@ -87,6 +87,8 @@ $sqlTweets = "CREATE TABLE IF NOT ExISTS tweets (
 id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
 tweet TEXT NOT NULL,
 user_id INT(11) NOT NULL,
+isRetweet BOOLEAN DEFAULT 0,
+parent_tweet INT(11) NULL,
 created DATETIME NULL,
 modified DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 )";
@@ -245,12 +247,3 @@ $database->execute();
 
 
 echo "SUCCESS CREATING users, posts, customers, departments, employees, employee_positions, orders, positions, questions, answers, grades, tweets, follows" . "<br/>";
-$database->query($sqlAnswers);
-$database->execute();
-$database->query($sqlGrades);
-$database->execute();
-$database->query($sqlTweets);
-$database->execute();
-$database->query($sqlFollows);
-$database->execute();
-$database->query($sqlRetweets);

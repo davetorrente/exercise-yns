@@ -121,6 +121,7 @@ $(document).ready(function(){
         event.preventDefault();
         var $this = $(this);
         var id = $this.parent().attr('tweet_id');
+
         $('#deleteModal').modal('show');
         //prevent previous handler - unbind()
         $('#btnDelete').unbind().click(function(event){
@@ -131,12 +132,18 @@ $(document).ready(function(){
                 data: {id: id},
                 dataType: 'json',
                 success: function(response){
-                    if(response.success){
+                    if(response.message.success) {
                         $('#deleteModal').modal('hide');
                         sectionMessage.removeClass('alert-success');
                         sectionMessage.addClass('alert-danger');
                         sectionMessage.html('Tweet Deleted successfully').fadeIn().delay(1500).fadeOut('slow');
                         $this.parent().parent().remove();
+                        if(Object.keys(response.parentTweet).length > 0){
+
+                            // console.log(response.parentTweet[0].parent_tweet);
+                            var parentDivRetweet = $('#showdata').find('article.post').find('.tweet-interact[user_id="' + response.parentTweet[0].user_id + '"][tweet_id="' + response.parentTweet[0].id + '"]');
+                            console.log(parentDivRetweet.children().children().css("color", ""));
+                        }
                     }else{
                         alert('Error');
                     }
@@ -226,7 +233,6 @@ $(document).ready(function(){
                 }).done(function(response){
                     var html = '';
                     if(response.message.isRetweet) {
-                        console.log(response);
                         var query = response.query;
                         $.each(query, function (index) {
                             if (query)
