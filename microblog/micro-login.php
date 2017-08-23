@@ -80,7 +80,7 @@ if(isset($_POST['login'])) {
         <a class="navbar-brand" href="">MICRO BLOG</a>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="microblog.php">Home</a></li>
+                <li><a href="micro-blog.php">Home</a></li>
                 <li class="active"><a href="micro-login.php">Login</a></li>
                 <li><a href="micro-register.php">Register</a></li>
             </ul>
