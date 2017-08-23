@@ -9,7 +9,10 @@ if(isset($_POST['register'])) {
     $description = htmlspecialchars($_POST["description"]);
     $phone = htmlspecialchars($_POST['phone']);
     $country = htmlspecialchars($_POST['country']);
-
+    if(isset($_POST['gender']))
+    {
+        $gender = htmlspecialchars($_POST['gender']);
+    }
     if(empty($username)) {
         $usernameError = "Username is required";
         $error++;
@@ -97,17 +100,17 @@ if(isset($_POST['register'])) {
             $error++;
         }
     }
-    if (empty($_POST["gender"])) {
+    if (empty($gender)) {
         $genderError = "Gender is required";
         $error++;
     }
     else{
-        if($_POST['gender'] == 'Male')
+        if($gender == 'Male')
         {
-            $male = $_POST['gender'];
+            $male = $gender;
         }
         else{
-            $female = $_POST['gender'];
+            $female = $gender;
         }
     }
     if (empty($country)) {
@@ -132,8 +135,6 @@ if(isset($_POST['register'])) {
             move_uploaded_file($file['tmp_name'], $_SERVER["DOCUMENT_ROOT"]. $newFile);
         }
         $hashpassword = md5($password);
-        $country = $_POST['country'];
-        $gender =  $_POST['gender'];
         $database->query("INSERT INTO users (username, password, email, description , phone, country, gender, upload) VALUES('$username', '$hashpassword', '$email', '$description', '$phone', '$country', '$gender', '$newFile')");
         $database->execute();
         $username = "";
