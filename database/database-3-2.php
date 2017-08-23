@@ -244,7 +244,7 @@ $database->query($sqlInsertAnswers);
 $database->execute();
 
 
-echo "SUCCESS CREATING users, posts, customers, departments, employees, employee_positions, orders, positions, questions, answers, grades, tweets, follows, retweets" . "<br/>";
+echo "SUCCESS CREATING users, posts, customers, departments, employees, employee_positions, orders, positions, questions, answers, grades, tweets, follows" . "<br/>";
 $database->query($sqlAnswers);
 $database->execute();
 $database->query($sqlGrades);

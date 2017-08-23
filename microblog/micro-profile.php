@@ -44,79 +44,92 @@ if(isset($_GET['username'])){
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="microblog.php">Micro Blog</a>
+        <a class="navbar-brand" href="micro-blog.php">Micro Blog</a>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="microblog.php">Home</a></li>
+                <li><a href="micro-blog.php">Home</a></li>
                 <li class="active"><a href="micro-profile.php?username=<?php echo $userInfos[0]['username'];?>"><img src="<?php echo $userInfos[0]['upload'];?>" class="nav-profile img-circle"> Profile</a></li>
                 <li><a href="?logout=1">Logout</a></li>
             </ul>
         </div>
     </div>
 </nav>
-<div class="row profile-div">
-    <div class="col-md-3">
-        <div class="profile-pic">
-            <img src="<?php echo $userInfos[0]['upload'];?>" alt="sample profile pic" class="img-thumbnail img-profile">
-        </div>
-        <p>Lorem ipsum dolor sit amet, eos aeque eirmod tamquam eu, per vidisse ullamcorper ne, omnes eirmod reprimique sea ex. Usu cu consul tempor, vix ad simul dolores adipisci.</p>
-    </div>
-    <div class="col-md-9">
-        <h1 class="samplePosts">
-            <!-- If it is the logged in user, it will display "Your Profile" -->
-            <?php if($userInfos[0]['username'] == $_SESSION['microUser']): ?>
-                Your Profile
-                <!-- If it is not the logged in user, it will display username's Profile -->
-            <?php else: ?>
-                <?php echo $userInfos['0']['username'] . "'s" . " Profile"; ?>
-            <?php endif; ?>
-        </h1>
-        <section class="row sectionUser">
-            <div class="col-md-6 col-md-offset-3">
-                <div class="alert" id="alertMessage" style="display: none;"></div>
-                <?php if($userInfos[0]['username'] == $_SESSION['microUser']): ?>
-                    <form id="createTweet" method="post">
-                        <div class="form-group">
-                            <textarea class="form-control" name="tweet" id="tweet" rows="3" placeholder="Your Tweet.."></textarea>
-                            <!--                <p style="display: inline-block">Total number of characters: </p><span style="display: inline-block" id="tweetCount">140</span>-->
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" type="hidden" name="hidden_id" value="<?php echo $userInfos[0]['id'] ;?>">
-                        </div>
-                        <button type="button" class="btn btn-info" name="btnAdd" id="btnAdd">Create Tweet</button>
-                    </form>
-                <?php endif; ?>
+<div class="container-fluid">
+    <div class="row profile-div">
+        <div class="col-md-3">
+            <div class="profile-pic">
+                <img src="<?php echo $userInfos[0]['upload'];?>" alt="sample profile pic" class="img-thumbnail img-profile">
             </div>
-        </section>
-        <section class="row">
-            <div class="col-md-6 col-md-offset-3" id="showdata">
-                <div class="alert" id="alertMessage" style="display: none;"></div>
-                <?php foreach($profileTweets as $profileTweet): ?>
-                    <article class="post">
-                        <div class="info postByUser">
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <a href="micro-profile.php?username=<?php echo $profileTweet['username']; ?>"> <img src="<?php echo $profileTweet['upload'];?>" alt="sample profile pic" class="postImage"></a>
-                                </div>
-                                <div class="col-md-6 userName">
-                                    <h4><?php echo $profileTweet["username"]?></h4>
-                                    <p>Posted on  <?php echo $profileTweet['created']; ?></p>
+            <p>Lorem ipsum dolor sit amet, eos aeque eirmod tamquam eu, per vidisse ullamcorper ne, omnes eirmod reprimique sea ex. Usu cu consul tempor, vix ad simul dolores adipisci.</p>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-4">
+                    <a href="#" class="FollowerBadge">Following<span class="badge following-class">0</span></a>
+                    <!-- For other user profile not involved the authenticated user will have a Follow Button -->
+                        <form action="" method="post" id="followForm">
+                            <!--$followName variable to displayed wether a user is being followed or not-->
+                            <button type="submit" class="btn btn-info addFollow" id="addFollow">Follow</button>
+                        </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <h1 class="samplePosts">
+                <!-- If it is the logged in user, it will display "Your Profile" -->
+                <?php if($userInfos[0]['username'] == $_SESSION['microUser']): ?>
+                    Your Profile
+                    <!-- If it is not the logged in user, it will display username's Profile -->
+                <?php else: ?>
+                    <?php echo $userInfos['0']['username'] . "'s" . " Profile"; ?>
+                <?php endif; ?>
+            </h1>
+            <section class="row sectionUser">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="alert" id="alertMessage" style="display: none;"></div>
+                    <?php if($userInfos[0]['username'] == $_SESSION['microUser']): ?>
+                        <form id="createTweet" method="post">
+                            <div class="form-group">
+                                <textarea class="form-control" name="tweet" id="tweet" rows="3" placeholder="Your Tweet.."></textarea>
+                                <!--                <p style="display: inline-block">Total number of characters: </p><span style="display: inline-block" id="tweetCount">140</span>-->
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" type="hidden" name="hidden_id" value="<?php echo $userInfos[0]['id'] ;?>">
+                            </div>
+                            <button type="button" class="btn btn-info" name="btnAdd" id="btnAdd">Create Tweet</button>
+                        </form>
+                    <?php endif; ?>
+                </div>
+            </section>
+            <section class="row section2">
+                <div class="col-md-8 col-md-offset-2" id="showdata">
+                    <div class="alert" id="alertMessage" style="display: none;"></div>
+                    <?php foreach($profileTweets as $profileTweet): ?>
+                        <article class="post">
+                            <div class="alert alert-edit" id="alertMessage" style="display: none;"></div>
+                            <div class="info postByUser">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <a href="micro-profile.php?username=<?php echo $profileTweet['username']; ?>"> <img src="<?php echo $profileTweet['upload'];?>" alt="sample profile pic" class="postImage"></a>
+                                    </div>
+                                    <div class="col-md-6 userName">
+                                        <h4><?php echo $profileTweet["username"]?></h4>
+                                        <p>Posted on  <?php echo $profileTweet['created']; ?></p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <p class="contentPost"><?php echo $profileTweet['tweet']; ?></p>
-
-                        <div class="interaction comment-interact">
-                            <?php if($user[0]['id'] != $profileTweet['user_id']): ?>
-                                <a href="javascript:;" class="retweet"><i class="fa fa-retweet" id="iconRetweet" aria-hidden="true" <?php echo $profileTweet['isRetweet'] ? "style=color:red;" : '';?> ></i> |</a>
-                            <?php else: ?>
-                                <a href="javascript:;"  class="tweet-edit">Edit |</a>
-                                <a href="javascript:;" class="tweet-delete">Delete |</a>
-                            <?php endif; ?>
-                    </article>
-                <?php endforeach ?>
-            </div>
-        </section>
+                            <p class="contentPost"><?php echo $profileTweet['tweet']; ?></p>
+                            <div class="interaction comment-interact" user_id="<?php echo $profileTweet['user_id']; ?>" tweet_id="<?php echo $profileTweet['id']; ?>">
+                                <?php if($user[0]['id'] != $profileTweet['user_id']): ?>
+                                    <a href="javascript:;" class="retweet"><i class="fa fa-retweet" id="iconRetweet" aria-hidden="true" <?php echo $profileTweet['isRetweet'] ? "style=color:green;" : '';?> ></i> |</a>
+                                <?php else: ?>
+                                    <a href="javascript:;"  class="tweet-edit">Edit |</a>
+                                    <a href="javascript:;" class="tweet-delete">Delete |</a>
+                                <?php endif; ?>
+                            </div>
+                        </article>
+                    <?php endforeach ?>
+                    </div>
+                </div>
+            </section>
     </div>
 </div>
 </body>

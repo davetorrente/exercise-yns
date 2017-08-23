@@ -6,11 +6,10 @@
                 <h4 class="modal-title">Confirm Retweet</h4>
             </div>
             <div class="modal-body">
-                Are you sure you want to Retweet this Tweet?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" id="btnRetweet" class="btn btn-info">Retweet</button>
+                <button type="button" id="btnRetweet" class="btn btn-info">Ok</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

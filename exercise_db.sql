@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 17, 2017 at 08:44 AM
+-- Generation Time: Aug 22, 2017 at 11:14 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -41,16 +41,16 @@ CREATE TABLE `answers` (
 --
 
 INSERT INTO `answers` (`id`, `answer1`, `answer2`, `answer3`, `answer`, `question_id`, `created`) VALUES
-(1, 'nameClass', 'stdClass', ' newClass', 'stdClass', 1, '2017-08-17 10:14:32'),
-(2, 'sort()', 'rsort()', ' asort()', 'rsort()', 2, '2017-08-17 10:14:32'),
-(3, '$2name', '$Name', '$_name', '$2name', 3, '2017-08-17 10:14:32'),
-(4, '$POST', '$GET', '$_REQUEST', '$_REQUEST', 4, '2017-08-17 10:14:32'),
-(5, 'CREATE TABLE table_name (column_name column_type);', 'CREATE table_name (column_name column_type);', 'CREATE table_name (column_type column_name);', 'CREATE TABLE table_name (column_name column_type);', 5, '2017-08-17 10:14:32'),
-(6, 'SELECT WHERE Col1, Col2 FROM;	', 'SELECT Col1, Col2 FROM WHERE;', 'SELECT Col1 + Col2 FROM WHERE;', 'SELECT Col1, Col2 FROM WHERE;', 6, '2017-08-17 10:14:32'),
-(7, 'bind_param()', 'bound_param()', 'bind_result()', 'bind_param()', 7, '2017-08-17 10:14:32'),
-(8, 'Extends', 'Inherits', 'implements', 'Extends', 8, '2017-08-17 10:14:32'),
-(9, 'static class', 'Interface', 'Object', 'Interface', 9, '2017-08-17 10:14:32'),
-(10, 'query()', 'send_query()', 'query_send()', 'query()', 10, '2017-08-17 10:14:32');
+(1, 'nameClass', 'stdClass', ' newClass', 'stdClass', 1, '2017-08-18 15:48:24'),
+(2, 'sort()', 'rsort()', ' asort()', 'rsort()', 2, '2017-08-18 15:48:24'),
+(3, '$2name', '$Name', '$_name', '$2name', 3, '2017-08-18 15:48:24'),
+(4, '$POST', '$GET', '$_REQUEST', '$_REQUEST', 4, '2017-08-18 15:48:24'),
+(5, 'CREATE TABLE table_name (column_name column_type);', 'CREATE table_name (column_name column_type);', 'CREATE table_name (column_type column_name);', 'CREATE TABLE table_name (column_name column_type);', 5, '2017-08-18 15:48:24'),
+(6, 'SELECT WHERE Col1, Col2 FROM;	', 'SELECT Col1, Col2 FROM WHERE;', 'SELECT Col1 + Col2 FROM WHERE;', 'SELECT Col1, Col2 FROM WHERE;', 6, '2017-08-18 15:48:24'),
+(7, 'bind_param()', 'bound_param()', 'bind_result()', 'bind_param()', 7, '2017-08-18 15:48:24'),
+(8, 'Extends', 'Inherits', 'implements', 'Extends', 8, '2017-08-18 15:48:24'),
+(9, 'static class', 'Interface', 'Object', 'Interface', 9, '2017-08-18 15:48:24'),
+(10, 'query()', 'send_query()', 'query_send()', 'query()', 10, '2017-08-18 15:48:24');
 
 -- --------------------------------------------------------
 
@@ -168,6 +168,21 @@ INSERT INTO `employee_positions` (`id`, `employee_id`, `position_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `follows`
+--
+
+CREATE TABLE `follows` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `follow_id` int(11) NOT NULL,
+  `isFollow` tinyint(1) DEFAULT '0',
+  `created` datetime DEFAULT NULL,
+  `modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `grades`
 --
 
@@ -178,13 +193,6 @@ CREATE TABLE `grades` (
   `created` datetime DEFAULT NULL,
   `modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `grades`
---
-
-INSERT INTO `grades` (`id`, `user_id`, `score`, `created`, `modified`) VALUES
-(1, 1, 1, '2017-08-17 02:35:16', '2017-08-17 10:35:16');
 
 -- --------------------------------------------------------
 
@@ -221,17 +229,6 @@ CREATE TABLE `positions` (
   `name` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `positions`
---
-
-INSERT INTO `positions` (`id`, `name`) VALUES
-(1, 'CEO'),
-(2, 'CTO'),
-(3, 'CFO'),
-(4, 'Manager'),
-(5, 'Staff');
-
 -- --------------------------------------------------------
 
 --
@@ -250,16 +247,16 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id`, `post`, `created`, `modified`) VALUES
-(1, 'dummy1', '2017-08-17 02:14:32', '2017-08-17 10:14:32'),
-(2, 'dummy2', '2017-08-17 02:14:32', '2017-08-17 10:14:32'),
-(3, 'dummy3', '2017-08-17 02:14:32', '2017-08-17 10:14:32'),
-(4, 'dummy4', '2017-08-17 02:14:32', '2017-08-17 10:14:32'),
-(5, 'dummy5', '2017-08-17 02:14:32', '2017-08-17 10:14:32'),
-(6, 'dummy6', '2017-08-17 02:14:32', '2017-08-17 10:14:32'),
-(7, 'dummy7', '2017-08-17 02:14:32', '2017-08-17 10:14:32'),
-(8, 'dummy8', '2017-08-17 02:14:32', '2017-08-17 10:14:32'),
-(9, 'dummy9', '2017-08-17 02:14:32', '2017-08-17 10:14:32'),
-(10, 'dummy10', '2017-08-17 02:14:32', '2017-08-17 10:14:32');
+(1, 'dummy1', '2017-08-18 15:48:23', '2017-08-18 15:48:24'),
+(2, 'dummy2', '2017-08-18 15:48:23', '2017-08-18 15:48:24'),
+(3, 'dummy3', '2017-08-18 15:48:23', '2017-08-18 15:48:24'),
+(4, 'dummy4', '2017-08-18 15:48:23', '2017-08-18 15:48:24'),
+(5, 'dummy5', '2017-08-18 15:48:23', '2017-08-18 15:48:24'),
+(6, 'dummy6', '2017-08-18 15:48:23', '2017-08-18 15:48:24'),
+(7, 'dummy7', '2017-08-18 15:48:23', '2017-08-18 15:48:24'),
+(8, 'dummy8', '2017-08-18 15:48:23', '2017-08-18 15:48:24'),
+(9, 'dummy9', '2017-08-18 15:48:23', '2017-08-18 15:48:24'),
+(10, 'dummy10', '2017-08-18 15:48:23', '2017-08-18 15:48:24');
 
 -- --------------------------------------------------------
 
@@ -278,16 +275,31 @@ CREATE TABLE `questions` (
 --
 
 INSERT INTO `questions` (`id`, `question`, `created`) VALUES
-(1, 'Which class name is generic empty reserved in PHP?', '2017-08-17 10:14:32'),
-(2, 'Which of the functions is used to sort an array in descending order?', '2017-08-17 10:14:32'),
-(3, 'Which is invalid variable?', '2017-08-17 10:14:32'),
-(4, 'Which is a global array in php', '2017-08-17 10:14:32'),
-(5, 'Which one of the following statements is used to create a table?', '2017-08-17 10:14:32'),
-(6, 'Which one is correct syntax for Where clause in SQL server?', '2017-08-17 10:14:32'),
-(7, 'Which of the following methods is used to execute the statement after the parameters have been bound?', '2017-08-17 10:14:32'),
-(8, 'Which one of the following keyword is used to inherit our subclass into a superclass?', '2017-08-17 10:14:32'),
-(9, 'If your object must inherit behavior from a number of sources you must use a/an', '2017-08-17 10:14:32'),
-(10, 'Which one of the following methods is responsible for sending the query to the database?', '2017-08-17 10:14:32');
+(1, 'Which class name is generic empty reserved in PHP?', '2017-08-18 15:48:24'),
+(2, 'Which of the functions is used to sort an array in descending order?', '2017-08-18 15:48:24'),
+(3, 'Which is invalid variable?', '2017-08-18 15:48:24'),
+(4, 'Which is a global array in php', '2017-08-18 15:48:24'),
+(5, 'Which one of the following statements is used to create a table?', '2017-08-18 15:48:24'),
+(6, 'Which one is correct syntax for Where clause in SQL server?', '2017-08-18 15:48:24'),
+(7, 'Which of the following methods is used to execute the statement after the parameters have been bound?', '2017-08-18 15:48:24'),
+(8, 'Which one of the following keyword is used to inherit our subclass into a superclass?', '2017-08-18 15:48:24'),
+(9, 'If your object must inherit behavior from a number of sources you must use a/an', '2017-08-18 15:48:24'),
+(10, 'Which one of the following methods is responsible for sending the query to the database?', '2017-08-18 15:48:24');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tweets`
+--
+
+CREATE TABLE `tweets` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `tweet` text NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `isRetweet` tinyint(1) NOT NULL DEFAULT '0',
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -313,11 +325,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `description`, `phone`, `country`, `created`, `gender`, `upload`) VALUES
-(1, 'Davepogi123', 'deeaf1ea645af982da32ed77fe32a192', 'dave.torrente@gmail.com', 'asdfasdf', '111-1111-1111', 'Bahamas', '2017-08-16 09:54:05', 'male', '/database/profile-img/16-08-2017-1502848445-Hhk8je.jpg'),
-(2, 'Dave123', 'deeaf1ea645af982da32ed77fe32a192', 'dave.torrente4@gmail.com', 'asdasdasd', '111-1111-1111', 'Aruba', '2017-08-16 17:43:22', 'male', '/quizzes/profile-img/16-08-2017-1502876602-Hhk8je.jpg'),
-(3, 'whaepekk', 'deeaf1ea645af982da32ed77fe32a192', 'whaepekk@gmail.com', 'asdfasdfasdf', '111-1111-1111', 'Bahrain', '2017-08-17 16:27:16', 'male', '/quizzes/profile-img/17-08-2017-1502958436-Hhk8je.jpg'),
-(4, 'whaepekk3', 'd41d8cd98f00b204e9800998ecf8427e', 'whaepekk123@gmail.com', 'asdfasdfasdf', '111-1111-1111', 'Bahrain', '2017-08-17 16:27:52', 'male', '/quizzes/profile-img/17-08-2017-1502958472-Hhk8je.jpg'),
-(5, 'whaepekk34', 'deeaf1ea645af982da32ed77fe32a192', 'whaepekk1263@gmail.com', 'asdfasdfasdf', '111-1111-1111', 'Bahrain', '2017-08-17 16:28:53', 'male', '/quizzes/profile-img/17-08-2017-1502958533-Hhk8je.jpg');
+(1, 'Davepogi123', 'deeaf1ea645af982da32ed77fe32a192', 'dave.torrente@gmail.com', 'dave', '111-1111-1111', 'Azerbaijan', '2017-08-18 15:51:45', 'male', '/database/profile-img/18-08-2017-1503042705-Hhk8je.jpg'),
+(2, 'sampleuser', 'deeaf1ea645af982da32ed77fe32a192', 'dave.torrente123@gmail.com', 'asdfasdfasdf', '111-1111-1111', 'Australia', '2017-08-18 18:25:44', 'female', '/database/profile-img/18-08-2017-1503051944-Luffy-One-Piece.png');
 
 --
 -- Indexes for dumped tables
@@ -354,6 +363,12 @@ ALTER TABLE `employee_positions`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `follows`
+--
+ALTER TABLE `follows`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `grades`
 --
 ALTER TABLE `grades`
@@ -381,6 +396,12 @@ ALTER TABLE `posts`
 -- Indexes for table `questions`
 --
 ALTER TABLE `questions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tweets`
+--
+ALTER TABLE `tweets`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -419,10 +440,15 @@ ALTER TABLE `employees`
 ALTER TABLE `employee_positions`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
+-- AUTO_INCREMENT for table `follows`
+--
+ALTER TABLE `follows`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `grades`
 --
 ALTER TABLE `grades`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `orders`
 --
@@ -432,7 +458,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `positions`
 --
 ALTER TABLE `positions`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `posts`
 --
@@ -444,10 +470,15 @@ ALTER TABLE `posts`
 ALTER TABLE `questions`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
+-- AUTO_INCREMENT for table `tweets`
+--
+ALTER TABLE `tweets`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=162;
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

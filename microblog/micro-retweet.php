@@ -9,42 +9,56 @@ if (isset($_SESSION['microUser'])) {
     $database->query("SELECT * FROM users WHERE username = '$userAuth'");
     $user = $database->resultset();
 }
-
-
-
-
 $message['isRetweet'] = false;
 $tweetId = htmlspecialchars($_POST['tweet_id']);
 $userId = htmlspecialchars($_POST['user_id']);
-$tweet = htmlspecialchars($_POST['tweet']);
 
-$database->query("SELECT isRetweet FROM tweets WHERE id='$tweetId' AND user_id='$userId'");
-$findTweet = $database->resultset();
-if($findTweet[0]['isRetweet'])
+if(($_POST['type']=='forRetweet'))
 {
-    $isRetweet = false;
-    $database->query("UPDATE tweets SET isRetweet = :isRetweet WHERE id='$tweetId' AND user_id='$userId'");
-    $database->bind(':isRetweet',$isRetweet);
-    $database->execute();
-    $message['isRetweet'] = $isRetweet;
-    echo json_encode($message);
+    $tweet = htmlspecialchars($_POST['tweet']);
 
-}else{
-    $isRetweet = true;
-    $database->query("UPDATE tweets SET isRetweet = :isRetweet WHERE id='$tweetId' AND user_id='$userId'");
-    $database->bind(':isRetweet',$isRetweet);
-    $database->execute();
-    $database->query("INSERT INTO tweets (tweet, user_id, created) VALUES(:tweet, :user_id, :created)");
-    $database->bind(':tweet',$tweet);
-    $database->bind(':user_id',$user[0]['id']);
-    $database->bind(':created',$datetime);
-    $database->execute();
-    if(!empty($database->lastInsertId())){
-        $database->query('SELECT users.username, users.upload, tweets.id, tweets.tweet, tweets.created, tweets.modified FROM users INNER JOIN tweets ON users.id = tweets.user_id WHERE tweets.id = :id' );
-        $database->bind(':id', $database->lastInsertId());
-        $lastTweet = $database->resultset();
-        $message['isRetweet'] = true;
-        echo json_encode(array('message' => $message, 'query'=>$lastTweet));
+        $isRetweet = true;
+        $database->query("UPDATE tweets SET isRetweet = :isRetweet WHERE id='$tweetId' AND user_id='$userId'");
+        $database->bind(':isRetweet',$isRetweet);
+        $database->execute();
+        $database->query("INSERT INTO tweets (tweet, user_id, parent_tweet, created) VALUES(:tweet, :user_id, :parent_tweet, :created)");
+        $database->bind(':tweet',$tweet);
+        $database->bind(':user_id',$user[0]['id']);
+        $database->bind(':parent_tweet', $tweetId);
+        $database->bind(':created',$datetime);
+        $database->execute();
+        if(!empty($database->lastInsertId())){
+            $database->query('SELECT users.username, users.upload, tweets.id, tweets.tweet, tweets.created, tweets.modified FROM users INNER JOIN tweets ON users.id = tweets.user_id WHERE tweets.id = :id' );
+            $database->bind(':id', $database->lastInsertId());
+            $lastTweet = $database->resultset();
+            $message['isRetweet'] = true;
+            echo json_encode(array('message' => $message, 'query'=>$lastTweet));
+        }
+
+}
+if(($_POST['type']=='forDelete'))
+{
+    $sessionUserID = $user[0]['id'];
+//    $database->query("SELECT tweets.id FROM tweets WHERE user_id = '$sessionUserID' AND parent_tweet = '$tweetId'");
+//    $tweetDeleteID = $database->resultset();
+    $database->query("SELECT isRetweet FROM tweets WHERE id='$tweetId' AND user_id='$userId'");
+    $findTweet = $database->resultset();
+    if($findTweet[0]['isRetweet'])
+    {
+        $isRetweet = false;
+        $database->query("UPDATE tweets SET isRetweet = :isRetweet WHERE id='$tweetId' AND user_id='$userId'");
+        $database->bind(':isRetweet',$isRetweet);
+        $database->execute();
+        $database->query("SELECT id FROM tweets WHERE user_id = '$sessionUserID' AND parent_tweet = '$tweetId'");
+        $findRetweet = $database->resultset();
+        $database->query('DELETE FROM tweets WHERE user_id = :user_id AND parent_tweet = :tweetId');
+        $database->bind(':user_id',$sessionUserID);
+        $database->bind(':tweetId',$tweetId);
+        $database->execute();
+        $message['success'] = true;
+        echo json_encode(array('message'=>$message, 'userID' => $sessionUserID, 'findTweet' => $findRetweet));
+
     }
 
 }
+
