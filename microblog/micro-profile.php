@@ -62,14 +62,17 @@ if(isset($_GET['username'])){
             </div>
             <p>Lorem ipsum dolor sit amet, eos aeque eirmod tamquam eu, per vidisse ullamcorper ne, omnes eirmod reprimique sea ex. Usu cu consul tempor, vix ad simul dolores adipisci.</p>
             <div class="row">
+                <?php if($_SESSION['microUser'] !=  $userInfos[0]['username'] ): ?>
                 <div class="col-md-8 col-md-offset-4">
                     <a href="#" class="FollowerBadge">Following<span class="badge following-class">0</span></a>
                     <!-- For other user profile not involved the authenticated user will have a Follow Button -->
                         <form action="" method="post" id="followForm">
+                            <input class="form-control hiddenFollow" type="hidden" name="hidden_id" value="<?php echo $userInfos[0]['id'];?>">
                             <!--$followName variable to displayed wether a user is being followed or not-->
                             <button type="submit" class="btn btn-info addFollow" id="addFollow">Follow</button>
                         </form>
                 </div>
+                <?php endif; ?>
             </div>
         </div>
         <div class="col-md-9">

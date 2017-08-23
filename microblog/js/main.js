@@ -281,7 +281,6 @@ $(document).ready(function(){
                         user_id: userId,
                         tweet_id: tweetId,
                     },
-                    async: false,
                     dataType: 'json',
                     success: function(response){
                         if(response.message.success){
@@ -290,14 +289,6 @@ $(document).ready(function(){
                             var parentDivRetweet = $('#showdata').find('article.post').find('.tweet-interact[user_id="' + response.userID + '"][tweet_id="'+response.findTweet[0]['id']+'"]');
                             parentDivRetweet.parent().remove();
                         }
-
-                            // if(parentDivRetweet.attr("user_id")=== response.userID && parentDivRetweet.attr("tweet_id")=== response.findTweet[0]['id'])
-                            // {
-                            //     $('[data-test="the_exact_value"]');
-                            //    console.log(parentDivRetweet);
-                            // }else{
-                            //     alert('Error');
-                            // }
                     },
                     error: function(){
                         alert('Error deleting');
@@ -305,12 +296,31 @@ $(document).ready(function(){
 
                 });
             });
-
-
         }
-
     });
 
+    //add follower
+    $('#addFollow').on('click', function(event) {
+        event.preventDefault();
+        var follow_id = $('.hiddenFollow').val();
+        $.ajax({
+            method: 'POST',
+            url: 'micro-follow.php',
+            data:{
+                follow_id: follow_id
+            },
+            dataType: 'json'
+        }).done(function(res){
+            console.log(res);
+            if(res.isFollow)
+            {
+                $('#addFollow').html("Followed");
+            }
+            else{
+                $('#addFollow').html("Follow");
+            }
+        });
+    });
 
 
 
