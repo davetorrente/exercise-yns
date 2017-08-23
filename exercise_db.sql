@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 22, 2017 at 11:14 AM
+-- Generation Time: Aug 23, 2017 at 09:54 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -180,6 +180,14 @@ CREATE TABLE `follows` (
   `modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `follows`
+--
+
+INSERT INTO `follows` (`id`, `user_id`, `follow_id`, `isFollow`, `created`, `modified`) VALUES
+(2, 1, 3, 1, '2017-08-23 14:24:09', '2017-08-23 14:24:09'),
+(3, 1, 2, 1, '2017-08-23 14:57:20', '2017-08-23 14:57:20');
+
 -- --------------------------------------------------------
 
 --
@@ -297,9 +305,20 @@ CREATE TABLE `tweets` (
   `tweet` text NOT NULL,
   `user_id` int(11) NOT NULL,
   `isRetweet` tinyint(1) NOT NULL DEFAULT '0',
+  `parent_tweet` int(11) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tweets`
+--
+
+INSERT INTO `tweets` (`id`, `tweet`, `user_id`, `isRetweet`, `parent_tweet`, `created`, `modified`) VALUES
+(268, 'Form sampleuser2\n', 3, 0, NULL, '2017-08-23 13:07:03', '2017-08-23 16:52:05'),
+(320, 'ez', 1, 0, NULL, '2017-08-23 15:22:55', '2017-08-23 15:22:55'),
+(321, '&lt;script&gt;alert()&lt;/script&gt;', 1, 0, NULL, '2017-08-23 15:29:04', '2017-08-23 15:29:04'),
+(306, 'sampleuser.', 2, 0, NULL, '2017-08-23 14:57:10', '2017-08-23 16:51:49');
 
 -- --------------------------------------------------------
 
@@ -325,8 +344,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `description`, `phone`, `country`, `created`, `gender`, `upload`) VALUES
-(1, 'Davepogi123', 'deeaf1ea645af982da32ed77fe32a192', 'dave.torrente@gmail.com', 'dave', '111-1111-1111', 'Azerbaijan', '2017-08-18 15:51:45', 'male', '/database/profile-img/18-08-2017-1503042705-Hhk8je.jpg'),
-(2, 'sampleuser', 'deeaf1ea645af982da32ed77fe32a192', 'dave.torrente123@gmail.com', 'asdfasdfasdf', '111-1111-1111', 'Australia', '2017-08-18 18:25:44', 'female', '/database/profile-img/18-08-2017-1503051944-Luffy-One-Piece.png');
+(1, 'Davepogi123', 'deeaf1ea645af982da32ed77fe32a192', 'dave.torrente@gmail.com', 'Lorem ipsum dolor sit amet, eos aeque eirmod tamquam eu, per vidisse ullamcorper ne, omnes eirmod reprimique sea ex. Usu cu consul tempor, vix ad simul dolores adipisci.', '111-1111-1111', 'Azerbaijan', '2017-08-18 15:51:45', 'male', '/database/profile-img/18-08-2017-1503042705-Hhk8je.jpg'),
+(2, 'sampleuser', 'deeaf1ea645af982da32ed77fe32a192', 'dave.torrente123@gmail.com', 'asdfasdfasdf', '111-1111-1111', 'Australia', '2017-08-18 18:25:44', 'female', '/database/profile-img/18-08-2017-1503051944-Luffy-One-Piece.png'),
+(3, 'sampleuser2', 'deeaf1ea645af982da32ed77fe32a192', 'whaepekk@gmail.com', 'asdfasdf', '111-1111-1111', 'Azerbaijan', '2017-08-23 11:33:32', 'male', '/database/profile-img/23-08-2017-1503459212-sample.jpg'),
+(4, 'sampleuser3', 'deeaf1ea645af982da32ed77fe32a192', 'dave.torrente32@gmail.com', 'asdfasdfasdfas', '111-1111-1111', 'Bahamas', '2017-08-23 16:41:45', 'male', '/microblog/profile-img/23-08-2017-1503477705-zoro.jpg');
 
 --
 -- Indexes for dumped tables
@@ -443,7 +464,7 @@ ALTER TABLE `employee_positions`
 -- AUTO_INCREMENT for table `follows`
 --
 ALTER TABLE `follows`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `grades`
 --
@@ -473,12 +494,12 @@ ALTER TABLE `questions`
 -- AUTO_INCREMENT for table `tweets`
 --
 ALTER TABLE `tweets`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=162;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=329;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
