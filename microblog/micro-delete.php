@@ -10,13 +10,15 @@ if(isset($_POST['id']))
     $delete_id = (int)$_POST['id'];
     $database->query("SELECT E.id, E.user_id FROM tweets E INNER JOIN tweets B on B.parent_tweet = E.id WHERE B.id='$delete_id'");
     $findParentTweet = $database->resultset();
-    $tweetID = $findParentTweet[0]['id'];
-    $userID = $findParentTweet[0]['user_id'];
+    if(!empty($findParentTweet))
+    {
+        $tweetID = $findParentTweet[0]['id'];
+        $userID = $findParentTweet[0]['user_id'];
+        $database->query("UPDATE tweets SET isRetweet = false WHERE id='$tweetID' AND user_id='$userID'");
+        $database->execute();
+    }
     $database->query('DELETE FROM tweets WHERE id = :id');
     $database->bind(':id',$delete_id);
-    $database->execute();
-
-    $database->query("UPDATE tweets SET isRetweet = false WHERE id='$tweetID' AND user_id='$userID'");
     $database->execute();
     $message['success'] = true;
 }

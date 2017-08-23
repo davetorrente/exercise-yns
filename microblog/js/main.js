@@ -1,5 +1,4 @@
 $(document).ready(function(){
-
     var sectionMessage =  $('.sectionUser').find('#alertMessage');
     var user_id = $('input[name=hidden_id]');
     $('#tweet').keyup(function () {
@@ -13,28 +12,6 @@ $(document).ready(function(){
         }
 
     });
-    // $('#tweet').on('keyup', function(e) {
-    //     var tweetCount = parseInt($('#tweetCount').html());
-    //     // if($('#tweet').val() === '')
-    //     // {
-    //     //     if($(e.keyCode === 8)){
-    //     //        alert(1);
-    //     //     }
-    //     // }
-    //     $('#tweetCount').html(tweetCount-1);
-    //
-    //         // if(e.keyCode == 8) {
-    //         //     $('#tweetCount').html(tweetCount+1);
-    //         // }
-    //
-    //     // if($(e.keyCode === 8)){
-    //     //
-    //     //     return false;
-    //     // }else{
-    //     //
-    //     // }
-    //
-    // });
     $('#createTweet').on('click','#btnAdd',function(e){
         e.preventDefault();
         var $this = $(this);
@@ -114,7 +91,6 @@ $(document).ready(function(){
                 }
             });
         }
-
     });
 
     $(document).on('click', '.tweet-delete', function(event){
@@ -201,7 +177,6 @@ $(document).ready(function(){
                         $this.parent().parent().find('#alertMessage').removeClass('alert-danger');
                         $this.parent().parent().find('#alertMessage').addClass('alert-success');
                         $this.parent().parent().find('#alertMessage').html('Tweet successfully Edited!').fadeIn().delay(2500).fadeOut('slow');
-
                         $(tweetElement).text(response.tweet);
                         $(modifiedDate).html("Posted on "+response.date);
                     }
@@ -209,6 +184,8 @@ $(document).ready(function(){
             }
         });
     });
+
+    //retweet
     $(document).on("click",".retweet",function(event){
         event.preventDefault();
         var $this = $(this);
@@ -258,15 +235,10 @@ $(document).ready(function(){
                                     '</div>' +
                                     '</article>';
                         });
-                        // sectionMessage.removeClass('alert-danger');
-                        // sectionMessage.addClass('alert-success');
-                        // sectionMessage.html('Tweet Successfully Added!').fadeIn().delay(2500).fadeOut('slow');
                         $('#showdata').prepend(html);
                         $this.children().css("color", "green");
                         $('#retweetModal').modal('hide');
-
                     }
-
                 });
             });
         }
@@ -281,19 +253,17 @@ $(document).ready(function(){
                         user_id: userId,
                         tweet_id: tweetId,
                     },
-                    dataType: 'json',
-                    success: function(response){
-                        if(response.message.success){
-                            $('#retweetModal').modal('hide');
-                            $this.children().css("color", "");
-                            var parentDivRetweet = $('#showdata').find('article.post').find('.tweet-interact[user_id="' + response.userID + '"][tweet_id="'+response.findTweet[0]['id']+'"]');
-                            parentDivRetweet.parent().remove();
-                        }
-                    },
-                    error: function(){
+                    dataType: 'json'
+                }).done(function(response){
+                    if(response.message.success){
+                        $('#retweetModal').modal('hide');
+                        $this.children().css("color", "");
+                        var parentDivRetweet = $('#showdata').find('article.post').find('.tweet-interact[user_id="' + response.userID + '"][tweet_id="'+response.findTweet[0]['id']+'"]');
+                        parentDivRetweet.parent().remove();
+                    }
+                    else{
                         alert('Error deleting');
                     }
-
                 });
             });
         }
@@ -321,9 +291,4 @@ $(document).ready(function(){
             }
         });
     });
-
-
-
-
-
 });
