@@ -15,7 +15,7 @@ $userId = htmlspecialchars($_POST['user_id']);
 
 if(($_POST['type']=='forRetweet'))
 {
-    $tweet = htmlspecialchars($_POST['tweet']);
+    $tweet = $_POST['tweet'];
 
         $isRetweet = true;
         $database->query("UPDATE tweets SET isRetweet = :isRetweet WHERE id='$tweetId' AND user_id='$userId'");

@@ -21,14 +21,19 @@ if(isset($_GET['username'])){
     $userProfile= $_GET['username'];
     $database->query("SELECT * FROM users where username='$userProfile'");
     $userInfos = $database->resultset();
-    $userProfileID = $userInfos[0]['id'];
+
     $getUserID = $userInfos[0]['id'];
-    $database->query("SELECT count(*) as totalFollows FROM follows WHERE user_id='$getUserID' AND isFollow=true");
-    $totalFollows = $database->resultset();
-    $database->query("SELECT isFollow FROM follows WHERE user_id='$sessionUserID' AND follow_id='$userProfileID'");
+    $database->query("SELECT users.username FROM follows INNER JOIN users ON follows.follow_id = users.id WHERE user_id='$getUserID' AND isFollow=true GROUP BY users.username ");
+    $followUsers = $database->resultset();
+
+    $database->query("SELECT users.username FROM follows INNER JOIN users ON follows.user_id = users.id WHERE follow_id='$getUserID' AND isFollow=true GROUP BY users.username ");
+    $userFollows = $database->resultset();
+
+    $database->query("SELECT isFollow FROM follows WHERE user_id='$sessionUserID' AND follow_id='$getUserID'");
     $followName = $database->resultset();
     $database->query("SELECT users.username, users.upload, tweets.id, tweets.user_id, tweets.tweet, tweets.created, tweets.modified, tweets.isRetweet  FROM users INNER JOIN tweets ON users.id = tweets.user_id WHERE users.username='$userProfile' ORDER BY tweets.modified DESC ");
     $profileTweets = $database->resultset();
+
 }
 ?>
 <!DOCTYPE html>
@@ -39,7 +44,7 @@ if(isset($_GET['username'])){
     <title>Micro Blog</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
-    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/profile.css">
 </head>
 <body>
 <nav class="navbar navbar-default">
@@ -62,20 +67,38 @@ if(isset($_GET['username'])){
 </nav>
 <div class="container-fluid">
     <div class="row profile-div">
-        <div class="col-md-3">
+        <div class="col-md-3" id="userFollows">
             <div class="profile-pic">
                 <img src="<?php echo htmlspecialchars($userInfos[0]['upload']);?>" alt="sample profile pic" class="img-thumbnail img-profile">
             </div>
-            <p><?php echo htmlspecialchars($userInfos[0]['description']);?></p>
+            <?php if(!empty($followUsers)): ?>
+             <p ><b>Following</b><span class="badge following-class"><?php echo htmlspecialchars(count($followUsers)); ?></span></p>
+            <p ><b>You are following</b><br/>
+                <?php foreach($followUsers as $followUser): ?>
+                    <a href="micro-profile.php?username=<?php echo htmlspecialchars($followUser['username']);?>"><?php echo htmlspecialchars($followUser['username']) . ", "; ?></a>
+                <?php endforeach; ?>
+            </p>
+            <?php endif; ?>
+            <?php if(!empty($userFollows)): ?>
+            <p><b>Number of Followers</b><span class="badge following-class"><?php echo htmlspecialchars(count($userFollows)); ?></span></p>
+            <?php if(count($userFollows) > 1): ?>
+            <p><b>Your Followers</b><br/>
+            <?php else: ?>
+                    <p><b>Your Follower</b><br/>
+            <?php endif; ?>
+                <?php foreach($userFollows as $userFollow): ?>
+                    <a href="micro-profile.php?username=<?php echo htmlspecialchars($userFollow['username']);?>"><?php echo htmlspecialchars($userFollow['username']) . ", "; ?></a>
+                <?php endforeach; ?>
+            </p>
+            <?php endif; ?>
             <div class="row">
                 <div class="col-md-8 col-md-offset-4">
-                    <b>Following</b><span class="badge following-class"><?php echo htmlspecialchars($totalFollows[0]['totalFollows']); ?></span>
                     <?php if($_SESSION['microUser'] !=  $userInfos[0]['username'] ): ?>
                     <!-- For other user profile not involved the authenticated user will have a Follow Button -->
                         <form action="" method="post" id="followForm">
                             <input class="form-control hiddenFollow" type="hidden" name="hidden_id" value="<?php echo htmlspecialchars($userInfos[0]['id']);?>">
                             <!--$followName variable to displayed wether a user is being followed or not-->
-                            <button type="submit" class="btn btn-info addFollow" id="addFollow"><?php echo htmlspecialchars($followName[0]['isFollow'] )? "Unfollow" : "Follow";?> </button>
+                            <button type="submit" class="btn btn-info addFollow" id="addFollow"><?php echo !empty($followName[0]['isFollow']) ? "Unfollow" : "Follow";?> </button>
                         </form>
                     <?php endif; ?>
                 </div>

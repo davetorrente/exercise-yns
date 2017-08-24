@@ -1,0 +1,112 @@
+.nav-profile{
+    max-height: 18px;
+}
+.posts {
+    padding-top: 20px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #A9A9A9;
+}
+article.post {
+    padding: 20px 0;
+    border-bottom: 1px solid #A9A9A9;
+    clear: both;
+    content: '';
+    display: block;
+
+}
+.img-profile {
+    width: 100%;
+}
+.profile-pic img
+{
+    max-height: 280px;
+    float:left;
+}
+
+
+#form-comment{
+    display: none;
+}
+.userName {
+    padding: 0px;
+    margin-left: 10px;
+}
+.postImage {
+    max-height:50px;
+}
+.contentPost {
+    text-align: center;
+    padding: 30px;
+    font-weight: bold;
+    font-size: 25px;
+    width: 100%;
+    word-break: break-all;
+}
+.postBadge {
+    margin-left: 5px;
+    margin-right:5px;
+}
+.imageComment
+{
+    max-height:30px;
+}
+.imageCol {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.samplePosts
+{
+    text-align: center;
+}
+.FollowerBadge
+{
+    margin-bottom: 30px;
+}
+.followButton
+{
+    margin-top: 10px;
+}
+.following-class
+{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+footer{
+    background-color: #222;
+    border: 1px solid #080808;
+    clear:both;
+}
+footer p {
+    color: #aaa;
+}
+.profile-div {
+    padding-bottom: 135px;
+}
+
+.login, .register {
+    padding-bottom: 240px;
+}
+
+.section2 {
+    padding-bottom: 60px;
+}
+.comment-profile
+{
+    margin-left: 10px;
+}
+#commentArea {
+    padding-bottom: 0px !important;
+    padding-top: 0px !important;
+    text-align: center;
+
+}
+#commentArea p{
+    font-size: 18px;
+
+}
+
+#userFollows p
+{
+    text-align: center;
+}
