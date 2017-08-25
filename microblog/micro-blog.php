@@ -31,23 +31,36 @@ $userTweets = $database->resultset();
     <link rel="stylesheet" href="css/dashboard.css">
 </head>
 <body>
+
 <nav class="navbar navbar-default">
-    <div class="container" id="navbar-quiz">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigatipon</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="micro-blog.php">Micro Blog</a>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="micro-blog.php">Home</a></li>
-                <li><a href="micro-profile.php?username=<?php echo $user[0]['username'];?>"><img src="<?php echo $user[0]['upload'];?>" class="nav-profile img-circle"> Profile</a></li>
-                <li><a href="?logout=1">Logout</a></li>
-            </ul>
-        </div>
-    </div>
+    <div class="container">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigatipon</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="micro-blog.php">Micro Blog</a>
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="micro-blog.php">Home</a></li>
+            <li ><a href="micro-profile.php?username=<?php echo htmlspecialchars($user[0]['username']);?>"><img src="<?php echo htmlspecialchars($user[0]['upload']);?>" class="nav-profile img-circle"> Profile</a></li>
+            <li><a href="?logout=1">Logout</a></li>
+        </ul>
+            <form class="hidden-xs-down navbar-form pull-right search-menu form-inline">
+                <div role="group" class="input-group">
+                    <input type="text" class="form-control" name="search" id="search" placeholder="Username.." aria-label="Username" aria-describedby="basic-addon1">
+                    <div class="input-group">
+                        <li class="nav-item dropdown show" style="list-style-type:none;">
+                            <div role="menu" class="dropdown-menu dropdown-menu-right" id="menuItem">
+                                <h6 tabindex="-1" class="dropdown-header active">no results found</h6>
+                            </div>
+                        </li>
+                    </div>
+                </div>
+            </form>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
 </nav>
 <div class="container" id="mainDiv">
     <section class="row sectionUser">

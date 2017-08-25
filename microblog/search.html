@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Language" content="en-us">
+    <title>PHP MySQL Typeahead Autocomplete</title>
+    <meta charset="utf-8">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script>
+        function fill(Value) {
+
+            //Assigning value to "search" div in "search.php" file.
+
+            $('#search').val(Value);
+
+            //Hiding "display" div in "search.php" file.
+
+            $('#display').hide();
+
+        }
+
+    </script>
+</head>
+
+<body>
+<div class="content">
+
+
+    <input type="text" id="search" placeholder="Search" />
+
+    <br>
+
+    <b>Ex: </b><i>David, Ricky, Ronaldo, Messi, Watson, Robot</i>
+
+    <br />
+
+    <!-- Suggestions will be displayed in below div. -->
+
+    <div id="display"></div>
+</div>
+</body>
+</html>
