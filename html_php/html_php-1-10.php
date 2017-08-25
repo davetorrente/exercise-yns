@@ -97,6 +97,12 @@ if(isset($_POST['userinfo'])) {
         fputcsv($f, $arrayInfo);
         fclose($f);
         chmod($path, 0777);
+        $username = '';
+        $email = '';
+        $description = '';
+        $phone = '';
+        $gender = '';
+        $country = '';
         $csv = "csv file is written";
     }
 }
