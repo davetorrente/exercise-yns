@@ -129,8 +129,10 @@ if(isset($_POST['register'])) {
         if(in_array($ext, $arr_ext))
         {
             $time = date("d-m-Y")."-".time() ;
-            $newFile = '/microblog/profile-img/' .$time."-".$file['name'];
-            move_uploaded_file($file['tmp_name'], $_SERVER["DOCUMENT_ROOT"]. $newFile);
+            $moveFile = '/profile-img/' .$time."-".$file['name'];
+            $newFile = '/microblog' . $moveFile;
+            move_uploaded_file($file['tmp_name'], '.' . $moveFile);
+            chmod('.' . $moveFile, 0666);
         }
         $hashpassword = md5($password);
         $database->query("INSERT INTO users (username, password, email, description , phone, country, gender, upload) VALUES('$username', '$hashpassword', '$email', '$description', '$phone', '$country', '$gender', '$newFile')");
@@ -141,6 +143,7 @@ if(isset($_POST['register'])) {
         $phone = "";
         $gender = "";
         $message = "<div id='hideMe' align='center' class='alert-success'>You may now login</div>";
+        session_destroy();
     }
 }
 ?>

@@ -4,10 +4,10 @@ require_once 'src/Facebook/autoload.php';
 $fb = new Facebook\Facebook([
     'app_id' => '1965745767041050',
     'app_secret' => 'cd791ff5bf0a591beb27269d5fa5ab64',
-    'default_graph_version' => 'v2.4',
+    'default_graph_version' => 'v2.3',
 ]);
 $helper = $fb->getRedirectLoginHelper();
-$permissions = ['email']; // optional
+$permissions = ['email','user_posts', 'user_friends']; // optional
 
 try {
     if (isset($_SESSION['facebook_access_token'])) {

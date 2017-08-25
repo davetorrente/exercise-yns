@@ -79,8 +79,10 @@ if(isset($_POST['userinfo'])) {
         if(in_array($ext, $arr_ext))
         {
             $time = date("d-m-Y")."-".time() ;
-            $newFile = '/html_php/profile-img/' .$time."-".$file['name'];
-            move_uploaded_file($file['tmp_name'], $_SERVER["DOCUMENT_ROOT"]. $newFile);
+            $moveFile = '/profile-img/' .$time."-".$file['name'];
+            $newFile = '/html_php' . $moveFile;
+            move_uploaded_file($file['tmp_name'], '.' . $moveFile);
+            chmod('.' . $moveFile, 0666);
         }
         $arrayInfo = array(
             'username' => $username,
@@ -90,7 +92,7 @@ if(isset($_POST['userinfo'])) {
             'gender' => $gender,
             'country' => $country,
             'upload' => $_FILES["upload"]["name"]);
-        $path = $_SERVER['DOCUMENT_ROOT'] . '/html_php/test.csv';
+        $path = './test.csv';
         $f = fopen($path, "a+");
         fputcsv($f, $arrayInfo);
         fclose($f);

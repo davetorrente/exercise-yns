@@ -130,8 +130,10 @@ if(isset($_POST['register'])) {
         {
 
             $time = date("d-m-Y")."-".time() ;
-            $newFile = '/database/profile-img/' .$time."-".$file['name'];
-            move_uploaded_file($file['tmp_name'], $_SERVER["DOCUMENT_ROOT"]. $newFile);
+            $moveFile = '/profile-img/' .$time."-".$file['name'];
+            $newFile = '/database' . $moveFile;
+            move_uploaded_file($file['tmp_name'], '.' . $moveFile);
+            chmod('.' . $moveFile, 0666);
         }
         $hashpassword = md5($password);
         $database->query("INSERT INTO users (username, password, email, description , phone, country, gender, upload) VALUES('$username', '$hashpassword', '$email', '$description', '$phone', '$country', '$gender', '$newFile')");
