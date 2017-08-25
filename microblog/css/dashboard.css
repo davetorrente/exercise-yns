@@ -33,6 +33,7 @@ article.post {
 }
 .postImage {
     max-height:50px;
+    width: 70px !important;
 }
 .contentPost {
     text-align: center;

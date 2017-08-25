@@ -64,7 +64,7 @@ $(document).ready(function(){
                                     '<div class="clearfix"></div>'+
                                     '<div class="interaction tweet-interact" user_id="'+user_id.val()+'" tweet_id="'+query[index].id+'">'+
                                         '<a href="javascript:;" class="tweet-edit">Edit | </a>'+
-                                        '<a href="javascript:;" class="tweet-delete">Delete |</a>'+
+                                        '<a href="javascript:;" class="tweet-delete" data="forTweet">Delete |</a>'+
                                     '</div>'+
                             '</article>';
                     });
@@ -84,6 +84,7 @@ $(document).ready(function(){
     $(document).on('click', '.tweet-delete', function(event){
         event.preventDefault();
         var $this = $(this);
+        var type = $this.attr('data');
         var id = $this.parent().attr('tweet_id');
         $('#deleteModal').modal('show');
         //prevent previous handler - unbind()
@@ -92,7 +93,7 @@ $(document).ready(function(){
             $.ajax({
                 method: 'POST',
                 url: 'micro-delete.php',
-                data: {id: id},
+                data: { type:type, id: id},
                 dataType: 'json'
             }).done(function(response){
                 if(response.message.success) {
@@ -101,9 +102,9 @@ $(document).ready(function(){
                     sectionMessage.addClass('alert-danger');
                     sectionMessage.html('Tweet Deleted successfully').fadeIn().delay(1500).fadeOut('slow');
                     $this.parent().parent().remove();
-                    if(Object.keys(response.parentTweet).length > 0){
-                        var parentDivRetweet = $('#showdata').find('article.post').find('.tweet-interact[user_id="' + response.parentTweet[0].user_id + '"][tweet_id="' + response.parentTweet[0].id + '"]');
-                        console.log(parentDivRetweet.children().children().css("color", ""));
+                    if(Object.keys(response.tweetParent).length > 0){
+                        var parentDivRetweet = $('#showdata').find('article.post').find('.tweet-interact[user_id="' + response.tweetParent[0].user_id + '"][tweet_id="' + response.tweetParent[0].id + '"]');
+                        parentDivRetweet.children().children().css("color", "");
                     }
                 }else{
                     alert('Error');
@@ -111,7 +112,6 @@ $(document).ready(function(){
             });
         });
     });
-
     $(document).on('click', '.tweet-edit', function(event){
         event.preventDefault();
         var sectionTweet =  $(this).parent().parent().find('#alertMessage');
@@ -192,6 +192,7 @@ $(document).ready(function(){
                     var html = '';
                     if(response.message.isRetweet) {
                         var query = response.query;
+                        var userTweet = response.userTweet;
                         $.each(query, function (index) {
                             if (query)
                                 html +=
@@ -204,15 +205,14 @@ $(document).ready(function(){
                                     '</div>' +
                                     '<div class="col-md-6 userName">' +
                                     '<h4>' + query[index].username + '</h4>' +
-                                    '<p>' + "Posted on " + query[index].modified + '</p>' +
+                                    '<p>' + "Retweeted from " + '<a href="micro-profile.php?username=' + userTweet[index].username + '">'+userTweet[index].username+'</a>' + ' on ' + query[index].created + '</p>' +
                                     '</div>' +
                                     '</div>' +
                                     '</div>' +
-                                    '<p class="contentPost">' + query[index].tweet + '</p>' +
+                                    '<p class="contentPost">' + query[index].retweet + '</p>' +
                                     '<div class="clearfix"></div>' +
                                     ' <div class="interaction tweet-interact" user_id="' + user_id.val() + '" tweet_id="' + query[index].id + '">' +
-                                    ' <a href="javascript:;" class="tweet-edit">Edit | </a>' +
-                                    '<a href="javascript:;" class="tweet-delete">Delete |</a>' +
+                                    '<a href="javascript:;" class="tweet-delete" data="forRetweet">Delete |</a>' +
                                     '</div>' +
                                     '</article>';
                         });
@@ -224,31 +224,31 @@ $(document).ready(function(){
             });
         }
         if($this.children().css("color")==="rgb(0, 128, 0)"){
-            $('#retweetModal').find('.modal-body').text('Are you sure you want to undo the Retweet?');
-            $('#btnRetweet').unbind().click(function() {
-                $.ajax({
-                    method: 'POST',
-                    url: 'micro-retweet.php',
-                    data:{
-                        type: 'forDelete',
-                        user_id: userId,
-                        tweet_id: tweetId,
-                    },
-                    dataType: 'json'
-                }).done(function(response){
-                    if(response.message.success){
-                        $('#retweetModal').modal('hide');
-                        $this.children().css("color", "");
-                        var parentDivRetweet = $('#showdata').find('article.post').find('.tweet-interact[user_id="' + response.userID + '"][tweet_id="'+response.findTweet[0]['id']+'"]');
-                        parentDivRetweet.parent().remove();
-                    }
-                    else{
-                        alert('Error deleting');
-                    }
+                $('#retweetModal').find('.modal-body').text('Are you sure you want to undo the Retweet?');
+                $('#btnRetweet').unbind().click(function() {
+                    $.ajax({
+                        method: 'POST',
+                        url: 'micro-retweet.php',
+                        data:{
+                            type: 'forDelete',
+                            user_id: userId,
+                            tweet_id: tweetId,
+                        },
+                        dataType: 'json'
+                    }).done(function(response){
+                        if(response.message.success){
+                            $('#retweetModal').modal('hide');
+                            $this.children().css("color", "");
+                            var parentDivRetweet = $('#showdata').find('article.post').find('.tweet-interact[user_id="' + response.userID + '"][tweet_id="'+response.findTweet[0]['id']+'"]');
+                            parentDivRetweet.parent().remove();
+                        }
+                        else{
+                            alert('Error deleting');
+                        }
+                    });
                 });
-            });
-        }
-    });
+            }
+        });
 
     //add follower
     $('#addFollow').on('click', function(event) {
@@ -281,6 +281,7 @@ $(document).ready(function(){
         if (name === "") {
             //Assigning empty value to "display" div in "search.php" file.
             $("#menuItem").html("");
+            $("#menuItem").css("display", "none");
         }
         //If name is not empty.
         else {
@@ -289,7 +290,7 @@ $(document).ready(function(){
                 //AJAX type is "Post".
                 type: "POST",
                 //Data will be sent to "ajax.php".
-                url: "dummy-search.php",
+                url: "micro-search.php",
                 //Data, that will be sent to "ajax.php".
                 data: {
                     //Assigning value of "name" into "search" variable.
