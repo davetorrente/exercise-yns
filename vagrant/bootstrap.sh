@@ -1,5 +1,8 @@
 #!/bin/sh
 
+#install rsync
+sudo yum -y install rsync
+
 #install apache 2.2
 sudo yum -y install httpd mod_ssl
 
