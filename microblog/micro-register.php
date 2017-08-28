@@ -60,7 +60,7 @@ if(isset($_POST['register'])) {
         }
     }
     if(!empty($password) && ($password == $cpassword)) {
-        if (strlen($_POST["password"]) <= '8') {
+        if (strlen($_POST["password"]) < '8') {
             $passwordError = "Your Password Must Contain At Least 8 Characters!";
             $error++;
         }

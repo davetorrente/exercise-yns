@@ -3,6 +3,9 @@
 #install apache 2.2
 sudo yum -y install httpd mod_ssl
 
+#install rysnc
+sudo yum -y install rsync
+
 #install mysql 5.7
 sudo yum -y localinstall https://dev.mysql.com/get/mysql57-community-release-el6-9.noarch.rpm
 sudo yum -y install mysql-community-server
@@ -28,5 +31,3 @@ sudo chkconfig --level 3 httpd on
 
 #start mysql
 sudo chkconfig --level 3 mysqld on
-
-
