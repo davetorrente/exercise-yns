@@ -6,26 +6,21 @@ require "modals/retweet-modal.php";
 //asdasd
 $database = new Database();
 session_start();
-if (!isset($_SESSION['microUser']))
+if (empty($_SESSION['microUser'])){
     header("Location: micro-login.php");
-if(isset($_GET['logout']) == 1) {
-    session_destroy();
-    header("Location: micro-login.php");
-}
-if (isset($_SESSION['microUser'])) {
-    $userAuth = $_SESSION['microUser'];
+}else{
+     $userAuth = $_SESSION['microUser'];
     $database->query("SELECT * FROM users WHERE username = '$userAuth'");
     $user = $database->resultset();
 }
+if(!empty($_GET['logout']) == 1) {
+    session_destroy();
+    header("Location: micro-login.php");
+}
 
-$database->query("SELECT users.username, users.upload, retweets.retweet, retweets.id as rID, retweets.created as rCreated, retweets.user_id as rUserID, tweets.isRetweet, tweets.id, tweets.user_id, tweets.tweet, tweets.id as tID, tweets.created as tCreated FROM tweets LEFT JOIN retweets ON tweets.id = retweets.tweet_id INNER JOIN users ON tweets.user_id = users.id ORDER BY CASE WHEN tweets.created > rCreated THEN rCreated WHEN rCreated > tweets.created THEN tweets.created  END DESC");
+$database->query("SELECT users.username, users.upload, tweets.id, tweets.user_id, tweets.tweet, tweets.created, tweets.modified, tweets.isRetweet FROM users INNER JOIN tweets ON users.id = tweets.user_id ORDER BY tweets.created DESC");
 $userTweets = $database->resultset();
-
-$database->query("SELECT users.username, users.upload, retweets.retweet, retweets.id as rID, retweets.created as rCreated, retweets.user_id as rUserID, tweets.user_id, tweets.created FROM retweets LEFT JOIN tweets ON retweets.tweet_id = tweets.id  INNER JOIN users ON retweets.user_id = users.id ORDER BY CASE WHEN tweets.created > rCreated THEN rCreated WHEN rCreated > tweets.created THEN tweets.created  END DESC");
-$userRetweets = $database->resultset();
-
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,36 +32,23 @@ $userRetweets = $database->resultset();
     <link rel="stylesheet" href="css/dashboard.css">
 </head>
 <body>
-
 <nav class="navbar navbar-default">
-    <div class="container">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigatipon</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="micro-blog.php">Micro Blog</a>
-    <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="micro-blog.php">Home</a></li>
-            <li ><a href="micro-profile.php?username=<?php echo htmlspecialchars($user[0]['username']);?>"><img src="<?php echo htmlspecialchars($user[0]['upload']);?>" class="nav-profile img-circle"> Profile</a></li>
-            <li><a href="?logout=1">Logout</a></li>
-        </ul>
-            <form class="hidden-xs-down navbar-form pull-right search-menu form-inline">
-                <div role="group" class="input-group">
-                    <input type="text" class="form-control" name="search" id="search" placeholder="Username.." aria-label="Username" aria-describedby="basic-addon1">
-                    <div class="input-group">
-                        <li class="nav-item dropdown show" style="list-style-type:none;">
-                            <div role="menu" class="dropdown-menu dropdown-menu-right" id="menuItem">
-                                <h6 tabindex="-1" class="dropdown-header active">no results found</h6>
-                            </div>
-                        </li>
-                    </div>
-                </div>
-            </form>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+    <div class="container" id="navbar-quiz">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigatipon</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="micro-blog.php">Micro Blog</a>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="micro-blog.php">Home</a></li>
+                <li><a href="micro-profile.php?username=<?php echo $user[0]['username'];?>"><img src="<?php echo $user[0]['upload'];?>" class="nav-profile img-circle"> Profile</a></li>
+                <li><a href="?logout=1">Logout</a></li>
+            </ul>
+        </div>
+    </div>
 </nav>
 <div class="container" id="mainDiv">
     <section class="row sectionUser">
@@ -87,38 +69,10 @@ $userRetweets = $database->resultset();
             </form>
         </div>
     </section>
+
     <section class="row section2" >
         <div class="col-md-6 col-md-offset-3" id="showdata">
-            <?php if(!empty($userRetweets)): ?>
-                <?php foreach($userRetweets as $userRetweet): ?>
-                    <article class="post">
-                        <div class="alert alert-edit" id="alertMessage" style="display: none;"></div>
-                        <div class="info postByUser">
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <a href="micro-profile.php?username=<?php echo htmlspecialchars($userRetweet['username']); ?>"><img src="<?php echo htmlspecialchars($userRetweet['upload']);?>" alt="sample profile pic" class="postImage"></a>
-                                </div>
-                                <div class="col-md-6 userName">
-                                    <h4 ><?php echo htmlspecialchars($userRetweet["username"]); ?></h4>
-                                   <?php
-                                   $userID = $userRetweet['user_id'];
-                                   $database->query("SELECT users.username FROM users WHERE id='$userID'");
-                                   $userRetweetFrom = $database->resultset();
-                                   ?>
-                                    <p>Retweeted from <a href="micro-profile.php?username=<?php echo htmlspecialchars($userRetweetFrom[0]['username']); ?>"><?php echo htmlspecialchars($userRetweetFrom[0]['username']); ?></a> on <?php echo htmlspecialchars($userRetweet['rCreated']); ?></p>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="contentPost"><?php echo $userRetweet['retweet']; ?></p>
-                        <div class="clearfix"></div>
-                        <div class="interaction tweet-interact" user_id="<?php echo htmlspecialchars($userRetweet['rUserID']); ?>" tweet_id="<?php echo htmlspecialchars($userRetweet['rID']); ?>">
-                        <?php if( $userRetweet['rUserID'] == $user [0]['id']): ?>
-                            <a href="javascript:;" class="tweet-delete">Delete |</a>
-                        <?php endif; ?>
-                        </div>
-                    </article>
-                <?php endforeach ?>
-                <?php foreach($userTweets as $userTweet): ?>
+            <?php foreach($userTweets as $userTweet): ?>
                 <article class="post">
                     <div class="alert alert-edit" id="alertMessage" style="display: none;"></div>
                     <div class="info postByUser">
@@ -128,7 +82,7 @@ $userRetweets = $database->resultset();
                             </div>
                             <div class="col-md-6 userName">
                                 <h4 ><?php echo htmlspecialchars($userTweet["username"]); ?></h4>
-                                <p>Posted on <?php echo htmlspecialchars($userTweet['tCreated']); ?></p>
+                                <p>Posted on <?php echo htmlspecialchars($userTweet['modified']); ?></p>
                             </div>
                         </div>
                     </div>
@@ -137,55 +91,19 @@ $userRetweets = $database->resultset();
                     <div class="interaction tweet-interact" user_id="<?php echo htmlspecialchars($userTweet['user_id']); ?>" tweet_id="<?php echo htmlspecialchars($userTweet['id']); ?>">
                         <?php if($user[0]['id'] != $userTweet['user_id']): ?>
                             <?php
-                            if($userTweet['isRetweet'] == true){
-                                $isRetweet = true;
-                            }else{
-                                $isRetweet = false;
-                            }
+                            $tweetID = $userTweet['id'];
+                            $userID = $user[0]['id'];
+                            $database->query("SELECT parent_tweet FROM tweets WHERE user_id = '$userID' AND parent_tweet='$tweetID'");
+                            $parentTweet = $database->resultset();
                             ?>
-                            <a href="javascript:;" class="retweet"><i class="fa fa-retweet" id="iconRetweet" aria-hidden="true" <?php echo $isRetweet == true ? "style=color:green;" : '';?> ></i> |</a>
+                            <a href="javascript:;" class="retweet"><i class="fa fa-retweet" id="iconRetweet" aria-hidden="true" <?php echo !empty($parentTweet) ? "style=color:green;" : '';?> ></i> |</a>
                         <?php else: ?>
-                            <a href="javascript:;"  class="tweet-edit">Edit |</a>
-                            <a href="javascript:;" class="tweet-delete">Delete |</a>
+                                <a href="javascript:;"  class="tweet-edit">Edit |</a>
+                                <a href="javascript:;" class="tweet-delete">Delete |</a>
                         <?php endif; ?>
                     </div>
                 </article>
-                <?php endforeach ?>
-                <?php else: ?>
-                <?php foreach($userTweets as $userTweet): ?>
-                    <article class="post">
-                        <div class="alert alert-edit" id="alertMessage" style="display: none;"></div>
-                        <div class="info postByUser">
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <a href="micro-profile.php?username=<?php echo htmlspecialchars($userTweet['username']); ?>"><img src="<?php echo htmlspecialchars($userTweet['upload']);?>" alt="sample profile pic" class="postImage"></a>
-                                </div>
-                                <div class="col-md-6 userName">
-                                    <h4 ><?php echo htmlspecialchars($userTweet["username"]); ?></h4>
-                                    <p>Posted on <?php echo htmlspecialchars($userTweet['tCreated']); ?></p>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="contentPost"><?php echo $userTweet['tweet']; ?></p>
-                        <div class="clearfix"></div>
-                        <div class="interaction tweet-interact" user_id="<?php echo htmlspecialchars($userTweet['user_id']); ?>" tweet_id="<?php echo htmlspecialchars($userTweet['id']); ?>">
-                            <?php if($user[0]['id'] != $userTweet['user_id']): ?>
-                                <?php
-                                if($userTweet['isRetweet'] == true){
-                                    $isRetweet = true;
-                                }else{
-                                    $isRetweet = false;
-                                }
-                                ?>
-                                <a href="javascript:;" class="retweet"><i class="fa fa-retweet" id="iconRetweet" aria-hidden="true" <?php echo $isRetweet == true ? "style=color:green;" : '';?> ></i> |</a>
-                            <?php else: ?>
-                                <a href="javascript:;"  class="tweet-edit">Edit |</a>
-                                <a href="javascript:;" class="tweet-delete">Delete |</a>
-                            <?php endif; ?>
-                        </div>
-                    </article>
-                <?php endforeach ?>
-            <?php endif; ?>
+            <?php endforeach ?>
         </div>
     </section>
 </div>

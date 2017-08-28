@@ -2,7 +2,7 @@
 require "Database.php";
 $database = new Database();
 session_start();
-if(isset($_SESSION['microUser']))
+if(!empty($_SESSION['microUser']))
     header("Location: micro-blog.php");
 $postform = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 if(isset($_POST['register'])) {
@@ -138,16 +138,20 @@ if(isset($_POST['register'])) {
         $ext = substr(strtolower(strrchr($file['name'], '.')), 1);
         if(in_array($ext, $arr_ext))
         {
+        
+           
             $time = date("d-m-Y")."-".time() ;
             $moveFile = '/profile-img/' .$time."-".$file['name'];
             $newFile = '/microblog' . $moveFile;
             move_uploaded_file($file['tmp_name'], '.'.$moveFile);
-            chmod('.'.$moveFile, 0777);
+            chmod('.'.$moveFile, 066);
         }
         $hashpassword = md5($password);
         $database->query("INSERT INTO users (username, password, email, description , phone, country, gender, upload) VALUES('$username', '$hashpassword', '$email', '$description', '$phone', '$country', '$gender', '$newFile')");
         $database->execute();
         $username = "";
+        $password = "";
+        $cpassword = "";
         $email = "";
         $description = "";
         $phone = "";
