@@ -38,7 +38,7 @@ if(isset($_POST['register'])) {
                     $usernameError = "Username already exist";
                     $error++;
                 }
-            }
+            }   
         }
 
     }
@@ -59,8 +59,11 @@ if(isset($_POST['register'])) {
             }
         }
     }
-    if(!empty($password) && ($password == $cpassword)) {
-        if (strlen($_POST["password"]) < '8') {
+    if(empty($password)){
+        $passwordError = "Password is required";
+        $error++;
+    }else{
+        if (strlen($password) < '8') {
             $passwordError = "Your Password Must Contain At Least 8 Characters!";
             $error++;
         }
@@ -78,22 +81,47 @@ if(isset($_POST['register'])) {
             $error++;
         }
     }
-    elseif(!empty($password)) {
-        $confirmError = "Please Check You've Entered Or Confirmed Your Password!";
-        $error++;
-    }else {
-        $passwordError = "Password is required";
-        $error++;
+    if(!empty($password) && ($password == $cpassword)) {
+        if (strlen($password) < '8') {
+            $passwordError = "Your Password Must Contain At Least 8 Characters!";
+            $error++;
+        }else{
+             if(!preg_match("#[0-9]+#",$password)) {
+            $passwordError = "Your Password Must Contain At Least 1 Number!";
+            $error++;
+
+            }
+            if(!preg_match("#[A-Z]+#",$password)) {
+                $passwordError = "Your Password Must Contain At Least 1 Capital Letter!";
+                $error++;
+            }
+            if(!preg_match("#[a-z]+#",$password)) {
+                $passwordError = "Your Password Must Contain At Least 1 Lowercase Letter!";
+                $error++;
+            }
+
+        }
+       
     }
     if(empty($cpassword))
     {
         $confirmError = "Confirm Password is required";
         $error++;
+    }else{
+        if($cpassword != $password){
+            $confirmError = "Confirm Password must match your password";
+            $error++;
+        }
     }
 
     if (empty($description)) {
         $descriptionError = "Description is required";
         $error++;
+    }else{
+        if (strlen($description) < '10') {
+            $descriptionError = "Your Description Must Contain At Least 10 Characters!";
+            $error++;
+        }
     }
     if (empty($phone)) {
         $phoneError = "Phone number is required";
@@ -187,42 +215,42 @@ if(isset($_POST['register'])) {
         <div class="form-group">
             <label for="username" class="col-sm-3 control-label">User Name</label>
             <div class="col-sm-9">
-                <input type="text" id="username" name="username" class="form-control"  value="<?php echo isset($username) ? $username : ''; ?>" autofocus>
-                <span style="color:red"><?php echo isset($usernameError) ? $usernameError : ''; ?></span>
+                <input type="text" id="username" name="username" class="form-control"  value="<?php echo $username; ?>" <?php echo !empty($usernameError) ? "autofocus": '' ;?>>
+                <span style="color:red"><?php echo $usernameError;?></span>
             </div>
         </div>
         <div class="form-group">
             <label for="email" class="col-sm-3 control-label">Email</label>
             <div class="col-sm-9">
-                <input type="email" id="email" name="email" class="form-control" value="<?php echo isset($email) ? $email : ''; ?>">
-                <span style="color:red"><?php echo isset($emailError) ? $emailError : ''; ?></span>
+                <input type="email" id="email" name="email" class="form-control" value="<?php echo $email; ?>" <?php echo !empty($emailError) ? "autofocus": '' ;?>>
+                <span style="color:red"><?php echo $emailError; ?></span>
             </div>
         </div>
         <div class="form-group">
             <label for="password" class="col-sm-3 control-label">Password</label>
             <div class="col-sm-9">
-                <input type="password" id="password" name="password" class="form-control">
-                <span style="color:red"><?php echo isset($passwordError) ? $passwordError : ''; ?></span>
+                <input type="password" id="password" name="password" class="form-control" value="<?php echo $password; ?>" <?php echo !empty($passwordError) ? "autofocus": '' ;?>>
+                <span style="color:red"><?php echo $passwordError; ?></span>
             </div>
         </div>
         <div class="form-group">
-            <label for="password2" class="col-sm-3 control-label">Confirm Password</label>
+            <label for="cpassword" class="col-sm-3 control-label">Confirm Password</label>
             <div class="col-sm-9">
-                <input type="password" id="cpassword" name="cpassword"class="form-control">
-                <span style="color:red"><?php echo isset($confirmError) ? $confirmError : ''; ?></span>
+                <input type="password" id="cpassword" name="cpassword" class="form-control"  value="<?php echo $cpassword; ?>" <?php echo !empty($confirmError) ? "autofocus": '' ;?>>
+                <span style="color:red"><?php echo $confirmError; ?></span>
             </div>
         </div>
         <div class="form-group">
             <label for="description" class="col-sm-3 control-label">Description</label>
             <div class="col-sm-9">
-                <textarea class="form-control" rows="5" name="description" id="description"><?php echo isset($description) ? $description : ''; ?></textarea>
-                <span style="color:red"><?php echo isset($descriptionError) ? $descriptionError : ''; ?></span>
+                <textarea class="form-control" rows="5" name="description" id="description" <?php echo !empty($descriptionError) ? "autofocus": '' ;?>><?php echo $description; ?></textarea>
+                <span style="color:red"><?php echo $descriptionError; ?></span>
             </div>
         </div>
         <div class="form-group">
             <label for="phone" class="col-sm-3 control-label">Phone</label>
             <div class="col-sm-9">
-                <input class="form-control" type="text" name="phone" id="phone" value="<?php echo isset($phone) ? $phone : ''; ?>" placeholder="XXX-XXXX-XXXX">
+                <input class="form-control" type="text" name="phone" id="phone" value="<?php echo $phone; ?>" placeholder="XXX-XXXX-XXXX" <?php echo !empty($phoneError) ? "autofocus": '' ;?>>
                 <span style="color:red"><?php echo isset($phoneError) ? $phoneError : ''; ?></span>
             </div>
         </div>

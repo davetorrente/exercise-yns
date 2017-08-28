@@ -40,14 +40,6 @@ if(isset($_POST['login'])) {
     if(empty($_POST["password"])) {
         $passwordError = "Password is required";
         $error++;
-    }else {
-        $password = $_POST["password"];
-        $passwordlength = strlen($password);
-        if($passwordlength < 6)
-        {
-            $passwordError = "Password must be at least 6 characters";
-            $error++;
-        }
     }
     if($error == 0)
     {
@@ -93,15 +85,15 @@ if(isset($_POST['login'])) {
         <div class="form-group">
             <label for="username" class="col-sm-3 control-label">User Name</label>
             <div class="col-sm-9">
-                <input type="text" id="username" name="username" class="form-control"  value="<?php echo isset($username) ? $username : ''; ?>" autofocus>
-                <span style="color:red"><?php echo isset($usernameError) ? $usernameError : ''; ?></span>
+                <input type="text" id="username" name="username" class="form-control"  value="<?php echo isset($username) ? $username : ''; ?>" <?php echo !empty($usernameError) ? "autofocus": '' ;?>>
+                <span style="color:red"><?php echo $usernameError; ?></span>
             </div>
         </div>
         <div class="form-group">
             <label for="username" class="col-sm-3 control-label">Password</label>
             <div class="col-sm-9">
-                <input type="password" id="password" name="password" class="form-control">
-                <span style="color:red"><?php echo isset($passwordError) ? $passwordError : ''; ?></span>
+                <input type="password" id="password" name="password" class="form-control" <?php echo !empty($passwordError) ? "autofocus": '' ;?>>
+                <span style="color:red"><?php echo $passwordError; ?></span>
             </div>
         </div>
         <div class="form-group">
