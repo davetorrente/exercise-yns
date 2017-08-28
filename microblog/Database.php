@@ -3,11 +3,8 @@ class Database
 {
     private $host = 'localhost';
     private $user = 'root';
-    private $pass = '';
+    private $pass = 'exercise';
     private $db = 'exercise_db';
-//  connection for mysql workbench
-//  private $pass = 'password';
-//  private $db = 'exercise';
 
     private $dbh;
     private $error;
