@@ -24,8 +24,8 @@ if(($_POST['type']=='forRetweet'))
     $database->query("UPDATE tweets SET isRetweet = :isRetweet WHERE id='$tweetId' AND user_id='$userId'");
     $database->bind(':isRetweet',$isRetweet);
     $database->execute();
-    $database->query("INSERT INTO retweets (retweet, user_id, tweet_id, created) VALUES(:retweet, :user_id, :tweet_id, :created)");
-    $database->bind(':retweet',$tweet);
+    $database->query("INSERT INTO retweets (tweet, user_id, tweet_id, created) VALUES(:tweet, :user_id, :tweet_id, :created)");
+    $database->bind(':tweet',$tweet);
     $database->bind(':user_id',$user[0]['id']);
     $database->bind(':tweet_id', $tweetId);
     $database->bind(':created',$datetime);
