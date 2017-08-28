@@ -16,31 +16,30 @@ if(isset($_POST['login'])) {
         $usernameError = "Username is required";
         $error++;
     }else {
-        if(!ctype_alnum($username))
-        {
-            $userError = "Username must be alphanumeric characters";
-            $error++;
-        }else{
             $database->query("SELECT username FROM users WHERE username = '$username'");
             $usernameExist = $database->resultset();
             if(empty($usernameExist)){
                 $usernameError = "Username not exist";
                 $error++;
-            }else{
-                $database->query("SELECT password FROM users WHERE username = '$username'");
-                $passwordExist = $database->resultset();
-                if($passwordExist[0]['password'] <> md5($password))
-                {
-                    $passwordError = "Password is incorrect";
-                    $error++;
-                }
             }
-        }
+        
     }
     if(empty($_POST["password"])) {
         $passwordError = "Password is required";
         $error++;
-    }
+    }else{
+            $database->query("SELECT password FROM users WHERE username = '$username'");
+            $passwordExist = $database->resultset();
+            if(!empty($passwordExist)){
+                $passwordDB = $passwordExist[0]['password'];
+                if(md5($password) != $passwordDB)
+                {
+                     $passwordError = "Password is incorrect";
+                     $error++;
+                }
+               
+            }
+    }   
     if($error == 0)
     {
         $username = "";
@@ -80,20 +79,20 @@ if(isset($_POST['login'])) {
     </div>
 </nav>
 <div class="container">
-    <form method="post" id="registerForm" class="form-horizontal" role="form" enctype='multipart/form-data' novalidate>
+    <form method="post" class="form-horizontal" role="form" enctype='multipart/form-data' novalidate>
         <h2>Login Form</h2>
         <div class="form-group">
             <label for="username" class="col-sm-3 control-label">User Name</label>
             <div class="col-sm-9">
                 <input type="text" id="username" name="username" class="form-control"  value="<?php echo isset($username) ? $username : ''; ?>" <?php echo !empty($usernameError) ? "autofocus": '' ;?>>
-                <span style="color:red"><?php echo $usernameError; ?></span>
+                <span style="color:red"><?php echo isset($usernameError) ? $usernameError : ''; ?></span>
             </div>
         </div>
         <div class="form-group">
             <label for="username" class="col-sm-3 control-label">Password</label>
             <div class="col-sm-9">
                 <input type="password" id="password" name="password" class="form-control" <?php echo !empty($passwordError) ? "autofocus": '' ;?>>
-                <span style="color:red"><?php echo $passwordError; ?></span>
+                <span style="color:red"><?php echo isset($passwordError) ? $passwordError : ''; ?></span>
             </div>
         </div>
         <div class="form-group">

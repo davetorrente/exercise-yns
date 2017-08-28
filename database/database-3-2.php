@@ -138,8 +138,8 @@ $database->query($sqlTweets);
 $database->execute();
 $database->query($sqlFollows);
 $database->execute();
-$database->query($sqlFollows);
-$database->execute($sqlRetweets);
+$database->query($sqlRetweets);
+$database->execute();
 
 
 $sqlInsertPosts = ("INSERT IGNORE INTO `posts` (`id`, `post`, `created`) VALUES
@@ -257,4 +257,4 @@ $database->query($sqlInsertAnswers);
 $database->execute();
 
 
-echo "SUCCESS CREATING users, posts, customers, departments, employees, employee_positions, orders, positions, questions, answers, grades, tweets, follows" . "<br/>";
+echo "SUCCESS CREATING users, posts, customers, departments, employees, employee_positions, orders, positions, questions, answers, grades, tweets, follows, retweets" . "<br/>";
