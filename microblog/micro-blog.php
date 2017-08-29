@@ -97,7 +97,6 @@ if(!empty($_GET['logout']) == 1) {
             </form>
         </div>
     </section>
-
     <section class="row section2" >
         <div class="col-md-6 col-md-offset-3" id="showdata">
             <?php foreach($mergeTweets as $mergeTweet): ?>

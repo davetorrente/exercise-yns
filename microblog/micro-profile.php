@@ -97,6 +97,9 @@ if(isset($_GET['username'])){
             <div class="profile-pic">
                 <img src="<?php echo htmlspecialchars($userInfos[0]['upload']);?>" alt="sample profile pic" class="img-thumbnail img-profile">
             </div>
+            <p>
+                <?php echo htmlspecialchars($userInfos[0]['description']); ?>
+            </p>
             <?php if(!empty($followUsers)): ?>
              <p ><b>Following</b><span class="badge following-class"><?php echo htmlspecialchars(count($followUsers)); ?></span></p>
             <p ><b>You are following</b><br/>

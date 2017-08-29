@@ -4,15 +4,15 @@ $database = new Database();
 session_start();
 if (isset($_SESSION['authUser']))
     header("Location: database-3-6.php");
-
+$error = 0;
 if(isset($_POST['register'])) {
-    $error = 0;
     $username = htmlspecialchars($_POST["username"]);
     $password = htmlspecialchars($_POST["password"]);
     $email = htmlspecialchars($_POST["email"]);
     $description = htmlspecialchars($_POST["description"]);
     $phone = htmlspecialchars($_POST['phone']);
     $country = htmlspecialchars($_POST['country']);
+    $cpassword = htmlspecialchars($_POST["cpassword"]);
     if(isset($_POST['gender']))
     {
         $gender = htmlspecialchars($_POST['gender']);
@@ -26,9 +26,10 @@ if(isset($_POST['register'])) {
             $usernameError = "Username must be alphanumeric characters";
             $error++;
         }else{
+
             if(strlen($username) < '6') {
-            $usernameError = "Your Username Must Contain At Least 6 Characters!";
-            $error++;
+                $usernameError = "Your Username Must Contain At Least 6 Characters!";
+                $error++;
             }else{
                 $database->query("SELECT username FROM users WHERE username = '$username'");
                 $usernameExist = $database->resultset();
@@ -38,14 +39,13 @@ if(isset($_POST['register'])) {
                 }
             }
         }
-
     }
     if (empty($email)) {
         $emailError = "Email is required";
         $error++;
     }else {
         $regex = '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/';
-        if (!preg_match($regex, $_POST["email"])) {
+        if (!preg_match($regex, $email)) {
             $emailError = "Email is invalid";
             $error++;
         }else{
@@ -57,9 +57,11 @@ if(isset($_POST['register'])) {
             }
         }
     }
-    if(!empty($password) && ($password == $_POST["cpassword"])) {
-    $cpassword = $_POST["cpassword"];
-        if (strlen($_POST["password"]) < '8') {
+    if(empty($password)){
+        $passwordError = "Password is required";
+        $error++;
+    }else{
+        if (strlen($password) < '8') {
             $passwordError = "Your Password Must Contain At Least 8 Characters!";
             $error++;
         }
@@ -77,22 +79,25 @@ if(isset($_POST['register'])) {
             $error++;
         }
     }
-    elseif(!empty($password)) {
-        $confirmError = "Please Check You've Entered Or Confirmed Your Password!";
-        $error++;
-    }else {
-         $passwordError = "Password is required";
-        $error++;
-    }
-    if(empty($_POST['cpassword']))
+    if(empty($cpassword))
     {
         $confirmError = "Confirm Password is required";
         $error++;
+    }else{
+        if($cpassword != $password){
+            $confirmError = "Confirm Password must match your password";
+            $error++;
+        }
     }
 
     if (empty($description)) {
         $descriptionError = "Description is required";
         $error++;
+    }else{
+        if (strlen($description) < '10') {
+            $descriptionError = "Your Description Must Contain At Least 10 Characters!";
+            $error++;
+        }
     }
     if (empty($phone)) {
         $phoneError = "Phone number is required";
@@ -109,10 +114,10 @@ if(isset($_POST['register'])) {
     }else{
         if($gender == 'Male')
         {
-             $male = $gender;
+            $male = $gender;
         }
         else{
-        $female = $gender;
+            $female = $gender;
         }
     }
     if (empty($country)) {
@@ -131,7 +136,6 @@ if(isset($_POST['register'])) {
         $ext = substr(strtolower(strrchr($file['name'], '.')), 1);
         if(in_array($ext, $arr_ext))
         {
-
             $time = date("d-m-Y")."-".time();
             $newfileName = str_replace("'","",$file['name']);
             $moveFile = './profile-img/' .$time."-".$newfileName;
@@ -141,13 +145,14 @@ if(isset($_POST['register'])) {
         $hashpassword = md5($password);
         $database->query("INSERT INTO users (username, password, email, description , phone, country, gender, upload) VALUES('$username', '$hashpassword', '$email', '$description', '$phone', '$country', '$gender', '$moveFile')");
         $database->execute();
-        $username = "";
-        $email = "";
-        $description = "";
-        $phone = "";
-        $gender = "";
-        $message = "<div id='hideMe' align='center' class='alert-success'>You may now login</div>";
+        session_destroy();
+        unset($_POST);
+        header("Location: database-3-6-register.php?success=register");
+        die();
     }
+}
+if(isset($_GET['success'])){
+    $message = "<div id='hideMe' align='center' class='alert-success'>You may now login</div>";
 }
 ?>
 
@@ -187,44 +192,44 @@ if(isset($_POST['register'])) {
         <div class="form-group">
             <label for="username" class="col-sm-3 control-label">User Name</label>
             <div class="col-sm-9">
-                <input type="text" id="username" name="username" class="form-control"  value="<?php echo isset($username) ? $username : ''; ?>" autofocus>
-                 <span style="color:red"><?php echo isset($usernameError) ? $usernameError : ''; ?></span>
-            </div>           
+                <input type="text" id="username" name="username" class="form-control"  value="<?php echo isset($username) ? $username : ''; ?>" <?php echo !empty($usernameError) ? "autofocus": '' ;?>>
+                <span style="color:red"><?php echo isset($usernameError) ? $usernameError : ''; ?></span>
+            </div>
         </div>
         <div class="form-group">
             <label for="email" class="col-sm-3 control-label">Email</label>
             <div class="col-sm-9">
-                <input type="email" id="email" name="email" class="form-control" value="<?php echo isset($email) ? $email : ''; ?>"> 
-                 <span style="color:red"><?php echo isset($emailError) ? $emailError : ''; ?></span>
+                <input type="email" id="email" name="email" class="form-control"  value="<?php echo isset($email) ? $email : ''; ?>" <?php echo !empty($emailError) ? "autofocus": '' ;?>>
+                <span style="color:red"><?php echo isset($emailError) ? $emailError : ''; ?></span>
             </div>
         </div>
         <div class="form-group">
             <label for="password" class="col-sm-3 control-label">Password</label>
             <div class="col-sm-9">
-                <input type="password" id="password" name="password" class="form-control">
-                 <span style="color:red"><?php echo isset($passwordError) ? $passwordError : ''; ?></span>
-            </div>      
+                <input type="password" id="password" name="password" class="form-control"  value="<?php echo isset($password) ? $password : ''; ?>" <?php echo !empty($passwordError) ? "autofocus": '' ;?>>
+                <span style="color:red"><?php echo isset($passwordError) ? $passwordError : ''; ?></span>
+            </div>
         </div>
-         <div class="form-group">
-            <label for="password2" class="col-sm-3 control-label">Confirm Password</label>
+        <div class="form-group">
+            <label for="cpassword" class="col-sm-3 control-label">Confirm Password</label>
             <div class="col-sm-9">
-                <input type="password" id="cpassword" name="cpassword"class="form-control">
+                <input type="password" id="cpassword" name="cpassword" class="form-control"  value="<?php echo isset($cpassword) ? $cpassword : ''; ?>" <?php echo !empty($confirmError) ? "autofocus": '' ;?>>
                 <span style="color:red"><?php echo isset($confirmError) ? $confirmError : ''; ?></span>
             </div>
         </div>
         <div class="form-group">
             <label for="description" class="col-sm-3 control-label">Description</label>
             <div class="col-sm-9">
-                <textarea class="form-control" rows="5" name="description" id="description"><?php echo isset($description) ? $description : ''; ?></textarea>
-                 <span style="color:red"><?php echo isset($descriptionError) ? $descriptionError : ''; ?></span>
+                <textarea class="form-control" rows="5" name="description" id="description" <?php echo !empty($descriptionError) ? "autofocus": '' ;?>><?php echo isset($description) ? $description : ''; ?></textarea>
+                <span style="color:red"><?php echo isset($descriptionError) ? $descriptionError : ''; ?></span>
             </div>
         </div>
         <div class="form-group">
             <label for="phone" class="col-sm-3 control-label">Phone</label>
             <div class="col-sm-9">
-                <input class="form-control" type="text" name="phone" id="phone" value="<?php echo isset($phone) ? $phone : ''; ?>" placeholder="XXX-XXXX-XXXX">
+                <input class="form-control" type="text" name="phone" id="phone" value="<?php echo isset($phone) ? $phone : ''; ?>" placeholder="XXX-XXXX-XXXX" <?php echo !empty($phoneError) ? "autofocus": '' ;?>>
                 <span style="color:red"><?php echo isset($phoneError) ? $phoneError : ''; ?></span>
-            </div>      
+            </div>
         </div>
         <div class="form-group">
             <label class="control-label col-sm-3">Gender</label>
@@ -232,18 +237,18 @@ if(isset($_POST['register'])) {
                 <div class="row">
                     <div class="col-sm-4">
                         <label class="radio-inline">
-                             <input type="radio" name="gender" value="Male" id="gender" <?php echo isset($male) ? 'checked' : '';?>>Male
+                            <input type="radio" name="gender" value="Male" id="gender" <?php echo !empty($male) ? 'checked' : '';?>>Male
                         </label>
                     </div>
                     <div class="col-sm-4">
                         <label class="radio-inline">
-                            <input type="radio" name="gender" value="Female" id="gender" <?php echo isset($female) ? 'checked' : '';?>>Female
+                            <input type="radio" name="gender" value="Female" id="gender" <?php echo !empty($female) ? 'checked' : '';?>>Female
                         </label>
                     </div>
                 </div>
-                 <span style="color:red; display: block;"><?php echo isset($genderError) ? $genderError : ''; ?></span>
+                <span style="color:red; display: block;"><?php echo isset($genderError) ? $genderError : ''; ?></span>
             </div>
-        </div> <!-- /.form-group -->
+        </div>
         <div class="form-group">
             <label for="country" class="col-sm-3 control-label">Country</label>
             <div class="col-sm-9">
@@ -993,17 +998,17 @@ if(isset($_POST['register'])) {
                     <option <?php if(isset($country)):
                         echo $country== 'Zimbabwe' ? "selected" : "";
                     endif; ?> value="Zimbabwe">Zimbabwe</option>
-                    </select>
-                     <span style="color:red"><?php echo isset($countryError) ? $countryError : ''; ?></span>
+                </select>
+                <span style="color:red"><?php echo isset($countryError) ? $countryError : ''; ?></span>
             </div>
-           
+
         </div> <!-- /.form-group -->
-         <div class="form-group">
+        <div class="form-group">
             <label for="upload" class="col-sm-3 control-label">Upload</label>
             <div class="col-sm-9">
-               <input class="form-control" type="file" name="upload" id="upload" value="<?php echo 1; ?>" >
-               <span style="color:red"><?php echo isset($uploadError) ? $uploadError : ''; ?></span>
-            </div> 
+                <input class="form-control" type="file" name="upload" id="upload" value="<?php echo 1; ?>" >
+                <span style="color:red"><?php echo isset($uploadError) ? $uploadError : ''; ?></span>
+            </div>
         </div>
         <div class="form-group">
             <div class="col-sm-9 col-sm-offset-3">
