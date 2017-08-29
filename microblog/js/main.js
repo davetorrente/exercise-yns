@@ -277,11 +277,12 @@ $(document).ready(function(){
     $("#search").keyup(function() {
         //Assigning search box value to javascript variable named as "name".
         var name = $('#search').val();
+        var menu =   $("#menuItem");
         //Validating, if "name" is empty.
         if (name === "") {
             //Assigning empty value to "display" div in "search.php" file.
-            $("#menuItem").html("");
-            $("#menuItem").css("display", "none");
+            menu.html("");
+            menu.css("display","none");
         }
         //If name is not empty.
         else {
@@ -294,16 +295,33 @@ $(document).ready(function(){
                 //Data, that will be sent to "ajax.php".
                 data: {
                     //Assigning value of "name" into "search" variable.
-
                     search: name
-
                 },
+                dataType: 'json',
                 //If result found, this funtion will be called.
+                success: function(res) {
+                    var query = res.query;
+                    var output = '<ul>';
+                    console.log(res.query);
+                    if(res.query.length == 0)
+                    {
+                        menu.html("");
+                        output='';
 
-                success: function(html) {
+                    }else{
+                        $.each(query, function (index) {
+
+                            output += '<li onclick="fill('+query[index].username+')">'+
+                                '<a href="micro-profile.php?username='+query[index].username+'">'+query[index].username+'</a>'+
+                                '</li>';
+
+                        });
+                        menu.css("display","block");
+                    }
+                    menu.html(output);
+
                     //Assigning result to "display" div in "search.php" file.
 
-                    $("#menuItem").html(html).show();
                 }
             });
         }

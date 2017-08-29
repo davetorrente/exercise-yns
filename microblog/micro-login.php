@@ -37,7 +37,6 @@ if(isset($_POST['login'])) {
                      $passwordError = "Password is incorrect";
                      $error++;
                 }
-               
             }
     }   
     if($error == 0)

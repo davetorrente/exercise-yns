@@ -4,7 +4,7 @@ $database = new Database();
 session_start();
 if (isset($_SESSION['authUser']))
     header("Location: database-3-6.php");
-$postform = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
 if(isset($_POST['register'])) {
     $error = 0;
     $username = htmlspecialchars($_POST["username"]);
@@ -132,14 +132,14 @@ if(isset($_POST['register'])) {
         if(in_array($ext, $arr_ext))
         {
 
-            $time = date("d-m-Y")."-".time() ;
-            $moveFile = '/profile-img/' .$time."-".$file['name'];
-            $newFile = '/database' . $moveFile;
-            move_uploaded_file($file['tmp_name'], '.' . $moveFile);
-            chmod('.' . $moveFile, 0666);
+            $time = date("d-m-Y")."-".time();
+            $newfileName = str_replace("'","",$file['name']);
+            $moveFile = './profile-img/' .$time."-".$newfileName;
+            move_uploaded_file($file['tmp_name'], $moveFile);
+            chmod($moveFile, 0666);
         }
         $hashpassword = md5($password);
-        $database->query("INSERT INTO users (username, password, email, description , phone, country, gender, upload) VALUES('$username', '$hashpassword', '$email', '$description', '$phone', '$country', '$gender', '$newFile')");
+        $database->query("INSERT INTO users (username, password, email, description , phone, country, gender, upload) VALUES('$username', '$hashpassword', '$email', '$description', '$phone', '$country', '$gender', '$moveFile')");
         $database->execute();
         $username = "";
         $email = "";

@@ -13,7 +13,7 @@ class Database
     public function __construct()
     {
         //Set Connection
-        $dsn = 'mysql:host='. $this->host . ';dbname='. $this->db;
+//        $dsn = 'mysql:host='. $this->host . ';dbname='. $this->db;
 
         //Set Options
         $options = array(
@@ -22,7 +22,10 @@ class Database
         );
         // Create new PDO
         try {
-            $this->dbh = new PDO($dsn, $this->user, $this->pass, $options);
+            $this->dbh = new PDO("mysql:host=" . $this->host, $this->user, $this->pass, $options);
+            $db = "`".str_replace("`","``",$this->db)."`";
+            $this->dbh->query("CREATE DATABASE IF NOT EXISTS $this->db CHARACTER SET utf8 COLLATE utf8_general_ci;");
+            $this->dbh->query("use $db");
 
         } catch(PDOException $e)
         {

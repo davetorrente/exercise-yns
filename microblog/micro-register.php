@@ -4,9 +4,8 @@ $database = new Database();
 session_start();
 if(!empty($_SESSION['microUser']))
     header("Location: micro-blog.php");
-$postform = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+$error = 0;
 if(isset($_POST['register'])) {
-    $error = 0;
     $username = htmlspecialchars($_POST["username"]);
     $password = htmlspecialchars($_POST["password"]);
     $email = htmlspecialchars($_POST["email"]);
@@ -40,7 +39,6 @@ if(isset($_POST['register'])) {
                 }
             }   
         }
-
     }
     if (empty($email)) {
         $emailError = "Email is required";
@@ -138,27 +136,23 @@ if(isset($_POST['register'])) {
         $ext = substr(strtolower(strrchr($file['name'], '.')), 1);
         if(in_array($ext, $arr_ext))
         {
-        
-           
-            $time = date("d-m-Y")."-".time() ;
-            $moveFile = '/profile-img/' .$time."-".$file['name'];
-            $newFile = '/microblog' . $moveFile;
-            move_uploaded_file($file['tmp_name'], '.'.$moveFile);
-            chmod('.'.$moveFile, 066);
+            $time = date("d-m-Y")."-".time();
+            $newfileName = str_replace("'","",$file['name']);
+            $moveFile = './profile-img/' .$time."-".$newfileName;
+            move_uploaded_file($file['tmp_name'], $moveFile);
+            chmod($moveFile, 0666);
         }
         $hashpassword = md5($password);
-        $database->query("INSERT INTO users (username, password, email, description , phone, country, gender, upload) VALUES('$username', '$hashpassword', '$email', '$description', '$phone', '$country', '$gender', '$newFile')");
+        $database->query("INSERT INTO users (username, password, email, description , phone, country, gender, upload) VALUES('$username', '$hashpassword', '$email', '$description', '$phone', '$country', '$gender', '$moveFile')");
         $database->execute();
-        $username = "";
-        $password = "";
-        $cpassword = "";
-        $email = "";
-        $description = "";
-        $phone = "";
-        $gender = "";
-        $message = "<div id='hideMe' align='center' class='alert-success'>You may now login</div>";
         session_destroy();
+        unset($_POST);
+        header("Location: micro-register.php?success=register");
+        die();
     }
+}
+if(isset($_GET['success'])){
+    $message = "<div id='hideMe' align='center' class='alert-success'>You may now login</div>";
 }
 ?>
 
@@ -242,12 +236,12 @@ if(isset($_POST['register'])) {
                 <div class="row">
                     <div class="col-sm-4">
                         <label class="radio-inline">
-                            <input type="radio" name="gender" value="Male" id="gender" <?php echo isset($male) ? 'checked' : '';?>>Male
+                            <input type="radio" name="gender" value="Male" id="gender" <?php echo !empty($male) ? 'checked' : '';?>>Male
                         </label>
                     </div>
                     <div class="col-sm-4">
                         <label class="radio-inline">
-                            <input type="radio" name="gender" value="Female" id="gender" <?php echo isset($female) ? 'checked' : '';?>>Female
+                            <input type="radio" name="gender" value="Female" id="gender" <?php echo !empty($female) ? 'checked' : '';?>>Female
                         </label>
                     </div>
                 </div>

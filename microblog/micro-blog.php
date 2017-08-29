@@ -15,6 +15,7 @@ if (empty($_SESSION['microUser'])){
 }
 $database->query("SELECT users.username, users.upload, tweets.id, tweets.user_id, tweets.tweet, tweets.created, tweets.modified, tweets.isRetweet FROM tweets INNER JOIN users ON tweets.user_id = users.id  ORDER BY tweets.created DESC");
 $userTweets = $database->resultset();
+
 if(!empty($_GET['logout']) == 1) {
     session_destroy();
     header("Location: micro-login.php");
@@ -51,6 +52,18 @@ if(!empty($_GET['logout']) == 1) {
                 <li><a href="micro-profile.php?username=<?php echo $user[0]['username'];?>"><img src="<?php echo $user[0]['upload'];?>" class="nav-profile img-circle"> Profile</a></li>
                 <li><a href="?logout=1">Logout</a></li>
             </ul>
+            <form class="hidden-xs-down navbar-form pull-right search-menu form-inline">
+                <div role="group" class="input-group">
+                    <input type="text" class="form-control" name="search" id="search" placeholder="Username.." aria-label="Username" aria-describedby="basic-addon1">
+                    <div class="input-group">
+                        <li class="nav-item dropdown show" style="list-style-type:none;">
+                            <div role="menu" class="dropdown-menu dropdown-menu-right" id="menuItem" style="display:none">
+                                <h6 tabindex="-1" class="dropdown-header active">no results found</h6>
+                            </div>
+                        </li>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </nav>
