@@ -9,7 +9,7 @@ if(isset($_POST['type']))
 {
     $typeDelete = $_POST['type'];
     $delete_id = (int)$_POST['id'];
-    if($typeDelete == 'forTweet')
+    if($typeDelete == 'tweet-delete')
     {
         $database->query('DELETE FROM tweets WHERE id = :id');
         $database->bind(':id',$delete_id);
@@ -17,7 +17,7 @@ if(isset($_POST['type']))
         $message['success'] = true;
         echo json_encode(array("message"=>$message));
     }
-    else if($typeDelete == 'forRetweet')
+    else if($typeDelete == 'retweet-delete')
     {
         $database->query("SELECT tweets.id, tweets.user_id FROM tweets INNER JOIN retweets ON tweets.id = retweets.tweet_id WHERE retweets.id ='$delete_id'");
         $tweetParent = $database->resultset();

@@ -72,7 +72,7 @@ if(isset($_GET['username'])){
                     <input type="text" class="form-control" name="search" id="search" placeholder="Username.." aria-label="Username" aria-describedby="basic-addon1">
                     <div class="input-group">
                         <li class="nav-item dropdown show" style="list-style-type:none;">
-                            <div role="menu" class="dropdown-menu dropdown-menu-right" id="menuItem">
+                            <div role="menu" class="dropdown-menu dropdown-menu-right" id="menuItem" style="display:none">
                                 <h6 tabindex="-1" class="dropdown-header active">no results found</h6>
                             </div>
                         </li>

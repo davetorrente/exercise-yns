@@ -64,7 +64,7 @@ $(document).ready(function(){
                                     '<div class="clearfix"></div>'+
                                     '<div class="interaction tweet-interact" user_id="'+user_id.val()+'" tweet_id="'+query[index].id+'">'+
                                         '<a href="javascript:;" class="tweet-edit">Edit | </a>'+
-                                        '<a href="javascript:;" class="tweet-delete" data="forTweet">Delete |</a>'+
+                                        '<a href="javascript:;" class="tweet-delete" id="delete-item">Delete |</a>'+
                                     '</div>'+
                             '</article>';
                     });
@@ -81,10 +81,10 @@ $(document).ready(function(){
         }
     });
 
-    $(document).on('click', '.tweet-delete', function(event){
+    $(document).on('click', '#delete-item', function(event){
         event.preventDefault();
         var $this = $(this);
-        var type = $this.attr('data');
+        var type = $this.attr('class');
         var id = $this.parent().attr('tweet_id');
         $('#deleteModal').modal('show');
         //prevent previous handler - unbind()
@@ -102,6 +102,7 @@ $(document).ready(function(){
                     sectionMessage.addClass('alert-danger');
                     sectionMessage.html('Tweet Deleted successfully').fadeIn().delay(1500).fadeOut('slow');
                     $this.parent().parent().remove();
+                    console.log(response.tweetParent);
                     if(Object.keys(response.tweetParent).length > 0){
                         var parentDivRetweet = $('#showdata').find('article.post').find('.tweet-interact[user_id="' + response.tweetParent[0].user_id + '"][tweet_id="' + response.tweetParent[0].id + '"]');
                         parentDivRetweet.children().children().css("color", "");
@@ -209,10 +210,10 @@ $(document).ready(function(){
                                     '</div>' +
                                     '</div>' +
                                     '</div>' +
-                                    '<p class="contentPost">' + "hahahahda" + '</p>' +
+                                    '<p class="contentPost">' + query[index].tweet + '</p>' +
                                     '<div class="clearfix"></div>' +
                                     ' <div class="interaction tweet-interact" user_id="' + user_id.val() + '" tweet_id="' + query[index].id + '">' +
-                                    '<a href="javascript:;" class="tweet-delete" data="forRetweet">Delete |</a>' +
+                                    '<a href="javascript:;" class="retweet-delete" id="delete-item">Delete |</a>' +
                                     '</div>' +
                                     '</article>';
                         });
