@@ -1,11 +1,11 @@
 <?php
-require "Database.php";
-require "modals/delete-modal.php";
-require "modals/edit-modal.php";
-require "modals/retweet-modal.php";
-//asdasd
-$database = new Database();
+require_once "Database.php";
+require_once "modals/delete-modal.php";
+require_once "modals/edit-modal.php";
+require_once "modals/retweet-modal.php";
 session_start();
+$database = new Database();
+
 if (empty($_SESSION['microUser'])){
     header("Location: micro-login.php");
 }else{
@@ -13,13 +13,12 @@ if (empty($_SESSION['microUser'])){
     $database->query("SELECT * FROM users WHERE username = '$userAuth'");
     $user = $database->resultset();
 }
+$database->query("SELECT users.username, users.upload, tweets.id, tweets.user_id, tweets.tweet, tweets.created, tweets.modified, tweets.isRetweet FROM tweets INNER JOIN users ON tweets.user_id = users.id  ORDER BY tweets.created DESC");
+$userTweets = $database->resultset();
 if(!empty($_GET['logout']) == 1) {
     session_destroy();
     header("Location: micro-login.php");
 }
-
-$database->query("SELECT users.username, users.upload, tweets.id, tweets.user_id, tweets.tweet, tweets.created, tweets.modified, tweets.isRetweet FROM users INNER JOIN tweets ON users.id = tweets.user_id ORDER BY tweets.created DESC");
-$userTweets = $database->resultset();
 ?>
 <!DOCTYPE html>
 <html>
@@ -30,6 +29,11 @@ $userTweets = $database->resultset();
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
     <link rel="stylesheet" href="css/dashboard.css">
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="js/main.js" type="text/javascript"></script>
 </head>
 <body>
 <nav class="navbar navbar-default">
@@ -90,13 +94,7 @@ $userTweets = $database->resultset();
                     <div class="clearfix"></div>
                     <div class="interaction tweet-interact" user_id="<?php echo htmlspecialchars($userTweet['user_id']); ?>" tweet_id="<?php echo htmlspecialchars($userTweet['id']); ?>">
                         <?php if($user[0]['id'] != $userTweet['user_id']): ?>
-                            <?php
-                            $tweetID = $userTweet['id'];
-                            $userID = $user[0]['id'];
-                            $database->query("SELECT parent_tweet FROM tweets WHERE user_id = '$userID' AND parent_tweet='$tweetID'");
-                            $parentTweet = $database->resultset();
-                            ?>
-                            <a href="javascript:;" class="retweet"><i class="fa fa-retweet" id="iconRetweet" aria-hidden="true" <?php echo !empty($parentTweet) ? "style=color:green;" : '';?> ></i> |</a>
+                            <a href="javascript:;" class="retweet"><i class="fa fa-retweet" id="iconRetweet" aria-hidden="true" <?php echo $userTweet['isRetweet'] == true ? "style=color:green;" : '';?> ></i> |</a>
                         <?php else: ?>
                                 <a href="javascript:;"  class="tweet-edit">Edit |</a>
                                 <a href="javascript:;" class="tweet-delete">Delete |</a>
@@ -109,8 +107,4 @@ $userTweets = $database->resultset();
 </div>
 </body>
 </html>
-<script src="http://code.jquery.com/jquery-3.2.1.min.js"
-        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-        crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="js/main.js"></script>
+

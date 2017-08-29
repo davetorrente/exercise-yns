@@ -31,7 +31,7 @@ if(($_POST['type']=='forRetweet'))
     $database->bind(':created',$datetime);
     $database->execute();
     if(!empty($database->lastInsertId())){
-        $database->query('SELECT users.username, users.upload, retweets.id, retweets.retweet, retweets.created FROM users INNER JOIN retweets ON users.id = retweets.user_id WHERE retweets.id = :id' );
+        $database->query('SELECT users.username, users.upload, retweets.id, retweets.tweet, retweets.created FROM users INNER JOIN retweets ON users.id = retweets.user_id WHERE retweets.id = :id' );
         $database->bind(':id', $database->lastInsertId());
         $lastTweet = $database->resultset();
         $message['isRetweet'] = true;

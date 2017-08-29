@@ -209,7 +209,7 @@ $(document).ready(function(){
                                     '</div>' +
                                     '</div>' +
                                     '</div>' +
-                                    '<p class="contentPost">' + query[index].retweet + '</p>' +
+                                    '<p class="contentPost">' + "hahahahda" + '</p>' +
                                     '<div class="clearfix"></div>' +
                                     ' <div class="interaction tweet-interact" user_id="' + user_id.val() + '" tweet_id="' + query[index].id + '">' +
                                     '<a href="javascript:;" class="tweet-delete" data="forRetweet">Delete |</a>' +
