@@ -152,12 +152,20 @@ footer{
 .members img{
 	margin-bottom: 5px;
 }
-a.thumbnail.showFriends {
+li.thumbnail.showFriends {
 	width: 80px;
+}
+.jumbotron{
+	background-size: cover;
+	height: 500px;
 }
 @media(min-width: 991px){
   .members p{
 	padding-top: 40px;
 	}
 }
+footer p {
+	color: #aaa;
+}
+
 

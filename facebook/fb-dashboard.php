@@ -30,8 +30,7 @@ if (isset($_SESSION['facebook_token'])) {
     if(empty($accessToken)){
         $accessToken = $_SESSION['facebook_token'];
     }
-     //    $url = "https://graph.facebook.com/v2.10/me?fields=picture%2Cfeed.limit(100)%2Cfriends&access_token={$accessToken}";
-    $url = "https://graph.facebook.com/v2.10/me?fields=picture%2Cfeed%2Ctaggable_friends.limit(1000)%2Ccover&access_token={$accessToken}";
+    $url = "https://graph.facebook.com/v2.10/me/?fields=picture%2Cfeed.limit(275)%2Ctaggable_friends.limit(1000)%2Ccover&&access_token={$accessToken}";
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
@@ -57,7 +56,6 @@ if (isset($_SESSION['facebook_token'])) {
     $st=curl_exec($ch2);
     $friendsresults2 =json_decode($st,TRUE);
 
-//    echo "<pre>";
 
     array_values($results['taggable_friends']['data']);
     array_values($friendsresults2['data']);
@@ -65,8 +63,7 @@ if (isset($_SESSION['facebook_token'])) {
     $arrayFriends = array();
     array_push($arrayFriends, $mergeArrays);
 
-//   print_r(count($arrayFriends[0]));
-//    die();
+
 
     $pages = count($results['feed']['data']) / 25;
     $b =  ceil($pages);
@@ -87,8 +84,7 @@ if (isset($_SESSION['facebook_token'])) {
     $newArray = array_slice($results['feed']['data'], $page1, ($page1+25));
     $profilePic = $results['picture']['data']['url'];
     $displayFriends = array_slice($arrayFriends[0], 0, 8);
-//    echo '<pre>';
-//    print_r($displayFriends);
+    $imageCover = $results['cover']['source'];
 
 }
 if(isset($_GET['logout']) == 1) {
@@ -128,15 +124,15 @@ ob_end_flush();
         <a class="navbar-brand" href="micro-blog.php">Facebook API</a>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="micro-blog.php">Home</a></li>
+                <li class="active"><a href="fb-dashboard.php">Home</a></li>
+                <li><a href="fb-friends.php">Friends</a></li>
                 <li><a href="?logout=1">Logout</a></li>
             </ul>
         </div>
     </div>
 </nav>
 <div class="container">
-    <div class="jumbotron">
-        <p>asdfasdfasdfasdfasdfasd</p>
+    <div class="jumbotron" style="background-image: url(<?php echo $imageCover;?>)">
     </div>
 </div>
 <section>
@@ -201,11 +197,13 @@ ob_end_flush();
                     <div class="panel-body">
                         <ul>
                             <?php foreach($displayFriends as $displayFriend): ?>
-                                <li> <a href="<?php echo $displayFriend['picture']['data']['url'] ;?>" class="thumbnail showFriends"><img src="<?php echo $displayFriend['picture']['data']['url'] ;?>" alt=""><?php echo $displayFriend['name'] ;?></a></li>
+                                <li class="thumbnail showFriends"><img src="<?php echo $displayFriend['picture']['data']['url'] ;?>" alt=""><?php echo $displayFriend['name'] ;?></li>
                             <?php endforeach; ?>
                         </ul>
                         <div class="clearfix"></div>
-                        <a class="btn btn-primary" href="#">View All Friends</a>
+                        <p align="center">And <?php echo count($arrayFriends[0]) - count($displayFriends); ?> more</p>
+                        <div class="clearfix"></div>
+                        <a class="btn btn-primary" href="fb-friends.php">View All Friends</a>
                     </div>
                 </div>
             </div>
@@ -213,16 +211,15 @@ ob_end_flush();
     </div>
 </section>
 
-<!--<footer>-->
-<!--<div class="container">-->
-<!--<p></p>-->
-<!--</div>-->
-<!--</footer>-->
-
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
+<footer>
+    <div class="container">
+        <div class="navbar-text pull-left">
+            <p>copyright Sample Exercise Facebook Graph API</p>
+        </div>
+    </div>
+</footer>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="js/bootstrap.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
