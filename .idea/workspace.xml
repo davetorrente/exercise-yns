@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21fc073c-5523-4dae-b2fe-c45f5b229797" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/facebook/css/style.css" afterPath="$PROJECT_DIR$/facebook/css/style.css" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/facebook/js/main.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/facebook/fb-dashboard.php" afterPath="$PROJECT_DIR$/facebook/fb-dashboard.php" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
@@ -55,53 +54,66 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="fb-dashboard.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/facebook/fb-dashboard.php">
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/microblog/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="123" column="70" lean-forward="true" selection-start-line="123" selection-start-column="70" selection-end-line="123" selection-end-column="70" />
+            <state relative-caret-position="345">
+              <caret line="209" column="46" lean-forward="false" selection-start-line="209" selection-start-column="46" selection-end-line="209" selection-end-column="46" />
               <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1504003047397" expanded="true" signature="3304:5147" ph="..." />
-                <marker date="1504003047397" expanded="true" signature="3311:3330" ph="..." />
-                <marker date="1504003047397" expanded="true" signature="3311:3747" ph="..." />
-                <marker date="1504003047397" expanded="true" signature="3754:3766" ph="..." />
-                <marker date="1504003047397" expanded="true" signature="3754:5147" ph="..." />
-                <marker date="1504003047397" expanded="true" signature="3802:4560" ph="..." />
-                <marker date="1504003047397" expanded="true" signature="3830:4553" ph="..." />
-                <marker date="1504003047397" expanded="true" signature="3937:4144" ph="..." />
-                <marker date="1504003047397" expanded="true" signature="4262:4542" ph="..." />
-                <marker date="1504003047397" expanded="true" signature="4315:4527" ph="..." />
-                <marker date="1504003047397" expanded="true" signature="4697:4713" ph="..." />
-                <marker date="1504003047397" expanded="true" signature="4697:5147" ph="..." />
-                <marker date="1504003047397" expanded="true" signature="4725:5147" ph="..." />
-                <marker date="1504003047397" expanded="true" signature="4751:5147" ph="..." />
-                <marker date="1504003047397" expanded="true" signature="4786:5147" ph="..." />
-                <marker date="1504003047397" expanded="true" signature="4836:4995" ph="..." />
-                <marker date="1504003047397" expanded="true" signature="4884:4972" ph="..." />
-                <marker date="1504003047397" expanded="true" signature="5248:5660" ph="..." />
-                <marker date="1504003047397" expanded="true" signature="5297:5660" ph="..." />
-                <marker date="1504003047397" expanded="true" signature="5343:5660" ph="..." />
-                <marker date="1504003047397" expanded="true" signature="5398:5660" ph="..." />
-                <marker date="1504003047397" expanded="true" signature="5775:5895" ph="..." />
-                <marker date="1504003047397" expanded="true" signature="5775:5960" ph="..." />
-                <marker date="1504003047397" expanded="true" signature="5832:5895" ph="..." />
-                <marker date="1504003047397" expanded="true" signature="5894:5895" ph="..." />
-                <marker date="1504003047397" expanded="true" signature="6787:6949" ph="..." />
-                <marker date="1504003047397" expanded="true" signature="6825:6949" ph="..." />
-                <marker date="1504003047397" expanded="true" signature="7038:7397" ph="..." />
-                <marker date="1504003047397" expanded="true" signature="7101:7366" ph="..." />
-                <marker date="1504003047397" expanded="true" signature="7502:8504" ph="..." />
-                <marker date="1504003047397" expanded="true" signature="7560:8485" ph="..." />
-                <marker date="1504003047397" expanded="true" signature="7608:7699" ph="..." />
-                <marker date="1504003047397" expanded="true" signature="7744:8462" ph="..." />
-                <marker date="1504003047397" expanded="true" signature="7773:8116" ph="..." />
+                <marker date="1503967790611" expanded="true" signature="2238:2252" ph="..." />
+                <marker date="1503967790611" expanded="true" signature="10228:10242" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="fb-friends.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="fb-dashboard.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/facebook/fb-dashboard.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="158">
+              <caret line="221" column="39" lean-forward="false" selection-start-line="221" selection-start-column="39" selection-end-line="221" selection-end-column="39" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <marker date="1504003822698" expanded="true" signature="3304:5147" ph="..." />
+                <marker date="1504003822698" expanded="true" signature="3311:3330" ph="..." />
+                <marker date="1504003822698" expanded="true" signature="3311:3747" ph="..." />
+                <marker date="1504003822698" expanded="true" signature="3754:3766" ph="..." />
+                <marker date="1504003822698" expanded="true" signature="3754:5147" ph="..." />
+                <marker date="1504003822698" expanded="true" signature="3802:4560" ph="..." />
+                <marker date="1504003822698" expanded="true" signature="3830:4553" ph="..." />
+                <marker date="1504003822698" expanded="true" signature="3937:4144" ph="..." />
+                <marker date="1504003822698" expanded="true" signature="4262:4542" ph="..." />
+                <marker date="1504003822698" expanded="true" signature="4315:4527" ph="..." />
+                <marker date="1504003822698" expanded="true" signature="4697:4713" ph="..." />
+                <marker date="1504003822698" expanded="true" signature="4697:5147" ph="..." />
+                <marker date="1504003822698" expanded="true" signature="4725:5147" ph="..." />
+                <marker date="1504003822698" expanded="true" signature="4751:5147" ph="..." />
+                <marker date="1504003822698" expanded="true" signature="4786:5147" ph="..." />
+                <marker date="1504003822698" expanded="true" signature="4836:4995" ph="..." />
+                <marker date="1504003822698" expanded="true" signature="4884:4972" ph="..." />
+                <marker date="1504003822698" expanded="true" signature="5248:5660" ph="..." />
+                <marker date="1504003822698" expanded="true" signature="5297:5660" ph="..." />
+                <marker date="1504003822698" expanded="true" signature="5343:5660" ph="..." />
+                <marker date="1504003822698" expanded="true" signature="5398:5660" ph="..." />
+                <marker date="1504003822698" expanded="true" signature="5775:5895" ph="..." />
+                <marker date="1504003822698" expanded="true" signature="5775:5960" ph="..." />
+                <marker date="1504003822698" expanded="true" signature="5832:5895" ph="..." />
+                <marker date="1504003822698" expanded="true" signature="5894:5895" ph="..." />
+                <marker date="1504003822698" expanded="true" signature="6787:6949" ph="..." />
+                <marker date="1504003822698" expanded="true" signature="6825:6949" ph="..." />
+                <marker date="1504003822698" expanded="true" signature="7038:7397" ph="..." />
+                <marker date="1504003822698" expanded="true" signature="7101:7366" ph="..." />
+                <marker date="1504003822698" expanded="true" signature="7502:8504" ph="..." />
+                <marker date="1504003822698" expanded="true" signature="7560:8485" ph="..." />
+                <marker date="1504003822698" expanded="true" signature="7608:7699" ph="..." />
+                <marker date="1504003822698" expanded="true" signature="7744:8462" ph="..." />
+                <marker date="1504003822698" expanded="true" signature="7773:8116" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fb-friends.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/facebook/fb-friends.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="217">
@@ -131,16 +143,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Database.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/microblog/Database.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="10" lean-forward="false" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="database-3-2.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database/database-3-2.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -162,16 +164,6 @@
                 <marker date="1503967790611" expanded="true" signature="2910:3155" ph="CREATE TABLE... IF" />
                 <marker date="1503967790611" expanded="true" signature="3175:3432" ph="CREATE TABLE... IF" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/facebook/js/main.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="17" lean-forward="false" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -274,10 +266,10 @@
         <option value="$PROJECT_DIR$/facebook/Facebook/Facebook.php" />
         <option value="$PROJECT_DIR$/facebook/fb-login.php" />
         <option value="$PROJECT_DIR$/facebook/css/style.css" />
-        <option value="$PROJECT_DIR$/facebook/js/main.js" />
         <option value="$PROJECT_DIR$/facebook/modal/fb-modal.php" />
-        <option value="$PROJECT_DIR$/facebook/fb-dashboard.php" />
         <option value="$PROJECT_DIR$/facebook/fb-friends.php" />
+        <option value="$PROJECT_DIR$/facebook/js/main.js" />
+        <option value="$PROJECT_DIR$/facebook/fb-dashboard.php" />
       </list>
     </option>
   </component>
@@ -380,6 +372,24 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="microblog" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="exercise" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="exercise" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="javascript" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -395,6 +405,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="facebook" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="exercise" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="exercise" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="facebook" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -564,12 +592,12 @@
       <workItem from="1503553148053" duration="16812000" />
       <workItem from="1503621871653" duration="36875000" />
       <workItem from="1503884211763" duration="1643000" />
-      <workItem from="1503967921196" duration="32888000" />
+      <workItem from="1503967921196" duration="33092000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="472531000" />
+    <option name="totallyTimeSpent" value="472735000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -797,24 +825,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/microblog/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3553">
-          <caret line="209" column="46" lean-forward="false" selection-start-line="209" selection-start-column="46" selection-end-line="209" selection-end-column="46" />
-          <folding>
-            <marker date="1503967790611" expanded="true" signature="626:3580" ph="{...}" />
-            <marker date="1503967790611" expanded="true" signature="1608:3580" ph="{...}" />
-            <marker date="1503967790611" expanded="true" signature="1843:3580" ph="{...}" />
-            <marker date="1503967790611" expanded="true" signature="1963:3580" ph="{...}" />
-            <marker date="1503967790611" expanded="true" signature="2062:3580" ph="{...}" />
-            <marker date="1503967790611" expanded="true" signature="15703:15721" ph="{...}" />
-            <marker date="1503967790611" expanded="true" signature="15703:15735" ph="{&quot;type&quot;: &quot;POST&quot;...}" />
-            <marker date="1503967790611" expanded="true" signature="15703:15747" ph="{...}" />
-            <marker date="1503967790611" expanded="true" signature="15703:15753" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/microblog/micro-profile.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1921">
@@ -961,14 +971,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/facebook/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="17" lean-forward="false" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/microblog/Database.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -1042,55 +1044,74 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/facebook/fb-dashboard.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="123" column="70" lean-forward="true" selection-start-line="123" selection-start-column="70" selection-end-line="123" selection-end-column="70" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1504003047397" expanded="true" signature="3304:5147" ph="..." />
-            <marker date="1504003047397" expanded="true" signature="3311:3330" ph="..." />
-            <marker date="1504003047397" expanded="true" signature="3311:3747" ph="..." />
-            <marker date="1504003047397" expanded="true" signature="3754:3766" ph="..." />
-            <marker date="1504003047397" expanded="true" signature="3754:5147" ph="..." />
-            <marker date="1504003047397" expanded="true" signature="3802:4560" ph="..." />
-            <marker date="1504003047397" expanded="true" signature="3830:4553" ph="..." />
-            <marker date="1504003047397" expanded="true" signature="3937:4144" ph="..." />
-            <marker date="1504003047397" expanded="true" signature="4262:4542" ph="..." />
-            <marker date="1504003047397" expanded="true" signature="4315:4527" ph="..." />
-            <marker date="1504003047397" expanded="true" signature="4697:4713" ph="..." />
-            <marker date="1504003047397" expanded="true" signature="4697:5147" ph="..." />
-            <marker date="1504003047397" expanded="true" signature="4725:5147" ph="..." />
-            <marker date="1504003047397" expanded="true" signature="4751:5147" ph="..." />
-            <marker date="1504003047397" expanded="true" signature="4786:5147" ph="..." />
-            <marker date="1504003047397" expanded="true" signature="4836:4995" ph="..." />
-            <marker date="1504003047397" expanded="true" signature="4884:4972" ph="..." />
-            <marker date="1504003047397" expanded="true" signature="5248:5660" ph="..." />
-            <marker date="1504003047397" expanded="true" signature="5297:5660" ph="..." />
-            <marker date="1504003047397" expanded="true" signature="5343:5660" ph="..." />
-            <marker date="1504003047397" expanded="true" signature="5398:5660" ph="..." />
-            <marker date="1504003047397" expanded="true" signature="5775:5895" ph="..." />
-            <marker date="1504003047397" expanded="true" signature="5775:5960" ph="..." />
-            <marker date="1504003047397" expanded="true" signature="5832:5895" ph="..." />
-            <marker date="1504003047397" expanded="true" signature="5894:5895" ph="..." />
-            <marker date="1504003047397" expanded="true" signature="6787:6949" ph="..." />
-            <marker date="1504003047397" expanded="true" signature="6825:6949" ph="..." />
-            <marker date="1504003047397" expanded="true" signature="7038:7397" ph="..." />
-            <marker date="1504003047397" expanded="true" signature="7101:7366" ph="..." />
-            <marker date="1504003047397" expanded="true" signature="7502:8504" ph="..." />
-            <marker date="1504003047397" expanded="true" signature="7560:8485" ph="..." />
-            <marker date="1504003047397" expanded="true" signature="7608:7699" ph="..." />
-            <marker date="1504003047397" expanded="true" signature="7744:8462" ph="..." />
-            <marker date="1504003047397" expanded="true" signature="7773:8116" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/facebook/fb-friends.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="217">
           <caret line="116" column="32" lean-forward="false" selection-start-line="116" selection-start-column="32" selection-end-line="116" selection-end-column="32" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microblog/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="209" column="46" lean-forward="false" selection-start-line="209" selection-start-column="46" selection-end-line="209" selection-end-column="46" />
+          <folding>
+            <marker date="1503967790611" expanded="true" signature="2238:2252" ph="..." />
+            <marker date="1503967790611" expanded="true" signature="10228:10242" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/facebook/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/facebook/fb-dashboard.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="221" column="39" lean-forward="false" selection-start-line="221" selection-start-column="39" selection-end-line="221" selection-end-column="39" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1504003822698" expanded="true" signature="3304:5147" ph="..." />
+            <marker date="1504003822698" expanded="true" signature="3311:3330" ph="..." />
+            <marker date="1504003822698" expanded="true" signature="3311:3747" ph="..." />
+            <marker date="1504003822698" expanded="true" signature="3754:3766" ph="..." />
+            <marker date="1504003822698" expanded="true" signature="3754:5147" ph="..." />
+            <marker date="1504003822698" expanded="true" signature="3802:4560" ph="..." />
+            <marker date="1504003822698" expanded="true" signature="3830:4553" ph="..." />
+            <marker date="1504003822698" expanded="true" signature="3937:4144" ph="..." />
+            <marker date="1504003822698" expanded="true" signature="4262:4542" ph="..." />
+            <marker date="1504003822698" expanded="true" signature="4315:4527" ph="..." />
+            <marker date="1504003822698" expanded="true" signature="4697:4713" ph="..." />
+            <marker date="1504003822698" expanded="true" signature="4697:5147" ph="..." />
+            <marker date="1504003822698" expanded="true" signature="4725:5147" ph="..." />
+            <marker date="1504003822698" expanded="true" signature="4751:5147" ph="..." />
+            <marker date="1504003822698" expanded="true" signature="4786:5147" ph="..." />
+            <marker date="1504003822698" expanded="true" signature="4836:4995" ph="..." />
+            <marker date="1504003822698" expanded="true" signature="4884:4972" ph="..." />
+            <marker date="1504003822698" expanded="true" signature="5248:5660" ph="..." />
+            <marker date="1504003822698" expanded="true" signature="5297:5660" ph="..." />
+            <marker date="1504003822698" expanded="true" signature="5343:5660" ph="..." />
+            <marker date="1504003822698" expanded="true" signature="5398:5660" ph="..." />
+            <marker date="1504003822698" expanded="true" signature="5775:5895" ph="..." />
+            <marker date="1504003822698" expanded="true" signature="5775:5960" ph="..." />
+            <marker date="1504003822698" expanded="true" signature="5832:5895" ph="..." />
+            <marker date="1504003822698" expanded="true" signature="5894:5895" ph="..." />
+            <marker date="1504003822698" expanded="true" signature="6787:6949" ph="..." />
+            <marker date="1504003822698" expanded="true" signature="6825:6949" ph="..." />
+            <marker date="1504003822698" expanded="true" signature="7038:7397" ph="..." />
+            <marker date="1504003822698" expanded="true" signature="7101:7366" ph="..." />
+            <marker date="1504003822698" expanded="true" signature="7502:8504" ph="..." />
+            <marker date="1504003822698" expanded="true" signature="7560:8485" ph="..." />
+            <marker date="1504003822698" expanded="true" signature="7608:7699" ph="..." />
+            <marker date="1504003822698" expanded="true" signature="7744:8462" ph="..." />
+            <marker date="1504003822698" expanded="true" signature="7773:8116" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
