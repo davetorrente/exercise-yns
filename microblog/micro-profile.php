@@ -31,14 +31,23 @@ if(isset($_GET['username'])){
 
     $database->query("SELECT isFollow FROM follows WHERE user_id='$sessionUserID' AND follow_id='$getUserID'");
     $followName = $database->resultset();
-    $database->query("SELECT users.username, users.upload, tweets.id, tweets.user_id, tweets.tweet, tweets.created, tweets.modified, tweets.isRetweet  FROM users INNER JOIN tweets ON users.id = tweets.user_id WHERE users.username='$userProfile' ORDER BY tweets.modified DESC ");
+
+
+    $database->query("SELECT users.username, users.upload, tweets.id, tweets.user_id, tweets.tweet, tweets.created, tweets.modified, tweets.isRetweet FROM tweets INNER JOIN users ON tweets.user_id = users.id WHERE users.username='$userProfile' ORDER BY tweets.created DESC");
     $profileTweets = $database->resultset();
 
-    $database->query("SELECT users.username, users.upload, retweets.retweet, retweets.id as rID, retweets.created as rCreated, retweets.user_id as rUserID, tweets.user_id, tweets.created FROM retweets LEFT JOIN tweets ON retweets.tweet_id = tweets.id  INNER JOIN users ON retweets.user_id = users.id WHERE users.username='$userProfile' ORDER BY CASE WHEN tweets.created > rCreated THEN tweets.created WHEN rCreated > tweets.created THEN rCreated END DESC");
+    $database->query("SELECT RU.username, TU.username as tweetUser, RU.upload, R.id, R.user_id, R.tweet, R.created FROM retweets R INNER JOIN users RU ON R.user_id = RU.id INNER JOIN tweets TS ON R.tweet_id = TS.id LEFT JOIN users TU ON TS.user_id = TU.id WHERE RU.username='$userProfile' ORDER BY R.created DESC");
     $profileRetweets = $database->resultset();
 
-}
+    function cmp($a, $b){
+        $ad = strtotime($a['created']);
+        $bd = strtotime($b['created']);
+        return ($bd-$ad);
+    }
+    $mergeTweets = array_merge($profileTweets, $profileRetweets);
+    usort($mergeTweets, 'cmp');
 
+}
 
 ?>
 <!DOCTYPE html>
@@ -151,90 +160,58 @@ if(isset($_GET['username'])){
             <section class="row section2">
                 <div class="col-md-8 col-md-offset-2" id="showdata">
                     <div class="alert" id="alertMessage" style="display: none;"></div>
-                    <?php if(!empty($profileRetweets)): ?>
-                        <?php foreach($profileRetweets as $profileRetweet): ?>
-                            <article class="post">
-                                <div class="alert alert-edit" id="alertMessage" style="display: none;"></div>
-                                <div class="info postByUser">
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <a href="micro-profile.php?username=<?php echo htmlspecialchars($profileRetweet['username']); ?>"> <img src="<?php echo htmlspecialchars($profileRetweet['upload']);?>" alt="sample profile pic" class="postImage"></a>
-                                        </div>
-                                        <div class="col-md-6 userName">
-                                            <h4><?php echo htmlspecialchars($profileRetweet["username"])?></h4>
-                                            <?php
-                                            $userID = $userRetweet['user_id'];
-                                            $database->query("SELECT users.username FROM users WHERE id='$userID'");
-                                            $userRetweetFrom = $database->resultset();
-                                            ?>
-                                            <p>Retweeted from <a href="micro-profile.php?username=<?php echo htmlspecialchars($userRetweetFrom[0]['username']); ?>"><?php echo htmlspecialchars($userRetweetFrom[0]['username']); ?></a> on <?php echo htmlspecialchars($userRetweet['rCreated']); ?></p>
-
+                        <?php foreach($mergeTweets as $mergeTweet): ?>
+                            <?php if(isset($mergeTweet['isRetweet'])): ?>
+                                <article class="post">
+                                    <div class="alert alert-edit" id="alertMessage" style="display: none;"></div>
+                                    <div class="info postByUser">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <a href="micro-profile.php?username=<?php echo htmlspecialchars($mergeTweet['username']); ?>"><img src="<?php echo htmlspecialchars($mergeTweet['upload']);?>" alt="sample profile pic" class="postImage"></a>
+                                            </div>
+                                            <div class="col-md-6 userName">
+                                                <h4 ><?php echo htmlspecialchars($mergeTweet["username"]); ?></h4>
+                                                <p>Posted on <?php echo htmlspecialchars($mergeTweet['created']); ?></p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <p class="contentPost"><?php echo $profileTweet['tweet']; ?></p>
-                                <div class="interaction comment-interact" user_id="<?php echo htmlspecialchars($profileTweet['user_id']); ?>" tweet_id="<?php echo htmlspecialchars($profileTweet['id']); ?>">
-                                    <?php if($user[0]['id'] != $profileTweet['user_id']): ?>
-                                        <a href="javascript:;" class="retweet"><i class="fa fa-retweet" id="iconRetweet" aria-hidden="true" <?php echo htmlspecialchars($profileTweet['isRetweet']) ? "style=color:green;" : '';?> ></i> |</a>
-                                    <?php else: ?>
-                                        <a href="javascript:;"  class="tweet-edit">Edit |</a>
-                                        <a href="javascript:;" class="tweet-delete">Delete |</a>
-                                    <?php endif; ?>
-                                </div>
-                            </article>
-                        <?php endforeach ?>
-                        <?php foreach($profileTweets as $profileTweet): ?>
-                            <article class="post">
-                                <div class="alert alert-edit" id="alertMessage" style="display: none;"></div>
-                                <div class="info postByUser">
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <a href="micro-profile.php?username=<?php echo htmlspecialchars($profileTweet['username']); ?>"> <img src="<?php echo htmlspecialchars($profileTweet['upload']);?>" alt="sample profile pic" class="postImage"></a>
-                                        </div>
-                                        <div class="col-md-6 userName">
-                                            <h4><?php echo htmlspecialchars($profileTweet["username"])?></h4>
-                                            <p>Posted on  <?php echo $profileTweet['created']; ?></p>
+                                    <p class="contentPost"><?php echo $mergeTweet['tweet']; ?></p>
+                                    <div class="clearfix"></div>
+                                    <div class="interaction tweet-interact" user_id="<?php echo htmlspecialchars($mergeTweet['user_id']); ?>" tweet_id="<?php echo htmlspecialchars($mergeTweet['id']); ?>">
+                                        <?php if($user[0]['id'] != $mergeTweet['user_id']): ?>
+                                            <a href="javascript:;" class="retweet"><i class="fa fa-retweet" id="iconRetweet" aria-hidden="true" <?php echo $mergeTweet['isRetweet'] == true ? "style=color:green;" : '';?> ></i> |</a>
+                                        <?php else: ?>
+                                            <a href="javascript:;"  class="tweet-edit">Edit |</a>
+                                            <a href="javascript:;" class="tweet-delete" id="delete-item" >Delete |</a>
+                                        <?php endif; ?>
+                                    </div>
+                                </article>
+                            <?php else: ?>
+                                <article class="post">
+                                    <div class="alert alert-edit" id="alertMessage" style="display: none;"></div>
+                                    <div class="info postByUser">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <a href="micro-profile.php?username=<?php echo htmlspecialchars($mergeTweet['username']); ?>"><img src="<?php echo htmlspecialchars($mergeTweet['upload']);?>" alt="sample profile pic" class="postImage"></a>
+                                            </div>
+                                            <div class="col-md-6 userName">
+                                                <h4 ><?php echo htmlspecialchars($mergeTweet["username"]); ?></h4>
+                                                <p>Retweeted from <a href="micro-profile.php?username=<?php echo htmlspecialchars($mergeTweet['tweetUser']); ?>"><?php echo htmlspecialchars($mergeTweet['tweetUser']); ?> </a> on <?php echo htmlspecialchars($mergeTweet['created']); ?></p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <p class="contentPost"><?php echo $profileTweet['tweet']; ?></p>
-                                <div class="interaction comment-interact" user_id="<?php echo htmlspecialchars($profileTweet['user_id']); ?>" tweet_id="<?php echo htmlspecialchars($profileTweet['id']); ?>">
-                                    <?php if($user[0]['id'] != $profileTweet['user_id']): ?>
-                                        <a href="javascript:;" class="retweet"><i class="fa fa-retweet" id="iconRetweet" aria-hidden="true" <?php echo htmlspecialchars($profileTweet['isRetweet']) ? "style=color:green;" : '';?> ></i> |</a>
-                                    <?php else: ?>
-                                        <a href="javascript:;"  class="tweet-edit">Edit |</a>
-                                        <a href="javascript:;" class="tweet-delete">Delete |</a>
-                                    <?php endif; ?>
-                                </div>
-                            </article>
-                        <?php endforeach ?>
-                    <?php else: ?>
-                        <?php foreach($profileTweets as $profileTweet): ?>
-                            <article class="post">
-                                <div class="alert alert-edit" id="alertMessage" style="display: none;"></div>
-                                <div class="info postByUser">
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <a href="micro-profile.php?username=<?php echo htmlspecialchars($profileTweet['username']); ?>"> <img src="<?php echo htmlspecialchars($profileTweet['upload']);?>" alt="sample profile pic" class="postImage"></a>
-                                        </div>
-                                        <div class="col-md-6 userName">
-                                            <h4><?php echo htmlspecialchars($profileTweet["username"])?></h4>
-                                            <p>Posted on  <?php echo $profileTweet['created']; ?></p>
-                                        </div>
+                                    <p class="contentPost"><?php echo $mergeTweet['tweet']; ?></p>
+                                    <div class="clearfix"></div>
+                                    <div class="interaction tweet-interact" user_id="<?php echo htmlspecialchars($mergeTweet['user_id']); ?>" tweet_id="<?php echo htmlspecialchars($mergeTweet['id']); ?>">
+                                        <?php if($user[0]['id'] != $mergeTweet['user_id']): ?>
+                                            <a href="javascript:;" class="retweet"><i class="fa fa-retweet" id="iconRetweet" aria-hidden="true" <?php echo $mergeTweet['isRetweet'] == true ? "style=color:green;" : '';?> ></i> |</a>
+                                        <?php else: ?>
+                                            <a href="javascript:;" class="retweet-delete" id="delete-item">Delete |</a>
+                                        <?php endif; ?>
                                     </div>
-                                </div>
-                                <p class="contentPost"><?php echo $profileTweet['tweet']; ?></p>
-                                <div class="interaction comment-interact" user_id="<?php echo htmlspecialchars($profileTweet['user_id']); ?>" tweet_id="<?php echo htmlspecialchars($profileTweet['id']); ?>">
-                                    <?php if($user[0]['id'] != $profileTweet['user_id']): ?>
-                                        <a href="javascript:;" class="retweet"><i class="fa fa-retweet" id="iconRetweet" aria-hidden="true" <?php echo htmlspecialchars($profileTweet['isRetweet']) ? "style=color:green;" : '';?> ></i> |</a>
-                                    <?php else: ?>
-                                        <a href="javascript:;"  class="tweet-edit">Edit |</a>
-                                        <a href="javascript:;" class="tweet-delete">Delete |</a>
-                                    <?php endif; ?>
-                                </div>
-                            </article>
+                                </article>
+                            <?php endif; ?>
                         <?php endforeach ?>
-                    <?php endif; ?>
                 </div>
             </section>
         </div>

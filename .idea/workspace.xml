@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="21fc073c-5523-4dae-b2fe-c45f5b229797" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/microblog/micro-blog.php" afterPath="$PROJECT_DIR$/microblog/micro-blog.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/microblog/micro-profile.php" afterPath="$PROJECT_DIR$/microblog/micro-profile.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
@@ -23,40 +24,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="micro-blog.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="micro-blog.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/microblog/micro-blog.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5790754">
-              <caret line="140" column="34" selection-start-line="140" selection-start-column="34" selection-end-line="140" selection-end-column="34" />
+            <state vertical-scroll-proportion="-2.7307692">
+              <caret line="141" column="30" selection-start-line="141" selection-start-column="30" selection-end-line="141" selection-end-column="30" />
               <folding>
                 <element signature="n#style#0;n#li#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#li#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#article#0;n#div#0;n#section#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#article#1;n#div#0;n#section#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1503984746514" expanded="true" signature="347:395" placeholder="SELECT * FRO..users..." />
-                <marker date="1503984746514" expanded="true" signature="455:670" placeholder="SELECT users..tweets..." />
-                <marker date="1503984746514" expanded="true" signature="731:988" placeholder="SELECT RU.us..retweets..." />
+                <marker date="1503985603110" expanded="true" signature="347:395" placeholder="SELECT * FRO..users..." />
+                <marker date="1503985603110" expanded="true" signature="455:670" placeholder="SELECT users..tweets..." />
+                <marker date="1503985603110" expanded="true" signature="731:988" placeholder="SELECT RU.us..retweets..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="micro-profile.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="micro-profile.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/microblog/micro-profile.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-30.73077">
-              <caret line="67" column="55" selection-start-line="67" selection-start-column="55" selection-end-line="67" selection-end-column="55" />
+            <state vertical-scroll-proportion="0.5450122">
+              <caret line="207" column="54" selection-start-line="207" selection-start-column="54" selection-end-line="207" selection-end-column="54" />
               <folding>
                 <element signature="n#style#0;n#li#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#li#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1503980977182" expanded="true" signature="455:503" placeholder="SELECT * FRO..users..." />
-                <marker date="1503980977182" expanded="true" signature="671:720" placeholder="SELECT * FRO..users..." />
-                <marker date="1503980977182" expanded="true" signature="826:978" placeholder="SELECT users..follows..." />
-                <marker date="1503980977182" expanded="true" signature="1049:1201" placeholder="SELECT users..follows..." />
-                <marker date="1503980977182" expanded="true" signature="1272:1358" placeholder="SELECT isFol..follows..." />
-                <marker date="1503980977182" expanded="true" signature="1426:1678" placeholder="SELECT users..users..." />
-                <marker date="1503980977182" expanded="true" signature="1751:2183" placeholder="SELECT users..retweets..." />
-                <marker date="1503980977182" expanded="true" signature="10067:10118" placeholder="SELECT users..users..." />
+                <element signature="n#style#0;n#div#0;n#article#0;n#div#0;n#section#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#article#1;n#div#0;n#section#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <marker date="1503985603101" expanded="true" signature="455:503" placeholder="SELECT * FRO..users..." />
+                <marker date="1503985603101" expanded="true" signature="671:720" placeholder="SELECT * FRO..users..." />
+                <marker date="1503985603101" expanded="true" signature="826:978" placeholder="SELECT users..follows..." />
+                <marker date="1503985603101" expanded="true" signature="1049:1201" placeholder="SELECT users..follows..." />
+                <marker date="1503985603101" expanded="true" signature="1272:1358" placeholder="SELECT isFol..follows..." />
+                <marker date="1503985603101" expanded="true" signature="1428:1678" placeholder="SELECT users..tweets..." />
+                <marker date="1503985603101" expanded="true" signature="1750:2040" placeholder="SELECT RU.us..retweets..." />
               </folding>
             </state>
           </provider>
@@ -303,10 +305,10 @@
         <option value="$PROJECT_DIR$/database/database-3-6-register.php" />
         <option value="$PROJECT_DIR$/microblog/micro-register.php" />
         <option value="$PROJECT_DIR$/microblog/micro-search.php" />
-        <option value="$PROJECT_DIR$/microblog/micro-profile.php" />
         <option value="$PROJECT_DIR$/microblog/micro-delete.php" />
         <option value="$PROJECT_DIR$/microblog/js/main.js" />
         <option value="$PROJECT_DIR$/microblog/micro-blog.php" />
+        <option value="$PROJECT_DIR$/microblog/micro-profile.php" />
       </list>
     </option>
   </component>
@@ -1003,25 +1005,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/microblog/micro-profile.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-30.73077">
-          <caret line="67" column="55" selection-start-line="67" selection-start-column="55" selection-end-line="67" selection-end-column="55" />
-          <folding>
-            <element signature="n#style#0;n#li#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#li#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1503980977182" expanded="true" signature="455:503" placeholder="SELECT * FRO..users..." />
-            <marker date="1503980977182" expanded="true" signature="671:720" placeholder="SELECT * FRO..users..." />
-            <marker date="1503980977182" expanded="true" signature="826:978" placeholder="SELECT users..follows..." />
-            <marker date="1503980977182" expanded="true" signature="1049:1201" placeholder="SELECT users..follows..." />
-            <marker date="1503980977182" expanded="true" signature="1272:1358" placeholder="SELECT isFol..follows..." />
-            <marker date="1503980977182" expanded="true" signature="1426:1678" placeholder="SELECT users..users..." />
-            <marker date="1503980977182" expanded="true" signature="1751:2183" placeholder="SELECT users..retweets..." />
-            <marker date="1503980977182" expanded="true" signature="10067:10118" placeholder="SELECT users..users..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/microblog/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1035,16 +1018,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/microblog/micro-blog.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5790754">
-          <caret line="140" column="34" selection-start-line="140" selection-start-column="34" selection-end-line="140" selection-end-column="34" />
+        <state vertical-scroll-proportion="-2.7307692">
+          <caret line="141" column="30" selection-start-line="141" selection-start-column="30" selection-end-line="141" selection-end-column="30" />
           <folding>
             <element signature="n#style#0;n#li#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#li#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#article#0;n#div#0;n#section#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#article#1;n#div#0;n#section#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1503984746514" expanded="true" signature="347:395" placeholder="SELECT * FRO..users..." />
-            <marker date="1503984746514" expanded="true" signature="455:670" placeholder="SELECT users..tweets..." />
-            <marker date="1503984746514" expanded="true" signature="731:988" placeholder="SELECT RU.us..retweets..." />
+            <marker date="1503985603110" expanded="true" signature="347:395" placeholder="SELECT * FRO..users..." />
+            <marker date="1503985603110" expanded="true" signature="455:670" placeholder="SELECT users..tweets..." />
+            <marker date="1503985603110" expanded="true" signature="731:988" placeholder="SELECT RU.us..retweets..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/microblog/micro-profile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5450122">
+          <caret line="207" column="54" selection-start-line="207" selection-start-column="54" selection-end-line="207" selection-end-column="54" />
+          <folding>
+            <element signature="n#style#0;n#li#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#li#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#article#0;n#div#0;n#section#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#article#1;n#div#0;n#section#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1503985603101" expanded="true" signature="455:503" placeholder="SELECT * FRO..users..." />
+            <marker date="1503985603101" expanded="true" signature="671:720" placeholder="SELECT * FRO..users..." />
+            <marker date="1503985603101" expanded="true" signature="826:978" placeholder="SELECT users..follows..." />
+            <marker date="1503985603101" expanded="true" signature="1049:1201" placeholder="SELECT users..follows..." />
+            <marker date="1503985603101" expanded="true" signature="1272:1358" placeholder="SELECT isFol..follows..." />
+            <marker date="1503985603101" expanded="true" signature="1428:1678" placeholder="SELECT users..tweets..." />
+            <marker date="1503985603101" expanded="true" signature="1750:2040" placeholder="SELECT RU.us..retweets..." />
           </folding>
         </state>
       </provider>

@@ -136,7 +136,7 @@ if(!empty($_GET['logout']) == 1) {
                                 </div>
                                 <div class="col-md-6 userName">
                                     <h4 ><?php echo htmlspecialchars($mergeTweet["username"]); ?></h4>
-                                    <p>Retweeted from <a href=mmicro-profile.php?username="<?php echo htmlspecialchars($mergeTweet['tweetUser']); ?>><?php echo htmlspecialchars($mergeTweet['tweetUser']); ?> </a> on <?php echo htmlspecialchars($mergeTweet['created']); ?></p>
+                                    <p>Retweeted from <a href="micro-profile.php?username=<?php echo htmlspecialchars($mergeTweet['tweetUser']); ?>"><?php echo htmlspecialchars($mergeTweet['tweetUser']); ?> </a> on <?php echo htmlspecialchars($mergeTweet['created']); ?></p>
                                 </div>
                             </div>
                         </div>
@@ -146,7 +146,6 @@ if(!empty($_GET['logout']) == 1) {
                             <?php if($user[0]['id'] != $mergeTweet['user_id']): ?>
                                 <a href="javascript:;" class="retweet"><i class="fa fa-retweet" id="iconRetweet" aria-hidden="true" <?php echo $mergeTweet['isRetweet'] == true ? "style=color:green;" : '';?> ></i> |</a>
                             <?php else: ?>
-                                <a href="javascript:;"  class="tweet-edit">Edit |</a>
                                 <a href="javascript:;" class="retweet-delete" id="delete-item">Delete |</a>
                             <?php endif; ?>
                         </div>
