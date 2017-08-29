@@ -16,7 +16,7 @@ if(isset($_GET['page']))
     {
         $page1 = 0;
     }else{
-        $page1 = $page*10 -10;
+        $page1 = $page*25-25;
     }
 }else{
     $page1 = 0;
@@ -24,16 +24,15 @@ if(isset($_GET['page']))
 $permissions = []; // optional
 $helper = $fb->getRedirectLoginHelper();
 $accessToken = $helper->getAccessToken();
-
+$newArray = array();
 if (isset($_SESSION['facebook_token'])) {
 
     if(empty($accessToken)){
         $accessToken = $_SESSION['facebook_token'];
     }
-    $url = "https://graph.facebook.com/v2.10/me/feed?limit=1000&access_token={$accessToken}";
-
+     //    $url = "https://graph.facebook.com/v2.10/me?fields=picture%2Cfeed.limit(100)%2Cfriends&access_token={$accessToken}";
+    $url = "https://graph.facebook.com/v2.10/me?fields=picture%2Cfeed%2Ctaggable_friends.limit(1000)%2Ccover&access_token={$accessToken}";
     $ch = curl_init();
-
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
@@ -45,14 +44,59 @@ if (isset($_SESSION['facebook_token'])) {
     $st=curl_exec($ch);
     $results=json_decode($st,TRUE);
 
+    $url2 = "https://graph.facebook.com/v2.10/1798908286791397/taggable_friends?pretty=0&limit=1000&after=QWFLUmVkbUYwRTZAHNUJEWDlCRmFsbTFzZAWp0Mm9vOWIzV04zemVFY3BhVWV5YUJBaXVuYjYxOVRTYmowMjF1NkpxQUZATNV8yR0NZAbWd2Q3ZAuVzdndGtDNXgxb3kxSGZAfenRTZAVhlWkQwM0J0ZAlEZD&access_token={$accessToken}";
+    $ch2 = curl_init();
+    curl_setopt($ch2, CURLOPT_URL, $url2);
+    curl_setopt($ch2, CURLOPT_FOLLOWLOCATION, 1);
+    curl_setopt($ch2, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch2, CURLOPT_COOKIEJAR,'cookie.txt');
+    curl_setopt($ch2, CURLOPT_COOKIEFILE,'cookie.txt');
+    curl_setopt($ch2, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch2, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.3) Gecko/20070309 Firefox/2.0.0.3");
+    curl_setopt($ch2, CURLOPT_SSL_VERIFYPEER, false);
+    $st=curl_exec($ch2);
+    $friendsresults2 =json_decode($st,TRUE);
+
+//    echo "<pre>";
+
+    array_values($results['taggable_friends']['data']);
+    array_values($friendsresults2['data']);
+    $mergeArrays = array_merge($results['taggable_friends']['data'],$friendsresults2['data']);
+    $arrayFriends = array();
+    array_push($arrayFriends, $mergeArrays);
+
+//   print_r(count($arrayFriends[0]));
+//    die();
+
+    $pages = count($results['feed']['data']) / 25;
+    $b =  ceil($pages);
+
+    if(isset($_GET['page']))
+    {
+        $page = $_GET['page'];
+        if($page=='' || $page == 1)
+        {
+            $page1 = 0;
+        }else{
+            $page1 = $page*25-25;
+        }
+    }else{
+        $page1 = 0;
+    }
+
+    $newArray = array_slice($results['feed']['data'], $page1, ($page1+25));
+    $profilePic = $results['picture']['data']['url'];
+    $displayFriends = array_slice($arrayFriends[0], 0, 8);
+//    echo '<pre>';
+//    print_r($displayFriends);
 
 }
-
 if(isset($_GET['logout']) == 1) {
     session_destroy();
     header("Location: fb-login.php");
     exit;
 }
+
 ob_end_flush();
 ?>
 
@@ -90,6 +134,11 @@ ob_end_flush();
         </div>
     </div>
 </nav>
+<div class="container">
+    <div class="jumbotron">
+        <p>asdfasdfasdfasdfasdfasd</p>
+    </div>
+</div>
 <section>
     <div class="container">
         <div class="row">
@@ -99,18 +148,25 @@ ob_end_flush();
                         <h3 class="panel-title">My Feed</h3>
                     </div>
                 </div>
-                <?php if(!empty($results)): ?>
-                    <?php foreach($results['data'] as $result): ?>
+                <?php if(!empty($newArray)): ?>
+                   <?php foreach($newArray as $item): ?>
+                        <?php if(!empty($item['message']) || !empty($item['story'])): ?>
                     <div class="panel panel-default post">
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-sm-2">
-                                    <a href="profile.html" class="post-avatar thumbnail"><img src="img/user.png" alt=""><div class="text-center">DevUser1</div></a>
+                                    <a href="<?php echo !empty($profilePic) ? $profilePic : "#" ;?>" class="post-avatar thumbnail"><img src="<?php echo !empty($profilePic) ? $profilePic : "img/user.png" ;?>" alt=""><div class="text-center"><?php echo $_SESSION['name'];?></div></a>
                                 </div>
                                 <div class="col-sm-10">
                                     <div class="bubble">
                                         <div class="pointer">
-                                            <p>Hey I was wondering if you wanted to go check out the football game later. I heard they are supposed to be really good!</p>
+                                            <?php if(isset($item['message'])): ?>
+                                                <p><?php echo $item['message']; ?></p>
+                                            <?php else: ?>
+                                                <p><?php echo $item['story']; ?></p>)
+                                            <?php endif; ?>
+
+
                                         </div>
                                         <div class="pointer-border"></div>
                                     </div>
@@ -119,19 +175,18 @@ ob_end_flush();
                             </div>
                         </div>
                     </div>
+                    <?php endif; ?>
                     <?php endforeach;?>
                 <?php endif; ?>
                 <div class="panel-footer">
                     <div class="row">
-                        <div class="col col-xs-4">Page 1 of 11
+                        <div class="col col-xs-4">Page <?php echo $page==0 ? 1 : $page; ?> of <?php echo !empty($b) ? $b : '' ; ?>
                         </div>
                         <div class="col col-xs-8">
-                            <ul class="pagination hidden-xs pull-right">
-                                <li><a href="#">1</a></li>
-                            </ul>
-                            <ul class="pagination visible-xs pull-right">
-                                <li><a href="#">«</a></li>
-                                <li><a href="#">»</a></li>
+                            <ul class="pagination pull-right">
+                                <?php for($i=1; $i<=$b; $i++): ?>
+                                    <li><a href="fb-dashboard.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+                                <?php endfor ?>
                             </ul>
                         </div>
                     </div>
@@ -145,15 +200,9 @@ ob_end_flush();
                     </div>
                     <div class="panel-body">
                         <ul>
-                            <li><a href="profile.html" class="thumbnail"><img src="img/user.png" alt=""></a></li>
-                            <li><a href="profile.html" class="thumbnail"><img src="img/user.png" alt=""></a></li>
-                            <li><a href="profile.html" class="thumbnail"><img src="img/user.png" alt=""></a></li>
-                            <li><a href="profile.html" class="thumbnail"><img src="img/user.png" alt=""></a></li>
-                            <li><a href="profile.html" class="thumbnail"><img src="img/user.png" alt=""></a></li>
-                            <li><a href="profile.html" class="thumbnail"><img src="img/user.png" alt=""></a></li>
-                            <li><a href="profile.html" class="thumbnail"><img src="img/user.png" alt=""></a></li>
-                            <li><a href="profile.html" class="thumbnail"><img src="img/user.png" alt=""></a></li>
-                            <li><a href="profile.html" class="thumbnail"><img src="img/user.png" alt=""></a></li>
+                            <?php foreach($displayFriends as $displayFriend): ?>
+                                <li> <a href="<?php echo $displayFriend['picture']['data']['url'] ;?>" class="thumbnail showFriends"><img src="<?php echo $displayFriend['picture']['data']['url'] ;?>" alt=""><?php echo $displayFriend['name'] ;?></a></li>
+                            <?php endforeach; ?>
                         </ul>
                         <div class="clearfix"></div>
                         <a class="btn btn-primary" href="#">View All Friends</a>
