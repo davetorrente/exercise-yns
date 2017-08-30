@@ -33,7 +33,7 @@ if(isset($_POST['login'])) {
             $passwordExist = $database->resultset();
             if(!empty($passwordExist)){
                 $passwordDB = $passwordExist[0]['password'];
-                if(md5($password) != $passwordDB)
+                if(base64_encode($password) != $passwordDB)
                 {
                      $passwordError = "Password is incorrect";
                      $error++;

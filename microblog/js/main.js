@@ -115,7 +115,6 @@ $(document).ready(function(){
     });
     $(document).on('click', '.tweet-edit', function(event){
         event.preventDefault();
-
         var sectionTweet =  $(this).parent().parent().find('#alertMessage');
         var $this = $(this);
         var id = $this.parent().attr('tweet_id');
@@ -167,6 +166,8 @@ $(document).ready(function(){
             }
         });
     });
+
+
 
     //retweet
     $(document).on("click",".retweet",function(event){
@@ -326,9 +327,40 @@ $(document).ready(function(){
             });
         }
     });
+    $('#checker').on('click', function(event){
+        event.preventDefault();
 
-    $("#checker").on('click',function(e){
-        e.preventDefault();
-        $('#profileModal').modal('show');
+        $.ajax({
+            method: 'POST',
+            url: 'micro-edit-profile.php',
+            data: {user_id: user_id.val()},
+            dataType: 'json'
+        }).done(function(res){
+            console.log(res);
+               var firstname =  res.firstname;
+               var lastname = res.lastname;
+               var username = res.username;
+               var email = res.email;
+            $('#profileModal #firstname').val(firstname);
+            $('#profileModal #lastname').val(lastname);
+            $('#profileModal #username').val(username);
+            $('#profileModal #email').val(email);
+            $('#profileModal #upload').val("ASDASDASD");
+            $('#profileModal').modal('show');
+
+
+            // if(res.isFollow)
+            // {
+            //     $('#profileModal').modal('show');
+            //     $('#addFollow').html("Unfollow");
+            // }
+            // else{
+            //     $('#addFollow').html("Follow");
+            // }
+        });
+
+
     });
+
+
 });

@@ -98,6 +98,7 @@ if(!empty($_GET['logout']) == 1) {
             <!-- Say Hi to the User by User Authentication -->
             <h3>Hi <?php echo htmlspecialchars($user[0]['username']); ?>.
             </h3>
+            <?php if($page <= 1): ?>
             <form id="createTweet" method="post">
                 <div class="form-group">
                     <textarea class="form-control" name="tweet" id="tweet" rows="3" placeholder="Your Tweet.."></textarea>
@@ -108,6 +109,7 @@ if(!empty($_GET['logout']) == 1) {
                 </div>
                 <button type="button" class="btn btn-info" name="btnAdd" id="btnAdd">Create Tweet</button>
             </form>
+            <?php endif; ?>
         </div>
     </section>
     <section class="row section2" >

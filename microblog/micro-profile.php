@@ -50,14 +50,14 @@ if(!empty($_GET['username'])){
         $page = $_GET['page'];
         if($page=='' || $page == 1)
         {
-            $page1 = 0;
+            $getpage = 0;
         }else{
-            $page1 = $page*10 -10;
+            $getpage = $page*10 -10;
         }
     }else{
-        $page1 = 0;
+        $getpage = 0;
     }
-    $mergeTweets = array_slice($arrayForPaging, $page1, ($page1+10));
+    $mergeTweets = array_slice($arrayForPaging, $getpage, ($getpage+10));
     $pages = count($arrayForPaging) / 10;
     $b =  ceil($pages);
 }
@@ -117,8 +117,8 @@ if(!empty($_GET['logout']) == 1) {
                 <img src="<?php echo htmlspecialchars($userInfos[0]['upload']);?>" alt="sample profile pic" class="img-thumbnail img-profile">
             </div>
             <div class="col-lg-12">
-                <h4 class="text-right col-lg-12"><span class="glyphicon glyphicon-edit"></span> Edit Profile</h4>
-                <input type="checkbox" class="form-control" name="checker" id="checker">
+                <a href="micro-edit-profile.php?id=<?php echo $getUserID; ?>"><h4 class="text-right col-lg-12"><span class="glyphicon glyphicon-edit"></span> Edit Profile</h4></a>
+
             </div>
             <p>
                 <?php echo htmlspecialchars($userInfos[0]['description']); ?>
@@ -169,7 +169,7 @@ if(!empty($_GET['logout']) == 1) {
             <section class="row sectionUser">
                 <div class="col-md-6 col-md-offset-3">
                     <div class="alert" id="alertMessage" style="display: none;"></div>
-                    <?php if($userInfos[0]['username'] == $_SESSION['microUser']): ?>
+                    <?php if($userInfos[0]['username'] == $_SESSION['microUser'] && $page <= 1 ): ?>
                         <form id="createTweet" method="post">
                             <div class="form-group">
                                 <textarea class="form-control" name="tweet" id="tweet" rows="3" placeholder="Your Tweet.."></textarea>
@@ -246,7 +246,7 @@ if(!empty($_GET['logout']) == 1) {
                                 <div class="col col-xs-8">
                                     <ul class="pagination hidden-xs pull-right">
                                         <?php for($i=1; $i<=$b; $i++): ?>
-                                            <li><a href="micro-profile.php?username=<?php echo $user[0]['username']; ?>&page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+                                            <li><a href="micro-profile.php?username=<?php echo $userProfile; ?>&page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
                                         <?php endfor ?>
                                     </ul>
                                     <ul class="pagination visible-xs pull-right">

@@ -1,7 +1,7 @@
 <?php
-session_start();
 require "Database.php";
 $database = new Database();
+
 $error = 0;
 $success = '';
 if(isset($_POST['register'])) {
@@ -136,7 +136,7 @@ if(isset($_POST['register'])) {
     if($error == 0)
     {
         $defaultPicture = "./profile-img/default-user.png";
-        $hashpassword = md5($password);
+        $hashpassword = base64_encode($password);
         $database->query("INSERT INTO users (firstname, lastname, username, password, email, gender, upload) VALUES('$firstname', '$lastname', '$username', '$hashpassword', '$email', '$gender', '$defaultPicture')");
         $database->execute();
         session_destroy();

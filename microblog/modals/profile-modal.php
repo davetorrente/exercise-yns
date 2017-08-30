@@ -7,42 +7,29 @@
             </div>
             <div class="alert" id="alertMessage" style="display: none;"></div>
             <div class="modal-body">
-                <form class="form-horizontal" role="form">
+                <form class="form-horizontal" role="form" method="post" id="formProfile" enctype="multipart/form-data">
                     <div class="form-group">
                         <label class="col-lg-3 control-label">First name:</label>
                         <div class="col-lg-8">
-                            <input class="form-control" type="text" value="Jane">
+                            <input class="form-control" id="firstname" name="firstname" type="text">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Last name:</label>
                         <div class="col-lg-8">
-                            <input class="form-control" type="text" value="Bishop">
+                            <input class="form-control" id="lastname" name="lastname" type="text">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3 control-label">Username:</label>
                         <div class="col-md-8">
-                            <input class="form-control" type="text" value="janeuser">
+                            <input class="form-control" id="username" name="username"  type="text" value="janeuser">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-lg-3 control-label">Email:</label>
                         <div class="col-lg-8">
-                            <input class="form-control" type="text" value="janesemail@gmail.com">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Password:</label>
-                        <div class="col-md-8">
-                            <input class="form-control" type="password" value="11111122333">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label"></label>
-                        <div class="col-md-8">
-                            <button type="button" id="profSave" class="btn btn-primary">Save changes</button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                            <input class="form-control" id="email" name="email" type="text">
                         </div>
                     </div>
                     <div class="form-group">
@@ -52,6 +39,14 @@
                             <span style="color:red"><?php echo isset($uploadError) ? $uploadError : ''; ?></span>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label"></label>
+                        <div class="col-md-8">
+                            <button type="button" id="profSave" class="btn btn-primary">Save changes</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+
                 </form>
             </div>
         </div><!-- /.modal-content -->
