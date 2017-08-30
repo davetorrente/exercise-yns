@@ -17,7 +17,7 @@ $lastname = $user[0]['lastname'];
 $username = $user[0]['username'];
 $email = $user[0]['email'];
 $password = base64_decode($user[0]['password']);
-
+$upload = $user[0]['upload'];
 if($user[0]['gender'] == 'male')
 {
     $male = $user[0]['gender'];
@@ -130,15 +130,15 @@ if(isset($_POST['profSave'])) {
             $moveFile = './profile-img/' .$time."-".$newfileName;
             move_uploaded_file($file['tmp_name'], $moveFile);
             chmod($moveFile, 0666);
+            $upload = $moveFile;
         }
 
         $hashpassword = base64_encode($password);
-        $database->query("UPDATE users SET firstname = '$firstname', lastname = '$lastname', username= '$username', email='$email', password = '$hashpassword', gender = '$gender', upload='$moveFile' WHERE id = '$sessionUserID'");
+        $database->query("UPDATE users SET firstname = '$firstname', lastname = '$lastname', username= '$username', email='$email', password = '$hashpassword', gender = '$gender', upload='$upload' WHERE id = '$sessionUserID'");
         $database->execute();
         unset($_POST);
-        $profileUser = $user[0]['username'];
-        header("Location: micro-profile?username=$profileUser");
-        die();
+        $_SESSION['microUser'] = $username;
+        header("Location: micro-profile?username=$username");
     }
 }
 
