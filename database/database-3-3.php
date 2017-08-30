@@ -32,9 +32,28 @@ if(isset($_POST['submit']))
         $database->execute();
     }
 }
-$database->query('SELECT * FROM posts ORDER by modified DESC ');
+$page = 0;
+if(isset($_GET['page']))
+{
+    $page = $_GET['page'];
+    if($page=='' || $page == 1)
+    {
+        $page1 = 0;
+    }else{
+        $page1 = $page*10 -10;
+    }
+}else{
+    $page1 = 0;
+}
+
+$database->query("SELECT COUNT(*) as totalPost FROM posts ORDER by modified DESC");
+$countPosts = $database->resultset();
+
+$database->query("SELECT * FROM posts ORDER by modified DESC LIMIT $page1, 10");
 $rows = $database->resultset();
 
+$pages = $countPosts[0]['totalPost'] / 10;
+$b =  ceil($pages);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,6 +62,7 @@ $rows = $database->resultset();
     <title>Database 3-3</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/database-3-3.css" type="text/css">
 
 </head>
 <body>
@@ -85,8 +105,26 @@ $rows = $database->resultset();
                     <?php
                 endforeach;
                 ?>
-
             </div>
+            <?php if(!empty($rows)): ?>
+            <div class="panel-footer">
+                <div class="row">
+                    <div class="col col-xs-4">Page <?php echo $page==0 ? 1 : $page ; ?> of <?php echo $b; ?>
+                    </div>
+                    <div class="col col-xs-8">
+                        <ul class="pagination hidden-xs pull-right">
+                            <?php for($i=1; $i<=$b; $i++): ?>
+                                <li><a href="database-3-3.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+                            <?php endfor ?>
+                        </ul>
+                        <ul class="pagination visible-xs pull-right">
+                            <li><a href="#">«</a></li>
+                            <li><a href="#">»</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <?php endif; ?>
         </div>
     </div>
 </div>

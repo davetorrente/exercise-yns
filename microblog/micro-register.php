@@ -2,8 +2,6 @@
 require "Database.php";
 $database = new Database();
 session_start();
-if(!empty($_SESSION['microUser']))
-    header("Location: micro-blog.php");
 $error = 0;
 if(isset($_POST['register'])) {
     $username = htmlspecialchars($_POST["username"]);
@@ -37,7 +35,7 @@ if(isset($_POST['register'])) {
                     $usernameError = "Username already exist";
                     $error++;
                 }
-            }   
+            }
         }
     }
     if (empty($email)) {
@@ -151,6 +149,9 @@ if(isset($_POST['register'])) {
         die();
     }
 }
+if(!empty($_SESSION['microUser']))
+header("Location: micro-blog.php");
+
 if(isset($_GET['success'])){
     $message = "<div id='hideMe' align='center' class='alert-success'>You may now login</div>";
 }

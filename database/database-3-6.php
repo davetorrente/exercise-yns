@@ -65,10 +65,9 @@ if (isset($_SESSION['authUser'])) {
     $userAuth = $_SESSION['authUser'];
     $database->query("SELECT * FROM users WHERE username = '$userAuth'");
     $user = $database->resultset();
-//    print_r($user);
-//    die();
 }
-
+$pages = $countPosts[0]['totalPost'] / 10;
+$b =  ceil($pages);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -149,14 +148,14 @@ if (isset($_SESSION['authUser'])) {
                                       <td><?php echo htmlspecialchars($row['modified']); ?></td>
                                           <td><div style="display:inline-block">
                                           <form method="post" action="<?php $_SERVER['PHP_SELF']; ?>">
-                                              <input type="hidden" name="delete_id" value="<?php echo $row['id']; ?>" />
+                                              <input type="hidden" name="delete_id" value="<?php echo htmlspecialchars_decode($row['id']); ?>" />
                                               <input type="submit" name="delete" value="Delete"/>
                                           </form>
                                       </div>
 
                                       <div style="display:inline-block">
                                           <form method="post" action="">
-                                              <input type="hidden" name="edit-id" value="<?php echo $row['id']; ?>" />
+                                              <input type="hidden" name="edit-id" value="<?php echo htmlspecialchars($row['id']); ?>" />
                                               <input type="submit" name="edit" value="Edit"/>
                                           </form>
                                       </div>
@@ -168,8 +167,8 @@ if (isset($_SESSION['authUser'])) {
                         </table>
 
                     </div>
-                    <?php $pages = $countPosts[0]['totalPost'] / 10; ?>
-                    <?php $b =  ceil($pages); ?>
+
+                    <?php if(!empty($rows)): ?>
                     <div class="panel-footer">
                         <div class="row">
                             <div class="col col-xs-4">Page <?php echo $page==0 ? 1 : $page ; ?> of <?php echo $b; ?>
@@ -187,6 +186,7 @@ if (isset($_SESSION['authUser'])) {
                             </div>
                         </div>
                     </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

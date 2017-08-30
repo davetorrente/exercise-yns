@@ -12,7 +12,7 @@ $database->query("SELECT first_name, last_name, middle_name, hire_date FROM empl
 $employeeshireDates = $database->resultset();
 
 // problem# 4
-$database->query("SELECT last_name, boss_id FROM employees WHERE boss_id IS NOT NULL");
+$database->query("SELECT E.last_name as EmployeeLast, B.last_name as BossLast FROM employees E INNER JOIN employees B ON  B.id = E.boss_id");
 $employeesWithBosses = $database->resultset();
 
 // problem# 5
@@ -194,14 +194,9 @@ $employeesNameMorePositions = $database->resultset();
                         <tbody>
                         <?php foreach($employeesWithBosses as $employeesWithBoss): ?>
                             <tr>
-                                <td><?php echo $employeesWithBoss['last_name']; ?></td>
-                                <?php $bossID = $employeesWithBoss['boss_id']; ?>
-                                <?php  $database->query("SELECT last_name FROM employees WHERE id = :id");
-                                $database->bind(':id', $bossID);
-                                $employeesbossLastNames = $database->resultset();
-                                foreach($employeesbossLastNames as $employeesbossLastName): ?>
-                                    <td><?php echo $employeesbossLastName['last_name']; ?></td>
-                                <?php endforeach ?>
+
+                                <td><?php echo $employeesWithBoss['EmployeeLast']; ?></td>
+                                <td><?php echo $employeesWithBoss['BossLast']; ?></td>
                             </tr>
                         <?php endforeach ?>
 

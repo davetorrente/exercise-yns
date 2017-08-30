@@ -2,11 +2,9 @@
 require "Database.php";
 $database = new Database();
 session_start();
-if (isset($_SESSION['quizUser'])){
+if (!empty($_SESSION['microUser'])){
     header("Location: quiz.php");
 }
-
-
 if(isset($_POST['login'])) {
     $error = 0;
     $username = htmlspecialchars($_POST["username"]);
@@ -16,42 +14,28 @@ if(isset($_POST['login'])) {
     if(empty($_POST["username"])) {
         $usernameError = "Username is required";
         $error++;
-    }
-    else {
-        if(!ctype_alnum($username))
-        {
-            $userError = "Username must be alphanumeric characters";
+    }else {
+        $database->query("SELECT username FROM users WHERE username = '$username'");
+        $usernameExist = $database->resultset();
+        if(empty($usernameExist)){
+            $usernameError = "Username not exist";
             $error++;
         }
-        else{
-            $database->query("SELECT username FROM users WHERE username = '$username'");
-            $usernameExist = $database->resultset();
-            if(empty($usernameExist)){
-                $usernameError = "Username not exist";
-                $error++;
-            }
-            else{
-                $database->query("SELECT password FROM users WHERE username = '$username'");
-                $passwordExist = $database->resultset();
-                if($passwordExist[0]['password'] <> md5($password))
-                {
-                    $passwordError = "Password is incorrect";
-                    $error++;
-                }
-            }
-        }
+
     }
     if(empty($_POST["password"])) {
         $passwordError = "Password is required";
         $error++;
-    }
-    else {
-        $password = $_POST["password"];
-        $passwordlength = strlen($password);
-        if($passwordlength < 6)
-        {
-            $passwordError = "Password must be at least 6 characters";
-            $error++;
+    }else{
+        $database->query("SELECT password FROM users WHERE username = '$username'");
+        $passwordExist = $database->resultset();
+        if(!empty($passwordExist)){
+            $passwordDB = $passwordExist[0]['password'];
+            if(md5($password) != $passwordDB)
+            {
+                $passwordError = "Password is incorrect";
+                $error++;
+            }
         }
     }
     if($error == 0)
@@ -85,14 +69,14 @@ if(isset($_POST['login'])) {
                 <form class="form-horizontal" method="post" novalidate>
                     <div class="form-group has-success has-feedback">
                         <div class="col-sm-12">
-                            <input type="text" id="username" name="username" class="form-control"  value="<?php echo isset($username) ? $username : ''; ?>" placeholder="Username" autofocus>
+                            <input type="text" id="username" name="username" class="form-control"  value="<?php echo isset($username) ? $username : ''; ?>" <?php echo !empty($usernameError) ? "autofocus": '' ;?>>
                             <span style="color:red"><?php echo isset($usernameError) ? $usernameError : ''; ?></span>
                             <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         </div>
                     </div>
                     <div class="form-group has-success has-feedback">
                         <div class="col-sm-12">
-                            <input type="password" id="password" name="password" class="form-control" placeholder="Password">
+                            <input type="password" id="password" name="password" class="form-control" <?php echo !empty($passwordError) ? "autofocus": '' ;?>>
                             <span style="color:red"><?php echo isset($passwordError) ? $passwordError : ''; ?></span>
                             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                         </div>

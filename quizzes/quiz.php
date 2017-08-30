@@ -44,7 +44,7 @@ if(isset($_GET['logout']) == 1){
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active"><a href="quiz.php">Home</a></li>
-                    <li><a href="?logout=1"> <img src="<?php echo $user[0]['upload'];?>" class="profile-image img-circle"> Logout</a></li>
+                    <li><a href="?logout=1">Logout</a></li>
                 </ul>
             </div>
         </div>

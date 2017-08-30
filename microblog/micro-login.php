@@ -5,7 +5,6 @@ session_start();
 if (!empty($_SESSION['microUser'])){
     header("Location: micro-blog.php");
 }
-$postform = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 if(isset($_POST['login'])) {
     $error = 0;
     $username = htmlspecialchars($_POST["username"]);

@@ -3,8 +3,8 @@ class Database
 {
     private $host = 'localhost';
     private $user = 'root';
-    private $pass = '';
-    private $db = 'exercise_db';
+    private $pass = 'exercise';
+    private $db = 'quiz_db';
     private $dbh;
     private $error;
     private $stmt;
