@@ -21,8 +21,8 @@ if(isset($_POST['register'])) {
             $error++;
         }else{
 
-            if(strlen($firstname) < '4' || strlen($firstname) > '10')  {
-                $firstnameError = "Your First Name Must Contain At Least 4 to 10 Characters! ";
+            if(strlen($firstname) < '4' || strlen($firstname) > '15')  {
+                $firstnameError = "Your First Name Must Contain At Least 4 to 15 Characters! ";
                 $error++;
             }
         }
@@ -37,8 +37,8 @@ if(isset($_POST['register'])) {
             $error++;
         }else{
 
-            if(strlen($lastname) < '4' || strlen($lastname) > '10')  {
-                $lastnameError = "Your Last Name Must Contain At Least 4 to 10 Characters! ";
+            if(strlen($lastname) < '4' || strlen($lastname) > '15')  {
+                $lastnameError = "Your Last Name Must Contain At Least 4 to 15 Characters! ";
                 $error++;
             }
         }
@@ -54,8 +54,8 @@ if(isset($_POST['register'])) {
             $error++;
         }else{
 
-            if(strlen($username) < '6' || strlen($username) > '10') {
-                $usernameError = "Your Username Must Contain At Least 6 to 10 Characters!";
+            if(strlen($username) < '4' || strlen($username) > '15') {
+                $usernameError = "Your Username Must Contain At Least 4 to 15 Characters!";
                 $error++;
             }else{
                 $database->query("SELECT username FROM users WHERE username = '$username'");

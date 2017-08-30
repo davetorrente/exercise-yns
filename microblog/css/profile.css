@@ -122,3 +122,17 @@ footer p {
     top: 0px;
     cursor: pointer;
 }
+.profilefollowers{
+    width:120px;
+    height:120px;
+    display: inline-block;
+    padding: 15px 15px;
+    margin: 5px 8px;
+}
+#divFollowers{
+    width:auto;
+}
+.caption p{
+    padding-top: 8px;
+    padding-bottom: 8px;
+}

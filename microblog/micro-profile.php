@@ -67,7 +67,10 @@ if(!empty($_GET['logout']) == 1) {
     header("Location: micro-login.php");
     exit;
 }
-
+if(!empty($followUsers))
+{
+    $displayFollowers = array_slice($followUsers, 0, 3);
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -126,9 +129,14 @@ if(!empty($_GET['logout']) == 1) {
             <?php if(!empty($followUsers)): ?>
              <p ><b>Following</b><span class="badge following-class"><?php echo htmlspecialchars(count($followUsers)); ?></span></p>
             <p ><b>You are following</b><br/>
-                <?php foreach($followUsers as $followUser): ?>
-                    <a href="micro-profile.php?username=<?php echo htmlspecialchars($followUser['username']);?>"><?php echo htmlspecialchars($followUser['username']) . ", "; ?></a>
+                <?php foreach($displayFollowers as $displayFollower): ?>
+                    <a href="micro-profile.php?username=<?php echo htmlspecialchars($displayFollower['username']);?>"><?php echo " " . htmlspecialchars($displayFollower['username']) ; ?></a>
                 <?php endforeach; ?>
+                <br>
+                And <?php echo count($followUsers) - count($displayFollowers); ?> more
+            </p>
+            <p>
+                <a class="btn btn-primary userfollowers" href="#">View All Followers</a>
             </p>
             <?php endif; ?>
             <?php if(!empty($userFollows)): ?>
@@ -139,7 +147,7 @@ if(!empty($_GET['logout']) == 1) {
                     <p><b>Your Follower</b><br/>
             <?php endif; ?>
                 <?php foreach($userFollows as $userFollow): ?>
-                    <a href="micro-profile.php?username=<?php echo htmlspecialchars($userFollow['username']);?>"><?php echo htmlspecialchars($userFollow['username']) . ", "; ?></a>
+                    <a href="micro-profile.php?username=<?php echo htmlspecialchars($userFollow['username']);?>"><?php echo ", " . htmlspecialchars($userFollow['username']); ?></a>
                 <?php endforeach; ?>
             </p>
             <?php endif; ?>

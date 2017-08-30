@@ -327,36 +327,16 @@ $(document).ready(function(){
             });
         }
     });
-    $('#checker').on('click', function(event){
-        event.preventDefault();
-
+    $('.userfollowers').on('click', function(){
+        $('#profileModal').modal('show');
         $.ajax({
             method: 'POST',
-            url: 'micro-edit-profile.php',
+            url: 'micro-.php',
             data: {user_id: user_id.val()},
             dataType: 'json'
         }).done(function(res){
             console.log(res);
-               var firstname =  res.firstname;
-               var lastname = res.lastname;
-               var username = res.username;
-               var email = res.email;
-            $('#profileModal #firstname').val(firstname);
-            $('#profileModal #lastname').val(lastname);
-            $('#profileModal #username').val(username);
-            $('#profileModal #email').val(email);
-            $('#profileModal #upload').val("ASDASDASD");
-            $('#profileModal').modal('show');
 
-
-            // if(res.isFollow)
-            // {
-            //     $('#profileModal').modal('show');
-            //     $('#addFollow').html("Unfollow");
-            // }
-            // else{
-            //     $('#addFollow').html("Follow");
-            // }
         });
 
 

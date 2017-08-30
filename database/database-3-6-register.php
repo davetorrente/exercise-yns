@@ -27,8 +27,8 @@ if(isset($_POST['register'])) {
             $error++;
         }else{
 
-            if(strlen($username) < '6' || strlen($username) > '10') {
-                $usernameError = "Your Username Must Contain At Least 6 to 10 Characters!";
+            if(strlen($username) < '4' || strlen($username) > '15') {
+                $usernameError = "Your Username Must Contain At Least 4 to 15 Characters!";
                 $error++;
             }else{
                 $database->query("SELECT username FROM users WHERE username = '$username'");
