@@ -20,7 +20,7 @@ if(isset($_POST['contact-us']))
                                 </div>';
             $error++;
         }else{
-            if(strlen($username) <= '6') {
+            if(strlen($username) < '6') {
                 $usernameError = '<div class="alert alert-danger custom-alert" style="display:block">
                                       Your Username Must Contain At Least 6 Characters!
                                 </div>';
@@ -54,7 +54,7 @@ if(isset($_POST['contact-us']))
                                 </div>';
         $error++;
     }else{
-        if(strlen($message) <= 10 )
+        if(strlen($message) < 10 )
         {
             $messageError = ' <div class="alert alert-danger custom-alert" style="display:block">
                                     "Your Message Must Contain At Least 10 Characters!
@@ -72,23 +72,35 @@ if(isset($_POST['contact-us']))
         $m->Password='Davepogi0#';//replace with your password
         $m->SMTPSecure='ssl';
         $m->Port=465;
-
         $m->isHTML();
         $m->Subject = $subject;
         $m->Body='From:'.$username.'('.$email.')<p>'.$message.'</p>';
-
         $m->FromName='Contact';
         $m->AddAddress('email.dummy009@gmail.com','Some one');
-        if ($m->send()) {
-            $thankMessage = "<p id='hideMe' class='alert-success text-center'>Thanks, we have your message and will reply soon.</p>";
-            $username = "";
-            $email= "";
-            $subject = "";
-            $message = "";
+
+        $m1= new PHPMailer;
+        $m1->isSMTP();
+        $m1->SMTPAuth=true;
+        $m1->Host='smtp.gmail.com';
+        $m1->Username='email.dummy009@gmail.com';//replace with your email address
+        $m1->Password='Davepogi0#';//replace with your password
+        $m1->SMTPSecure='ssl';
+        $m1->Port=465;
+        $m1->isHTML();
+        $m1->Subject = "Receive email";
+        $m1->Body='From:email.dummy009@gmail.com'.'<p>'."Thank you for contacting us, We already have your email".'</p>';
+        $m1->FromName='email.dummy009@gmail.com';
+        $m1->AddAddress($email,'Some one');
+        if ($m->send() && $m1->send() ) {
+            unset($_POST);
+            header("Location: mail.php?success=sendingEmail");
+            die();
         }
     }
 }
-
+if(isset($_GET['success'])){
+    $thankMessage = "<p id='hideMe' class='alert-success text-center'>Thanks, we have your message and will reply soon.</p>";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -105,7 +117,7 @@ if(isset($_POST['contact-us']))
     <form action="" class="contact-form" method="POST">
         <?php echo isset($thankMessage) ? $thankMessage : ''; ?>
         <div class="form-group">
-            <input type="text" name="username" id="username" class="username form-control" placeholder="Your Username"  value="<?php echo isset($username) ? $username : ''; ?>" autofocus>
+            <input type="text" name="username" id="username" class="username form-control" placeholder="Your Username"  value="<?php echo isset($username) ? $username : ''; ?>" <?php echo !empty($usernameError) ? "autofocus": '' ;?>>
             <i class="fa fa-user"></i>
             <span class="asterix">*</span>
             <span class="cross">x</span>
@@ -114,7 +126,7 @@ if(isset($_POST['contact-us']))
         </div>
 
         <div class="form-group">
-            <input type="text" name="email" class=" email form-control" placeholder="Your Email"  value="<?php echo isset($email) ? $email : ''; ?>">
+            <input type="text" name="email" class=" email form-control" placeholder="Your Email"  value="<?php echo isset($email) ? $email : ''; ?>" <?php echo !empty($emailError) ? "autofocus": '' ;?>>
             <i class="fa fa-envelope"></i>
             <span class="asterix">*</span>
             <span class="cross">x</span>
@@ -124,7 +136,7 @@ if(isset($_POST['contact-us']))
 
 
         <div class="form-group">
-            <input type="text" name="subject" class="subject form-control" placeholder="Your subject" value="<?php echo isset($subject) ? $subject : ''; ?>">
+            <input type="text" name="subject" class="subject form-control" placeholder="Your subject" value="<?php echo isset($subject) ? $subject : ''; ?>" <?php echo !empty($subjectError) ? "autofocus": '' ;?>>
             <i class="fa fa-pencil"></i>
             <span class="asterix">*</span>
             <span class="cross">x</span>
@@ -134,7 +146,7 @@ if(isset($_POST['contact-us']))
 
 
         <div class="form-group">
-            <textarea class=" message form-control" name="message"><?php echo isset($message) ? $message : ''; ?></textarea>
+            <textarea class=" message form-control" name="message" <?php echo !empty($messageError) ? "autofocus": '' ;?>><?php echo isset($message) ? $message : ''; ?></textarea>
             <i class="fa fa-comments message-icon"></i>
             <span class="asterix">*</span>
             <span class="cross">x</span>
