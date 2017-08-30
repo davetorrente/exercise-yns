@@ -17,6 +17,10 @@ if(!empty($database->lastInsertId())){
     $database->bind(':id', $database->lastInsertId());
     $lastTweet = $database->resultset();
     $message['success'] = true;
+
+
+
+
     echo json_encode(array("message"=>$message, "query"=> $lastTweet));
 }
 

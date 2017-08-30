@@ -4,7 +4,7 @@ class Database
     private $host = 'localhost';
     private $user = 'root';
     private $pass = 'exercise';
-    private $db = 'exercise_db';
+    private $db = 'microblog_db';
 
     private $dbh;
     private $error;

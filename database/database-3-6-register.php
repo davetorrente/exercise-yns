@@ -27,8 +27,8 @@ if(isset($_POST['register'])) {
             $error++;
         }else{
 
-            if(strlen($username) < '6') {
-                $usernameError = "Your Username Must Contain At Least 6 Characters!";
+            if(strlen($username) < '6' || strlen($username) > '10') {
+                $usernameError = "Your Username Must Contain At Least 6 to 10 Characters!";
                 $error++;
             }else{
                 $database->query("SELECT username FROM users WHERE username = '$username'");
@@ -151,7 +151,8 @@ if(isset($_POST['register'])) {
         die();
     }
 }
-if(isset($_GET['success'])){
+if(isset($_GET['success']) && $error == 0)
+{
     $message = "<div id='hideMe' align='center' class='alert-success'>You may now login</div>";
 }
 ?>

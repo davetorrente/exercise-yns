@@ -8,7 +8,7 @@ $(document).ready(function(){
         if (textLength > maxLength) {
             $(this).val(text.substring(0, (maxLength)));
             sectionMessage.addClass('alert-danger');
-            sectionMessage.html("Sorry, only " + maxLength + " characters are allowed").fadeIn().delay(2500).fadeOut('slow');
+            sectionMessage.html("Sorry, only " + maxLength + " characters are allowed").fadeIn().delay(500).fadeOut('slow');
         }
     });
     $('#createTweet').on('click','#btnAdd',function(e){
@@ -115,6 +115,7 @@ $(document).ready(function(){
     });
     $(document).on('click', '.tweet-edit', function(event){
         event.preventDefault();
+
         var sectionTweet =  $(this).parent().parent().find('#alertMessage');
         var $this = $(this);
         var id = $this.parent().attr('tweet_id');
@@ -320,11 +321,14 @@ $(document).ready(function(){
                         menu.css("display","block");
                     }
                     menu.html(output);
-
                     //Assigning result to "display" div in "search.php" file.
-
                 }
             });
         }
+    });
+
+    $("#checker").on('click',function(e){
+        e.preventDefault();
+        $('#profileModal').modal('show');
     });
 });

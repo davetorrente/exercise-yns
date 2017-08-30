@@ -1,13 +1,10 @@
 <?php
-require_once "Database.php";
-require_once "modals/delete-modal.php";
-require_once "modals/edit-modal.php";
-require_once "modals/retweet-modal.php";
 session_start();
+require_once "Database.php";
 $database = new Database();
-
 if (empty($_SESSION['microUser'])){
     header("Location: micro-login.php");
+    exit;
 }else{
      $userAuth = $_SESSION['microUser'];
     $database->query("SELECT * FROM users WHERE username = '$userAuth'");
@@ -23,13 +20,29 @@ function cmp($a, $b){
     $bd = strtotime($b['created']);
     return ($bd-$ad);
 }
-$mergeTweets = array_merge($userTweets, $userRetweets);
-usort($mergeTweets, 'cmp');
-
+$arrayForPaging = array_merge($userTweets, $userRetweets);
+usort($arrayForPaging, 'cmp');
+$page = 0;
+if(isset($_GET['page']))
+{
+    $page = $_GET['page'];
+    if($page=='' || $page == 1)
+    {
+        $page1 = 0;
+    }else{
+        $page1 = $page*10 -10;
+    }
+}else{
+    $page1 = 0;
+}
+$mergeTweets = array_slice($arrayForPaging, $page1, ($page1+10));
+$pages = count($arrayForPaging) / 10;
+$b =  ceil($pages);
 
 if(!empty($_GET['logout']) == 1) {
     session_destroy();
     header("Location: micro-login.php");
+    exit;
 }
 ?>
 <!DOCTYPE html>
@@ -143,7 +156,7 @@ if(!empty($_GET['logout']) == 1) {
                         <div class="clearfix"></div>
                         <div class="interaction tweet-interact" user_id="<?php echo htmlspecialchars($mergeTweet['user_id']); ?>" tweet_id="<?php echo htmlspecialchars($mergeTweet['id']); ?>">
                             <?php if($user[0]['id'] != $mergeTweet['user_id']): ?>
-                                <a href="javascript:;" class="retweet"><i class="fa fa-retweet" id="iconRetweet" aria-hidden="true" <?php echo $mergeTweet['isRetweet'] == true ? "style=color:green;" : '';?> ></i> |</a>
+                                    <a href="javascript:;" class="retweet"><i class="fa fa-retweet" id="iconRetweet" aria-hidden="true" <?php echo isset($mergeTweet['isRetweet']) == true ? "style=color:green;" : '';?> ></i> |</a>
                             <?php else: ?>
                                 <a href="javascript:;" class="retweet-delete" id="delete-item">Delete |</a>
                             <?php endif; ?>
@@ -151,9 +164,33 @@ if(!empty($_GET['logout']) == 1) {
                     </article>
                 <?php endif; ?>
             <?php endforeach ?>
+            <?php if(!empty($mergeTweets)): ?>
+            <div class="panel-footer tweet-panel">
+                <div class="row">
+                    <div class="col col-xs-4">Page <?php echo $page==0 ? 1 : $page ; ?> of <?php echo $b; ?>
+                    </div>
+                    <div class="col col-xs-8">
+                        <ul class="pagination hidden-xs pull-right">
+                            <?php for($i=1; $i<=$b; $i++): ?>
+                                <li><a href="micro-blog.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+                            <?php endfor ?>
+                        </ul>
+                        <ul class="pagination visible-xs pull-right">
+                            <li><a href="#">«</a></li>
+                            <li><a href="#">»</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <?php endif; ?>
         </div>
     </section>
 </div>
+<?php
+require_once "modals/delete-modal.php";
+require_once "modals/edit-modal.php";
+require_once "modals/retweet-modal.php";
+?>
 </body>
 </html>
 

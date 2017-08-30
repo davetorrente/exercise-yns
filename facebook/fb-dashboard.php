@@ -158,8 +158,6 @@ ob_end_flush();
                                             <?php else: ?>
                                                 <p><?php echo $item['story']; ?></p>)
                                             <?php endif; ?>
-
-
                                         </div>
                                         <div class="pointer-border"></div>
                                     </div>
