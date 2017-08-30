@@ -56,14 +56,11 @@ if (isset($_SESSION['facebook_token'])) {
     $st=curl_exec($ch2);
     $friendsresults2 =json_decode($st,TRUE);
 
-
     array_values($results['taggable_friends']['data']);
     array_values($friendsresults2['data']);
     $mergeArrays = array_merge($results['taggable_friends']['data'],$friendsresults2['data']);
     $arrayFriends = array();
     array_push($arrayFriends, $mergeArrays);
-
-
 
     $pages = count($results['feed']['data']) / 25;
     $b =  ceil($pages);
