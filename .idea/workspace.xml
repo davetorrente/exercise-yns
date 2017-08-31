@@ -4,8 +4,6 @@
     <list default="true" id="21fc073c-5523-4dae-b2fe-c45f5b229797" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/microblog/js/main.js" afterPath="$PROJECT_DIR$/microblog/js/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/microblog/micro-blog.php" afterPath="$PROJECT_DIR$/microblog/micro-blog.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/microblog/micro-followers.php" afterPath="$PROJECT_DIR$/microblog/micro-followers.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/microblog/micro-profile.php" afterPath="$PROJECT_DIR$/microblog/micro-profile.php" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
@@ -25,21 +23,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="micro-profile.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="micro-profile.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/microblog/micro-profile.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="232" column="161" lean-forward="false" selection-start-line="232" selection-start-column="161" selection-end-line="232" selection-end-column="161" />
+            <state relative-caret-position="113">
+              <caret line="159" column="81" lean-forward="false" selection-start-line="159" selection-start-column="81" selection-end-line="159" selection-end-column="81" />
               <folding>
-                <marker date="1504147917498" expanded="true" signature="239:276" ph="SELECT * FRO... users" />
-                <marker date="1504147917498" expanded="true" signature="239:286" ph="SELECT * FRO... users" />
-                <marker date="1504147917498" expanded="true" signature="239:287" ph="SELECT * FRO... users" />
-                <marker date="1504147917498" expanded="true" signature="456:505" ph="SELECT * FRO... users" />
-                <marker date="1504147917498" expanded="true" signature="611:763" ph="SELECT users... follows" />
-                <marker date="1504147917498" expanded="true" signature="834:986" ph="SELECT users... follows" />
-                <marker date="1504147917498" expanded="true" signature="1057:1143" ph="SELECT isFol... follows" />
-                <marker date="1504147917498" expanded="true" signature="1213:1463" ph="SELECT users... tweets" />
-                <marker date="1504147917498" expanded="true" signature="1535:1825" ph="SELECT RU.us... retweets" />
+                <marker date="1504148294600" expanded="true" signature="239:276" ph="SELECT * FRO... users" />
+                <marker date="1504148294600" expanded="true" signature="239:286" ph="SELECT * FRO... users" />
+                <marker date="1504148294600" expanded="true" signature="239:287" ph="SELECT * FRO... users" />
+                <marker date="1504148294600" expanded="true" signature="456:505" ph="SELECT * FRO... users" />
+                <marker date="1504148294600" expanded="true" signature="611:763" ph="SELECT users... follows" />
+                <marker date="1504148294600" expanded="true" signature="834:986" ph="SELECT users... follows" />
+                <marker date="1504148294600" expanded="true" signature="1057:1143" ph="SELECT isFol... follows" />
+                <marker date="1504148294600" expanded="true" signature="1213:1463" ph="SELECT users... tweets" />
+                <marker date="1504148294600" expanded="true" signature="1535:1825" ph="SELECT RU.us... retweets" />
               </folding>
             </state>
           </provider>
@@ -82,16 +80,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/microblog/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="248">
-              <caret line="145" column="32" lean-forward="false" selection-start-line="145" selection-start-column="32" selection-end-line="145" selection-end-column="32" />
-              <folding>
-                <marker date="1504147431818" expanded="true" signature="2237:2251" ph="..." />
-                <marker date="1504147431818" expanded="true" signature="5987:6001" ph="..." />
-                <marker date="1504147431818" expanded="true" signature="13760:13774" ph="..." />
-              </folding>
+            <state relative-caret-position="459">
+              <caret line="45" column="17" lean-forward="true" selection-start-line="45" selection-start-column="17" selection-end-line="45" selection-end-column="17" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -253,8 +247,8 @@
         <option value="$PROJECT_DIR$/microblog/micro-edit-profile.php" />
         <option value="$PROJECT_DIR$/microblog/micro-followers.php" />
         <option value="$PROJECT_DIR$/microblog/micro-blog.php" />
-        <option value="$PROJECT_DIR$/microblog/js/main.js" />
         <option value="$PROJECT_DIR$/microblog/micro-profile.php" />
+        <option value="$PROJECT_DIR$/microblog/js/main.js" />
       </list>
     </option>
   </component>
@@ -311,42 +305,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="microblog" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="exercise" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="exercise" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="microblog" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modals" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="exercise" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="exercise" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="microblog" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -574,12 +532,12 @@
       <workItem from="1504092158586" duration="56000" />
       <workItem from="1504092434672" duration="2531000" />
       <workItem from="1504095030617" duration="189000" />
-      <workItem from="1504138983051" duration="8775000" />
+      <workItem from="1504138983051" duration="9597000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="523713000" />
+    <option name="totallyTimeSpent" value="524535000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1028,33 +986,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/microblog/js/main.js">
+    <entry file="file://$PROJECT_DIR$/microblog/micro-profile.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="145" column="32" lean-forward="false" selection-start-line="145" selection-start-column="32" selection-end-line="145" selection-end-column="32" />
+        <state relative-caret-position="113">
+          <caret line="159" column="81" lean-forward="false" selection-start-line="159" selection-start-column="81" selection-end-line="159" selection-end-column="81" />
           <folding>
-            <marker date="1504147431818" expanded="true" signature="2237:2251" ph="..." />
-            <marker date="1504147431818" expanded="true" signature="5987:6001" ph="..." />
-            <marker date="1504147431818" expanded="true" signature="13760:13774" ph="..." />
+            <marker date="1504148294600" expanded="true" signature="239:276" ph="SELECT * FRO... users" />
+            <marker date="1504148294600" expanded="true" signature="239:286" ph="SELECT * FRO... users" />
+            <marker date="1504148294600" expanded="true" signature="239:287" ph="SELECT * FRO... users" />
+            <marker date="1504148294600" expanded="true" signature="456:505" ph="SELECT * FRO... users" />
+            <marker date="1504148294600" expanded="true" signature="611:763" ph="SELECT users... follows" />
+            <marker date="1504148294600" expanded="true" signature="834:986" ph="SELECT users... follows" />
+            <marker date="1504148294600" expanded="true" signature="1057:1143" ph="SELECT isFol... follows" />
+            <marker date="1504148294600" expanded="true" signature="1213:1463" ph="SELECT users... tweets" />
+            <marker date="1504148294600" expanded="true" signature="1535:1825" ph="SELECT RU.us... retweets" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/microblog/micro-profile.php">
+    <entry file="file://$PROJECT_DIR$/microblog/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="232" column="161" lean-forward="false" selection-start-line="232" selection-start-column="161" selection-end-line="232" selection-end-column="161" />
-          <folding>
-            <marker date="1504147917498" expanded="true" signature="239:276" ph="SELECT * FRO... users" />
-            <marker date="1504147917498" expanded="true" signature="239:286" ph="SELECT * FRO... users" />
-            <marker date="1504147917498" expanded="true" signature="239:287" ph="SELECT * FRO... users" />
-            <marker date="1504147917498" expanded="true" signature="456:505" ph="SELECT * FRO... users" />
-            <marker date="1504147917498" expanded="true" signature="611:763" ph="SELECT users... follows" />
-            <marker date="1504147917498" expanded="true" signature="834:986" ph="SELECT users... follows" />
-            <marker date="1504147917498" expanded="true" signature="1057:1143" ph="SELECT isFol... follows" />
-            <marker date="1504147917498" expanded="true" signature="1213:1463" ph="SELECT users... tweets" />
-            <marker date="1504147917498" expanded="true" signature="1535:1825" ph="SELECT RU.us... retweets" />
-          </folding>
+        <state relative-caret-position="459">
+          <caret line="45" column="17" lean-forward="true" selection-start-line="45" selection-start-column="17" selection-end-line="45" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -44,38 +44,8 @@ $(document).ready(function(){
                 var html = '';
                 if(response.message)
                 {
-                    var query = response.query;
-                    $.each(query, function(index){
-                        html +=
-                            '<article class="post">'+
-                                '<div class="alert alert-edit" id="alertMessage" style="display: none;"></div>'+
-                                    '<div class="info postByUser">'+
-                                        '<div class="row">'+
-                                            '<div class="col-md-2">'+
-                                                '<a href="micro-profile.php?username='+query[index].username+'"><img class=" postImage" src="'+query[index].upload+'"></a>'+
-                                            '</div>'+
-                                            '<div class="col-md-6 userName">'+
-                                                '<h4>'+query[index].username+'</h4>'+
-                                                '<p>'+"Posted on "+query[index].modified+'</p>'+
-                                            '</div>'+
-                                        '</div>'+
-                                    '</div>'+
-                                    '<p class="contentPost">'+query[index].tweet+'</p>'+
-                                    '<div class="clearfix"></div>'+
-                                    '<div class="interaction tweet-interact" user_id="'+user_id.val()+'" tweet_id="'+query[index].id+'">'+
-                                        '<a href="javascript:;" class="tweet-edit">Edit | </a>'+
-                                        '<a href="javascript:;" class="tweet-delete" id="delete-item">Delete |</a>'+
-                                    '</div>'+
-                            '</article>';
-                    });
-                    sectionMessage.removeClass('alert-danger');
-                    sectionMessage.addClass('alert-success');
-                    sectionMessage.html('Tweet Successfully Added!').fadeIn().delay(1500).fadeOut('slow');
-                    $('#showdata-index').prepend(html);
-                }else{
-                    sectionMessage.removeClass('alert-success');
-                    sectionMessage.addClass('alert-danger');
-                    sectionMessage.html('Could not add data!').fadeIn().delay(1500).fadeOut('slow');
+                    location.reload();
+
                 }
             });
         }
@@ -113,46 +83,10 @@ $(document).ready(function(){
                 dataType: 'json'
             }).done(function(response){
                 addTweet.val('');
-                var html = '';
-                if(response.message)
-                {
-                    var query = response.query;
-                    $.each(query, function(index){
-                        html +=
-                            '<article class="post">'+
-                            '<div class="alert alert-edit" id="alertMessage" style="display: none;"></div>'+
-                            '<div class="info postByUser">'+
-                            '<div class="row">'+
-                            '<div class="col-md-2">'+
-                            '<a href="micro-profile.php?username='+query[index].username+'"><img class=" postImage" src="'+query[index].upload+'"></a>'+
-                            '</div>'+
-                            '<div class="col-md-6 userName">'+
-                            '<h4>'+query[index].username+'</h4>'+
-                            '<p>'+"Posted on "+query[index].modified+'</p>'+
-                            '</div>'+
-                            '</div>'+
-                            '</div>'+
-                            '<p class="contentPost">'+query[index].tweet+'</p>'+
-                            '<div class="clearfix"></div>'+
-                            '<div class="interaction tweet-interact" user_id="'+user_id.val()+'" tweet_id="'+query[index].id+'">'+
-                            '<a href="javascript:;" class="tweet-edit">Edit | </a>'+
-                            '<a href="javascript:;" class="tweet-delete" id="delete-item">Delete |</a>'+
-                            '</div>'+
-                            '</article>';
-                    });
-                    sectionMessage.removeClass('alert-danger');
-                    sectionMessage.addClass('alert-success');
-                    sectionMessage.html('Tweet Successfully Added!').fadeIn().delay(1500).fadeOut('slow');
-                    $('#showdata').prepend(html);
-                }else{
-                    sectionMessage.removeClass('alert-success');
-                    sectionMessage.addClass('alert-danger');
-                    sectionMessage.html('Could not add data!').fadeIn().delay(1500).fadeOut('slow');
-                }
+                location.reload();
             });
         }
     });
-
 
     $(document).on('click', '#delete-item', function(event){
         event.preventDefault();
@@ -265,38 +199,11 @@ $(document).ready(function(){
                     },
                     dataType: 'json'
                 }).done(function(response){
-                    var html = '';
-                    if(response.message.isRetweet) {
-                        var query = response.query;
-                        var userTweet = response.userTweet;
-                        $.each(query, function (index) {
-                            if (query)
-                                html +=
-                                    '<article class="post">' +
-                                    '<div class="alert alert-edit" id="alertMessage" style="display: none;"></div>' +
-                                    '<div class="info postByUser">' +
-                                    '<div class="row">' +
-                                    '<div class="col-md-2">' +
-                                    '<a href="micro-profile.php?username=' + query[index].username + '"><img class=" postImage" src="' + query[index].upload + '"></a>' +
-                                    '</div>' +
-                                    '<div class="col-md-6 userName">' +
-                                    '<h4>' + query[index].username + '</h4>' +
-                                    '<p>' + "Retweeted from " + '<a href="micro-profile.php?username=' + userTweet[index].username + '">'+userTweet[index].username+'</a>' + ' on ' + query[index].created + '</p>' +
-                                    '</div>' +
-                                    '</div>' +
-                                    '</div>' +
-                                    '<p class="contentPost">' + query[index].tweet + '</p>' +
-                                    '<div class="clearfix"></div>' +
-                                    ' <div class="interaction tweet-interact" user_id="' + user_id.val() + '" tweet_id="' + query[index].id + '">' +
-                                    '<a href="javascript:;" class="retweet-delete" id="delete-item">Delete |</a>' +
-                                    '</div>' +
-                                    '</article>';
-                        });
-                        $('#showdata-index').prepend(html);
-                        console.log($this);
-                        $this.children().css("color", "green");
-                        $('#retweetModal').modal('hide');
-                    }
+
+                    $this.children().css("color", "green");
+                    $('#retweetModal').modal('hide');
+                    location.reload();
+
                 });
             });
         }
@@ -343,9 +250,11 @@ $(document).ready(function(){
             if(res.isFollow)
             {
                 $('#addFollow').html("Unfollow");
+                location.reload();
             }
             else{
                 $('#addFollow').html("Follow");
+                location.reload();
             }
         });
     });

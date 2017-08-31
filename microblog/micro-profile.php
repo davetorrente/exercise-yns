@@ -134,7 +134,11 @@ if(!empty($userFollows)){
             </p>
             <?php if(!empty($followUsers)): ?>
              <p ><b>Following</b><span class="badge following-class"><?php echo htmlspecialchars(count($followUsers)); ?></span></p>
-            <p ><b>You are following</b><br/>
+            <?php if($userInfos[0]['username'] == $user[0]['username']): ?>
+                <p ><b>You are following</b><br/>
+            <?php else: ?>
+                    <p ><b><?php echo $userInfos[0]['username']; ?> following</b><br/>
+            <?php endif; ?>
                 <?php foreach($displayFollowings as $displayFollowing): ?>
                     <a href="micro-profile.php?username=<?php echo htmlspecialchars($displayFollowing['username']);?>"><?php echo " " . htmlspecialchars($displayFollowing['username']) ; ?></a>
                 <?php endforeach; ?>
@@ -150,9 +154,17 @@ if(!empty($userFollows)){
             <?php if(!empty($userFollows)): ?>
             <p><b>Number of Followers</b><span class="badge following-class"><?php echo htmlspecialchars(count($userFollows)); ?></span></p>
             <?php if(count($userFollows) > 1): ?>
-                <p><b>Your Followers</b><br/>
+                    <?php if($userInfos[0]['username'] == $user[0]['username']): ?>
+                        <p ><b>Your Followers</b><br/>
+                    <?php else: ?>
+                        <p ><b><?php echo $userInfos[0]['username']; ?> Followers</b><br/>
+                    <?php endif; ?>
                 <?php else: ?>
-                        <p><b>Your Follower</b><br/>
+                    <?php if($userInfos[0]['username'] == $user[0]['username']): ?>
+                        <p ><b>Your Follower</b><br/>
+                    <?php else: ?>
+                        <p ><b><?php echo $userInfos[0]['username']; ?> Follower</b><br/>
+                    <?php endif; ?>
                 <?php endif; ?>
                     <?php foreach($displayFollowers as $displayFollower): ?>
                         <a href="micro-profile.php?username=<?php echo htmlspecialchars($displayFollower['username']);?>"><?php echo ", " . htmlspecialchars($displayFollower['username']); ?></a>
