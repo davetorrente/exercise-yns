@@ -105,15 +105,7 @@ $(document).ready(function(){
             }).done(function(response){
                 if(response.message.success) {
                     $('#deleteModal').modal('hide');
-                    sectionMessage.removeClass('alert-success');
-                    sectionMessage.addClass('alert-danger');
-                    sectionMessage.html('Tweet Deleted successfully').fadeIn().delay(1500).fadeOut('slow');
-                    $this.parent().parent().remove();
-                    console.log(response.tweetParent);
-                    if(Object.keys(response.tweetParent).length > 0){
-                        var parentDivRetweet = $('#showdata').find('article.post').find('.tweet-interact[user_id="' + response.tweetParent[0].user_id + '"][tweet_id="' + response.tweetParent[0].id + '"]');
-                        parentDivRetweet.children().children().css("color", "");
-                    }
+                    location.reload();
                 }else{
                     alert('Error');
                 }
@@ -222,9 +214,7 @@ $(document).ready(function(){
                     }).done(function(response){
                         if(response.message.success){
                             $('#retweetModal').modal('hide');
-                            $this.children().css("color", "");
-                            var parentDivRetweet = $('#showdata').find('article.post').find('.tweet-interact[user_id="' + response.userID + '"][tweet_id="'+response.findTweet[0]['id']+'"]');
-                            parentDivRetweet.parent().remove();
+                            location.reload();
                         }
                         else{
                             alert('Error deleting');
