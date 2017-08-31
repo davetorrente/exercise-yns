@@ -170,7 +170,7 @@ if(!empty($userFollows)){
                     <a href="micro-profile.php?username=<?php echo htmlspecialchars($displayFollower['username']);?>"><?php echo " " . htmlspecialchars($displayFollower['username']); ?></a>
                 <?php endforeach; ?>
                 <br>
-            <?php if(count($userFollows) - count($displayFollowers) > 1): ?>
+            <?php if(count($userFollows) - count($displayFollowers) >= 1): ?>
                 And <?php echo count($userFollows) - count($displayFollowers); ?> more
             <?php endif; ?>
                 </p>

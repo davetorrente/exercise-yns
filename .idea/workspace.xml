@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="21fc073c-5523-4dae-b2fe-c45f5b229797" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/microblog/micro-edit-profile.php" afterPath="$PROJECT_DIR$/microblog/micro-edit-profile.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/microblog/micro-profile.php" afterPath="$PROJECT_DIR$/microblog/micro-profile.php" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
@@ -26,18 +25,18 @@
       <file leaf-file-name="micro-profile.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/microblog/micro-profile.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="167" column="27" lean-forward="false" selection-start-line="167" selection-start-column="27" selection-end-line="167" selection-end-column="27" />
+            <state relative-caret-position="238">
+              <caret line="144" column="20" lean-forward="true" selection-start-line="144" selection-start-column="20" selection-end-line="144" selection-end-column="20" />
               <folding>
-                <marker date="1504151625940" expanded="true" signature="239:276" ph="SELECT * FRO... users" />
-                <marker date="1504151625940" expanded="true" signature="239:286" ph="SELECT * FRO... users" />
-                <marker date="1504151625940" expanded="true" signature="239:287" ph="SELECT * FRO... users" />
-                <marker date="1504151625940" expanded="true" signature="456:505" ph="SELECT * FRO... users" />
-                <marker date="1504151625940" expanded="true" signature="611:763" ph="SELECT users... follows" />
-                <marker date="1504151625940" expanded="true" signature="834:986" ph="SELECT users... follows" />
-                <marker date="1504151625940" expanded="true" signature="1057:1143" ph="SELECT isFol... follows" />
-                <marker date="1504151625940" expanded="true" signature="1213:1463" ph="SELECT users... tweets" />
-                <marker date="1504151625940" expanded="true" signature="1535:1825" ph="SELECT RU.us... retweets" />
+                <marker date="1504152018064" expanded="true" signature="239:276" ph="SELECT * FRO... users" />
+                <marker date="1504152018064" expanded="true" signature="239:286" ph="SELECT * FRO... users" />
+                <marker date="1504152018064" expanded="true" signature="239:287" ph="SELECT * FRO... users" />
+                <marker date="1504152018064" expanded="true" signature="456:505" ph="SELECT * FRO... users" />
+                <marker date="1504152018064" expanded="true" signature="611:763" ph="SELECT users... follows" />
+                <marker date="1504152018064" expanded="true" signature="834:986" ph="SELECT users... follows" />
+                <marker date="1504152018064" expanded="true" signature="1057:1143" ph="SELECT isFol... follows" />
+                <marker date="1504152018064" expanded="true" signature="1213:1463" ph="SELECT users... tweets" />
+                <marker date="1504152018064" expanded="true" signature="1535:1825" ph="SELECT RU.us... retweets" />
               </folding>
             </state>
           </provider>
@@ -620,12 +619,12 @@
       <workItem from="1504092158586" duration="56000" />
       <workItem from="1504092434672" duration="2531000" />
       <workItem from="1504095030617" duration="189000" />
-      <workItem from="1504138983051" duration="12665000" />
+      <workItem from="1504138983051" duration="12869000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="527603000" />
+    <option name="totallyTimeSpent" value="527807000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1103,18 +1102,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/microblog/micro-profile.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="167" column="27" lean-forward="false" selection-start-line="167" selection-start-column="27" selection-end-line="167" selection-end-column="27" />
+        <state relative-caret-position="238">
+          <caret line="144" column="20" lean-forward="true" selection-start-line="144" selection-start-column="20" selection-end-line="144" selection-end-column="20" />
           <folding>
-            <marker date="1504151625940" expanded="true" signature="239:276" ph="SELECT * FRO... users" />
-            <marker date="1504151625940" expanded="true" signature="239:286" ph="SELECT * FRO... users" />
-            <marker date="1504151625940" expanded="true" signature="239:287" ph="SELECT * FRO... users" />
-            <marker date="1504151625940" expanded="true" signature="456:505" ph="SELECT * FRO... users" />
-            <marker date="1504151625940" expanded="true" signature="611:763" ph="SELECT users... follows" />
-            <marker date="1504151625940" expanded="true" signature="834:986" ph="SELECT users... follows" />
-            <marker date="1504151625940" expanded="true" signature="1057:1143" ph="SELECT isFol... follows" />
-            <marker date="1504151625940" expanded="true" signature="1213:1463" ph="SELECT users... tweets" />
-            <marker date="1504151625940" expanded="true" signature="1535:1825" ph="SELECT RU.us... retweets" />
+            <marker date="1504152018064" expanded="true" signature="239:276" ph="SELECT * FRO... users" />
+            <marker date="1504152018064" expanded="true" signature="239:286" ph="SELECT * FRO... users" />
+            <marker date="1504152018064" expanded="true" signature="239:287" ph="SELECT * FRO... users" />
+            <marker date="1504152018064" expanded="true" signature="456:505" ph="SELECT * FRO... users" />
+            <marker date="1504152018064" expanded="true" signature="611:763" ph="SELECT users... follows" />
+            <marker date="1504152018064" expanded="true" signature="834:986" ph="SELECT users... follows" />
+            <marker date="1504152018064" expanded="true" signature="1057:1143" ph="SELECT isFol... follows" />
+            <marker date="1504152018064" expanded="true" signature="1213:1463" ph="SELECT users... tweets" />
+            <marker date="1504152018064" expanded="true" signature="1535:1825" ph="SELECT RU.us... retweets" />
           </folding>
         </state>
       </provider>
