@@ -72,7 +72,7 @@ if(!empty($followUsers))
 }
 
 if(!empty($userFollows)){
-    $displayFollowers = array_slice($followUsers, 0, 3);
+    $displayFollowers = array_slice($userFollows, 0, 3);
 }
 
 ?>
@@ -165,14 +165,14 @@ if(!empty($userFollows)){
                     <?php else: ?>
                         <p ><b><?php echo $userInfos[0]['username']; ?> Follower</b><br/>
                     <?php endif; ?>
-                <?php endif; ?>
-                    <?php foreach($displayFollowers as $displayFollower): ?>
-                        <a href="micro-profile.php?username=<?php echo htmlspecialchars($displayFollower['username']);?>"><?php echo ", " . htmlspecialchars($displayFollower['username']); ?></a>
-                    <?php endforeach; ?>
-                    <br>
-                <?php if(count($userFollows) - count($displayFollowers) >= 1): ?>
-                    And <?php echo count($userFollows) - count($displayFollowers); ?> more
-                <?php endif; ?>
+            <?php endif; ?>
+                <?php foreach($displayFollowers as $displayFollower): ?>
+                    <a href="micro-profile.php?username=<?php echo htmlspecialchars($displayFollower['username']);?>"><?php echo " " . htmlspecialchars($displayFollower['username']); ?></a>
+                <?php endforeach; ?>
+                <br>
+            <?php if(count($userFollows) - count($displayFollowers) > 1): ?>
+                And <?php echo count($userFollows) - count($displayFollowers); ?> more
+            <?php endif; ?>
                 </p>
                 <p>
                     <a class="btn btn-primary userfollowers" href="#">View All Followers</a>

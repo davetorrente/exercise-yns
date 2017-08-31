@@ -108,15 +108,7 @@ if(isset($_POST['profSave'])) {
             $error++;
         }
     }
-    if (empty($description)) {
-        $descriptionError = "Description is required";
-        $error++;
-    }else{
-        if (strlen($description) < '10') {
-            $descriptionError = "Your Description Must Contain At Least 10 Characters!";
-            $error++;
-        }
-    }
+
 
     if(isset($_POST['gender']))
     {
@@ -220,8 +212,7 @@ if(isset($_POST['profSave'])) {
                 <div class="form-group">
                     <label class="col-lg-3 control-label">Description:</label>
                     <div class="col-lg-8">
-                        <textarea class="form-control" rows="5" name="description" id="description" <?php echo !empty($descriptionError) ? "autofocus": '' ;?>><?php echo isset($description) ? $description : ''; ?></textarea>
-                        <span style="color:red"><?php echo isset($descriptionError) ? $descriptionError : ''; ?></span>
+                        <textarea class="form-control" rows="5" name="description" id="description" ><?php echo isset($description) ? $description : ''; ?></textarea>
                     </div>
                 </div>
                 <div class="form-group">
