@@ -1,14 +1,12 @@
 <?php
 require "Database.php";
 $database = new Database();
+$error = 0;
 if(isset($_POST['register'])) {
-    $error = 0;
     $username = htmlspecialchars($_POST["username"]);
     $password = htmlspecialchars($_POST["password"]);
     $cpassword = htmlspecialchars($_POST["cpassword"]);
     $email = htmlspecialchars($_POST["email"]);
-
-
     if(empty($username)) {
         $usernameError = "Username is required";
         $error++;
@@ -108,17 +106,15 @@ if(isset($_POST['register'])) {
         header("Location: quiz-register.php?success=register");
         die();
     }
-    if(isset($_GET['success'])){
-        $message = "<div id='hideMe' align='center' class='alert-success'>You may now login</div>";
-    }
 }
-if(!empty($_SESSION['microUser']))
-    header("Location: quiz.php");
-
 if(isset($_GET['success']) && $error == 0)
 {
     $message = "<div id='hideMe' align='center' class='alert-success'>You may now login</div>";
 }
+if(!empty($_SESSION['microUser']))
+    header("Location: quiz.php");
+echo $error;
+
 ?>
 
 <!DOCTYPE html>

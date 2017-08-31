@@ -3,7 +3,6 @@ require "Database.php";
 $database = new Database();
 
 $error = 0;
-$success = '';
 if(isset($_POST['register'])) {
     $firstname = htmlspecialchars($_POST["firstname"]);
     $lastname = htmlspecialchars($_POST["lastname"]);
