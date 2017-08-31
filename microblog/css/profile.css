@@ -129,10 +129,18 @@ footer p {
     padding: 15px 15px;
     margin: 5px 8px;
 }
-#divFollowers{
+#divFollows{
     width:auto;
 }
 .caption p{
     padding-top: 8px;
     padding-bottom: 8px;
+}
+#row-following, .row-followers{
+     margin-right: 0;
+     margin-left: 5px;
+}
+.image-following{
+    width: 88px !important;
+    height: 70px !important;
 }

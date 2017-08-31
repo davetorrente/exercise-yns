@@ -68,8 +68,13 @@ if(!empty($_GET['logout']) == 1) {
 }
 if(!empty($followUsers))
 {
+    $displayFollowings = array_slice($followUsers, 0, 3);
+}
+
+if(!empty($userFollows)){
     $displayFollowers = array_slice($followUsers, 0, 3);
 }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -118,37 +123,46 @@ if(!empty($followUsers))
             <div class="profile-pic">
                 <img src="<?php echo $userInfos[0]['upload'];?>" alt="sample profile pic" class="img-thumbnail img-profile">
             </div>
+            <?php if($userInfos[0]['username'] == $_SESSION['microUser']): ?>
             <div class="col-lg-12">
                 <a href="micro-edit-profile.php?id=<?php echo $userInfos[0]['id']; ?>"><h4 class="text-right col-lg-12"><span class="glyphicon glyphicon-edit"></span> Edit Profile</h4></a>
 
             </div>
+            <?php endif; ?>
             <p>
                 <?php echo htmlspecialchars($userInfos[0]['description']); ?>
             </p>
             <?php if(!empty($followUsers)): ?>
              <p ><b>Following</b><span class="badge following-class"><?php echo htmlspecialchars(count($followUsers)); ?></span></p>
             <p ><b>You are following</b><br/>
-                <?php foreach($displayFollowers as $displayFollower): ?>
-                    <a href="micro-profile.php?username=<?php echo htmlspecialchars($displayFollower['username']);?>"><?php echo " " . htmlspecialchars($displayFollower['username']) ; ?></a>
+                <?php foreach($displayFollowings as $displayFollowing): ?>
+                    <a href="micro-profile.php?username=<?php echo htmlspecialchars($displayFollowing['username']);?>"><?php echo " " . htmlspecialchars($displayFollowing['username']) ; ?></a>
                 <?php endforeach; ?>
                 <br>
-                And <?php echo count($followUsers) - count($displayFollowers); ?> more
+                <?php if(count($followUsers) - count($displayFollowings) > 1): ?>
+                 And <?php echo count($followUsers) - count($displayFollowings); ?> more
+                <?php endif; ?>
             </p>
             <p>
-                <a class="btn btn-primary userfollowers" href="#">View All Followers</a>
+                <a class="btn btn-primary userfollowing" href="#">View All Following</a>
             </p>
             <?php endif; ?>
             <?php if(!empty($userFollows)): ?>
             <p><b>Number of Followers</b><span class="badge following-class"><?php echo htmlspecialchars(count($userFollows)); ?></span></p>
             <?php if(count($userFollows) > 1): ?>
-            <p><b>Your Followers</b><br/>
-            <?php else: ?>
-                    <p><b>Your Follower</b><br/>
-            <?php endif; ?>
-                <?php foreach($userFollows as $userFollow): ?>
-                    <a href="micro-profile.php?username=<?php echo htmlspecialchars($userFollow['username']);?>"><?php echo ", " . htmlspecialchars($userFollow['username']); ?></a>
-                <?php endforeach; ?>
-            </p>
+                <p><b>Your Followers</b><br/>
+                <?php else: ?>
+                        <p><b>Your Follower</b><br/>
+                <?php endif; ?>
+                    <?php foreach($userFollows as $userFollow): ?>
+                        <a href="micro-profile.php?username=<?php echo htmlspecialchars($userFollow['username']);?>"><?php echo ", " . htmlspecialchars($userFollow['username']); ?></a>
+                    <?php endforeach; ?>
+                    <br>
+                    And more
+                </p>
+                <p>
+                    <a class="btn btn-primary userfollowers" href="#">View All Followers</a>
+                </p>
             <?php endif; ?>
             <div class="row">
                 <div class="col-md-8 col-md-offset-4">
@@ -270,7 +284,7 @@ if(!empty($followUsers))
     </div>
 </div>
 <?php
-require_once "modals/profile-modal.php";
+require_once "modals/following-modal.php";
 require_once "modals/delete-modal.php";
 require_once "modals/edit-modal.php";
 require_once "modals/retweet-modal.php";

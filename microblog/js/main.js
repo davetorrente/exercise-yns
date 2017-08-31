@@ -327,19 +327,50 @@ $(document).ready(function(){
             });
         }
     });
-    $('.userfollowers').on('click', function(){
-        $('#profileModal').modal('show');
+    $('.userfollowing').on('click', function(){
         $.ajax({
             method: 'POST',
-            url: 'micro-.php',
+            url: 'micro-following.php',
             data: {user_id: user_id.val()},
             dataType: 'json'
         }).done(function(res){
-            console.log(res);
 
+            var html ='';
+            $.each(res, function (index) {
+                html += '<div class="thumbnail profilefollowers col-md-3">'+
+                    ' <img src="'+res[index].upload+'" alt="'+res[index].username+'" class="image-following">'+
+                    '<div class="caption">'+
+                    '<p>'+res[index].username+'</p>'+
+                    '</div>'+
+                    '</div>';
+
+            });
+            $('#row-following').html(html);
+            $('#following-modal').modal('show');
         });
+    });
 
+    $('.userfollowers').on('click', function(){
+        $.ajax({
+            method: 'POST',
+            url: 'micro-showfriends.php',
+            data: {user_id: user_id.val()},
+            dataType: 'json'
+        }).done(function(res){
 
+            var html ='';
+            $.each(res, function (index) {
+                html += '<div class="thumbnail profilefollowers col-md-3">'+
+                    ' <img src="'+res[index].upload+'" alt="'+res[index].username+'" class="image-following">'+
+                    '<div class="caption">'+
+                    '<p>'+res[index].username+'</p>'+
+                    '</div>'+
+                    '</div>';
+
+            });
+            $('#row-following').html(html);
+            $('#following-modal').modal('show');
+        });
     });
 
 

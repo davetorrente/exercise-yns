@@ -18,6 +18,7 @@ $username = $user[0]['username'];
 $email = $user[0]['email'];
 $password = base64_decode($user[0]['password']);
 $upload = $user[0]['upload'];
+$description =  $user[0]['description'];
 if($user[0]['gender'] == 'male')
 {
     $male = $user[0]['gender'];
@@ -30,7 +31,7 @@ if(isset($_POST['profSave'])) {
     $username = htmlspecialchars($_POST["username"]);
     $password = htmlspecialchars($_POST["password"]);
     $email = htmlspecialchars($_POST["email"]);
-    print_r($_FILES);
+    $description = htmlspecialchars($_POST["description"]);
     if(empty($firstname)){
         $firstnameError = "First Name is required";
         $error++;
@@ -63,7 +64,6 @@ if(isset($_POST['profSave'])) {
             }
         }
     }
-
     if(empty($username)) {
         $usernameError = "Username is required";
         $error++;
@@ -74,9 +74,18 @@ if(isset($_POST['profSave'])) {
             $error++;
         }else{
 
-            if(strlen($username) < '6' || strlen($username) > '10') {
-                $usernameError = "Your Username Must Contain At Least 6 to 10 Characters!";
+            if(strlen($username) < '4' || strlen($username) > '15') {
+                $usernameError = "Your Username Must Contain At Least 4 to 15 Characters!";
                 $error++;
+            }else{
+                    $database->query("SELECT username FROM users WHERE username = '$username'");
+                    $usernameExist = $database->resultset();
+                    if(!empty($usernameExist)){
+                        if($usernameExist[0]['username'] != $user[0]['username']){
+                            $usernameError = "Username already exist";
+                            $error++;
+                        }
+                    }
             }
         }
     }
@@ -96,6 +105,15 @@ if(isset($_POST['profSave'])) {
     }else{
         if (strlen($password) < '8') {
             $passwordError = "Your Password Must Contain At Least 8 Characters!";
+            $error++;
+        }
+    }
+    if (empty($description)) {
+        $descriptionError = "Description is required";
+        $error++;
+    }else{
+        if (strlen($description) < '10') {
+            $descriptionError = "Your Description Must Contain At Least 10 Characters!";
             $error++;
         }
     }
@@ -134,7 +152,7 @@ if(isset($_POST['profSave'])) {
         }
 
         $hashpassword = base64_encode($password);
-        $database->query("UPDATE users SET firstname = '$firstname', lastname = '$lastname', username= '$username', email='$email', password = '$hashpassword', gender = '$gender', upload='$upload' WHERE id = '$sessionUserID'");
+        $database->query("UPDATE users SET firstname = '$firstname', lastname = '$lastname', username= '$username', email='$email', password = '$hashpassword', gender = '$gender', upload='$upload', description='$description' WHERE id = '$sessionUserID'");
         $database->execute();
         unset($_POST);
         $_SESSION['microUser'] = $username;
@@ -200,6 +218,13 @@ if(isset($_POST['profSave'])) {
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="col-lg-3 control-label">Description:</label>
+                    <div class="col-lg-8">
+                        <textarea class="form-control" rows="5" name="description" id="description" <?php echo !empty($descriptionError) ? "autofocus": '' ;?>><?php echo isset($description) ? $description : ''; ?></textarea>
+                        <span style="color:red"><?php echo isset($descriptionError) ? $descriptionError : ''; ?></span>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="col-lg-3 control-label">Gender:</label>
                     <div class="row">
                         <div class="col-sm-3 ">
@@ -226,7 +251,7 @@ if(isset($_POST['profSave'])) {
                     <label class="col-md-3 control-label"></label>
                     <div class="col-md-8">
                         <button type="submit" name="profSave" id="profSave" class="btn btn-primary">Save changes</button>
-                        <a href="micro-blog.php" class="btn btn-default">Cancel</a>
+                        <a href="micro-profile.php?username=<?php echo $username;?> " class="btn btn-default">Cancel</a>
                     </div>
                 </div>
             </form>
