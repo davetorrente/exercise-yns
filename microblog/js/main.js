@@ -71,6 +71,78 @@ $(document).ready(function(){
                     sectionMessage.removeClass('alert-danger');
                     sectionMessage.addClass('alert-success');
                     sectionMessage.html('Tweet Successfully Added!').fadeIn().delay(1500).fadeOut('slow');
+                    $('#showdata-index').prepend(html);
+                }else{
+                    sectionMessage.removeClass('alert-success');
+                    sectionMessage.addClass('alert-danger');
+                    sectionMessage.html('Could not add data!').fadeIn().delay(1500).fadeOut('slow');
+                }
+            });
+        }
+    });
+
+
+
+    $('#createTweet-profile').on('click','#btnAdd',function(e){
+        e.preventDefault();
+        var addTweet = $('textarea[name=tweet]');
+        var result = '';
+        if(addTweet.val()===''){
+            addTweet.parent().addClass('has-error');
+            sectionMessage.removeClass('alert-success');
+            sectionMessage.addClass('alert-danger');
+            sectionMessage.html('Tweet cannot be empty').fadeIn().delay(2500).fadeOut('slow');
+        }
+        else if(addTweet.val().length > 140){
+            addTweet.parent().addClass('has-error');
+            sectionMessage.removeClass('alert-success');
+            sectionMessage.addClass('alert-danger');
+            sectionMessage.html('Tweet cannot be more than 140 characters').fadeIn().delay(2500).fadeOut('slow');
+        }
+        else{
+            addTweet.parent().removeClass('has-error');
+            sectionMessage.removeClass('alert-success');
+            sectionMessage.removeClass('alert-danger');
+            result +='1';
+        }
+        if(result==='1'){
+            $.ajax({
+                method: 'post',
+                url: 'micro-add.php',
+                data: {tweet: addTweet.val(), user_id: user_id.val()},
+                dataType: 'json'
+            }).done(function(response){
+                addTweet.val('');
+                var html = '';
+                if(response.message)
+                {
+                    var query = response.query;
+                    $.each(query, function(index){
+                        html +=
+                            '<article class="post">'+
+                            '<div class="alert alert-edit" id="alertMessage" style="display: none;"></div>'+
+                            '<div class="info postByUser">'+
+                            '<div class="row">'+
+                            '<div class="col-md-2">'+
+                            '<a href="micro-profile.php?username='+query[index].username+'"><img class=" postImage" src="'+query[index].upload+'"></a>'+
+                            '</div>'+
+                            '<div class="col-md-6 userName">'+
+                            '<h4>'+query[index].username+'</h4>'+
+                            '<p>'+"Posted on "+query[index].modified+'</p>'+
+                            '</div>'+
+                            '</div>'+
+                            '</div>'+
+                            '<p class="contentPost">'+query[index].tweet+'</p>'+
+                            '<div class="clearfix"></div>'+
+                            '<div class="interaction tweet-interact" user_id="'+user_id.val()+'" tweet_id="'+query[index].id+'">'+
+                            '<a href="javascript:;" class="tweet-edit">Edit | </a>'+
+                            '<a href="javascript:;" class="tweet-delete" id="delete-item">Delete |</a>'+
+                            '</div>'+
+                            '</article>';
+                    });
+                    sectionMessage.removeClass('alert-danger');
+                    sectionMessage.addClass('alert-success');
+                    sectionMessage.html('Tweet Successfully Added!').fadeIn().delay(1500).fadeOut('slow');
                     $('#showdata').prepend(html);
                 }else{
                     sectionMessage.removeClass('alert-success');
@@ -80,6 +152,7 @@ $(document).ready(function(){
             });
         }
     });
+
 
     $(document).on('click', '#delete-item', function(event){
         event.preventDefault();
@@ -219,7 +292,8 @@ $(document).ready(function(){
                                     '</div>' +
                                     '</article>';
                         });
-                        $('#showdata').prepend(html);
+                        $('#showdata-index').prepend(html);
+                        console.log($this);
                         $this.children().css("color", "green");
                         $('#retweetModal').modal('hide');
                     }
@@ -327,7 +401,8 @@ $(document).ready(function(){
             });
         }
     });
-    $('.userfollowing').on('click', function(){
+    $('.userfollowing').on('click', function(e){
+        e.preventDefault();
         $.ajax({
             method: 'POST',
             url: 'micro-following.php',
@@ -350,14 +425,14 @@ $(document).ready(function(){
         });
     });
 
-    $('.userfollowers').on('click', function(){
+    $('.userfollowers').on('click', function(e){
+        e.preventDefault();
         $.ajax({
             method: 'POST',
-            url: 'micro-showfriends.php',
+            url: 'micro-followers.php',
             data: {user_id: user_id.val()},
             dataType: 'json'
         }).done(function(res){
-
             var html ='';
             $.each(res, function (index) {
                 html += '<div class="thumbnail profilefollowers col-md-3">'+
@@ -368,8 +443,8 @@ $(document).ready(function(){
                     '</div>';
 
             });
-            $('#row-following').html(html);
-            $('#following-modal').modal('show');
+            $('#row-followers').html(html);
+            $('#followers-modal').modal('show');
         });
     });
 

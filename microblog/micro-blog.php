@@ -113,7 +113,7 @@ if(!empty($_GET['logout']) == 1) {
         </div>
     </section>
     <section class="row section2" >
-        <div class="col-md-6 col-md-offset-3" id="showdata">
+        <div class="col-md-6 col-md-offset-3" id="showdata-index">
             <?php foreach($mergeTweets as $mergeTweet): ?>
                 <?php if(isset($mergeTweet['isRetweet'])): ?>
                     <article class="post">

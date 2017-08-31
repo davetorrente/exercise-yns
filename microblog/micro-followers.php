@@ -5,6 +5,7 @@ $database = new Database();
 
 $userid = $_POST['user_id'];
 
-$database->query("SELECT users.username, users.upload, users.description FROM users INNER JOIN follows ON users.id = follows.follow_id WHERE user_id='$userid' AND isFollow=true");
-$followUsers = $database->resultset();
-echo json_encode($followUsers);
+$database->query("SELECT users.username, users.upload FROM users INNER JOIN follows ON users.id = follows.user_id WHERE follows.follow_id='$userid' AND isFollow=true");
+$userFollows = $database->resultset();
+echo json_encode($userFollows);
+

@@ -139,7 +139,7 @@ if(!empty($userFollows)){
                     <a href="micro-profile.php?username=<?php echo htmlspecialchars($displayFollowing['username']);?>"><?php echo " " . htmlspecialchars($displayFollowing['username']) ; ?></a>
                 <?php endforeach; ?>
                 <br>
-                <?php if(count($followUsers) - count($displayFollowings) > 1): ?>
+                <?php if(count($followUsers) - count($displayFollowings) >= 1): ?>
                  And <?php echo count($followUsers) - count($displayFollowings); ?> more
                 <?php endif; ?>
             </p>
@@ -154,11 +154,13 @@ if(!empty($userFollows)){
                 <?php else: ?>
                         <p><b>Your Follower</b><br/>
                 <?php endif; ?>
-                    <?php foreach($userFollows as $userFollow): ?>
-                        <a href="micro-profile.php?username=<?php echo htmlspecialchars($userFollow['username']);?>"><?php echo ", " . htmlspecialchars($userFollow['username']); ?></a>
+                    <?php foreach($displayFollowers as $displayFollower): ?>
+                        <a href="micro-profile.php?username=<?php echo htmlspecialchars($displayFollower['username']);?>"><?php echo ", " . htmlspecialchars($displayFollower['username']); ?></a>
                     <?php endforeach; ?>
                     <br>
-                    And more
+                <?php if(count($userFollows) - count($displayFollowers) >= 1): ?>
+                    And <?php echo count($userFollows) - count($displayFollowers); ?> more
+                <?php endif; ?>
                 </p>
                 <p>
                     <a class="btn btn-primary userfollowers" href="#">View All Followers</a>
@@ -191,7 +193,7 @@ if(!empty($userFollows)){
                 <div class="col-md-6 col-md-offset-3">
                     <div class="alert" id="alertMessage" style="display: none;"></div>
                     <?php if($userInfos[0]['username'] == $_SESSION['microUser'] && $page <= 1 ): ?>
-                        <form id="createTweet" method="post">
+                        <form id="createTweet-profile" method="post">
                             <div class="form-group">
                                 <textarea class="form-control" name="tweet" id="tweet" rows="3" placeholder="Your Tweet.."></textarea>
                                 <!--                <p style="display: inline-block">Total number of characters: </p><span style="display: inline-block" id="tweetCount">140</span>-->
@@ -225,8 +227,10 @@ if(!empty($userFollows)){
                                     <p class="contentPost"><?php echo $mergeTweet['tweet']; ?></p>
                                     <div class="clearfix"></div>
                                     <div class="interaction tweet-interact" user_id="<?php echo htmlspecialchars($mergeTweet['user_id']); ?>" tweet_id="<?php echo htmlspecialchars($mergeTweet['id']); ?>">
-                                        <?php if($user[0]['id'] != $mergeTweet['user_id']): ?>
-                                            <a href="javascript:;" class="retweet"><i class="fa fa-retweet" id="iconRetweet" aria-hidden="true" <?php echo isset($mergeTweet['isRetweet']) == true ? "style=color:green;" : '';?> ></i> |</a>
+
+                                        <?php if($user[0]['username'] != $userInfos[0]['username']): ?>
+
+                                            <a href="javascript:;" class="retweet"><i class="fa fa-retweet" id="iconRetweet" aria-hidden="true" <?php echo !empty($mergeTweet['isRetweet']) == true ? "style=color:green;" : '';?> ></i> |</a>
                                         <?php else: ?>
                                             <a href="javascript:;"  class="tweet-edit">Edit |</a>
                                             <a href="javascript:;" class="tweet-delete" id="delete-item" >Delete |</a>
@@ -250,9 +254,7 @@ if(!empty($userFollows)){
                                     <p class="contentPost"><?php echo $mergeTweet['tweet']; ?></p>
                                     <div class="clearfix"></div>
                                     <div class="interaction tweet-interact" user_id="<?php echo htmlspecialchars($mergeTweet['user_id']); ?>" tweet_id="<?php echo htmlspecialchars($mergeTweet['id']); ?>">
-                                        <?php if($user[0]['id'] != $mergeTweet['user_id']): ?>
-                                            <a href="javascript:;" class="retweet"><i class="fa fa-retweet" id="iconRetweet" aria-hidden="true" <?php echo $mergeTweet['isRetweet'] == true ? "style=color:green;" : '';?> ></i> |</a>
-                                        <?php else: ?>
+                                        <?php if($user[0]['id'] == $mergeTweet['user_id']): ?>
                                             <a href="javascript:;" class="retweet-delete" id="delete-item">Delete |</a>
                                         <?php endif; ?>
                                     </div>
@@ -285,6 +287,7 @@ if(!empty($userFollows)){
 </div>
 <?php
 require_once "modals/following-modal.php";
+require_once "modals/followers-modal.php";
 require_once "modals/delete-modal.php";
 require_once "modals/edit-modal.php";
 require_once "modals/retweet-modal.php";
